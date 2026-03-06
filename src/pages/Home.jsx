@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FadeIn, FadeInStagger, FadeInChild, PageTransition } from '../components/FadeIn'
+import HeroVisual from '../components/HeroVisual'
+import {
+  StrategyIllustration,
+  AcademicIllustration,
+  LearningIllustration,
+  ArtsIllustration,
+  MobilityIllustration,
+} from '../components/CaseIllustrations'
 
 const cases = [
   {
@@ -8,24 +16,22 @@ const cases = [
     featured: true,
     image: '/images/vip-wireframes.jpeg',
     imageAlt: 'Wireframes for VIP App',
-    tags: ['Luxury Retail', '0-to-1 Product', 'Mobile App'],
+    tags: ['Luxury Retail', 'End-to-End Design', 'Mobile App'],
     title: 'VIP App Experience for a Premium Fashion Distributor',
     desc: 'Led end-to-end research and product design for a luxury fashion agency\'s first mobile app — building a privacy-first research framework for high-net-worth clients, uncovering a product north star, and shipping a cross-brand digital wardrobe experience.',
     role: 'Research Lead & Product Designer · AJA Creative',
   },
   {
     to: '/cases/design-strategy',
-    colorClass: 'case-card__image--navy',
-    label: 'Strategic Foresight',
-    tags: ['Social Innovation', 'Foresight'],
-    title: 'Design Thinking & Foresight Programs for Public Institutions',
-    desc: 'Facilitated 10+ programs for universities, NGOs, and government bodies — translating complex challenges into actionable design opportunities.',
+    illustration: <StrategyIllustration />,
+    tags: ['Systems Design', 'Strategic Futures'],
+    title: 'Futures & Systems Work for Universities, NGOs, and Government',
+    desc: 'Facilitated 10+ innovation programs for public institutions across Taiwan — helping organisations move from complex systemic challenges to actionable futures.',
     role: 'Design Strategist · Island Design Lab',
   },
   {
     to: '/cases/academic-platform',
-    colorClass: 'case-card__image--slate',
-    label: 'B2B Product Strategy',
+    illustration: <AcademicIllustration />,
     tags: ['B2B SaaS', 'EdTech'],
     title: 'Strategic Roadmap for a B2B Academic Knowledge Platform',
     desc: 'Defined the product vision and 12-month roadmap for an academic platform, identifying competitive differentiation through design-driven research.',
@@ -33,8 +39,7 @@ const cases = [
   },
   {
     to: '/cases/digital-learning',
-    colorClass: 'case-card__image--warm',
-    label: 'Media & Education',
+    illustration: <LearningIllustration />,
     tags: ['Media', 'Learning Platform'],
     title: "UX Research for a Leading Media Group's Learning Platform",
     desc: 'Mixed-methods research and service planning for a major media conglomerate\'s digital learning and membership ecosystem.',
@@ -42,8 +47,7 @@ const cases = [
   },
   {
     to: '/cases/arts-education',
-    colorClass: 'case-card__image--sage',
-    label: 'Arts & Culture',
+    illustration: <ArtsIllustration />,
     tags: ['Arts & Culture', 'Digital Transformation'],
     title: 'Digital Classroom for a Renowned Performing Arts Organisation',
     desc: 'Translated an embodied, in-person pedagogy into a meaningful online learning experience — designing for community, ritual, and the at-home physical environment.',
@@ -51,8 +55,7 @@ const cases = [
   },
   {
     to: '/cases/mobility-platform',
-    colorClass: 'case-card__image--clay',
-    label: 'Mobility',
+    illustration: <MobilityIllustration />,
     tags: ['Mobility', 'Usability Research'],
     title: 'Usability Research for a Vehicle-Sharing Platform',
     desc: 'Evaluated the end-to-end booking-to-return task flow of a leading car-sharing service under realistic conditions — surfacing high-severity issues hidden in processing states and error recovery.',
@@ -61,13 +64,12 @@ const cases = [
 ]
 
 const experience = [
-  { period: '2021 – Present', role: 'Senior UX Researcher', company: 'AJA Creative Design', desc: 'Lead researcher across luxury retail, media, arts, and mobility sectors. Manage client relationships, research operations, and cross-functional insight delivery.' },
-  { period: '2020 – 2021', role: 'Design Strategist', company: 'Island Design Lab', desc: 'Designed and facilitated innovation programs for universities, NGOs, and government bodies. Developed foresight frameworks for public sector transformation.' },
-  { period: '2019 – 2020', role: 'Product Manager', company: 'Airiti Inc.', desc: 'Owned the product roadmap for a B2B academic knowledge platform. Conducted competitive research and defined a 12-month feature strategy.' },
-  { period: '2018 – 2019', role: 'UX Designer', company: 'Alphateam', desc: 'Designed digital products for healthcare and civic technology clients. Conducted user research and prototyping.' },
+  { period: 'Jan 2021 – Jul 2023', role: 'Senior UX Researcher', company: 'AJA Creative Design', desc: 'Lead researcher across luxury retail, media, arts, and mobility sectors. Managed client relationships, research operations, and cross-functional insight delivery.' },
+  { period: 'Jan 2020 – Jan 2025', role: 'Design Strategist', company: 'Island Design Lab', desc: 'Designed and facilitated innovation programs for universities, NGOs, and government bodies. Developed foresight frameworks for public sector transformation.' },
+  { period: 'Oct 2019 – May 2020', role: 'Product Manager', company: 'Airiti Inc.', desc: 'Owned the product roadmap for a B2B academic knowledge platform. Conducted competitive research and defined a 12-month feature strategy.' },
+  { period: 'Nov 2020 – Apr 2021', role: 'UX Researcher', company: 'Alphateam', desc: 'Led user research for an academia–government collaboration supporting small business innovation and entrepreneurship development.' },
 ]
 
-// Hero text animation variants
 const heroVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } }
@@ -113,7 +115,7 @@ export default function Home() {
           >
             <div className="hero__image-block">
               <div className="hero__image-wrap">
-                <img src="/images/process-bg.jpeg" alt="Design process work in session" />
+                <HeroVisual />
               </div>
               <div className="hero__stat-card">
                 <span className="hero__stat-num">6+</span>
@@ -137,21 +139,18 @@ export default function Home() {
           </FadeIn>
 
           <FadeInStagger className="work-grid">
-            {cases.map((c, i) => (
+            {cases.map((c) => (
               <FadeInChild key={c.to}>
                 <Link
                   to={c.to}
                   className={`case-card${c.featured ? ' case-card--featured' : ''}`}
                 >
-                  {c.featured ? (
-                    <div className="case-card__image">
-                      <img src={c.image} alt={c.imageAlt} />
-                    </div>
-                  ) : (
-                    <div className={`case-card__image case-card__image--color ${c.colorClass}`}>
-                      <span className="case-card__image-label">{c.label}</span>
-                    </div>
-                  )}
+                  <div className="case-card__image">
+                    {c.featured
+                      ? <img src={c.image} alt={c.imageAlt} />
+                      : c.illustration
+                    }
+                  </div>
                   <div className="case-card__body">
                     <div className="case-card__meta">
                       {c.tags.map(t => <span key={t} className="tag">{t}</span>)}
@@ -178,13 +177,13 @@ export default function Home() {
               <div className="about__left">
                 <span className="eyebrow">About</span>
                 <h2 className="about__headline">
-                  Research isn't a phase —<br />
-                  it's the <em>whole argument.</em>
+                  Philosophy taught me to ask.<br />
+                  New York taught me to <em>make.</em>
                 </h2>
                 <div className="about__body">
-                  <p>I'm a multi-disciplinary designer and researcher with a background in Philosophy. My practice sits at the intersection of deep qualitative inquiry, business strategy, and participatory design — always oriented toward the question of what actually matters to the people a product serves.</p>
-                  <p>I've led research across digital health, civic technology, luxury retail, education, and public policy. I believe the most impactful products are built on the clearest understanding of people — and that translating that understanding into language stakeholders can act on is its own craft.</p>
-                  <p>Before design, I studied philosophy at National Taiwan University and received my MFA in Transdisciplinary Design from Parsons School of Design, New York.</p>
+                  <p>I grew up in Taipei asking questions that didn't have easy answers. That instinct led me to philosophy, then to New York, then to design — and eventually to the work I do now: sitting with people, listening carefully, and translating what I hear into something an organisation can act on.</p>
+                  <p>I'm a researcher, a mother, and a Taiwanese woman working across cultures. My practice sits at the intersection of deep qualitative inquiry, business strategy, and participatory design. I've led research in digital health, civic technology, luxury retail, education, and public policy.</p>
+                  <p>I studied philosophy at National Taiwan University and received my MFA in Transdisciplinary Design from Parsons School of Design in New York. I believe the most useful thing research can do is make the invisible legible — for the people who need to act on it.</p>
                 </div>
               </div>
             </FadeIn>

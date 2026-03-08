@@ -98,10 +98,10 @@ export default function Home() {
             Tung<br /><em>Lin</em>
           </motion.h1>
           <motion.p className="hero__desc" variants={heroItem}>
-            I study how people live with problems.<br />
-            I ask what they wish were different.<br />
-            Then I design for the gap in between.<br />
-            That's the work.
+            I observe people and the things around them.<br />
+            How they move. What they arrange.<br />
+            I find what needs to shift.<br />
+            So the right moment can happen naturally.
           </motion.p>
         </motion.div>
 

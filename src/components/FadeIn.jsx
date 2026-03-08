@@ -53,6 +53,23 @@ export function FadeInChild({ children, className = '' }) {
   )
 }
 
+export function ClipReveal({ children, className = '', delay = 0 }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={{ clipPath: 'inset(0% 0% 100% 0%)', opacity: 0 }}
+      animate={inView ? { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 } : {}}
+      transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 export function PageTransition({ children }) {
   return (
     <motion.div

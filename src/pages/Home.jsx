@@ -98,10 +98,10 @@ export default function Home() {
             Tung<br /><em>Lin</em>
           </motion.h1>
           <motion.p className="hero__desc" variants={heroItem}>
-            I observe people and the things around them.<br />
-            How they move. What they arrange.<br />
-            I find what needs to shift.<br />
-            So the right moment can happen naturally.
+            I observe people — and the things they live with.<br />
+            How they reach, pause, arrange.<br />
+            I look for what needs to be placed differently.<br />
+            So the right things can find each other.
           </motion.p>
         </motion.div>
 

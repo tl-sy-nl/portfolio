@@ -60,14 +60,19 @@ function buildBubbles(W, H) {
     // Saturation varies — some bubbles barely tinted, others vivid
     const sat = 35 + rng() * 45
 
+    const x0 = rng() * W
+    // Large bubbles sway ≤5% of canvas width; small bubbles can sway a bit more
+    const maxAmp = W * 0.05
+    const amp = Math.min((3 + rng() * 12) * Math.sqrt(r / 18), maxAmp)
     bubbles.push({
-      x:     rng() * W,
+      x:     x0,
+      x0,
       y:     -r + rng() * (H + r * 2),
       r,
       vy:    (0.20 + rng() * 1.10) * (0.5 + r / 40),
       phase: rng() * Math.PI * 2,
       freq:  0.006 + rng() * 0.016,
-      amp:   (5 + rng() * 22) * Math.sqrt(r / 18),
+      amp,
       opa:   0.08 + rng() * 0.20,
       hl:    0.50 + rng() * 0.50,
       hue,
@@ -196,11 +201,12 @@ export default function TopographicHero() {
       // ── Update + draw bubbles ───────────────────────────────────────────────
       for (const b of bubbles) {
         b.y -= b.vy
-        b.x += Math.sin(tick * b.freq + b.phase) * 0.40
+        b.x = b.x0 + Math.sin(tick * b.freq + b.phase) * b.amp
 
         if (b.y + b.r < 0) {
           b.y = H + b.r + rng() * 50
-          b.x = rng() * W
+          b.x0 = rng() * W
+          b.x  = b.x0
         }
         if (b.x + b.r < 0 || b.x - b.r > W) continue
 

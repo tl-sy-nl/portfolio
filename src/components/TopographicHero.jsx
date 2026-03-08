@@ -12,7 +12,7 @@ function makePRNG(seed) {
 // ── Pre-compute organic shape offsets for a bubble ────────────────────────────
 // Larger bubbles are more irregular (lower surface tension at depth)
 function makeBubbleShape(r, rng) {
-  const jitter = Math.min(0.015 + (r / 35) * 0.055, 0.07)
+  const jitter = Math.min(0.006 + (r / 35) * 0.016, 0.022)
   const N = Math.max(7, Math.floor(r * 0.65 + 6))
   const offsets = Array.from({ length: N }, () => 1 + (rng() - 0.5) * jitter * 2)
   return { N, offsets }

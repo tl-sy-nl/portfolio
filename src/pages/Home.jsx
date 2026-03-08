@@ -98,7 +98,10 @@ export default function Home() {
             Tung<br /><em>Lin</em>
           </motion.h1>
           <motion.p className="hero__desc" variants={heroItem}>
-            I make space for people to think, to talk, and to imagine futures together. Research tells me what to listen for. Design tells me what to do with what I hear.
+            I study how people live with problems.<br />
+            I ask what they wish were different.<br />
+            Then I design for the gap in between.<br />
+            That's the work.
           </motion.p>
         </motion.div>
 

@@ -183,6 +183,10 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   max-width: var(--w-wide);
   margin: 0 auto;
   padding: 0 64px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hero__role {
   display: block;
@@ -214,7 +218,7 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   color: rgba(205, 228, 248, 0.68);
   line-height: 1.75;
   max-width: 480px;
-  margin-bottom: 36px;
+  margin-bottom: 0;
 }
 .hero__links { display: flex; gap: 12px; flex-wrap: wrap; }
 /* Buttons on dark ocean-bubble hero */

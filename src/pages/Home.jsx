@@ -100,10 +100,6 @@ export default function Home() {
           <motion.p className="hero__desc" variants={heroItem}>
             I make space for people to think, to talk, and to imagine futures together. Research tells me what to listen for. Design tells me what to do with what I hear.
           </motion.p>
-          <motion.div className="hero__links" variants={heroItem}>
-            <a href="#work" className="btn btn--dark">View Selected Work ↓</a>
-            <a href="mailto:tunglin.sy@gmail.com" className="btn btn--outline">Get in Touch</a>
-          </motion.div>
         </motion.div>
 
         <motion.div

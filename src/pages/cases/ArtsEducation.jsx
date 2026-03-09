@@ -689,7 +689,7 @@ export default function ArtsEducation() {
     <CaseLayout
       tags={['Arts & Culture', 'Discovery Research', 'Interaction Design']}
       title="Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation's Online School"
-      subtitle="In early 2021, as COVID-19 forced institutional closures and compelled performing arts organisations worldwide to digitalise, a Taiwanese organisation asked whether its embodied, presence-dependent pedagogy could exist online at all. A three-month, cross-strait qualitative study — and the interaction design that followed — defined the answer."
+      subtitle="A pre-product discovery study into whether a presence-dependent performing arts pedagogy could survive digital translation — and what it would take to ensure it remained, online, unmistakably itself."
       meta={[
         { label: 'Industry', value: 'Performing Arts & Education' },
         { label: 'Methods',  value: 'Contextual Inquiry · Concept Testing · Interaction Design' },
@@ -699,247 +699,68 @@ export default function ArtsEducation() {
       nextCase={{ to: '/cases/luxury-vip-app', title: "The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor's First Mobile App" }}
     >
 
-      {/* ── SECTION 1: Research Context ── */}
+      {/* ── SECTION 1: Opening ── */}
       <FadeIn>
-        <h2>The Research Context</h2>
-        <p>
-          A renowned Taiwanese performing arts organisation with decades of institutional history had never operated
-          a digital learning platform. Its pedagogy — rooted in bodily discipline, rhythmic breath, and the sustained
-          attention of a physical classroom — was widely understood by practitioners and leadership alike as resistant
-          to digital mediation. To extend the practice online risked diluting what made it meaningful.
-        </p>
-        <p>
-          In early 2021, as the COVID-19 pandemic forced sustained institutional closures and accelerated pressure
-          for digital access, the organisation commissioned a pre-product discovery study. The question was not "how
-          should we build an online school?" — it was prior to that: whether an online school could preserve the
-          organisation's educational values, which learner populations it should serve, and what structural principles
-          should govern any platform that might result.
-        </p>
-        <p>
-          No product existed. No platform architecture had been decided. This research was upstream of every design
-          decision.
-        </p>
-        <div className="pullquote">
-          "The research preceded the product. Its task was to determine what that product should be — and whether
-          it should exist at all."
-        </div>
+        <h2>What the Room Was Doing</h2>
+        <p>There are things a teacher does with her body that no screen can carry. The slight adjustment of a student's posture — a hand on the shoulder, a shift of weight demonstrated in real time. The rhythm of breath shared across a room. The particular stillness that falls over a group of children when the practice deepens and they stop needing to be told what comes next. These are the conditions under which a certain kind of learning happens. They are also the first things lost when you move that learning online.</p>
+        <p>A leading Taiwanese performing arts organisation had spent decades building its educational practice on exactly these conditions. When COVID-19 closed its doors in early 2021, the question was not whether to go digital — the pressure was already there — but whether anything worth preserving could survive the translation. The organisation's leadership understood the risk clearly: this was a practice that lived in the body, taught through presence, and sustained by the quiet authority of a shared physical space.</p>
+        <p>There was a second difficulty, less obvious but equally defining. The organisation's audience — parents, adult practitioners, long-time devotees of the art form — came with an expectation of aesthetic seriousness. They had chosen this institution precisely because it did not look or feel like mass-market education. But online learning, especially for children, demands attention management: animation, interactivity, sensory variety. Every tool designed to hold a child's focus on a screen risks undermining the very quality that made the institution worth attending. The challenge was not just to put the practice online. It was to do so without betraying what the practice meant.</p>
       </FadeIn>
 
       {/* ── SECTION 2: Research Design ── */}
       <FadeIn>
-        <h2>Research Design & Scale</h2>
-        <p>
-          The study was structured in five sequential phases: secondary landscape analysis, internal stakeholder
-          discovery, primary contextual inquiry, concept testing, and strategic synthesis. Three user populations
-          were investigated — parents practising with young children, experienced adult learners, and lapsed
-          participants — across four cities in Taiwan and two in mainland China.
-        </p>
-        <p>
-          Nineteen in-depth interviews were conducted using contextual inquiry methodology: participants were
-          engaged in their everyday environments and practice spaces, not removed to a neutral lab setting. A
-          further twenty-four structured concept-test sessions used prototype video sequences to evaluate
-          responses to specific content formats and interaction patterns across both primary segments.
-        </p>
+        <h2>Two Populations, Two Kinds of Doubt</h2>
+        <p>The research was structured around two user groups whose concerns had almost nothing in common. Families — parents bringing young children into the practice — were asking a practical question: could the discipline and attentiveness that a physical class demanded be sustained at home, with a parent as the stand-in for the teacher? Senior practitioners (長青者), a segment the organisation had cultivated for years, were asking something quieter and more personal: whether this body — slower now, more cautious — could still find its way into the practice through a screen.</p>
+        <p>Nineteen in-depth interviews were conducted in participants' homes and practice spaces — not in neutral settings — across four cities in Taiwan and two in mainland China. That decision to enter people's actual environments turned out to matter. In the apartments of northern Taiwan, living rooms are small and often crowded; movements that involve jumping or running risk disturbing downstairs neighbours. In Taichung and Kaohsiung, families tended to have more space — children could run, houses had play rooms, the floor was theirs to use. The home, it became clear, was not a neutral backdrop for practice. It was a site with its own constraints, and those constraints were not evenly distributed.</p>
+      </FadeIn>
 
+      <FadeIn>
         <DiagramFigure
           title="Research Process: Five Sequential Phases"
-          caption="The study advanced from secondary landscape analysis through direct fieldwork to concept testing, ensuring each phase built on confirmed prior findings rather than assumed user needs. Contextual inquiry and concept testing (phases 3–4) constituted the primary empirical work."
+          caption="The study advanced from secondary landscape analysis through direct fieldwork to concept testing, ensuring each phase built on confirmed prior findings rather than assumed user needs."
         >
           <ResearchProcessDiagram />
         </DiagramFigure>
-
-        <div className="callout">
-          <h4>Research Parameters</h4>
-          <ul>
-            <li>Study period: Three months, early 2021 — conducted during active COVID-19 institutional disruption</li>
-            <li>Primary fieldwork: Contextual inquiry across home, practice, and community environments</li>
-            <li>Participants: 19 in-depth interviews across parent and adult learner segments</li>
-            <li>Concept evaluation: 24 structured video-response sessions across 2 user segments</li>
-            <li>Geographic spread: 4 cities in Taiwan (Taipei, New Taipei, Taichung, Kaohsiung) and Suzhou and Shenzhen in mainland China</li>
-          </ul>
-        </div>
       </FadeIn>
 
-      {/* ── SECTION 3: User Segments & Personas ── */}
+      {/* ── SECTION 3: What We Found ── */}
       <FadeIn>
-        <h2 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: '-0.01em' }}>User Segments & Persona Structure</h2>
-        <p>
-          The research identified two primary segments with meaningfully different product needs. Within the
-          parent–child practitioner segment, the central differentiating factors were schedule flexibility and
-          the degree to which the parent identified with the practice's pedagogical values — not participation
-          history or demographic characteristics. Five positions emerged across this two-axis structure.
-        </p>
-        <p>
-          Among senior learners (長青者) — a segment with whom the organisation had strong existing relationships —
-          the differentiating factors were exercise intensity goals and the requirement for precision feedback on
-          technique. Three positions emerged. The implications for content depth, interaction format, and community
-          design differed substantially across these eight positions.
-        </p>
+        <h2>What the Research Found</h2>
+        <p>The senior practitioner segment presented a barrier the research had not anticipated. It was not, on examination, a technology problem. These were people who managed smartphones and messaging apps without difficulty. What they expressed, when asked to imagine practising alone in front of a screen, was something closer to vulnerability. Movement practice at this age involves a real relationship with physical risk — a misstep, an overextension, a fall. In a physical class, the teacher sees. On a screen, no one sees. For a meaningful portion of this segment, self-directed digital participation was not viable until that concern had been addressed directly — not by a help page, but by a person. Human-mediated onboarding was not a workaround. It was a prerequisite.</p>
+        <p>There was also a deeper motivation at stake. The practice is not a weekly event — it is a physical discipline whose benefits depend on regularity. For senior practitioners, the online platform offered something the physical class alone could not: a way to maintain strength and movement between sessions, at home, on their own terms. The goal was not to replace the studio. It was to extend the practice into the days in between.</p>
+        <p>The parent segment produced a finding equally unexpected. Parents had been assumed to be facilitators — adults who would set up the device, press play, and step back. The research showed something different. At home, with no teacher present, the parent becomes the pedagogical environment. They are the ones who hold the space, model the attention, and carry the practice across sessions. Designing for the child's experience alone would have failed the segment's actual structure. The platform needed to teach the parents how to be in the room — so that children, at home, could still encounter the practice as something artistically serious, not just something to watch.</p>
+        <p>The third finding was the one that reframed the design problem entirely. The organisation's audience had not chosen it for convenience. They had chosen it for what it stood for — a kind of seriousness about the art form that set it apart from the broader market of children's enrichment activities. Online learning, particularly for young children, tends to compensate for lost physical presence with stimulation: faster edits, brighter colours, interactive prompts designed to recapture attention every few seconds. Each of these tools works against the quality the organisation had spent decades building. The design challenge was not to make the platform engaging. It was to make it engaging in a way that remained, unmistakably, itself.</p>
+      </FadeIn>
 
+      <FadeIn>
         <DiagramFigure
           title="Persona Positioning: Two-Segment Framework"
-          caption="Personas are plotted across two independent axes per segment. Labels A–E denote parent segment positions; F–H denote senior learner (長青者) positions. All identifying information has been removed in accordance with NDA."
+          caption="Personas plotted across two independent axes per segment. Labels A–E denote parent segment positions; F–H denote senior learner (長青者) positions. All identifying information has been removed per NDA."
         >
           <PersonaMatrixDiagram />
         </DiagramFigure>
-
-        <div className="callout">
-          <h4>Persona Summary (Abstracted per NDA)</h4>
-          <ul>
-            <li><strong>A — Schedule-flexible, high alignment:</strong> Existing practitioner family. Core conversion audience. Most likely to sustain long-term engagement.</li>
-            <li><strong>B — Schedule-constrained, high alignment:</strong> Motivated but time-limited. Requires guided asynchronous formats; high risk of guilt-driven lapse without structural support.</li>
-            <li><strong>C — Schedule-flexible, moderate alignment:</strong> Geographically dispersed. Values periodic live access; digital participation fills absence between in-person visits.</li>
-            <li><strong>D — Schedule-constrained, moderate alignment:</strong> Career-constrained. Async short-format content the only viable format; low community engagement expected.</li>
-            <li><strong>E — Schedule-constrained, low alignment:</strong> Functional motivation (child energy management). Weakest retention potential; requires visible, near-term progress signals.</li>
-            <li><strong>F — High intensity, high precision need:</strong> Treats online as supplementary physical training. Demands detailed technique correction; rejects generic content.</li>
-            <li><strong>G — Low intensity, high precision need:</strong> COVID-vulnerable. Warm, human-mediated onboarding required before self-directed digital participation is viable.</li>
-            <li><strong>H — Moderate intensity, low precision need:</strong> High mobility; flexible device use. Values access continuity over format depth.</li>
-          </ul>
-        </div>
       </FadeIn>
 
-      {/* ── SECTION 4: Scenario Mapping ── */}
+      {/* ── SECTION 4: What the Research Made Possible ── */}
       <FadeIn>
-        <h2>Scenario Mapping & Journey Structure</h2>
-        <p>
-          For each primary segment, the research developed scenario storyboards — structured narratives that traced
-          a user through a complete arc of platform engagement, from initial contact through to sustained or lapsed
-          practice. These scenarios were not prescriptive wireframes; they served to locate the motivational rupture
-          points: moments where a user's commitment could either be reinforced by design or quietly lost.
-        </p>
-        <p>
-          For the parent segment, six scenario acts were mapped: initial contact and trial, first-class preparation,
-          caregiver handoff (accommodating the rotation of primary carers in the child's practice), sustained
-          engagement and peer support, social sharing mechanics, and long-term retention through progress
-          visualisation. Each act was grounded in interview findings about where and why participants had previously
-          lapsed from physical class attendance.
-        </p>
-
-        <DiagramFigure
-          title="Parent Segment: Six-Act Journey Map"
-          caption="Each column maps one scenario act: the primary user action and the corresponding design signal identified through research. The journey is read left to right, from first contact through to long-term retention. Acts reflect both observed behaviour and validated motivational structure."
-        >
-          <ParentJourneyDiagram />
-        </DiagramFigure>
-
-        <p>
-          The senior learner segment (長青者) revealed a distinct onboarding challenge: technology confidence and physical
-          safety concerns were primary barriers before any evaluation of content quality could occur. For a
-          significant portion of this segment, human-mediated onboarding — via phone or direct chat support —
-          was a prerequisite for self-directed platform use. This had direct implications for the organisation's
-          staffing and operational model, not only the platform's interaction design.
-        </p>
+        <h2>What the Research Made Possible</h2>
+        <p>The conventional answer to declining engagement in online learning is stimulation — faster feedback loops, reward mechanics, streaks and badges designed to bring users back. For most platforms, this is reasonable. For this organisation, it would have been a quiet act of self-destruction. Its audience had not chosen it for convenience or gamified motivation. They had chosen it for what the practice demanded of them: patience, repetition, the slow accumulation of something that cannot be rushed. Designing reward mechanisms into the platform would have spoken a language the institution had never used — and its most loyal users would have heard the difference immediately.</p>
+        <p>What the research made possible was a different kind of answer. The onboarding flow for senior practitioners was built around a human conversation before any self-directed use — because the barrier was not technology, but trust. The parent experience was designed as a parallel learning journey, not a management interface — because the barrier was not access, but confidence in the room. The platform's visual and tonal language stayed close to the physical institution: unhurried, serious, aesthetically considered.</p>
+        <p>The outcome was a platform designed to sit alongside the physical school, not to replace it. During COVID, it became the infrastructure that held the community together — online check-ins, shared replay sessions, the small exchanges that kept people connected to the practice and to each other across the weeks when the studio was closed. When the doors reopened, the platform remained: not as an emergency measure, but as the seamless extension of something that now ran across both worlds.</p>
+        <p>The research had not found a way to make the practice easier to deliver online. It had found a way to ensure that whatever was delivered online was still, recognisably, the same practice. That distinction was the design brief.</p>
       </FadeIn>
 
-      {/* ── SECTION 5: Design Output ── */}
       <FadeIn>
-        <h2>Design Output</h2>
-        <p>
-          The scenario storyboards produced through field research were not documentation artefacts — they
-          became the primary brief for interaction design. Each act in the parent journey map defined a
-          discrete interaction moment requiring a specific platform response: what the user needs to experience,
-          what the system must enable, and what the design must get right to sustain the arc of engagement.
-        </p>
-        <p>
-          The six-act parent storyboard below represents the design specification derived from research
-          synthesis — a structured account of each interaction moment from initial trial through to long-term
-          retention, grounded in motivational findings from the field.
-        </p>
-
-        <DiagramFigure
-          title="Parent Segment: Scenario Storyboard — Six-Act Design Specification"
-          caption="Each frame translates one scenario act into a design moment: the user's state, the required platform response, and the interaction design implication. The storyboard reads left to right across two rows, from initial contact through to long-term retention."
-        >
-          <ScenarioStoryboardDiagram />
-        </DiagramFigure>
-
-        <p>
-          From the scenario synthesis, three core interaction systems were specified. The teacher and content
-          layer provides the instructional foundation — video classes, precision feedback on submitted
-          assignments, and progress data. The parent enablement layer mediates that content for in-home
-          practice: it includes guided practice sequences, a caregiver handoff flow allowing seamless rotation
-          of primary carers without loss of continuity, and a peer community structure for parent-to-parent
-          support. The child experience layer delivers class content, milestone markers, and visible progress
-          signals. The community and social layer wraps the system, providing the peer visibility and shared
-          accountability the research identified as the primary mechanism for sustained motivation.
-        </p>
-
         <DiagramFigure
           title="Interaction Architecture: Four-Layer System Design"
-          caption="The four designed interaction layers, ordered by information flow from content origin to retention mechanism. Each layer was specified with its own interaction patterns, content types, and success metrics."
+          caption="The four designed interaction layers, from content origin to retention mechanism — built to extend the physical institution rather than replicate it."
         >
           <InteractionArchDiagram />
         </DiagramFigure>
-
-        <div className="callout">
-          <h4>Core Interaction Design Specifications</h4>
-          <ul>
-            <li><strong>Caregiver handoff flow:</strong> A role-transfer interaction that allows a secondary carer to continue a practice session without a briefing from the primary carer — preserving continuity without adding coordination overhead.</li>
-            <li><strong>Parent-guided practice sequences:</strong> In-app facilitation scaffolding for parents during child practice sessions, replacing the absent teacher with structured guidance calibrated to the parent's skill level and the child's current stage.</li>
-            <li><strong>Social visibility layer:</strong> Sharing mechanics that surface effort and commitment rather than bare achievement — designed to make progress legible to peers without reducing participants to performance metrics.</li>
-            <li><strong>Human-mediated onboarding (senior learner segment · 長青者):</strong> Integration of phone and chat support into the first-use flow, reducing the technology and physical safety barriers identified as the primary entry blockers for this segment before content quality could be evaluated.</li>
-          </ul>
-        </div>
       </FadeIn>
 
-      {/* ── SECTION 6: Key Findings ── */}
       <FadeIn>
-        <h2>Key Findings</h2>
-        <p>
-          Three findings structured the strategic output of the study.
-        </p>
-        <p>
-          <strong>Motivational continuity, not technical friction, was the primary attrition risk.</strong> Participants
-          across both segments could navigate functional digital platforms. What could not be replicated without
-          explicit design intervention was the social accountability, shared physical effort, and ambient teacher
-          presence that sustained commitment to a physical class. The design problem was not usability — it was
-          the engineering of conditions for sustained motivation.
-        </p>
-        <p>
-          <strong>Online access was valued as complementary practice, not as a substitute.</strong> Both segments
-          expressed clear resistance to framing online participation as equivalent to in-person learning. Where
-          digital access was welcomed, it was additive: filling gaps created by schedule constraints, geography,
-          or health circumstances. Positioning the platform as a replacement for the physical institution would
-          undermine its credibility with the organisation's existing community.
-        </p>
-        <p>
-          <strong>A parent-enablement layer was structurally necessary.</strong> The research revealed that parents
-          were not passive transmission channels for practice content to their children — they were active
-          pedagogical agents who required their own guidance materials, co-practice structures, and community
-          scaffolding to carry the work home effectively. Designing exclusively for the child's experience would
-          fail the segment's actual engagement structure.
-        </p>
-      </FadeIn>
-
-      {/* ── SECTION 6: Strategic Implications ── */}
-      <FadeIn>
-        <h2>Strategic Implications</h2>
-        <p>
-          The research output included a formal media-richness analysis — drawing on Trevino, Daft and Lengel's
-          framework — to evaluate which of the organisation's pedagogical values were most sensitive to media
-          format, and therefore which learning contexts required synchronous, high-bandwidth interaction versus
-          those that could be sustained through asynchronous delivery. This analysis structured the platform's
-          content architecture recommendations and informed decisions about where live instruction was non-negotiable.
-        </p>
-        <p>
-          The core strategic recommendation was: design for continuity, not conversion. The platform's primary
-          success metric should not be new user acquisition, but sustained practice — measured through return
-          frequency, assignment completion, and community participation. Achieving this required investing in
-          interaction patterns — peer visibility, ritual entry points, progress markers, community accountability
-          structures — that would feel unfamiliar to a conventional e-learning product team but were essential
-          to reproducing the motivational architecture of a physical class.
-        </p>
-        <p>
-          The findings also informed a recommendation on institutional positioning: the online school should
-          launch not as an independent digital product but as an extension of the physical institution —
-          retaining its identity, visual language, and community ties, rather than adopting the conventions
-          of the broader e-learning market. Brand continuity was itself a retention mechanism.
-        </p>
-        <p className="nda-note">
-          Organisation identity, participant details, and platform-specific metrics have been anonymised in
-          accordance with NDA. Research methods, findings, and strategic frameworks are presented at a level
-          of abstraction appropriate for portfolio review. Available to discuss in full detail in conversation.
-        </p>
+        <p className="nda-note">Organisation identity, participant details, and platform-specific metrics have been anonymised per NDA. Research methods, findings, and strategic frameworks are presented at a level of abstraction appropriate for portfolio review. Available to discuss in full detail — please reach out at tunglin.sy@gmail.com.</p>
       </FadeIn>
 
     </CaseLayout>

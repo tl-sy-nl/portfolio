@@ -501,9 +501,8 @@ export default function DigitalLearning() {
       {/* DESIGN DIRECTIONS */}
       <FadeIn>
         <h2>From Delivery to Belonging</h2>
-        <p>The research reframed the design brief at its core. The platform had been built around a model of learning as a solitary, structured activity — something you sit down to complete. The findings pointed toward something different: learning, for working professionals, happens in fragments, is shaped by the culture around you, and is sustained — or abandoned — depending on whether other people are part of it.</p>
-        <p>The redesign was organised around two questions the existing platform had never asked. For learners: <em>who do I want to become?</em> Content pathways were restructured around identity and growth goals — not catalogue volume. Social mechanics were introduced to make learning visible to peers, turning individual progress into shared signal. Short-form formats and session resumption were designed for the six-to-twelve-minute windows where learning actually happened. The platform would lead with value, not with commitment.</p>
-        <p>For HR: <em>how do I make this worth the investment?</em> Batch assignment was redesigned with template logic and permission delegation to distribute the administrative load. Reporting was made available throughout the licence period — not only at billing milestones — so administrators could demonstrate value before the renewal conversation, not after.</p>
+        <p>For learners, the journey begins with a question the platform had never asked: <em>who do I want to become?</em> From that starting point, content finds the learner — and as they move through it, their progress becomes visible to the people around them. Learning leaves a trace. Others can see it. That trace is what makes people come back.</p>
+        <p>For HR, the redesign addressed the cost that had been quietly eroding belief in the platform. Assignment was made faster. Reporting was made available throughout — not only when the invoice arrived. The investment could finally be demonstrated before it needed to be defended.</p>
       </FadeIn>
 
       <FadeIn>

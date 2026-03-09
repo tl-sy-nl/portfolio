@@ -414,9 +414,10 @@ export default function DigitalLearning() {
 
       {/* OVERVIEW */}
       <FadeIn>
-        <h2>A Growing Library, and the Question It Couldn't Answer</h2>
-        <p>A major media organisation with decades of editorial authority had built enterprise learning as the second pillar of its business. The content was genuinely strong — articles, video series, editorial programmes, and increasingly, podcasts, international content, ESG materials, and financial compliance courses designed for a corporate market with specific regulatory needs. The library kept growing. The clients kept signing.</p>
-        <p>And yet the platform had a problem the data couldn't explain. Engagement was lower than expected. HR administrators weren't renewing at the rate the business needed. The organisation knew something was wrong. It didn't know what — or where. The brief was deliberately open: go find it.</p>
+        <h2>A Library Deep as the Ocean</h2>
+        <p>A major media organisation with decades of editorial authority had built enterprise learning as the second pillar of its business. Articles, video series, editorial programmes, podcasts, international content, ESG materials, financial compliance courses — the library kept growing, quarter by quarter, in depth and in breadth. The clients kept signing.</p>
+        <p>But a deep library isn't the same as a useful one. The content was there. What wasn't there was any reason for a person to go looking — or any path that felt like it led somewhere worth going. Engagement was lower than expected. HR administrators weren't renewing. The analytics confirmed something was wrong. They couldn't say what.</p>
+        <p>The organisation commissioned a research engagement to find out. We entered asking how to help users navigate a growing catalogue. We left asking a different question entirely: what makes a person want to dive in at all?</p>
       </FadeIn>
 
       {/* RESEARCH DESIGN */}
@@ -499,9 +500,9 @@ export default function DigitalLearning() {
       </FadeIn>
 
       <FadeIn>
-        <p>The organisation understood itself as an enterprise learning platform. Learners experienced it as a general-knowledge media source — and arrived with the casual browsing expectations that implied. The interface built for structured study met users who hadn't come to study. That mismatch was permanent.</p>
-        <p>Internal stakeholders rated the content highly. Self-directed learners looking for professional depth found it insufficient — and found the catalogue hard to navigate toward anything relevant. The problem wasn't quality. It was that the architecture assumed users already knew what they were looking for.</p>
-        <p>And the platform's structured course format signalled, before anything else, that learning here required commitment. For learners who hadn't chosen to be there — assigned by HR, not self-directed — that signal was enough to stop engagement before it started. The features designed to communicate quality were precisely the features suppressing casual use.</p>
+        <p>The organisation understood itself as an enterprise learning platform. Learners experienced it as something closer to a digital magazine — a general-knowledge source you browse, not a place you study. They arrived in explore mode. The interface wanted them in study mode. Nobody had noticed this because nobody had asked.</p>
+        <p>The second gap was harder to see, because it hid behind something true. The content was good — internal stakeholders said so, and they weren't wrong. But good content buried under the wrong architecture is still unfindable. Learners came with a vague professional need, not a search term. The catalogue gave them no path in. They left empty-handed and didn't come back.</p>
+        <p>And before any of that — before a learner read a single word of content — the platform had already made its first impression. Progress bars. Completion requirements. Structured course paths. All of it communicated the same thing: this will take a while. For learners who hadn't chosen to be there, that was enough. Not a usability failure. A welcome that felt like a warning.</p>
       </FadeIn>
 
       {/* DESIGN DIRECTIONS */}

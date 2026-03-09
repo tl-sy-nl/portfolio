@@ -414,53 +414,45 @@ export default function DigitalLearning() {
 
       {/* OVERVIEW */}
       <FadeIn>
-        <h2>A Story of Institutional Ambition</h2>
-        <p>A major media organisation with decades of editorial authority had built enterprise learning as the second pillar of its business. The content was genuinely strong: articles, video series, and editorial programmes converted into digital learning materials for corporate clients. And the ambition was still growing — podcasts were in the pipeline; international content, ESG programmes, and financial compliance materials were being added to meet the expectations of a corporate market with increasingly specific needs.</p>
-        <p>As the library expanded, a question surfaced that the platform's analytics couldn't answer: how do you ensure that users can actually find, use, and return to what's there? Two core flows needed rethinking. For learners, the challenge was self-directed discovery — surfacing the right content to someone who doesn't yet know what they're looking for. For HR administrators, it was curation and assignment — navigating a growing catalogue, building course batches, and demonstrating value to management. Both flows were under strain. The organisation commissioned a full research engagement to understand why.</p>
+        <h2>A Growing Library, and the Question It Couldn't Answer</h2>
+        <p>A major media organisation with decades of editorial authority had built enterprise learning as the second pillar of its business. The content was genuinely strong — articles, video series, editorial programmes, and increasingly, podcasts, international content, ESG materials, and financial compliance courses designed for a corporate market with specific regulatory needs. The library kept growing. The clients kept signing.</p>
+        <p>And yet the platform had a problem the data couldn't explain. Engagement was lower than expected. HR administrators weren't renewing at the rate the business needed. The organisation knew something was wrong. It didn't know what — or where. The brief was deliberately open: go find it.</p>
       </FadeIn>
 
       {/* RESEARCH DESIGN */}
       <FadeIn>
-        <h2>Research Design</h2>
-        <h3>Two Users, One System</h3>
-        <p>The platform had two fundamentally different user populations — HR administrators who purchased and managed the platform, and the employees who were the intended learners. These groups interacted with entirely separate interfaces, had different success metrics, and experienced completely different friction. A research design that conflated them would have produced misleading findings. The study was structured in four sequential stages, moving from internal assumptions to validated design directions.</p>
+        <h2>Two People Who Never See Each Other</h2>
+        <p>The platform had two entirely separate user experiences. HR administrators purchased, configured, and managed the platform from a back-end interface. Learners encountered it as a content-facing front end. These two groups had different definitions of success, different sources of frustration, and — crucially — no visibility into each other's experience. HR made renewal decisions based on metrics learners never saw. Learners developed habits and avoidances based on friction HR couldn't observe. Treating them as a single user would have produced meaningless findings. The study was structured in four sequential stages to hold both sides in view at once.</p>
       </FadeIn>
 
       <FadeIn>
         <div className="callout">
           <h4>Research Methods</h4>
           <ul>
-            <li>Semi-structured stakeholder interviews — product, editorial, and business development — to map the organisation's assumptions about its own users</li>
-            <li>In-depth interviews with HR administrators across multiple client companies, segmented by organisation size and management style</li>
-            <li>In-depth interviews with learners, segmented by motivation type (self-directed vs. externally assigned) and industry</li>
-            <li>Affinity mapping and experience mapping to surface cross-segment structural patterns</li>
-            <li>Concept testing sessions presenting early design directions for validation</li>
+            <li>Internal stakeholder interviews — product, editorial, business — to surface the organisation's assumptions about its own users</li>
+            <li>In-depth interviews with HR administrators across client companies, segmented by organisation size and management style</li>
+            <li>In-depth interviews with learners across industries, segmented by motivation type and degree of autonomy</li>
+            <li>Affinity mapping and experience mapping to find where both sides were silently failing</li>
+            <li>Concept testing to validate design directions before committing to development</li>
           </ul>
         </div>
       </FadeIn>
 
-      {/* DUAL USER */}
-      <FadeIn>
-        <h2>Mapping the Dual-User System</h2>
-        <p>One of the first things the research revealed was how rarely the organisation had considered its two user groups as a system. HR administrators made purchase and renewal decisions based on metrics that learners never saw. Learners formed habits — and avoidances — based on experiences HR could not observe. The two interfaces were, in practice, invisible to each other. Mapping them in parallel made the misalignments visible.</p>
-      </FadeIn>
-
       <FadeIn>
         <div className="diagram-block">
-          <p className="diagram-caption">Dual-user segment map — two separate interfaces, two separate success criteria</p>
+          <p className="diagram-caption">Dual-user segment map — two separate interfaces, two separate definitions of success</p>
           <DualSegmentDiagram />
         </div>
       </FadeIn>
 
       {/* LEARNER */}
       <FadeIn>
-        <h2>The Learner Experience</h2>
-        <h3>What Working Learners Actually Do</h3>
-        <p>We entered the research with a set of assumptions: that working learners are driven primarily by career advancement and job performance — and that if the content was good enough and the interface clear enough, engagement would follow. The interviews challenged both assumptions directly.</p>
-        <p>Fragmented learning was already the primary mode. Most learners accessed the platform during commuting, idle moments at the office, or lunch breaks — windows averaging six to twelve minutes. Yet the platform's architecture was built for sustained, focused sessions. Before a learner could feel any benefit, the platform had already communicated how much effort it would require. It led with burden. Value came later, if at all.</p>
-        <p>More significantly, individual motivation turned out to be less decisive than the culture of the industry the learner worked in. In financial services — where compliance course loads are heavy and employees are regularly assigned mandatory training — there was little margin for exploratory learning. Learners completed what was required because it was tied to performance review. Completion rates were high. But self-directed engagement was nearly absent: when your professional field demands constant knowledge updating just to keep pace, there is simply no bandwidth left over.</p>
-        <p>A contrasting pattern emerged among sales staff and middle managers across industries. These roles share a structural need: accumulating material for conversations across different groups. Networking, pitching, facilitating — work that draws on breadth. These learners showed the highest rates of voluntary, exploratory learning. During the COVID period, when in-person interaction disappeared, their learning activity surged — not primarily because they wanted the knowledge, but because learning had become a substitute for the social exchange they had lost.</p>
-        <p>This finding sharpened when we looked at how HR used the platform socially. The most engaged client teams were those where HR had deliberately curated courses as shared experiences — organising sessions where learners could exchange what they had learned with each other. The data confirmed something the platform had not been designed around: learning and social connection are not separable. Strip away the social dimension, and even well-motivated learners drift.</p>
+        <h2>What We Got Wrong About Why People Learn</h2>
+        <p>We entered the research expecting to find that learners were driven by career advancement — promotion, job performance, professional edge. The interviews told a different story.</p>
+        <p>The most decisive factor wasn't personal motivation. It was the culture of the industry the learner worked in. And that finding changed everything.</p>
+        <p>In financial services, the compliance course load is relentless. Learners arrive at the platform already carrying the weight of mandatory training tied to performance review — courses they cannot opt out of, knowledge they must absorb just to meet the baseline requirements of their role. Completion rates were high. That was the visible number. What was invisible was the exhaustion behind it: a kind of quiet depletion that leaves no room for curiosity, no appetite for anything beyond what is required. When your field demands that you keep pace just to stay in place, there is nothing left over for exploration.</p>
+        <p>The contrast came from sales staff and middle managers. These roles run on breadth — on having something to say to different people, in different rooms, across different conversations. Learning, for them, is a form of social preparation. They showed the highest rates of voluntary, exploratory engagement across the study. During COVID, when the face-to-face exchange those roles depend on disappeared overnight, their learning activity surged — not because they suddenly wanted knowledge for its own sake, but because learning had become the only available substitute for the human contact they had lost.</p>
+        <p>The clearest confirmation came from a pattern HR had stumbled into without fully understanding it. The most engaged client teams were those where HR had deliberately turned courses into shared events — organising sessions where learners exchanged what they'd studied, compared what they'd taken away, built on each other's thinking. Learning as conversation. The data confirmed what these HR managers had sensed intuitively: once you remove the social dimension, even motivated learners stop coming back.</p>
       </FadeIn>
 
       <FadeIn>
@@ -472,9 +464,8 @@ export default function DigitalLearning() {
 
       {/* HR LIFECYCLE */}
       <FadeIn>
-        <h2>The HR Administrator Experience</h2>
-        <h3>A Lifecycle of Accumulating Friction</h3>
-        <p>For HR administrators, the platform's friction was concentrated at two specific junctures: the initial course assignment workflow, and the mid-term reporting phase. Neither was a simple usability problem. They were structural — built into how the platform had been designed to work.</p>
+        <h2>The Cost of Operating the Platform</h2>
+        <p>For HR administrators, the frustration was more immediate. Friction concentrated at two moments: building the initial course assignment, and generating the mid-term reports that justified the platform's cost to management. Neither was a minor inconvenience.</p>
       </FadeIn>
 
       <FadeIn>
@@ -484,7 +475,7 @@ export default function DigitalLearning() {
       </FadeIn>
 
       <FadeIn>
-        <p>The investment required to operate the platform was consuming a disproportionate share of HR bandwidth — creating a perverse dynamic: the more an administrator had invested in setting up the platform, the more evidence they had accumulated that it wasn't worth the cost. Research identified three distinct HR management styles — centralised control, incentive-based, and autonomous learning — each of which experienced this friction differently, but none of which escaped it entirely.</p>
+        <p>The more an administrator invested in operating the platform, the more evidence they accumulated that the return didn't justify the effort. It was a slow erosion of belief — and it happened at exactly the moments when HR needed to be most convinced. Research identified three distinct management styles among HR administrators, each engaging with the platform differently. None of them escaped this dynamic entirely.</p>
       </FadeIn>
 
       <FadeIn>
@@ -496,43 +487,29 @@ export default function DigitalLearning() {
 
       {/* THREE GAPS */}
       <FadeIn>
-        <h2>Three Structural Gaps</h2>
-        <p>Synthesis across all interviews produced a finding that reframed the project's scope. The platform's problems were not primarily interface issues — they were misalignments between how the organisation understood its own product and how users actually experienced it. Three gaps, operating at the level of mental models, invisible to the platform's analytics.</p>
+        <h2>What the Platform Had Got Wrong</h2>
+        <p>Bringing both sides of the research together produced a finding that reframed the project entirely. The platform's problems weren't interface problems. They were three gaps between what the organisation believed about its product and what users actually experienced — invisible to analytics, operating at the level of assumption.</p>
       </FadeIn>
 
       <FadeIn>
         <div className="diagram-block">
-          <p className="diagram-caption">Three structural gaps — company assumptions vs. user reality</p>
+          <p className="diagram-caption">Three gaps between company assumption and user reality</p>
           <ThreeGapDiagram />
         </div>
       </FadeIn>
 
       <FadeIn>
-        <h3>Gap 1: Brand Perception</h3>
-        <p>The organisation understood itself as an enterprise learning platform. Learners experienced it as a general-knowledge media source. This meant users arrived with casual browsing expectations — and encountered an interface built for structured study. The mismatch wasn't occasional friction. It was permanent.</p>
-
-        <h3>Gap 2: Content Depth</h3>
-        <p>Internal stakeholders rated content quality highly. Self-directed learners seeking professional development found it insufficient — and found discovering relevant material effortful. The problem was not the content itself. It was how the catalogue was organised and how the platform set expectations about what was inside.</p>
-
-        <h3>Gap 3: The Commitment Paradox</h3>
-        <p>The platform's structured course format communicated that learning required significant commitment. For externally-assigned learners — already coming with low intrinsic motivation — this framing was enough to discourage engagement before it began. The design choices meant to signal seriousness were precisely the choices suppressing casual, exploratory use.</p>
+        <p>The organisation understood itself as an enterprise learning platform. Learners experienced it as a general-knowledge media source — and arrived with the casual browsing expectations that implied. The interface built for structured study met users who hadn't come to study. That mismatch was permanent.</p>
+        <p>Internal stakeholders rated the content highly. Self-directed learners looking for professional depth found it insufficient — and found the catalogue hard to navigate toward anything relevant. The problem wasn't quality. It was that the architecture assumed users already knew what they were looking for.</p>
+        <p>And the platform's structured course format signalled, before anything else, that learning here required commitment. For learners who hadn't chosen to be there — assigned by HR, not self-directed — that signal was enough to stop engagement before it started. The features designed to communicate quality were precisely the features suppressing casual use.</p>
       </FadeIn>
 
       {/* DESIGN DIRECTIONS */}
       <FadeIn>
-        <h2>Redesigning Around What Learners Actually Need</h2>
-        <p>The research reframed the design brief at its core. The platform had been designed around the premise that learning is a structured individual activity — something you sit down to do. The findings suggested something different: that learning, for working professionals, is woven into fragmented time, shaped by industry culture, and sustained by social connection. The design directions that emerged from concept testing were organised around two questions that the existing platform had never asked. For learners: <em>who do I want to become?</em> For HR: <em>how do I make this worth the investment?</em></p>
-
-        <div className="callout">
-          <h4>Validated Design Directions</h4>
-          <ul>
-            <li><strong>Identity-led discovery</strong> — Content pathways organised around learner roles and growth goals, not catalogue volume. Entry point: who you want to become, not what exists in the library.</li>
-            <li><strong>Knowledge as expression</strong> — Social mechanics that surface what learners have completed and what they know — making learning visible to peers and building the social accountability the research identified as the primary engine of sustained engagement.</li>
-            <li><strong>Micro-learning entry points</strong> — Short-form formats and session resumption designed for 6–12 min windows. The platform leads with value, not with commitment signals.</li>
-            <li><strong>Streamlined HR assignment</strong> — Batch assignment with template logic and permission delegation, reducing the operational load that was turning administrators into reluctant advocates.</li>
-            <li><strong>Transparent, mid-cycle reporting</strong> — Progress data available throughout the licence period, not only at billing milestones — so HR can demonstrate value before the renewal conversation begins.</li>
-          </ul>
-        </div>
+        <h2>From Delivery to Belonging</h2>
+        <p>The research reframed the design brief at its core. The platform had been built around a model of learning as a solitary, structured activity — something you sit down to complete. The findings pointed toward something different: learning, for working professionals, happens in fragments, is shaped by the culture around you, and is sustained — or abandoned — depending on whether other people are part of it.</p>
+        <p>The redesign was organised around two questions the existing platform had never asked. For learners: <em>who do I want to become?</em> Content pathways were restructured around identity and growth goals — not catalogue volume. Social mechanics were introduced to make learning visible to peers, turning individual progress into shared signal. Short-form formats and session resumption were designed for the six-to-twelve-minute windows where learning actually happened. The platform would lead with value, not with commitment.</p>
+        <p>For HR: <em>how do I make this worth the investment?</em> Batch assignment was redesigned with template logic and permission delegation to distribute the administrative load. Reporting was made available throughout the licence period — not only at billing milestones — so administrators could demonstrate value before the renewal conversation, not after.</p>
       </FadeIn>
 
       <FadeIn>
@@ -543,7 +520,7 @@ export default function DigitalLearning() {
       </FadeIn>
 
       <FadeIn>
-        <p>The most durable outcome of this research was a reframing of what the platform was actually for. Not a library people visit. A space people return to — because it reflects who they are becoming, and because others can see that too.</p>
+        <p>The most durable outcome wasn't a feature list. It was a reframing of what the platform was actually for. Not a library people visit when they need something. A place people return to — because it reflects who they are becoming, and because others are becoming alongside them.</p>
       </FadeIn>
 
       <FadeIn>

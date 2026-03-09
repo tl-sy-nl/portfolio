@@ -423,7 +423,7 @@ export default function DigitalLearning() {
       {/* RESEARCH DESIGN */}
       <FadeIn>
         <h2>Two People Who Never See Each Other</h2>
-        <p>The platform had two entirely separate user experiences. HR administrators purchased, configured, and managed the platform from a back-end interface. Learners encountered it as a content-facing front end. These two groups had different definitions of success, different sources of frustration, and — crucially — no visibility into each other's experience. HR made renewal decisions based on metrics learners never saw. Learners developed habits and avoidances based on friction HR couldn't observe. Treating them as a single user would have produced meaningless findings. The study was structured in four sequential stages to hold both sides in view at once.</p>
+        <p>The platform had two entirely separate user experiences. HR administrators purchased, configured, and managed the platform from a back-end interface. Learners encountered it as a content-facing front end. These two groups had different definitions of success, different sources of frustration, and — crucially — no visibility into each other's experience. HR made renewal decisions based on metrics learners never saw. Learners developed habits and avoidances based on friction HR couldn't observe. Treating them as a single user would have produced meaningless findings.</p>
       </FadeIn>
 
       <FadeIn>
@@ -502,7 +502,7 @@ export default function DigitalLearning() {
       <FadeIn>
         <h2>From Delivery to Belonging</h2>
         <p>For learners, the journey begins with a question the platform had never asked: <em>who do I want to become?</em> From that starting point, content finds the learner — and as they move through it, their progress becomes visible to the people around them. Learning leaves a trace. Others can see it. That trace is what makes people come back.</p>
-        <p>For HR, the redesign addressed the cost that had been quietly eroding belief in the platform. Assignment was made faster. Reporting was made available throughout — not only when the invoice arrived. The investment could finally be demonstrated before it needed to be defended.</p>
+        <p>For HR, one poorly designed workflow meant that every month, every quarter, hours disappeared into a task that should have taken minutes. Assigning courses to a team is a meaningful act. The process had turned it into something closer to a punishment. The redesign gave that time back, and in doing so, gave HR back something it had quietly lost: the sense that the work was worth doing.</p>
       </FadeIn>
 
       <FadeIn>

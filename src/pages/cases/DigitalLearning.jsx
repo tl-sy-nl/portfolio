@@ -499,12 +499,6 @@ export default function DigitalLearning() {
         </div>
       </FadeIn>
 
-      <FadeIn>
-        <p>The organisation understood itself as an enterprise learning platform. Learners experienced it as something closer to a digital magazine — a general-knowledge source you browse, not a place you study. They arrived in explore mode. The interface wanted them in study mode. Nobody had noticed this because nobody had asked.</p>
-        <p>The second gap was harder to see, because it hid behind something true. The content was good — internal stakeholders said so, and they weren't wrong. But good content buried under the wrong architecture is still unfindable. Learners came with a vague professional need, not a search term. The catalogue gave them no path in. They left empty-handed and didn't come back.</p>
-        <p>And before any of that — before a learner read a single word of content — the platform had already made its first impression. Progress bars. Completion requirements. Structured course paths. All of it communicated the same thing: this will take a while. For learners who hadn't chosen to be there, that was enough. Not a usability failure. A welcome that felt like a warning.</p>
-      </FadeIn>
-
       {/* DESIGN DIRECTIONS */}
       <FadeIn>
         <h2>From Delivery to Belonging</h2>

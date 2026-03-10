@@ -277,7 +277,7 @@ export default function AcademicPlatform() {
           caption="Four-phase research framework. Each phase narrows the scope: from broad contextual inquiry to validated design recommendations."
         />
 
-        <p>Participants were split between junior researchers (5–10 years) and research leads (10+ years), ensuring findings reflected both the immediate search behaviour of active users and the strategic framing of senior decision-makers. Anyone with market research or design industry backgrounds was excluded, to preserve naturalistic behaviour when navigating unfamiliar platforms.</p>
+        <p>We recruited across two levels of seniority on purpose. Junior researchers — five to ten years in — were still navigating the system with fresh frustration. Research leads had learned to work around it. Both perspectives mattered: the one that remembered what broken felt like, and the one that had stopped noticing.</p>
       </FadeIn>
 
       {/* ── USER JOURNEY ── */}
@@ -312,8 +312,8 @@ export default function AcademicPlatform() {
 
       {/* ── DESIGN STRATEGY ── */}
       <FadeIn>
-        <h2>From Friction to Design</h2>
-        <p>Each insight mapped to a design principle. The strategy wasn't about adding features — it was about removing friction at the three points where researchers most consistently lost time and motivation: finding, evaluating, and applying.</p>
+        <h2>What the Research Made Possible</h2>
+        <p>Each finding pointed to a specific place where the platform could intervene. The strategy wasn't about adding features — it was about restoring something that had been quietly taken away: the researcher's ability to act on their own judgment.</p>
 
         <DiagramImage
           src="/ghd/p17.jpg"

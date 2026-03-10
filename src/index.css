@@ -445,9 +445,46 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 
 /* --- About --- */
 .about {
-  background: linear-gradient(160deg, #0F3D4E 0%, #1A5C72 60%, #0E3040 100%);
+  background:
+    /* Soft luminous accent — top-right glow */
+    radial-gradient(ellipse 600px 500px at 85% 15%, rgba(109,216,204,0.12) 0%, transparent 70%),
+    /* Warm subtle accent — bottom-left depth */
+    radial-gradient(ellipse 500px 400px at 10% 90%, rgba(224,112,87,0.06) 0%, transparent 60%),
+    /* Mid-layer ambient glow */
+    radial-gradient(ellipse 800px 600px at 50% 50%, rgba(62,147,168,0.10) 0%, transparent 70%),
+    /* Base gradient */
+    linear-gradient(160deg, #0A2E3A 0%, #144A5E 40%, #1A5C72 70%, #0E3040 100%);
   color: #fff;
   padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle dot grid texture */
+.about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle 1px, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Soft organic decorative arc */
+.about::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(109,216,204,0.07);
+  pointer-events: none;
+  z-index: 0;
+}
+.about > .wrap {
+  position: relative;
+  z-index: 1;
 }
 
 .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -820,6 +857,20 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   flex: 0 0 100%;
   width: 100%;
 }
+/* ── Enforce uniform slide height ── */
+.carousel__slide .case-card--featured {
+  height: 440px;
+}
+.carousel__slide .case-card--featured .case-card__body {
+  overflow: hidden;
+}
+.carousel__slide .case-card--featured .case-card__image {
+  height: 100%;
+}
+.carousel__slide .case-card--featured .case-card__image img {
+  height: 100%;
+  object-fit: cover;
+}
 /* Controls row: arrow · dots · arrow */
 .carousel__controls {
   display: flex;
@@ -890,6 +941,9 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   .case-card--featured {
     flex-direction: column;
     min-height: unset;
+  }
+  .carousel__slide .case-card--featured {
+    height: auto;
   }
   .case-card--featured .case-card__image {
     flex: unset;

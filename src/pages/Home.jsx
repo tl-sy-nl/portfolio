@@ -82,9 +82,9 @@ const cases = [
   {
     to: '/cases/academic-platform',
     num: '01',
-    // Medical lab — illuminated samples, clinical precision
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1400&q=85',
-    imageAlt: 'Close-up of scientific laboratory equipment and samples',
+    // Earth at night — glowing networks, data infrastructure
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Earth at night from space, glowing networks of light',
     tint: 'rgba(10,46,62,0.52)',
     tags: ['Biomedical', 'Public Sector', 'Published Research'],
     title: 'The Infrastructure Nobody Mapped: Research for Taiwan\'s National Health Data Gateway',

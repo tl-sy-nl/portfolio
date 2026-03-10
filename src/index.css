@@ -800,6 +800,85 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 .next-case:hover { border-color: var(--accent-glow); }
 .next-case:hover .next-case__arrow { transform: translateX(6px); }
 
+/* ── Work Carousel ── */
+.carousel {
+  position: relative;
+  padding-bottom: 80px;
+}
+.carousel__overflow {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  /* Subtle shadow to ground the card */
+  box-shadow: 0 8px 48px rgba(0,0,0,0.09);
+}
+.carousel__track {
+  display: flex;
+  transition: transform 0.58s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+}
+/* Controls row: arrow · dots · arrow */
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 2px;
+}
+.carousel__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--canvas);
+  color: var(--ink-2);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+.carousel__arrow:hover {
+  border-color: var(--ink-2);
+  color: var(--ink);
+  transform: scale(1.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.carousel__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.carousel__dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 100px;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel__dot--active {
+  background: var(--accent);
+  width: 26px;
+}
+/* Counter */
+.carousel__counter {
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  min-width: 48px;
+  text-align: center;
+}
+
 /* --- Page transition wrapper --- */
 .page-wrapper { min-height: 100vh; }
 

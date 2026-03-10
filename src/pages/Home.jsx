@@ -1,16 +1,91 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FadeIn, ClipReveal, PageTransition } from '../components/FadeIn'
+import { FadeIn, PageTransition } from '../components/FadeIn'
 import TopographicHero from '../components/TopographicHero'
+
+/* ── Work Carousel ── */
+function WorkCarousel({ items }) {
+  const [idx, setIdx] = useState(0)
+  const total = items.length
+
+  const prev = () => setIdx(i => (i - 1 + total) % total)
+  const next = () => setIdx(i => (i + 1) % total)
+
+  return (
+    <div className="carousel">
+      <div className="carousel__overflow">
+        <div
+          className="carousel__track"
+          style={{ transform: `translateX(-${idx * 100}%)` }}
+        >
+          {items.map((c) => (
+            <div key={c.to} className="carousel__slide">
+              <Link to={c.to} className="case-card case-card--featured">
+                {/* Text body */}
+                <div className="case-card__body">
+                  <div className="case-card__meta">
+                    {c.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                  </div>
+                  <h3 className="case-card__title">{c.title}</h3>
+                  <p className="case-card__desc">{c.desc}</p>
+                  <div className="case-card__footer">
+                    <span className="case-card__role">{c.role}</span>
+                    <span className="case-card__arrow">→</span>
+                  </div>
+                </div>
+                {/* Image */}
+                <div className="case-card__image">
+                  <img
+                    src={c.image}
+                    alt={c.imageAlt}
+                    onError={(e) => { e.currentTarget.style.display = 'none' }}
+                  />
+                  <div className="case-card__photo-overlay" />
+                  {c.tint && (
+                    <div className="case-card__tint" style={{ background: c.tint }} />
+                  )}
+                  {c.num && (
+                    <span className="case-card__num">{c.num}</span>
+                  )}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div className="carousel__controls">
+        <button className="carousel__arrow" onClick={prev} aria-label="Previous case">
+          ←
+        </button>
+        <div className="carousel__dots">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              className={`carousel__dot${i === idx ? ' carousel__dot--active' : ''}`}
+              onClick={() => setIdx(i)}
+              aria-label={`Case ${i + 1} of ${total}`}
+            />
+          ))}
+        </div>
+        <button className="carousel__arrow" onClick={next} aria-label="Next case">
+          →
+        </button>
+      </div>
+    </div>
+  )
+}
 
 const cases = [
   {
     to: '/cases/academic-platform',
-    featured: true,
     num: '01',
-    image: 'https://images.pexels.com/photos/27255240/pexels-photo-27255240.jpeg?auto=compress&cs=tinysrgb&w=1400&q=80',
-    imageAlt: 'Layers of misty mountains at sunrise in Taiwan',
-    tint: 'rgba(14,61,77,0.55)',
+    // Medical lab — illuminated samples, clinical precision
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Close-up of scientific laboratory equipment and samples',
+    tint: 'rgba(10,46,62,0.52)',
     tags: ['Biomedical', 'Public Sector', 'Published Research'],
     title: 'The Infrastructure Nobody Mapped: Research for Taiwan\'s National Health Data Gateway',
     desc: 'Formative research commissioned by Taiwan\'s Ministry of Health and Welfare — uncovering how biomedical researchers navigate 50+ fragmented databases, then translating findings into product strategy for a unified national gateway. Research published in ComSIS, 2023.',
@@ -19,9 +94,10 @@ const cases = [
   {
     to: '/cases/luxury-vip-app',
     num: '02',
-    image: 'https://images.pexels.com/photos/17010404/pexels-photo-17010404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    imageAlt: 'Aerial night view of Taipei Xinyi district skyline',
-    tint: 'rgba(24,12,6,0.45)',
+    // Luxury fashion — editorial clothing close-up
+    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Editorial fashion detail, luxury fabric and form',
+    tint: 'rgba(18,8,4,0.42)',
     tags: ['Luxury Retail', '0-to-1 Product', 'Mobile App'],
     title: 'The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor\'s First Mobile App',
     desc: 'Research for a luxury fashion distributor\'s first mobile app — uncovering how high-net-worth clients actually manage their wardrobes and make purchase decisions, and translating an unexpected field behaviour into a product north star.',
@@ -30,9 +106,10 @@ const cases = [
   {
     to: '/cases/digital-learning',
     num: '03',
-    image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Looking up through deep water',
-    tint: 'rgba(6,18,42,0.50)',
+    // Looking up through deep water — depth, layers of meaning
+    image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Looking upward through layers of deep blue water',
+    tint: 'rgba(4,14,36,0.48)',
     tags: ['Media', 'Enterprise Learning', 'Mixed-Methods Research'],
     title: 'What the Analytics Couldn\'t Show: Research for a Media Group\'s Enterprise Learning Platform',
     desc: 'Mixed-methods study uncovering three structural misalignments between how a major media group understood its enterprise learning platform and how users actually experienced it.',
@@ -41,9 +118,10 @@ const cases = [
   {
     to: '/cases/arts-education',
     num: '04',
-    image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Taiwan classroom students learning',
-    tint: 'rgba(30,14,8,0.42)',
+    // Dance silhouette — body, movement, light
+    image: 'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Dancer silhouette in motion, dramatic stage lighting',
+    tint: 'rgba(22,8,16,0.45)',
     tags: ['Arts & Culture', 'Discovery Research', 'Interaction Design'],
     title: 'Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation\'s Online School',
     desc: 'Pre-product discovery study conducted in 2021 — exploring whether a deeply embodied performing arts pedagogy could extend online, and what platform architecture could preserve its educational values.',
@@ -136,50 +214,9 @@ export default function Home() {
                 <span style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>All clients anonymised per NDA</span>
               </div>
             </FadeIn>
-
-            <div className="work-grid">
-              {cases.map((c, i) => (
-                <ClipReveal key={c.to} delay={i * 0.06}>
-                  <Link
-                    to={c.to}
-                    className={`case-card${c.featured ? ' case-card--featured' : ''}`}
-                  >
-                    <div className="case-card__image">
-                      {c.image ? (
-                        <>
-                          <img
-                            src={c.image}
-                            alt={c.imageAlt}
-                            onError={(e) => { e.currentTarget.style.display = 'none' }}
-                          />
-                          <div className="case-card__photo-overlay" />
-                          {c.tint && (
-                            <div
-                              className="case-card__tint"
-                              style={{ background: c.tint }}
-                            />
-                          )}
-                          {c.num && (
-                            <span className="case-card__num">{c.num}</span>
-                          )}
-                        </>
-                      ) : c.illustration}
-                    </div>
-                    <div className="case-card__body">
-                      <div className="case-card__meta">
-                        {c.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                      </div>
-                      <h3 className="case-card__title">{c.title}</h3>
-                      <p className="case-card__desc">{c.desc}</p>
-                      <div className="case-card__footer">
-                        <span className="case-card__role">{c.role}</span>
-                        <span className="case-card__arrow">→</span>
-                      </div>
-                    </div>
-                  </Link>
-                </ClipReveal>
-              ))}
-            </div>
+            <FadeIn delay={0.1}>
+              <WorkCarousel items={cases} />
+            </FadeIn>
           </div>
         </section>
 

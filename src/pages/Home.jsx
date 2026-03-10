@@ -7,8 +7,10 @@ const cases = [
   {
     to: '/cases/academic-platform',
     featured: true,
+    num: '01',
     image: 'https://images.pexels.com/photos/27255240/pexels-photo-27255240.jpeg?auto=compress&cs=tinysrgb&w=1400&q=80',
     imageAlt: 'Layers of misty mountains at sunrise in Taiwan',
+    tint: 'rgba(14,61,77,0.55)',
     tags: ['Biomedical', 'Public Sector', 'Published Research'],
     title: 'The Infrastructure Nobody Mapped: Research for Taiwan\'s National Health Data Gateway',
     desc: 'Formative research commissioned by Taiwan\'s Ministry of Health and Welfare — uncovering how biomedical researchers navigate 50+ fragmented databases, then translating findings into product strategy for a unified national gateway. Research published in ComSIS, 2023.',
@@ -16,8 +18,10 @@ const cases = [
   },
   {
     to: '/cases/luxury-vip-app',
+    num: '02',
     image: 'https://images.pexels.com/photos/17010404/pexels-photo-17010404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     imageAlt: 'Aerial night view of Taipei Xinyi district skyline',
+    tint: 'rgba(24,12,6,0.45)',
     tags: ['Luxury Retail', '0-to-1 Product', 'Mobile App'],
     title: 'The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor\'s First Mobile App',
     desc: 'Research for a luxury fashion distributor\'s first mobile app — uncovering how high-net-worth clients actually manage their wardrobes and make purchase decisions, and translating an unexpected field behaviour into a product north star.',
@@ -25,8 +29,10 @@ const cases = [
   },
   {
     to: '/cases/digital-learning',
+    num: '03',
     image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Looking up through deep water',
+    tint: 'rgba(6,18,42,0.50)',
     tags: ['Media', 'Enterprise Learning', 'Mixed-Methods Research'],
     title: 'What the Analytics Couldn\'t Show: Research for a Media Group\'s Enterprise Learning Platform',
     desc: 'Mixed-methods study uncovering three structural misalignments between how a major media group understood its enterprise learning platform and how users actually experienced it.',
@@ -34,8 +40,10 @@ const cases = [
   },
   {
     to: '/cases/arts-education',
+    num: '04',
     image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80',
     imageAlt: 'Taiwan classroom students learning',
+    tint: 'rgba(30,14,8,0.42)',
     tags: ['Arts & Culture', 'Discovery Research', 'Interaction Design'],
     title: 'Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation\'s Online School',
     desc: 'Pre-product discovery study conducted in 2021 — exploring whether a deeply embodied performing arts pedagogy could extend online, and what platform architecture could preserve its educational values.',
@@ -145,6 +153,15 @@ export default function Home() {
                             onError={(e) => { e.currentTarget.style.display = 'none' }}
                           />
                           <div className="case-card__photo-overlay" />
+                          {c.tint && (
+                            <div
+                              className="case-card__tint"
+                              style={{ background: c.tint }}
+                            />
+                          )}
+                          {c.num && (
+                            <span className="case-card__num">{c.num}</span>
+                          )}
                         </>
                       ) : c.illustration}
                     </div>
@@ -188,16 +205,44 @@ export default function Home() {
                 </div>
               </FadeIn>
               <div className="about__right">
+
+                  {/* Stats strip */}
+                  <div className="about__stats">
+                    <div>
+                      <span className="about__stat-num">8+</span>
+                      <span className="about__stat-label">Industries</span>
+                    </div>
+                    <div>
+                      <span className="about__stat-num">50+</span>
+                      <span className="about__stat-label">Research engagements</span>
+                    </div>
+                    <div>
+                      <span className="about__stat-num">6</span>
+                      <span className="about__stat-label">Years in practice</span>
+                    </div>
+                  </div>
+
+                  {/* Lens groups as pill tags */}
                   <div className="about__lenses">
                     <div className="lens-group">
                       <p className="lens-group__label">Domains</p>
-                      <p className="lens-group__items">Digital Health · Public Policy · Luxury Retail · Arts &amp; Culture · Education</p>
+                      <div className="lens-group__pills">
+                        {['Digital Health', 'Public Policy', 'Luxury Retail', 'Arts & Culture', 'Education'].map(d => (
+                          <span key={d} className="about__pill">{d}</span>
+                        ))}
+                      </div>
                     </div>
                     <div className="lens-group">
                       <p className="lens-group__label">Practices</p>
-                      <p className="lens-group__items">Strategic Foresight · Speculative Design · Participatory Research · Insight Synthesis</p>
+                      <div className="lens-group__pills">
+                        {['Strategic Foresight', 'Speculative Design', 'Participatory Research', 'Insight Synthesis'].map(p => (
+                          <span key={p} className="about__pill">{p}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
+
+                  {/* Education */}
                   <div className="about__edu">
                     <p className="about__edu-title">Education</p>
                     <div className="edu-item">
@@ -209,6 +254,7 @@ export default function Home() {
                       <p className="edu-item__school">National Taiwan University, 2014</p>
                     </div>
                   </div>
+
               </div>
             </div>
           </div>

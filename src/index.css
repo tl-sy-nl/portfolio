@@ -309,7 +309,9 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   padding-bottom: 80px;
   align-items: stretch;
 }
-.work-grid > :nth-child(n) { grid-column: span 6; }
+.work-grid > :nth-child(n)    { grid-column: span 6; }
+/* Featured case spans full row */
+.work-grid > :nth-child(1)    { grid-column: span 12; }
 
 /* --- Case Card --- */
 .case-card {
@@ -324,28 +326,78 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 }
 .case-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
 }
+
+/* ── Featured card: full-width horizontal layout ── */
 .case-card--featured {
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  min-height: 400px;
 }
+.case-card--featured .case-card__image {
+  flex: 0 0 44%;
+  aspect-ratio: unset;
+  order: 2;
+}
+.case-card--featured .case-card__body {
+  order: 1;
+  flex: 1;
+  padding: 48px 56px;
+  justify-content: center;
+  gap: 16px;
+}
+.case-card--featured .case-card__title {
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  line-height: 1.2;
+}
+.case-card--featured .case-card__desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ── Standard card image ── */
 .case-card__image {
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
   background: var(--surface-2);
 }
-.case-card--featured .case-card__image { aspect-ratio: 16/9; }
-.case-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-.case-card:hover .case-card__image img { transform: scale(1.03); }
-/* Barely-there vignette — keeps photos natural and bright */
+.case-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+.case-card:hover .case-card__image img { transform: scale(1.05); }
+
+/* Gradient vignette — bottom and left edge */
 .case-card__photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 68%, rgba(0,0,0,0.10) 100%);
+  background: linear-gradient(to bottom, transparent 45%, rgba(0,0,0,0.32) 100%);
   pointer-events: none;
   z-index: 1;
+}
+
+/* Per-card color tint (set via inline style on .case-card__tint) */
+.case-card__tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease;
+}
+.case-card:hover .case-card__tint { opacity: 0.75; }
+
+/* Case number watermark on image */
+.case-card__num {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.52);
+  z-index: 3;
+  pointer-events: none;
 }
 .case-card__image--color {
   display: flex;
@@ -418,25 +470,73 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   color: #6DD8CC;
 }
 .about__body p { color: rgba(255,255,255,0.7); margin-bottom: 16px; font-size: 0.95rem; }
+
+/* ── Stats strip ── */
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-bottom: 40px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.about__stat-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #6DD8CC;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.about__stat-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.45;
+}
+
+/* ── Lens groups with pills ── */
 .about__lenses { display: flex; flex-direction: column; gap: 28px; margin-bottom: 40px; }
 .lens-group__label {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 8px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 12px;
 }
-.lens-group__items {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.8;
-  margin: 0;
+.lens-group__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.about__edu-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.about__pill {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 100px;
+  padding: 5px 13px;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  transition: background 0.2s, color 0.2s;
+}
+.about__pill:hover {
+  background: rgba(109,216,204,0.14);
+  border-color: rgba(109,216,204,0.3);
+  color: #6DD8CC;
+}
+
+.about__edu-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
 .edu-item { margin-bottom: 16px; }
-.edu-item__degree { font-size: 0.9rem; font-weight: 500; color: #fff; }
-.edu-item__school { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.edu-item__degree { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.9); }
+.edu-item__school { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
 
 /* --- Experience --- */
 .experience { padding: 100px 0; }
@@ -706,12 +806,29 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 /* --- Responsive --- */
 @media (max-width: 960px) {
   .about__grid, .contact__grid { grid-template-columns: 1fr; gap: 40px; }
-  .case-card--featured .case-card__image { aspect-ratio: 16/7; }
   .work-grid > :nth-child(n) { grid-column: span 12 !important; }
+  /* Featured card: collapse to vertical on mobile */
+  .case-card--featured {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .case-card--featured .case-card__image {
+    flex: unset;
+    aspect-ratio: 16/7;
+    order: 0;
+  }
+  .case-card--featured .case-card__body {
+    order: 1;
+    padding: 28px 28px 24px;
+  }
+  .case-card--featured .case-card__title {
+    font-size: 1.12rem;
+  }
   .case-meta { grid-template-columns: 1fr 1fr; }
   .timeline-item { grid-template-columns: 1fr; gap: 8px; }
   .hero__name { font-size: clamp(3rem, 12vw, 5rem); }
   .main-content { border-radius: 14px 14px 0 0; }
+  .about__stats { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {

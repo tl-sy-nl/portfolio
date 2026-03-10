@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { FadeIn, PageTransition } from '../components/FadeIn'
 import TopographicHero from '../components/TopographicHero'
 
-/* ── Work Carousel ── */
+/* ── Full-Bleed Work Carousel ── */
 function WorkCarousel({ items }) {
   const [idx, setIdx] = useState(0)
   const total = items.length
@@ -13,66 +13,63 @@ function WorkCarousel({ items }) {
   const next = () => setIdx(i => (i + 1) % total)
 
   return (
-    <div className="carousel">
-      <div className="carousel__overflow">
-        <div
-          className="carousel__track"
-          style={{ transform: `translateX(-${idx * 100}%)` }}
-        >
-          {items.map((c) => (
-            <div key={c.to} className="carousel__slide">
-              <Link to={c.to} className="case-card case-card--featured">
-                {/* Text body */}
-                <div className="case-card__body">
-                  <div className="case-card__meta">
-                    {c.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                  </div>
-                  <h3 className="case-card__title">{c.title}</h3>
-                  <p className="case-card__desc">{c.desc}</p>
-                  <div className="case-card__footer">
-                    <span className="case-card__role">{c.role}</span>
-                    <span className="case-card__arrow">→</span>
-                  </div>
-                </div>
-                {/* Image */}
-                <div className="case-card__image">
-                  <img
-                    src={c.image}
-                    alt={c.imageAlt}
-                    onError={(e) => { e.currentTarget.style.display = 'none' }}
-                  />
-                  <div className="case-card__photo-overlay" />
-                  {c.tint && (
-                    <div className="case-card__tint" style={{ background: c.tint }} />
-                  )}
-                  {c.num && (
-                    <span className="case-card__num">{c.num}</span>
-                  )}
-                </div>
-              </Link>
+    <div className="fc">
+      {/* Slides */}
+      <div className="fc__viewport">
+        {items.map((c, i) => (
+          <Link
+            key={c.to}
+            to={c.to}
+            className={`fc__slide${i === idx ? ' fc__slide--active' : ''}`}
+            aria-hidden={i !== idx}
+          >
+            {/* Background image */}
+            <img
+              className="fc__bg"
+              src={c.image}
+              alt={c.imageAlt}
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+            {/* Tint + gradient overlays */}
+            {c.tint && <div className="fc__tint" style={{ background: c.tint }} />}
+            <div className="fc__gradient" />
+
+            {/* Text content */}
+            <div className="fc__content">
+              <span className="fc__num">{c.num}</span>
+              <div className="fc__tags">
+                {c.tags.map(t => <span key={t} className="fc__tag">{t}</span>)}
+              </div>
+              <h3 className="fc__title">{c.title}</h3>
+              <p className="fc__desc">{c.desc}</p>
+              <div className="fc__cta">
+                <span className="fc__role">{c.role}</span>
+                <span className="fc__arrow">View Case →</span>
+              </div>
             </div>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
 
-      {/* Controls */}
-      <div className="carousel__controls">
-        <button className="carousel__arrow" onClick={prev} aria-label="Previous case">
-          ←
-        </button>
-        <div className="carousel__dots">
+      {/* Navigation */}
+      <div className="fc__nav">
+        <button className="fc__nav-btn" onClick={prev} aria-label="Previous">←</button>
+        <div className="fc__counter">
+          <span className="fc__counter-current">{String(idx + 1).padStart(2, '0')}</span>
+          <span className="fc__counter-sep">/</span>
+          <span className="fc__counter-total">{String(total).padStart(2, '0')}</span>
+        </div>
+        <div className="fc__dots">
           {items.map((_, i) => (
             <button
               key={i}
-              className={`carousel__dot${i === idx ? ' carousel__dot--active' : ''}`}
+              className={`fc__dot${i === idx ? ' fc__dot--active' : ''}`}
               onClick={() => setIdx(i)}
-              aria-label={`Case ${i + 1} of ${total}`}
+              aria-label={`Case ${i + 1}`}
             />
           ))}
         </div>
-        <button className="carousel__arrow" onClick={next} aria-label="Next case">
-          →
-        </button>
+        <button className="fc__nav-btn" onClick={next} aria-label="Next">→</button>
       </div>
     </div>
   )
@@ -214,14 +211,20 @@ export default function Home() {
                 <span style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>All clients anonymised per NDA</span>
               </div>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <WorkCarousel items={cases} />
-            </FadeIn>
           </div>
+          <FadeIn delay={0.1}>
+            <WorkCarousel items={cases} />
+          </FadeIn>
         </section>
 
         {/* ── ABOUT ── */}
         <section className="about" id="about">
+          <img
+            className="about__bg"
+            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2400&q=80"
+            alt=""
+            aria-hidden="true"
+          />
           <div className="wrap">
 
             <div className="about__grid">

@@ -445,46 +445,37 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 
 /* --- About --- */
 .about {
-  background:
-    /* Soft luminous accent — top-right glow */
-    radial-gradient(ellipse 600px 500px at 85% 15%, rgba(109,216,204,0.12) 0%, transparent 70%),
-    /* Warm subtle accent — bottom-left depth */
-    radial-gradient(ellipse 500px 400px at 10% 90%, rgba(224,112,87,0.06) 0%, transparent 60%),
-    /* Mid-layer ambient glow */
-    radial-gradient(ellipse 800px 600px at 50% 50%, rgba(62,147,168,0.10) 0%, transparent 70%),
-    /* Base gradient */
-    linear-gradient(160deg, #0A2E3A 0%, #144A5E 40%, #1A5C72 70%, #0E3040 100%);
-  color: #fff;
-  padding: 100px 0;
   position: relative;
   overflow: hidden;
+  color: #fff;
+  padding: 100px 0;
 }
-/* Subtle dot grid texture */
+/* Full-bleed background photo */
+.about__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* Dark overlay for text readability */
 .about::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle 1px, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background:
+    linear-gradient(160deg,
+      rgba(6,20,28,0.92) 0%,
+      rgba(10,36,50,0.86) 40%,
+      rgba(14,48,64,0.80) 70%,
+      rgba(6,20,28,0.88) 100%);
+  z-index: 1;
   pointer-events: none;
-  z-index: 0;
-}
-/* Soft organic decorative arc */
-.about::after {
-  content: '';
-  position: absolute;
-  top: -120px;
-  right: -80px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  border: 1px solid rgba(109,216,204,0.07);
-  pointer-events: none;
-  z-index: 0;
 }
 .about > .wrap {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -837,75 +828,219 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 .next-case:hover { border-color: var(--accent-glow); }
 .next-case:hover .next-case__arrow { transform: translateX(6px); }
 
-/* ── Work Carousel ── */
-.carousel {
+/* ── Full-Bleed Carousel (fc) ── */
+.fc {
   position: relative;
-  padding-bottom: 80px;
+  margin-bottom: 80px;
 }
-.carousel__overflow {
+.fc__viewport {
+  position: relative;
+  height: 72vh;
+  min-height: 480px;
+  max-height: 680px;
   overflow: hidden;
   border-radius: var(--r-lg);
-  /* Subtle shadow to ground the card */
-  box-shadow: 0 8px 48px rgba(0,0,0,0.09);
+  margin: 0 64px;
 }
-.carousel__track {
+
+/* ── Slide ── */
+.fc__slide {
+  position: absolute;
+  inset: 0;
   display: flex;
-  transition: transform 0.58s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
 }
-.carousel__slide {
-  flex: 0 0 100%;
+.fc__slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Background image */
+.fc__bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-}
-/* ── Enforce uniform slide height ── */
-.carousel__slide .case-card--featured {
-  height: 440px;
-}
-.carousel__slide .case-card--featured .case-card__body {
-  overflow: hidden;
-}
-.carousel__slide .case-card--featured .case-card__image {
-  height: 100%;
-}
-.carousel__slide .case-card--featured .case-card__image img {
   height: 100%;
   object-fit: cover;
+  z-index: 0;
+  transition: transform 6s ease-out;
 }
-/* Controls row: arrow · dots · arrow */
-.carousel__controls {
+.fc__slide--active .fc__bg {
+  transform: scale(1.04);
+}
+
+/* Tint overlay (per-case color) */
+.fc__tint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* Dark gradient — heavy at bottom for text readability */
+.fc__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,0.08) 0%,
+      rgba(0,0,0,0.10) 30%,
+      rgba(0,0,0,0.45) 65%,
+      rgba(0,0,0,0.78) 100%),
+    linear-gradient(to right,
+      rgba(0,0,0,0.30) 0%,
+      transparent 60%);
+}
+
+/* Content positioned at bottom-left */
+.fc__content {
+  position: relative;
+  z-index: 3;
+  max-width: 600px;
+  padding: 52px 56px;
+}
+
+/* Case number */
+.fc__num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.40);
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+/* Tags */
+.fc__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.fc__tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.60);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 100px;
+  padding: 3px 10px;
+  backdrop-filter: blur(4px);
+}
+
+/* Title */
+.fc__title {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+/* Description */
+.fc__desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.62);
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* CTA row */
+.fc__cta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
-  padding: 0 2px;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.12);
 }
-.carousel__arrow {
+.fc__role {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.38);
+}
+.fc__arrow {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent-glow);
+  letter-spacing: 0.02em;
+  transition: transform 0.2s;
+}
+.fc__slide:hover .fc__arrow {
+  transform: translateX(4px);
+}
+
+/* ── Navigation bar ── */
+.fc__nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 0 64px;
+}
+.fc__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1.5px solid var(--border);
   background: var(--canvas);
   color: var(--ink-2);
   font-size: 1rem;
   cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
   flex-shrink: 0;
 }
-.carousel__arrow:hover {
+.fc__nav-btn:hover {
   border-color: var(--ink-2);
   color: var(--ink);
   transform: scale(1.08);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
-.carousel__dots {
+
+/* Counter */
+.fc__counter {
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+.fc__counter-current {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+.fc__counter-sep {
+  color: var(--border);
+  margin: 0 2px;
+}
+
+/* Dots */
+.fc__dots {
   display: flex;
   gap: 8px;
   align-items: center;
 }
-.carousel__dot {
+.fc__dot {
   height: 7px;
   width: 7px;
   border-radius: 100px;
@@ -915,19 +1050,9 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   padding: 0;
   transition: background 0.25s, width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.carousel__dot--active {
+.fc__dot--active {
   background: var(--accent);
-  width: 26px;
-}
-/* Counter */
-.carousel__counter {
-  font-family: var(--serif);
-  font-size: 0.78rem;
-  font-style: italic;
-  color: var(--ink-3);
-  letter-spacing: 0.04em;
-  min-width: 48px;
-  text-align: center;
+  width: 28px;
 }
 
 /* --- Page transition wrapper --- */
@@ -942,9 +1067,18 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
     flex-direction: column;
     min-height: unset;
   }
-  .carousel__slide .case-card--featured {
-    height: auto;
+  /* Full-bleed carousel responsive */
+  .fc__viewport {
+    margin: 0 24px;
+    height: 60vh;
+    min-height: 400px;
   }
+  .fc__content {
+    padding: 32px 28px;
+    max-width: 100%;
+  }
+  .fc__title { font-size: 1.2rem; }
+  .fc__nav { padding: 0 24px; }
   .case-card--featured .case-card__image {
     flex: unset;
     aspect-ratio: 16/7;

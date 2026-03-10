@@ -135,137 +135,80 @@ function DataNetworkHero() {
   )
 }
 
-// ── Research framework diamond diagram ──
-function ResearchFrameDiagram() {
-  const phases = [
-    { x: 60,  label: 'Exploratory\nResearch',  sub: 'Contextual Inquiry\nObservational Study\nCard Sorting' },
-    { x: 200, label: 'Design\nIdeation',       sub: 'Persona · Journey Map\nKey Insights\nDesign Strategy' },
-    { x: 340, label: 'Design\nDevelopment',    sub: 'Storyboard\nUser Flow\nIA & Interaction' },
-    { x: 480, label: 'Post-Launch\nOptimisation', sub: 'AB Testing\nUsability Testing' },
-  ]
+// ── Full-width PDF image with caption ──
+function DiagramImage({ src, alt, caption }) {
   return (
-    <svg viewBox="0 0 580 130" style={{ width: '100%', maxHeight: 130 }} aria-hidden="true">
-      {/* Track line */}
-      <line x1="60" y1="65" x2="520" y2="65"
-        stroke="rgba(14,31,36,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
-      {/* Diamond connectors */}
-      {[130, 270, 410].map((x, i) => (
-        <circle key={i} cx={x} cy={65} r="5"
-          fill="#1A5C72" />
-      ))}
-      {phases.map((p, i) => (
-        <g key={i}>
-          {/* Diamond shape */}
-          <polygon
-            points={`${p.x},45 ${p.x+20},65 ${p.x},85 ${p.x-20},65`}
-            fill="none" stroke="#1A5C72" strokeWidth="1.5" />
-          {/* Phase label */}
-          <text x={p.x} y={105} textAnchor="middle" fontSize="8.5"
-            fill="#0E1F24" fontFamily="var(--sans, sans-serif)" fontWeight="600">
-            {p.label.split('\n').map((line, li) => (
-              <tspan key={li} x={p.x} dy={li === 0 ? 0 : 11}>{line}</tspan>
-            ))}
-          </text>
-        </g>
-      ))}
-      {/* Arrow */}
-      <path d="M 515 61 L 525 65 L 515 69" fill="none" stroke="#1A5C72" strokeWidth="1.5" />
-    </svg>
-  )
-}
-
-// ── Inline data quality dimension grid ──
-function DataQualityGrid() {
-  const dims = [
-    {
-      n: '01', title: 'Completeness',
-      body: 'Data must cover required fields consistently over time. Gaps in temporal coverage or missing variables signal low research utility.',
-      quote: '"Completeness is fundamental — if a third of records are missing key variables, the database is unusable for us."',
-    },
-    {
-      n: '02', title: 'Collaboration Utility',
-      body: 'Standardised field definitions and unified formats enable data linkage and multi-institutional analysis without weeks of cleaning.',
-      quote: '"I need to merge data across institutions. If every hospital uses a different variable name for the same thing, that\'s a week of work."',
-    },
-    {
-      n: '03', title: 'Accessibility',
-      body: 'Friendly application processes, short approval timelines, and appropriate data retrieval mechanisms reduce research delays.',
-      quote: '"The approval process takes 6 months. I\'ve had studies stall because I couldn\'t get access to data I knew existed."',
-    },
-    {
-      n: '04', title: 'Maturity',
-      body: 'Data collected over a sufficient time span allows longitudinal analysis and reduces the need for repeated applications as records update.',
-      quote: '"A dataset that only covers two years can\'t answer survival questions. Maturity is about whether the data can carry a hypothesis to completion."',
-    },
-  ]
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, margin: '32px 0' }}>
-      {dims.map(d => (
-        <div key={d.n} style={{
-          background: 'var(--surface)',
-          border: '1px solid var(--border)',
-          borderRadius: 'var(--r-md)',
-          padding: '20px 22px',
+    <div style={{ margin: '36px 0' }}>
+      <div style={{
+        borderRadius: 'var(--r-md)',
+        overflow: 'hidden',
+        border: '1px solid var(--border)',
+        background: 'var(--surface)',
+      }}>
+        <img
+          src={src}
+          alt={alt}
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+          loading="lazy"
+        />
+      </div>
+      {caption && (
+        <p style={{
+          fontFamily: 'var(--sans)',
+          fontSize: '0.75rem',
+          color: 'var(--ink-3)',
+          letterSpacing: '0.02em',
+          marginTop: 10,
+          paddingLeft: 4,
+          lineHeight: 1.5,
         }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 8 }}>
-            <span style={{
-              fontFamily: 'var(--sans)', fontSize: '0.65rem', fontWeight: 700,
-              letterSpacing: '0.12em', color: 'var(--accent-warm)',
-            }}>{d.n}</span>
-            <span style={{
-              fontFamily: 'var(--display)', fontSize: '0.95rem', fontWeight: 600,
-              color: 'var(--ink)', letterSpacing: '-0.01em',
-            }}>{d.title}</span>
-          </div>
-          <p style={{ fontSize: '0.85rem', color: 'var(--ink-2)', lineHeight: 1.65, marginBottom: 12 }}>
-            {d.body}
-          </p>
-          <blockquote style={{
-            fontFamily: 'var(--serif)', fontStyle: 'italic',
-            fontSize: '0.82rem', color: 'var(--ink-3)',
-            lineHeight: 1.6, borderLeft: '2px solid var(--accent-warm)',
-            paddingLeft: 12, margin: 0,
-          }}>
-            {d.quote}
-          </blockquote>
-        </div>
-      ))}
+          {caption}
+        </p>
+      )}
     </div>
   )
 }
 
-// ── Key insight card ──
-function InsightCard({ n, headline, evidence, quotes }) {
+// ── Storyboard strip ──
+function StoryboardStrip() {
+  const panels = [
+    { src: '/ghd/p26.jpg', label: 'Act I' },
+    { src: '/ghd/p27.jpg', label: 'Act II' },
+    { src: '/ghd/p28.jpg', label: 'Act III' },
+    { src: '/ghd/p29.jpg', label: 'Act IV' },
+  ]
   return (
-    <div style={{
-      borderTop: '1px solid var(--border)',
-      paddingTop: 24,
-      paddingBottom: 24,
-      display: 'grid',
-      gridTemplateColumns: '120px 1fr',
-      gap: 32,
-    }}>
-      <div>
-        <span style={{
-          display: 'block',
-          fontFamily: 'var(--sans)', fontSize: '0.65rem', fontWeight: 700,
-          letterSpacing: '0.14em', textTransform: 'uppercase',
-          color: 'var(--accent-warm)', marginBottom: 6,
-        }}>Insight {n}</span>
-        <span style={{
-          fontFamily: 'var(--display)', fontSize: '0.85rem', fontWeight: 500,
-          color: 'var(--ink-3)', lineHeight: 1.5,
-        }}>{headline}</span>
-      </div>
-      <div>
-        <p style={{ fontSize: '0.88rem', color: 'var(--ink-2)', marginBottom: 12 }}>{evidence}</p>
-        {quotes.map((q, i) => (
-          <p key={i} style={{
-            fontFamily: 'var(--serif)', fontStyle: 'italic',
-            fontSize: '0.85rem', color: 'var(--ink-3)',
-            lineHeight: 1.65, marginBottom: 8,
-            borderLeft: '2px solid var(--border)', paddingLeft: 14,
-          }}>"{q}"</p>
+    <div style={{ margin: '36px 0' }}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: 12,
+      }}>
+        {panels.map((p, i) => (
+          <div key={i} style={{
+            borderRadius: 'var(--r-sm)',
+            overflow: 'hidden',
+            border: '1px solid var(--border)',
+            background: 'var(--surface)',
+          }}>
+            <img
+              src={p.src}
+              alt={p.label}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              loading="lazy"
+            />
+            <div style={{
+              padding: '8px 12px',
+              fontFamily: 'var(--sans)',
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'var(--ink-3)',
+            }}>
+              {p.label}
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -277,7 +220,7 @@ export default function AcademicPlatform() {
     <CaseLayout
       tags={['Biomedical', 'Public Sector', 'Published Research']}
       title="The Infrastructure Nobody Mapped: Research for Taiwan's National Health Data Gateway"
-      subtitle="Formative research commissioned by Taiwan's Ministry of Health and Welfare — uncovering how biomedical researchers discover, evaluate, and access data across 50+ fragmented institutions, then translating findings into product strategy and information architecture for a unified national gateway."
+      subtitle="A formative user research study commissioned by Taiwan's Ministry of Health and Welfare — uncovering how biomedical researchers find, evaluate, and access data across a fragmented national ecosystem, and translating those findings into platform strategy and information architecture for GHD."
       meta={[
         { label: 'Industry', value: 'Biomedical & Public Sector' },
         { label: 'Methods',  value: 'Contextual Inquiry · Card Sorting · Usability Testing' },
@@ -299,205 +242,98 @@ export default function AcademicPlatform() {
 
       {/* ── CONTEXT ── */}
       <FadeIn>
-        <h2>The Problem: 50+ Platforms, No Way In</h2>
-        <p>Taiwan has world-class biomedical data. The National Health Insurance Research Database (NHIRD) alone covers 23 million people over decades. Hospitals, universities, government agencies, and pharma companies all maintain their own datasets — genomic, clinical, epidemiological, administrative. But none of them talk to each other.</p>
-        <p>For a researcher studying long-term disease progression, finding the right dataset means searching through academic papers, calling colleagues, and navigating application processes that can take six months to complete — only to discover the data lacks the variables they actually need.</p>
-        <p>In 2022, Taiwan's Ministry of Health and Welfare commissioned Island Design Lab to design the user experience for <strong>Gateway to Health Data (GHD)</strong> — a unified national platform that would aggregate datasets from across Taiwan's fragmented biomedical ecosystem and make them searchable, evaluable, and accessible in one place.</p>
-        <p>My role was to lead the formative user research: understand how biomedical researchers currently find, evaluate, and access data — and what that meant for how the platform should be built.</p>
+        <h2>The Problem: Find, Evaluate, Access</h2>
+        <p>Taiwan has world-class biomedical data. The National Health Insurance Research Database alone covers 23 million people across three decades — one of the most complete longitudinal health records in the world. Add to that genomic databases, clinical trial repositories, hospital records, epidemiological surveys from universities and government agencies. The data exists.</p>
+        <p>For most researchers, it exists the way a library exists if you don't know it's there, don't have the address, and aren't sure you're allowed in.</p>
+        <p>There are three steps between a researcher and the dataset they need. Each one fails in a different way.</p>
+        <p>To <strong>find</strong> a dataset, you need to know the right person. Discovery happens through conference conversations, paper citations, departmental contacts — not through any centralised search. A researcher who is new to the field, or new to Taiwan's academic networks, may not know that the dataset they need even exists.</p>
+        <p>To <strong>evaluate</strong> it — to determine whether it's suitable before committing to an application — you're largely working blind. Metadata is inconsistent across institutions. Coverage periods and variable lists are rarely surfaced upfront. One participant described it as buying a book with a blank cover.</p>
+        <p>To <strong>access</strong> it: submit forms designed for clinical trials, wait two to six months with no visibility into the process, and hope the data turns out to match what the title implied. One researcher described having to travel in person to a secure facility just to look at a dataset on-site. "What year is this?" they asked.</p>
+        <p>In 2022, Taiwan's Ministry of Health and Welfare commissioned Island Design Lab to design the user experience for <strong>Gateway to Health Data (GHD)</strong> — a platform that would aggregate datasets from across Taiwan's biomedical ecosystem and make them findable, evaluable, and accessible in one place. Taiwan has long aspired to lead in Open Science; GHD was the infrastructure that could make that real. My role was to lead the formative research: to understand, in detail, where the friction lived and what it would take to remove it.</p>
       </FadeIn>
 
       {/* ── STAKEHOLDERS ── */}
       <FadeIn>
-        <h2>A Complex Stakeholder Ecosystem</h2>
-        <p>The platform sat at the intersection of multiple institutions. The Ministry of Health and Welfare provided direction and mandate. Platform management units from hospitals, universities, NGOs, and government agencies would contribute data. A web development team would build the infrastructure. And researchers — the primary users — came from five distinct industries, each with different workflows, data needs, and technical capabilities.</p>
+        <h2>A Platform Between Institutions</h2>
+        <p>GHD didn't sit inside one institution. It sat between them. The Ministry of Health and Welfare provided mandate and oversight. Data management units from hospitals, universities, NGOs, and government agencies would contribute datasets. A web development team would build the infrastructure. And researchers — the platform's primary users — came from five distinct industries, each with different workflows, data needs, technical fluency, and definitions of what "good data" looked like.</p>
+        <p>Understanding who the platform was actually serving — and how different their needs were — was the first task.</p>
 
-        <div className="callout">
-          <h4>Five Research Sectors Represented</h4>
-          <ul>
-            <li><strong>Pharmaceutical R&D</strong> — genomic and clinical trial datasets; high technical fluency</li>
-            <li><strong>Health Information Services</strong> — epidemiological data; focus on population-level patterns</li>
-            <li><strong>Medical Support Services</strong> — clinical trial coordination; complex multi-institution workflows</li>
-            <li><strong>Medical Device Testing & R&D</strong> — biomarker and regulatory data; IRB-heavy access processes</li>
-            <li><strong>Academic Institutions</strong> — broad, longitudinal datasets; familiarity with international platforms</li>
-          </ul>
-        </div>
+        <DiagramImage
+          src="/ghd/p06.jpg"
+          alt="Stakeholders and users diagram showing the GHD ecosystem"
+          caption="Stakeholder and user landscape. The platform sits at the intersection of data providers, government mandate, technical infrastructure, and five distinct research communities."
+        />
       </FadeIn>
 
       {/* ── RESEARCH FRAMEWORK ── */}
       <FadeIn>
         <h2>Research Framework</h2>
-        <p>We structured the engagement across four phases, using design tools to progressively narrow from exploration to validated product direction. The formative phase — the work documented here — covered exploratory research and design ideation, producing the evidence base that informed GHD's information architecture and product strategy.</p>
+        <p>We structured the engagement across four phases — exploratory research, design ideation, design development, and post-launch optimisation. The formative work documented here covered the first two: building the evidence base and translating it into platform strategy and information architecture.</p>
+        <p>Six in-depth interviews, two hours each, across five research industries. Contextual inquiry as participants navigated reference platforms. Card-sorting to surface filter priorities. Secondary research on international biomedical data discovery platforms — UK HDR, NIH GDC, PhysioNet — to understand where Taiwan sat within a global landscape that had been shifting rapidly toward open, federated access.</p>
 
-        <div style={{ background: 'var(--surface)', borderRadius: 'var(--r-md)', padding: '28px 24px', margin: '28px 0', border: '1px solid var(--border)', overflowX: 'auto' }}>
-          <ResearchFrameDiagram />
-        </div>
+        <DiagramImage
+          src="/ghd/p07.jpg"
+          alt="Research framework diamond diagram showing four phases"
+          caption="Four-phase research framework. Each phase narrows the scope: from broad contextual inquiry to validated design recommendations."
+        />
 
-        <p>The research addressed four core questions: how do users define high-quality data? What tasks are they trying to accomplish, and what drives their choices? What do they use instead of GHD — and why? And what do they already understand (or misunderstand) about data aggregation platforms?</p>
-
-        <div className="callout">
-          <h4>Research Activities</h4>
-          <ul>
-            <li>6 one-on-one depth interviews (2 hours each), across 5 industries</li>
-            <li>Contextual inquiry as participants navigated competing platforms (NHIS, TCGA, PhysioNet, data.gov.tw)</li>
-            <li>Card-sorting structured evaluation: filter priority (篩選條件偏好) and data utility dimensions</li>
-            <li>Secondary research on international biomedical data discovery platforms (UK HDR, NIH GDC)</li>
-            <li>Stakeholder interviews with MOHW project leads</li>
-          </ul>
-        </div>
-
-        <p>Participants were split between junior researchers (5–10 years' experience) and research leads (10+ years), ensuring findings reflected both the immediate search behaviour of active users and the strategic framing of senior decision-makers. We excluded anyone with market research or design industry backgrounds to preserve naturalistic behaviour.</p>
+        <p>Participants were split between junior researchers (5–10 years) and research leads (10+ years), ensuring findings reflected both the immediate search behaviour of active users and the strategic framing of senior decision-makers. Anyone with market research or design industry backgrounds was excluded, to preserve naturalistic behaviour when navigating unfamiliar platforms.</p>
       </FadeIn>
 
-      {/* ── DATA QUALITY FINDINGS ── */}
+      {/* ── USER JOURNEY ── */}
       <FadeIn>
-        <h2>How Researchers Describe Data Quality</h2>
-        <p>Before we could design a search experience, we needed to understand what "good data" meant to users — because a platform that surfaces the wrong datasets quickly is still a failing platform. Users described quality along four consistent dimensions.</p>
+        <h2>Where Time Was Being Lost</h2>
+        <p>The research surfaced a journey with four stages — Identifying, Searching, Applying, Acquiring. At each stage, a consistent pattern of friction. What the map made visible wasn't the steps themselves; it was the gap between what researchers expected to be simple and what the system had made complicated.</p>
 
-        <DataQualityGrid />
+        <DiagramImage
+          src="/ghd/p15.jpg"
+          alt="User journey map showing four stages: Identifying, Searching, Applying, Acquiring"
+          caption="User journey map across four stages. Pain points cluster around the transition from searching to applying — the moment when researchers lose visibility into what a dataset actually contains."
+        />
 
-        <p>This taxonomy directly informed how GHD should present metadata in search results: rather than exposing raw fields, the platform should surface quality signals aligned to these four dimensions — reducing the cognitive work of evaluation and enabling faster, more confident decisions.</p>
+        <p>The pattern was consistent across industries: the earlier stages, where motivation is high and intent is clear, were the most undermined. Researchers who had already decided they wanted a dataset were then faced with months of waiting, uncertain paperwork, and the possibility that the data wouldn't match what the abstract had suggested.</p>
       </FadeIn>
 
       {/* ── KEY INSIGHTS ── */}
       <FadeIn>
-        <h2>Key Insights</h2>
-        <div style={{ margin: '28px 0' }}>
-          <InsightCard
-            n="1"
-            headline="Fragmented data forces researchers to spend weeks on discovery"
-            evidence="None of our participants had a systematic way to find datasets. Discovery happened through colleagues, conference references, and paper citations — not through platform search. Senior researchers particularly had no habit of using search engines for datasets, because no credible aggregated source existed."
-            quotes={[
-              "I don't even know if the dataset I need exists or where to find it.",
-              "I spend weeks finding a dataset, only to realise half the variables are missing.",
-            ]}
-          />
-          <InsightCard
-            n="2"
-            headline="Inconsistent formats multiply the cost of every download"
-            evidence="Even when researchers found a promising dataset, the real work began after access. Variable names for identical concepts differed across institutions, units were inconsistent, and linking records across databases required weeks of cleaning. The platform's information architecture — not just search — needed to address this at source."
-            quotes={[
-              "Different datasets call the same variable ten different names. Cleaning this will take forever.",
-              "I downloaded the wrong dataset again. This could've been avoided if I had more information upfront.",
-            ]}
-          />
-          <InsightCard
-            n="3"
-            headline="Approval processes are opaque and unpredictable, disrupting research timelines"
-            evidence="IRB applications for health data in Taiwan can take two to six months. Researchers often have no visibility into where their application stands, and the required formats are designed for clinical trials rather than data access. The platform needed to make this process transparent and, where possible, streamlined."
-            quotes={[
-              "The approval process takes months, but I can't even see what's inside a dataset before applying. It's like buying a book with a blank cover.",
-              "It takes two months to get approval and I have no visibility into the process. By the time I get access, my research timeline has shifted.",
-            ]}
-          />
-        </div>
-      </FadeIn>
+        <h2>What the Research Found</h2>
+        <p>Three findings recurred across every interview, regardless of which industry the researcher came from or how long they had been working.</p>
 
-      {/* ── FILTER PRIORITY RESEARCH ── */}
-      <FadeIn>
-        <h2>Filter Priority Research: What Actually Matters</h2>
-        <p>To inform the platform's search filter architecture, we ran a card-sorting evaluation. Participants reviewed filter categories from international reference platforms (UK HDR, NIH GDC) and selected the 3–5 most useful criteria for their work. The findings were specific and occasionally surprising.</p>
+        <DiagramImage
+          src="/ghd/p16.jpg"
+          alt="Key insights from the GHD formative research, including participant quotes"
+          caption="Key insights and participant voice. The quotes are direct — researchers describing, without prompting, the gap between what a data access system should do and what theirs actually does."
+        />
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, margin: '24px 0' }}>
-          {[
-            { category: 'Coverage', note: 'Universal — both geographic and temporal coverage. Researchers across all domains selected this first.', priority: 'High' },
-            { category: 'Time Lag', note: 'How long between data collection and availability. Universally important; should be surfaced prominently in search results, not buried in dataset detail pages.', priority: 'High' },
-            { category: 'Phenotype', note: 'Critical for genomic researchers specifically. Not relevant to all users but a strong differentiator for attracting specialist communities.', priority: 'Domain-specific' },
-            { category: 'Publisher / Source', note: 'Researchers use institutional credibility as a proxy for data reliability. Source information builds trust and informs citation decisions.', priority: 'High' },
-            { category: 'Collection Context', note: 'How and where the data was gathered. Particularly valued by clinical researchers assessing ecological validity.', priority: 'Medium' },
-            { category: 'Standards & Format', note: 'Helps researchers estimate data cleaning workload before committing to an application. Often overlooked by platform designers.', priority: 'Medium' },
-          ].map(item => (
-            <div key={item.category} style={{
-              background: 'var(--surface)',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--r-sm)',
-              padding: '16px 18px',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                <strong style={{ fontSize: '0.88rem', color: 'var(--ink)' }}>{item.category}</strong>
-                <span style={{
-                  fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.08em',
-                  textTransform: 'uppercase', padding: '2px 8px', borderRadius: 100,
-                  background: item.priority === 'High' ? 'rgba(224,112,87,0.12)' : item.priority === 'Domain-specific' ? 'rgba(62,147,168,0.12)' : 'rgba(122,154,163,0.12)',
-                  color: item.priority === 'High' ? 'var(--accent-warm)' : item.priority === 'Domain-specific' ? 'var(--accent-mid)' : 'var(--ink-3)',
-                }}>
-                  {item.priority}
-                </span>
-              </div>
-              <p style={{ fontSize: '0.82rem', color: 'var(--ink-3)', lineHeight: 1.6, margin: 0 }}>{item.note}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="pullquote">
-          "If I want to explore, the filter system is useful. But time lag and coverage should be on the front page — not hidden inside the dataset record. I need to see those before I invest time reading the full description."
-        </div>
+        <p>The first: discovery didn't happen on platforms. It happened through people. Senior researchers relied on colleague recommendations; junior researchers didn't know what search terms to use, or even whether a dataset they needed existed. The platform needed to function as a discovery tool for researchers who couldn't yet articulate what they were looking for.</p>
+        <p>The second: evaluation was nearly impossible before committing to an application. The "blank cover" wasn't a metaphor — it was the operational reality. Coverage periods, variable completeness, and data linkage options were either absent or buried in documentation written for data engineers, not researchers. Researchers were making application decisions with almost no information.</p>
+        <p>The third was structural. Approval processes inherited from clinical trial frameworks had been applied, without modification, to routine data access requests. Two to six months of waiting. No status visibility. Formats that required information about patient consent and trial protocols for what was, in most cases, a retrospective database query. One researcher had adapted by physically visiting a secure facility. Another had learned to submit multiple applications simultaneously, treating each one as a lottery.</p>
       </FadeIn>
 
       {/* ── DESIGN STRATEGY ── */}
       <FadeIn>
-        <h2>Design Strategy: From Friction to Flow</h2>
-        <p>Each insight mapped directly to a design principle. The strategy wasn't about adding features — it was about removing friction at the three points where researchers most consistently lost time and motivation.</p>
+        <h2>From Friction to Design</h2>
+        <p>Each insight mapped to a design principle. The strategy wasn't about adding features — it was about removing friction at the three points where researchers most consistently lost time and motivation: finding, evaluating, and applying.</p>
 
-        <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--r-md)', overflow: 'hidden', margin: '28px 0' }}>
-          {[
-            {
-              insight: 'Fragmented data forces weeks of manual searching',
-              principle: 'Streamlined Data Discovery',
-              desc: 'A centralised search with AI-assisted recommendations and cross-platform metadata tagging. The Search Wizard guides junior researchers through 6 structured questions; expert filters allow advanced users to narrow directly.',
-            },
-            {
-              insight: 'Inconsistent formats multiply manual processing time',
-              principle: 'User-Centred Data Hub',
-              desc: 'Standardised variable naming conventions and structured metadata fields. Clear documentation per dataset on format, schema, and linkage method. Quality indicators (Bronze → Platinum tiers) surface at search result level, not just in detail pages.',
-            },
-            {
-              insight: 'Opaque approval processes stall research',
-              principle: 'Transparent & Efficient Data Requests',
-              desc: 'Application status tracking with estimated timelines. Automated compliance checks reduce unnecessary rejections. Access requirements shown before a researcher commits to applying — the "blank cover" problem eliminated.',
-            },
-          ].map((row, i) => (
-            <div key={i} style={{
-              display: 'grid', gridTemplateColumns: '1fr 1px 1fr 1px 1.3fr',
-              gap: 0, borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
-              alignItems: 'stretch',
-            }}>
-              <div style={{ padding: '18px 20px', background: i % 2 === 0 ? 'var(--surface)' : 'var(--canvas)' }}>
-                <span style={{ fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink-3)', display: 'block', marginBottom: 6 }}>Insight</span>
-                <p style={{ fontSize: '0.84rem', color: 'var(--ink-2)', lineHeight: 1.5, margin: 0 }}>{row.insight}</p>
-              </div>
-              <div style={{ background: 'var(--border)' }} />
-              <div style={{ padding: '18px 20px', background: i % 2 === 0 ? 'var(--surface)' : 'var(--canvas)', display: 'flex', alignItems: 'center' }}>
-                <span style={{
-                  fontFamily: 'var(--display)', fontSize: '0.88rem', fontWeight: 600,
-                  color: 'var(--accent)', letterSpacing: '-0.01em',
-                }}>{row.principle}</span>
-              </div>
-              <div style={{ background: 'var(--border)' }} />
-              <div style={{ padding: '18px 20px', background: i % 2 === 0 ? 'var(--surface)' : 'var(--canvas)' }}>
-                <p style={{ fontSize: '0.83rem', color: 'var(--ink-3)', lineHeight: 1.65, margin: 0 }}>{row.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <DiagramImage
+          src="/ghd/p17.jpg"
+          alt="Three-column diagram mapping insights to design principles to platform improvements"
+          caption="From insights to design principles to platform improvements. The column structure reflects the discipline of the translation: every feature decision traces back to an observed behaviour."
+        />
+
+        <p>The Search Wizard — a six-step guided filter tool — addresses the discovery gap for researchers who don't yet know what search terms to use. Quality Tier Indicators (Bronze to Platinum) surface dataset reliability at search result level, not buried inside detail pages. Time Lag becomes a front-page filter, not a metadata afterthought. And access requirements — tier, estimated approval timeline, required credentials — are shown before a researcher commits to applying. The blank cover, replaced by a jacket with a synopsis.</p>
       </FadeIn>
 
-      {/* ── PLATFORM FEATURES ── */}
+      {/* ── STORYBOARD ── */}
       <FadeIn>
-        <h2>What the Research Made Possible</h2>
-        <p>The findings from this study directly shaped GHD's information architecture and three headline product features. Because the research surfaced specific behaviour — not just preference data — the design team could trace each feature decision back to an observed need.</p>
+        <h2>The Platform in Motion</h2>
+        <p>To translate the research into a shared product vision, we developed a storyboard. Four acts. A researcher who, for the first time, can find a dataset, read its metadata, apply with transparency, and — eventually — access it without leaving their desk.</p>
+        <p>The storyboard was a communication tool as much as a design artefact: a way of making the research findings visceral for stakeholders who had lived inside the current system long enough to stop noticing how much it asked of its users.</p>
 
-        <div className="callout">
-          <h4>Platform Features Informed by Research</h4>
-          <ul>
-            <li><strong>Search Wizard</strong> — A 6-step guided filter tool that addresses the discovery gap for researchers who don't yet know what search terms to use. Steps map to the filter priorities surfaced in card sorting: follow-up duration, coverage, phenotype, source, requirement.</li>
-            <li><strong>Quality Tier Indicators (Bronze → Platinum)</strong> — A structured metadata quality scoring framework, adapted from UK HDR, enabling researchers to assess dataset reliability at a glance without reading full documentation.</li>
-            <li><strong>Time Lag as a Prominent Filter</strong> — Elevated from a buried metadata field to a front-page filter, based on the finding that time lag was the single most universally-cited evaluation criterion across all five industries.</li>
-            <li><strong>Access Requirement Transparency</strong> — Dataset pages now surface access tier, estimated approval timeline, and required credentials before a researcher commits to applying — directly addressing Insight 3.</li>
-          </ul>
-        </div>
+        <StoryboardStrip />
       </FadeIn>
 
-      {/* ── PUBLICATION ── */}
+      {/* ── PUBLICATION + REPORT DOWNLOAD ── */}
       <FadeIn>
         <div style={{
           background: 'linear-gradient(135deg, #0F3D4E 0%, #1A5C72 100%)',
@@ -522,7 +358,7 @@ export default function AcademicPlatform() {
               </svg>
             </div>
           </div>
-          <div>
+          <div style={{ flex: 1 }}>
             <p style={{
               fontFamily: 'var(--sans)', fontSize: '0.65rem', fontWeight: 700,
               letterSpacing: '0.14em', textTransform: 'uppercase',
@@ -536,26 +372,48 @@ export default function AcademicPlatform() {
             </p>
             <p style={{
               fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)',
-              lineHeight: 1.6, marginBottom: 18,
+              lineHeight: 1.6, marginBottom: 24,
             }}>
               <em>Computer Science and Information Systems (ComSIS)</em>, ComSIS Consortium. This paper documents the mixed-methods formative research process — from stakeholder mapping and contextual inquiry through to insight synthesis — and presents the information architecture recommendations derived from the study.
             </p>
-            <a
-              href="https://orcid.org/0009-0008-9499-7505"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                fontFamily: 'var(--sans)', fontSize: '0.82rem', fontWeight: 600,
-                color: '#7EC8BE',
-                textDecoration: 'none',
-                borderBottom: '1px solid rgba(126,200,190,0.4)',
-                paddingBottom: 2,
-                transition: 'color 0.2s, border-color 0.2s',
-              }}
-            >
-              View on ORCID ↗
-            </a>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+              <a
+                href="https://orcid.org/0009-0008-9499-7505"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontFamily: 'var(--sans)', fontSize: '0.82rem', fontWeight: 600,
+                  color: '#7EC8BE',
+                  textDecoration: 'none',
+                  borderBottom: '1px solid rgba(126,200,190,0.4)',
+                  paddingBottom: 2,
+                  transition: 'color 0.2s, border-color 0.2s',
+                }}
+              >
+                View on ORCID ↗
+              </a>
+              <a
+                href="/ghd/GHD_report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontFamily: 'var(--sans)', fontSize: '0.82rem', fontWeight: 600,
+                  color: 'rgba(126,200,190,0.8)',
+                  textDecoration: 'none',
+                  borderBottom: '1px solid rgba(126,200,190,0.25)',
+                  paddingBottom: 2,
+                  transition: 'color 0.2s, border-color 0.2s',
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 4v12m0 0l-4-4m4 4l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4 20h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                </svg>
+                Download Research Report (PDF)
+              </a>
+            </div>
           </div>
         </div>
       </FadeIn>

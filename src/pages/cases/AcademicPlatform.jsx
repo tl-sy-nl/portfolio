@@ -1,140 +1,7 @@
 import { useState, useEffect } from 'react'
 import CaseLayout from '../../components/CaseLayout'
 import { FadeIn } from '../../components/FadeIn'
-import { motion } from 'framer-motion'
 
-// ── Inline hero: biomedical data network diagram ──
-function DataNetworkHero() {
-  const hubs = [
-    { id: 'nhird',  x: 120, y: 80,  label: 'NHIRD',        r: 18 },
-    { id: 'hosp',   x: 280, y: 60,  label: 'Hospital DBs', r: 14 },
-    { id: 'pharm',  x: 60,  y: 155, label: 'Pharma R&D',   r: 12 },
-    { id: 'acad',   x: 340, y: 150, label: 'Academia',     r: 14 },
-    { id: 'gov',    x: 200, y: 175, label: 'Gov Open Data', r: 12 },
-  ]
-  const gateway = { x: 500, y: 120 }
-  const spokes = hubs.map(h => ({ x1: h.x, y1: h.y, x2: gateway.x, y2: gateway.y }))
-
-  return (
-    <svg viewBox="0 0 680 220" style={{ width: '100%', height: '100%' }}
-      preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#0B2D3A" />
-          <stop offset="100%" stopColor="#0F3D4E" />
-        </linearGradient>
-        <linearGradient id="spokeGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#3E93A8" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#7EC8BE" stopOpacity="0.9" />
-        </linearGradient>
-        <radialGradient id="gatewayGlow" cx="50%" cy="50%">
-          <stop offset="0%" stopColor="#7EC8BE" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#7EC8BE" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width="680" height="220" fill="url(#bgGrad)" />
-
-      {/* Grid dots */}
-      {Array.from({ length: 10 }, (_, col) =>
-        Array.from({ length: 5 }, (_, row) => (
-          <circle key={`g${col}${row}`}
-            cx={30 + col * 65} cy={20 + row * 45} r="1"
-            fill="rgba(126,200,190,0.08)" />
-        ))
-      )}
-
-      {/* Fragmented cloud left */}
-      <text x="20" y="14" fill="rgba(126,200,190,0.3)"
-        fontSize="7" fontFamily="var(--sans, sans-serif)" letterSpacing="0.1em"
-        fontWeight="600" textTransform="uppercase">FRAGMENTED</text>
-
-      {/* Spoke lines */}
-      {spokes.map((s, i) => (
-        <motion.line key={i}
-          x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2}
-          stroke="url(#spokeGrad)" strokeWidth="1"
-          strokeDasharray="4 4"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.3 + i * 0.15, ease: 'easeOut' }} />
-      ))}
-
-      {/* Data flow dots along spokes */}
-      {spokes.map((s, i) => (
-        <motion.circle key={`dot${i}`} r="2.5"
-          fill="#7EC8BE"
-          initial={{ offsetDistance: '0%', opacity: 0 }}
-          animate={{ opacity: [0, 1, 1, 0] }}
-          transition={{ duration: 2.5, delay: 1.5 + i * 0.4, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            offsetPath: `path('M ${s.x1} ${s.y1} L ${s.x2} ${s.y2}')`,
-            offsetDistance: '0%',
-          }}>
-          <animateMotion
-            path={`M ${s.x1} ${s.y1} L ${s.x2} ${s.y2}`}
-            dur={`${2 + i * 0.3}s`} repeatCount="indefinite"
-            begin={`${1.5 + i * 0.4}s`} />
-        </motion.circle>
-      ))}
-
-      {/* Source nodes */}
-      {hubs.map((h, i) => (
-        <motion.g key={h.id}
-          initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}>
-          <circle cx={h.x} cy={h.y} r={h.r + 6}
-            fill="rgba(62,147,168,0.1)" />
-          <circle cx={h.x} cy={h.y} r={h.r}
-            fill="#0F3D4E" stroke="#3E93A8" strokeWidth="1.2" />
-          <text x={h.x} y={h.y + 3} fill="rgba(255,255,255,0.7)"
-            fontSize="6.5" textAnchor="middle" fontFamily="var(--sans, sans-serif)"
-            fontWeight="500">{h.label.split(' ')[0]}</text>
-        </motion.g>
-      ))}
-
-      {/* Gateway glow */}
-      <circle cx={gateway.x} cy={gateway.y} r="52" fill="url(#gatewayGlow)" />
-      <motion.circle cx={gateway.x} cy={gateway.y} r="38"
-        fill="#0F3D4E" stroke="#7EC8BE" strokeWidth="1.5"
-        initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.8 }} />
-      {/* Pulsing ring */}
-      <motion.circle cx={gateway.x} cy={gateway.y} r="38"
-        fill="none" stroke="#7EC8BE" strokeWidth="1"
-        animate={{ r: [38, 54, 38], opacity: [0.5, 0, 0.5] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.text x={gateway.x} y={gateway.y - 7} fill="#7EC8BE"
-        fontSize="8" textAnchor="middle" fontFamily="var(--sans, sans-serif)"
-        fontWeight="700" letterSpacing="0.08em"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
-        GHD
-      </motion.text>
-      <motion.text x={gateway.x} y={gateway.y + 5} fill="rgba(126,200,190,0.7)"
-        fontSize="6" textAnchor="middle" fontFamily="var(--sans, sans-serif)"
-        fontWeight="500" letterSpacing="0.06em"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}>
-        GATEWAY
-      </motion.text>
-      <motion.text x={gateway.x} y={gateway.y + 14} fill="rgba(126,200,190,0.5)"
-        fontSize="5.5" textAnchor="middle" fontFamily="var(--sans, sans-serif)"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
-        to Health Data
-      </motion.text>
-
-      {/* UNIFIED label */}
-      <motion.text x={gateway.x + 56} y={14} fill="rgba(126,200,190,0.3)"
-        fontSize="7" fontFamily="var(--sans, sans-serif)" letterSpacing="0.1em"
-        fontWeight="600"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}>
-        UNIFIED
-      </motion.text>
-      <motion.line x1="497" y1="18" x2="640" y2="18"
-        stroke="rgba(126,200,190,0.15)" strokeWidth="1"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-        transition={{ delay: 2.2, duration: 0.8 }} />
-    </svg>
-  )
-}
 
 // ── Full-width PDF image with optional lightbox ──
 function DiagramImage({ src, alt, caption, clickable, onExpand }) {
@@ -417,9 +284,17 @@ export default function AcademicPlatform() {
       <FadeIn>
         <div style={{
           aspectRatio: '16/6', borderRadius: 'var(--r-md)', overflow: 'hidden',
-          marginTop: 0, marginBottom: 40, border: '1px solid var(--border)',
+          marginTop: 0, marginBottom: 40, position: 'relative',
         }}>
-          <DataNetworkHero />
+          <img
+            src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1400&q=80"
+            alt="Data infrastructure"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
+          />
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(135deg, rgba(11,45,58,0.82) 0%, rgba(15,61,78,0.55) 60%, rgba(62,147,168,0.25) 100%)',
+          }} />
         </div>
       </FadeIn>
 

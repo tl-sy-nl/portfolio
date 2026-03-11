@@ -394,7 +394,7 @@ export default function DigitalLearning() {
         { label: 'Industry', value: 'Media & EdTech' },
         { label: 'Methods',  value: 'Depth Interviews · Affinity Mapping · Journey Mapping · Concept Testing' },
         { label: 'Scope',    value: 'Enterprise Platform · Dual-User System' },
-        { label: 'Year',     value: '—' },
+        { label: 'Year',     value: '2021' },
       ]}
       nextCase={{ to: '/cases/arts-education', title: "Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation's Online School" }}
     >

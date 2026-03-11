@@ -721,7 +721,7 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 }
 .case-nav__back { font-size: 0.85rem; color: var(--ink-3); transition: color 0.2s; }
 .case-nav__back:hover { color: var(--ink); }
-.case-nav__logo { font-family: var(--serif); font-size: 1rem; color: var(--ink); }
+.case-nav__logo { font-family: var(--display); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
 
 /* --- Case Hero --- */
 .case-hero { padding: 100px 0 0; }

@@ -253,7 +253,7 @@ export default function Home() {
                       <span className="about__stat-label">Industries</span>
                     </div>
                     <div>
-                      <span className="about__stat-num">50+</span>
+                      <span className="about__stat-num">20+</span>
                       <span className="about__stat-label">Research engagements</span>
                     </div>
                     <div>
@@ -360,9 +360,9 @@ export default function Home() {
                 <div>
                   <span className="eyebrow">Contact</span>
                   <h2 className="contact__headline">
-                    Let's create space<br /><em>to think together.</em>
+                    The best work starts<br /><em>before the brief.</em>
                   </h2>
-                  <p className="contact__sub">Most useful when the problem is still being defined. Open to research leadership, strategic advisory, and embedded partnerships. Based in Taipei.</p>
+                  <p className="contact__sub">I tend to be most helpful when the question is still forming. Based in Taipei — available for research partnerships, strategic advisory, and embedded project roles.</p>
                 </div>
               </FadeIn>
               <FadeIn delay={0.12}>
@@ -370,7 +370,6 @@ export default function Home() {
                   {[
                     { label: 'Email', value: 'tunglin.sy@gmail.com', href: 'mailto:tunglin.sy@gmail.com' },
                     { label: 'LinkedIn', value: 'linkedin.com/in/tl-sylvia', href: 'https://linkedin.com/in/tl-sylvia' },
-                    { label: 'GitHub', value: 'github.com/tl-sy-nl', href: 'https://github.com/tl-sy-nl' },
                   ].map(l => (
                     <a key={l.label} href={l.href} className="contact-link" target="_blank" rel="noopener noreferrer">
                       <div>

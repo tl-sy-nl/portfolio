@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import CaseLayout from '../../components/CaseLayout'
 import { FadeIn } from '../../components/FadeIn'
 import { motion } from 'framer-motion'
@@ -135,36 +136,171 @@ function DataNetworkHero() {
   )
 }
 
-// ── Full-width PDF image with caption ──
-function DiagramImage({ src, alt, caption }) {
+// ── Full-width PDF image with optional lightbox ──
+function DiagramImage({ src, alt, caption, clickable, onExpand }) {
   return (
     <div style={{ margin: '36px 0' }}>
-      <div style={{
-        borderRadius: 'var(--r-md)',
-        overflow: 'hidden',
-        border: '1px solid var(--border)',
-        background: 'var(--surface)',
-      }}>
+      <div
+        style={{
+          borderRadius: 'var(--r-md)',
+          overflow: 'hidden',
+          border: '1px solid var(--border)',
+          background: 'var(--surface)',
+          cursor: clickable ? 'zoom-in' : 'default',
+          position: 'relative',
+        }}
+        onClick={clickable ? onExpand : undefined}
+        title={clickable ? 'Click to enlarge' : undefined}
+      >
         <img
           src={src}
           alt={alt}
           style={{ width: '100%', height: 'auto', display: 'block' }}
           loading="lazy"
         />
+        {clickable && (
+          <div style={{
+            position: 'absolute', bottom: 10, right: 10,
+            background: 'rgba(0,0,0,0.45)', borderRadius: 4,
+            padding: '3px 8px',
+            fontFamily: 'var(--sans)', fontSize: '0.65rem', color: '#fff',
+            letterSpacing: '0.05em', pointerEvents: 'none',
+          }}>
+            ⊕ Expand
+          </div>
+        )}
       </div>
       {caption && (
         <p style={{
-          fontFamily: 'var(--sans)',
-          fontSize: '0.75rem',
-          color: 'var(--ink-3)',
-          letterSpacing: '0.02em',
-          marginTop: 10,
-          paddingLeft: 4,
-          lineHeight: 1.5,
+          fontFamily: 'var(--sans)', fontSize: '0.75rem', color: 'var(--ink-3)',
+          letterSpacing: '0.02em', marginTop: 10, paddingLeft: 4, lineHeight: 1.5,
         }}>
           {caption}
         </p>
       )}
+    </div>
+  )
+}
+
+// ── Stakeholder ecosystem map ──
+function StakeholderMapSVG() {
+  const ink = '#0E1F24', border = '#C8DEDE', accent = '#1A5C72'
+  const mid = '#3E93A8', glow = '#7EC8BE', bg = '#F0F5F5'
+
+  const groups = [
+    { x: 60,  y: 30,  w: 140, h: 28, label: 'Ministry of Health & Welfare', sub: 'Mandate & oversight', color: accent },
+    { x: 10,  y: 115, w: 140, h: 28, label: 'Data Management Units',         sub: 'Hospitals · Universities · NGOs', color: mid },
+    { x: 170, y: 115, w: 140, h: 28, label: 'Development Team',              sub: 'Platform infrastructure', color: mid },
+    { x: 10,  y: 200, w: 140, h: 42, label: 'Biomedical Researchers',        sub: 'Clinical · Pharma · Academia\nEpidemiology · Public Health', color: '#2A6B62' },
+    { x: 170, y: 200, w: 140, h: 28, label: 'International Standards',       sub: 'UK HDR · NIH GDC · PhysioNet', color: '#5A4A72' },
+  ]
+  const cx = 160, cy = 130, r = 36
+
+  return (
+    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
+      <rect width="320" height="260" fill={bg}/>
+
+      {/* Connection lines to centre */}
+      {[
+        [130, 44],  // Ministry
+        [80,  129], // Data
+        [240, 129], // Dev
+        [80,  216], // Researchers
+        [240, 214], // International
+      ].map(([x2, y2], i) => (
+        <line key={i} x1={cx} y1={cy} x2={x2} y2={y2}
+          stroke={border} strokeWidth="1" strokeDasharray="4 3"/>
+      ))}
+
+      {/* Stakeholder nodes */}
+      {groups.map((g, i) => (
+        <g key={i}>
+          <rect x={g.x} y={g.y} width={g.w} height={g.h} rx="5"
+            fill="#fff" stroke={g.color} strokeWidth="1" strokeOpacity="0.5"/>
+          <text x={g.x + g.w/2} y={g.y + 11} textAnchor="middle"
+            fontFamily="Inter,sans-serif" fontSize="6.8" fontWeight="600" fill={ink}>{g.label}</text>
+          {g.sub.split('\n').map((line, li) => (
+            <text key={li} x={g.x + g.w/2} y={g.y + 22 + li*10} textAnchor="middle"
+              fontFamily="Inter,sans-serif" fontSize="5.8" fill={ink} opacity="0.45">{line}</text>
+          ))}
+        </g>
+      ))}
+
+      {/* Central GHD node */}
+      <circle cx={cx} cy={cy} r={r+10} fill={`rgba(126,200,190,0.08)`}/>
+      <circle cx={cx} cy={cy} r={r} fill={accent} stroke={glow} strokeWidth="1.2"/>
+      <text x={cx} y={cy-6} textAnchor="middle" fontFamily="Inter,sans-serif"
+        fontSize="9" fontWeight="700" letterSpacing="0.06em" fill="#fff">GHD</text>
+      <text x={cx} y={cy+6} textAnchor="middle" fontFamily="Inter,sans-serif"
+        fontSize="5.5" fill={glow} opacity="0.8">Gateway to</text>
+      <text x={cx} y={cy+14} textAnchor="middle" fontFamily="Inter,sans-serif"
+        fontSize="5.5" fill={glow} opacity="0.8">Health Data</text>
+
+      <text x="160" y="254" textAnchor="middle" fontFamily="Inter,sans-serif"
+        fontSize="6.5" fill="#7A9AA3" fontStyle="italic">
+        Stakeholder landscape — five groups, one platform
+      </text>
+    </svg>
+  )
+}
+
+// ── Key insights cards ──
+function InsightCards() {
+  const insights = [
+    {
+      num: '01',
+      title: 'Discovery happened through people',
+      body: 'No researcher found a dataset through a platform. They found it through colleagues, citations, and departmental contacts. For anyone outside established networks, entire datasets were effectively invisible.',
+      color: '#1A5C72',
+    },
+    {
+      num: '02',
+      title: 'Evaluation was nearly impossible before committing',
+      body: '"Buying a book with a blank cover." Coverage periods, variable completeness, and linkage options were absent or buried in technical documentation — researchers applied blind.',
+      color: '#2A6B62',
+    },
+    {
+      num: '03',
+      title: 'A clinical trial process applied to everything',
+      body: 'Two to six months waiting. No status visibility. Forms designed for patient consent and trial protocols used for routine retrospective queries. One researcher physically visited a secure facility just to preview data.',
+      color: '#5A4A72',
+    },
+  ]
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, margin: '32px 0' }}>
+      {insights.map((ins) => (
+        <div key={ins.num} style={{
+          background: 'var(--canvas)',
+          border: `1px solid var(--border)`,
+          borderTop: `3px solid ${ins.color}`,
+          borderRadius: 'var(--r-md)',
+          padding: '24px 20px',
+        }}>
+          <span style={{
+            display: 'block',
+            fontFamily: 'var(--serif)',
+            fontSize: '1.8rem',
+            fontStyle: 'italic',
+            color: ins.color,
+            opacity: 0.35,
+            lineHeight: 1,
+            marginBottom: 10,
+          }}>{ins.num}</span>
+          <p style={{
+            fontFamily: 'var(--sans)',
+            fontSize: '0.82rem',
+            fontWeight: 600,
+            color: 'var(--ink)',
+            lineHeight: 1.4,
+            marginBottom: 10,
+          }}>{ins.title}</p>
+          <p style={{
+            fontSize: '0.78rem',
+            color: 'var(--ink-3)',
+            lineHeight: 1.6,
+          }}>{ins.body}</p>
+        </div>
+      ))}
     </div>
   )
 }
@@ -216,7 +352,54 @@ function StoryboardStrip() {
 }
 
 export default function AcademicPlatform() {
+  const [lightbox, setLightbox] = useState(null)
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!lightbox) return
+    const handle = (e) => { if (e.key === 'Escape') setLightbox(null) }
+    window.addEventListener('keydown', handle)
+    return () => window.removeEventListener('keydown', handle)
+  }, [lightbox])
+
   return (
+    <>
+    {/* Lightbox overlay */}
+    {lightbox && (
+      <div
+        onClick={() => setLightbox(null)}
+        style={{
+          position: 'fixed', inset: 0, zIndex: 999,
+          background: 'rgba(0,0,0,0.88)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'zoom-out',
+          padding: '40px',
+        }}
+      >
+        <img
+          src={lightbox}
+          alt="Enlarged diagram"
+          style={{
+            maxWidth: '90vw', maxHeight: '90vh',
+            objectFit: 'contain',
+            borderRadius: 8,
+            boxShadow: '0 24px 80px rgba(0,0,0,0.5)',
+          }}
+        />
+        <button
+          onClick={() => setLightbox(null)}
+          style={{
+            position: 'fixed', top: 20, right: 24,
+            background: 'rgba(255,255,255,0.12)',
+            border: '1px solid rgba(255,255,255,0.2)',
+            color: '#fff', borderRadius: '50%',
+            width: 36, height: 36,
+            fontSize: '1rem', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >×</button>
+      </div>
+    )}
     <CaseLayout
       tags={['Biomedical', 'Public Sector', 'Published Research']}
       title="The Infrastructure Nobody Mapped: Research for Taiwan's National Health Data Gateway"
@@ -258,11 +441,9 @@ export default function AcademicPlatform() {
         <p>GHD didn't sit inside one institution. It sat between them. The Ministry of Health and Welfare provided mandate and oversight. Data management units from hospitals, universities, NGOs, and government agencies would contribute datasets. A web development team would build the infrastructure. And researchers — the platform's primary users — came from five distinct industries, each with different workflows, data needs, technical fluency, and definitions of what "good data" looked like.</p>
         <p>Understanding who the platform was actually serving — and how different their needs were — was the first task.</p>
 
-        <DiagramImage
-          src="/ghd/p06.jpg"
-          alt="Stakeholders and users diagram showing the GHD ecosystem"
-          caption="Stakeholder and user landscape. The platform sits at the intersection of data providers, government mandate, technical infrastructure, and five distinct research communities."
-        />
+        <div style={{ margin: '36px 0', border: '1px solid var(--border)', borderRadius: 'var(--r-md)', overflow: 'hidden', background: 'var(--surface)' }}>
+          <StakeholderMapSVG />
+        </div>
       </FadeIn>
 
       {/* ── RESEARCH FRAMEWORK ── */}
@@ -289,6 +470,8 @@ export default function AcademicPlatform() {
           src="/ghd/p15.jpg"
           alt="User journey map showing four stages: Identifying, Searching, Applying, Acquiring"
           caption="User journey map across four stages. Pain points cluster around the transition from searching to applying — the moment when researchers lose visibility into what a dataset actually contains."
+          clickable
+          onExpand={() => setLightbox('/ghd/p15.jpg')}
         />
 
         <p>The pattern was consistent across industries: the earlier stages, where motivation is high and intent is clear, were the most undermined. Researchers who had already decided they wanted a dataset were then faced with months of waiting, uncertain paperwork, and the possibility that the data wouldn't match what the abstract had suggested.</p>
@@ -299,11 +482,7 @@ export default function AcademicPlatform() {
         <h2>What the Research Found</h2>
         <p>Three findings recurred across every interview, regardless of which industry the researcher came from or how long they had been working.</p>
 
-        <DiagramImage
-          src="/ghd/p16.jpg"
-          alt="Key insights from the GHD formative research, including participant quotes"
-          caption="Key insights and participant voice. The quotes are direct — researchers describing, without prompting, the gap between what a data access system should do and what theirs actually does."
-        />
+        <InsightCards />
 
         <p>The first: discovery didn't happen on platforms. It happened through people. Senior researchers relied on colleague recommendations; junior researchers didn't know what search terms to use, or even whether a dataset they needed existed. The platform needed to function as a discovery tool for researchers who couldn't yet articulate what they were looking for.</p>
         <p>The second: evaluation was nearly impossible before committing to an application. The "blank cover" wasn't a metaphor — it was the operational reality. Coverage periods, variable completeness, and data linkage options were either absent or buried in documentation written for data engineers, not researchers. Researchers were making application decisions with almost no information.</p>
@@ -419,5 +598,6 @@ export default function AcademicPlatform() {
       </FadeIn>
 
     </CaseLayout>
+    </>
   )
 }

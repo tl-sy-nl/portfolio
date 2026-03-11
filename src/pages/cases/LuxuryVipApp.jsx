@@ -1,6 +1,155 @@
 import CaseLayout from '../../components/CaseLayout'
 import { FadeIn } from '../../components/FadeIn'
 
+// ── App task flow diagram ──────────────────────────────────────────
+function AppFlowSVG() {
+  const gold = '#C9A96E', cream = '#F5EFE4', bg = '#100F0D', panel = '#1A1812'
+  const phones = [
+    { x: 28,  tabActive: 0, label: 'Discovery',    screenLabel: 'BRANDS' },
+    { x: 168, tabActive: 1, label: 'New Arrival',  screenLabel: 'ARRIVALS' },
+    { x: 308, tabActive: 2, label: 'Wardrobe',     screenLabel: 'MY WARDROBE' },
+    { x: 448, tabActive: 3, label: 'Membership',   screenLabel: 'MEMBERSHIP' },
+  ]
+  return (
+    <svg viewBox="0 0 590 196" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
+      <rect width="590" height="196" fill={bg}/>
+      {/* Flow label */}
+      <text x="295" y="13" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="6.5" fontWeight="600" letterSpacing="2" fill={gold} opacity="0.45">APP TASK FLOW</text>
+
+      {/* Arrows between phones */}
+      {[113, 253, 393].map(x => (
+        <path key={x} d={`M${x} 98 L${x+43} 98`} stroke={gold} strokeWidth="0.7" strokeOpacity="0.35" markerEnd="url(#arw)"/>
+      ))}
+      <defs>
+        <marker id="arw" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L5,2.5 Z" fill={gold} fillOpacity="0.35"/>
+        </marker>
+      </defs>
+
+      {phones.map((ph, pi) => (
+        <g key={pi}>
+          {/* Phone frame */}
+          <rect x={ph.x} y="22" width="82" height="142" rx="9" fill={panel} stroke={gold} strokeWidth="0.6" strokeOpacity="0.45"/>
+          {/* Notch */}
+          <rect x={ph.x+26} y="25" width="30" height="4" rx="2" fill={bg}/>
+          {/* Header */}
+          <text x={ph.x+41} y="41" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="5.2" fontWeight="700" letterSpacing="1.8" fill={gold} opacity="0.8">{ph.screenLabel}</text>
+          <line x1={ph.x+4} y1="46" x2={ph.x+78} y2="46" stroke={gold} strokeWidth="0.3" strokeOpacity="0.25"/>
+
+          {/* Screen content */}
+          {pi === 0 && /* Brand list */
+            ['VALENTINO','PRADA','BALENCIAGA','CELINE','LOEWE'].map((b,i) => (
+              <g key={b} transform={`translate(${ph.x+4}, ${52+i*18})`}>
+                <rect width="74" height="13" rx="2" fill={`rgba(201,169,110,${i===0?0.12:0.04})`} stroke={`rgba(201,169,110,${i===0?0.22:0.07})`} strokeWidth="0.4"/>
+                <text x="37" y="9.5" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="4.8" letterSpacing="1" fill={cream} opacity={i===0?0.75:0.3}>{b}</text>
+              </g>
+            ))
+          }
+          {pi === 1 && /* Product card */ <>
+            <rect x={ph.x+4} y="52" width="74" height="44" fill="rgba(201,169,110,0.05)" stroke="rgba(201,169,110,0.10)" strokeWidth="0.4"/>
+            <text x={ph.x+41} y="77" textAnchor="middle" fontFamily="serif" fontSize="16" fill={cream} opacity="0.10">✦</text>
+            <rect x={ph.x+4} y="100" width="50" height="5" rx="2" fill="rgba(245,239,228,0.10)"/>
+            <rect x={ph.x+4} y="109" width="36" height="4" rx="2" fill="rgba(245,239,228,0.06)"/>
+            <rect x={ph.x+4} y="118" width="74" height="14" rx="2" fill="rgba(201,169,110,0.07)" stroke="rgba(201,169,110,0.18)" strokeWidth="0.4"/>
+            <text x={ph.x+41} y="128" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="5" fill={gold} opacity="0.65">Save to Wardrobe</text>
+          </>}
+          {pi === 2 && /* Wardrobe grid */
+            [0,1,2,3,4,5].map(i => (
+              <rect key={i} x={ph.x+4+(i%2)*39} y={52+Math.floor(i/2)*32} width="35" height="28" rx="2"
+                fill="rgba(201,169,110,0.05)" stroke="rgba(201,169,110,0.11)" strokeWidth="0.4"/>
+            ))
+          }
+          {pi === 3 && /* Membership tiers */ <>
+            {[{l:'Silver',w:28,o:0.3},{l:'Gold',w:47,o:0.55},{l:'Diamond',w:68,o:0.88}].map((t,i) => (
+              <g key={i} transform={`translate(${ph.x+4}, ${54+i*26})`}>
+                <text x="0" y="8" fontFamily="Inter,sans-serif" fontSize="5" fill={cream} opacity="0.45" letterSpacing="0.3">{t.l}</text>
+                <rect x="0" y="12" width="74" height="6" rx="3" fill="rgba(201,169,110,0.07)"/>
+                <rect x="0" y="12" width={t.w} height="6" rx="3" fill={gold} opacity={t.o}/>
+              </g>
+            ))}
+            <rect x={ph.x+4} y="136" width="74" height="18" rx="3" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.14)" strokeWidth="0.4"/>
+            <text x={ph.x+41} y="145" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="4.8" fill={gold} opacity="0.55" letterSpacing="0.5">NEXT EVENT · SS25</text>
+            <text x={ph.x+41} y="150" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="4.5" fill={cream} opacity="0.3">Feb 14</text>
+          </>}
+
+          {/* Tab bar */}
+          <rect x={ph.x} y="150" width="82" height="14" fill="#141210"/>
+          {['◉','⊹','◻','◎'].map((icon,i) => (
+            <text key={i} x={ph.x+10+i*20} y="160" textAnchor="middle" fontSize="5.2" fill={i===ph.tabActive?gold:'rgba(245,239,228,0.18)'} fontFamily="sans-serif">{icon}</text>
+          ))}
+          {/* Label below phone */}
+          <text x={ph.x+41} y="182" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="6" fill={gold} opacity="0.45" letterSpacing="0.3">{ph.label}</text>
+        </g>
+      ))}
+    </svg>
+  )
+}
+
+// ── Information architecture diagram ──────────────────────────────
+function AppIASVG() {
+  const ink = '#0E1F24', ink3 = '#7A9AA3', accent = '#1A5C72', border = '#C8DEDE', bg = '#F0F5F5'
+  const root = { x: 280, y: 32, w: 100, h: 30, label: 'VIP App' }
+  const sections = [
+    { x: 48,  label: 'Brands',     items: ['Discovery','New Arrivals','Collections','SA Chat'] },
+    { x: 178, label: 'Wardrobe',   items: ['My Items','Wishlist','Lookbook'] },
+    { x: 308, label: 'Membership', items: ['Tier Status','Milestones','Rewards'] },
+    { x: 418, label: 'Profile',    items: ['Preferences','Appointments','Settings'] },
+  ]
+  const secY = 88, itemY = 160, nodeW = 100, nodeH = 26, itemH = 22
+  return (
+    <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
+      <rect width="580" height="250" fill={bg}/>
+
+      {/* Root node */}
+      <rect x={root.x} y={root.y} width={root.w} height={root.h} rx="5"
+        fill={accent} stroke="none"/>
+      <text x={root.x+root.w/2} y={root.y+19} textAnchor="middle"
+        fontFamily="Inter,sans-serif" fontSize="8" fontWeight="700" letterSpacing="1.5" fill="#fff">{root.label}</text>
+
+      {sections.map((sec, si) => {
+        const cx = sec.x + nodeW/2
+        return (
+          <g key={si}>
+            {/* Trunk line root → section */}
+            <line x1={root.x+root.w/2} y1={root.y+root.h} x2={cx} y2={secY}
+              stroke={border} strokeWidth="1" strokeDasharray="3 3"/>
+            {/* Section node */}
+            <rect x={sec.x} y={secY} width={nodeW} height={nodeH} rx="4"
+              fill="#fff" stroke={border} strokeWidth="1"/>
+            <text x={cx} y={secY+17} textAnchor="middle"
+              fontFamily="Inter,sans-serif" fontSize="7.5" fontWeight="600" fill={ink} letterSpacing="0.3">{sec.label}</text>
+
+            {/* Item nodes */}
+            {sec.items.map((item, ii) => {
+              const iw = 88
+              const ix = sec.x + (nodeW - iw)/2
+              const iy = itemY + ii * 26
+              return (
+                <g key={ii}>
+                  <line x1={cx} y1={secY+nodeH} x2={cx} y2={iy}
+                    stroke={border} strokeWidth="0.8" strokeDasharray="2 3"/>
+                  <rect x={ix} y={iy} width={iw} height={itemH} rx="3"
+                    fill="#fff" stroke={border} strokeWidth="0.8"/>
+                  <text x={ix+iw/2} y={iy+14} textAnchor="middle"
+                    fontFamily="Inter,sans-serif" fontSize="6.5" fill={ink3}>{item}</text>
+                </g>
+              )
+            })}
+          </g>
+        )
+      })}
+
+      {/* Horizontal connector at section level */}
+      <line x1={sections[0].x+nodeW/2} y1={secY+nodeH/2}
+            x2={sections[sections.length-1].x+nodeW/2} y2={secY+nodeH/2}
+        stroke={border} strokeWidth="0.8" strokeDasharray="3 3"/>
+
+      <text x="290" y="244" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="6.5"
+        fill={ink3} fontStyle="italic">Information architecture — four primary navigation sections</text>
+    </svg>
+  )
+}
+
 // ── Wardrobe concept illustration ─────────────────────────────────
 function WardrobeConceptSVG() {
   // Minimal garment silhouettes — dress, blazer, bag, trousers, coat, scarf
@@ -176,9 +325,11 @@ export default function LuxuryVipApp() {
       nextCase={{ to: '/cases/academic-platform', title: 'The Infrastructure Nobody Mapped: Research for Taiwan\'s National Health Data Gateway' }}
     >
       <FadeIn>
-        <figure className="case-img" style={{ marginTop: 0 }}>
-          <img src="/images/vip-wireframes.jpeg" alt="Wireframe and interaction design for VIP App" />
-          <figcaption>Wireframes mapping the full App task flow — from brand discovery to membership management</figcaption>
+        <figure className="case-img" style={{ marginTop: 0, background: '#100F0D', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(201,169,110,0.12)' }}>
+          <AppFlowSVG />
+          <figcaption style={{ background: '#100F0D', color: 'rgba(245,239,228,0.38)', paddingTop: '10px' }}>
+            App task flow — from brand discovery through product detail to wardrobe archiving and membership tracking
+          </figcaption>
         </figure>
       </FadeIn>
 
@@ -216,9 +367,8 @@ export default function LuxuryVipApp() {
       </FadeIn>
 
       <FadeIn>
-        <figure className="case-img">
-          <img src="/images/vip-ia.jpeg" alt="Information architecture and feature scope diagram" />
-          <figcaption>Information architecture — mapping product scope and feature hierarchy across the App</figcaption>
+        <figure className="case-img" style={{ background: '#F0F5F5', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border)', padding: '0' }}>
+          <AppIASVG />
         </figure>
       </FadeIn>
 

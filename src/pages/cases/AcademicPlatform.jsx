@@ -280,24 +280,6 @@ export default function AcademicPlatform() {
       nextCase={{ to: '/cases/digital-learning', title: "What the Analytics Couldn't Show: Research for a Media Group's Enterprise Learning Platform" }}
     >
 
-      {/* ── HERO VISUAL ── */}
-      <FadeIn>
-        <div style={{
-          aspectRatio: '16/6', borderRadius: 'var(--r-md)', overflow: 'hidden',
-          marginTop: 0, marginBottom: 40, position: 'relative',
-        }}>
-          <img
-            src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1400&q=80"
-            alt="Data infrastructure"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
-          />
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(135deg, rgba(11,45,58,0.82) 0%, rgba(15,61,78,0.55) 60%, rgba(62,147,168,0.25) 100%)',
-          }} />
-        </div>
-      </FadeIn>
-
       {/* ── CONTEXT ── */}
       <FadeIn>
         <h2>The Problem: Find, Evaluate, Access</h2>

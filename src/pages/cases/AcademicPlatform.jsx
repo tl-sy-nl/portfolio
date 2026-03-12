@@ -340,10 +340,6 @@ export default function AcademicPlatform() {
         <p>Three findings recurred across every interview, regardless of which industry the researcher came from or how long they had been working.</p>
 
         <InsightCards />
-
-        <p>The first: discovery didn't happen on platforms. It happened through people. Senior researchers relied on colleague recommendations; junior researchers didn't know what search terms to use, or even whether a dataset they needed existed. The platform needed to function as a discovery tool for researchers who couldn't yet articulate what they were looking for.</p>
-        <p>The second: evaluation was nearly impossible before committing to an application. The "blank cover" wasn't a metaphor — it was the operational reality. Coverage periods, variable completeness, and data linkage options were either absent or buried in documentation written for data engineers, not researchers. Researchers were making application decisions with almost no information.</p>
-        <p>The third was structural. Approval processes inherited from clinical trial frameworks had been applied, without modification, to routine data access requests. Two to six months of waiting. No status visibility. Formats that required information about patient consent and trial protocols for what was, in most cases, a retrospective database query. One researcher had adapted by physically visiting a secure facility. Another had learned to submit multiple applications simultaneously, treating each one as a lottery.</p>
       </FadeIn>
 
       {/* ── DESIGN STRATEGY ── */}

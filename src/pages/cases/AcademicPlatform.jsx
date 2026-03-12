@@ -305,8 +305,8 @@ export default function AcademicPlatform() {
 
       {/* ── RESEARCH FRAMEWORK ── */}
       <FadeIn>
-        <h2>Research Framework</h2>
-        <p>We structured the engagement across four phases — exploratory research, design ideation, design development, and post-launch optimisation. The formative work documented here covered the first two: building the evidence base and translating it into platform strategy and information architecture.</p>
+        <h2>How We Listened</h2>
+        <p>The engagement ran across four phases. The formative work — the phase that shapes everything after it — came first: understanding the system as researchers actually experienced it, not as the institutions that built it understood it to work.</p>
         <p>Six in-depth interviews, two hours each, across five research industries. Contextual inquiry as participants navigated reference platforms. Card-sorting to surface filter priorities. Secondary research on international biomedical data discovery platforms — UK HDR, NIH GDC, PhysioNet — to understand where Taiwan sat within a global landscape that had been shifting rapidly toward open, federated access.</p>
 
         <DiagramImage
@@ -353,7 +353,7 @@ export default function AcademicPlatform() {
           caption="From insights to design principles to platform improvements. The column structure reflects the discipline of the translation: every feature decision traces back to an observed behaviour."
         />
 
-        <p>The Search Wizard — a six-step guided filter tool — addresses the discovery gap for researchers who don't yet know what search terms to use. Quality Tier Indicators (Bronze to Platinum) surface dataset reliability at search result level, not buried inside detail pages. Time Lag becomes a front-page filter, not a metadata afterthought. And access requirements — tier, estimated approval timeline, required credentials — are shown before a researcher commits to applying. The blank cover, replaced by a jacket with a synopsis.</p>
+        <p>Discovery, which previously required knowing the right person, becomes a guided search. Evaluation, which previously required committing to an application to learn anything meaningful, becomes readable before a single form is submitted. Access, which previously meant months of silence, becomes a process with visible steps and timelines. The blank cover, replaced by a jacket with a synopsis.</p>
       </FadeIn>
 
       {/* ── STORYBOARD ── */}

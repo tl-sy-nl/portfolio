@@ -140,7 +140,9 @@ const recognition = [
     type: 'Publication',
     year: '2023',
     title: 'Formative Interviews for a User-Centred Design Study on Developing an Effective Gateway for Biomedical Data Discovery',
-    detail: 'Computer Science and Information Systems (ComSIS), ComSIS Consortium. Mixed-methods research investigating expert workflows in Taiwan\'s fragmented biomedical data infrastructure, yielding usability and information architecture recommendations for a unified discovery gateway.',
+    authors: 'Lee, H.-A., Lin, T., Chen, H.-I., Liu, W.-C., et al.',
+    journal: 'Computer Science and Information Systems (ComSIS), Vol. 20, No. 4',
+    detail: 'Mixed-methods formative study with 15 biomedical researchers investigating how domain experts navigate Taiwan\'s fragmented health data infrastructure. Contributed research design, interview protocol development, and thematic analysis — translating qualitative findings into information architecture recommendations for a unified national data gateway.',
     link: 'https://orcid.org/0009-0008-9499-7505',
   },
   {
@@ -149,6 +151,42 @@ const recognition = [
     title: 'Biodesign Challenge Summit',
     venue: 'MoMA, New York · San Francisco · Rhode Island',
     detail: 'Selected work presented across three cities as part of the annual international Biodesign Challenge — a competition for student projects at the intersection of biology, technology, and design. Developed at Parsons School of Design.',
+  },
+  {
+    type: 'Teaching',
+    year: '2012–2014',
+    title: 'Ethics Teaching Assistant — Eastern & Western Ethics and Aesthetics',
+    venue: 'National Taiwan University, Department of Philosophy',
+    detail: 'Supported undergraduate instruction in comparative ethics and aesthetics. Designed discussion prompts, facilitated seminar sessions, and mentored students in philosophical argumentation — experience that shaped a lasting commitment to pedagogy as a form of research practice.',
+  },
+  {
+    type: 'Community',
+    year: '2013–2014',
+    title: 'President, Philosophy Student Association',
+    venue: 'National Taiwan University',
+    detail: 'Led the student association during a period of institutional reform advocacy. Organised public lecture series, inter-departmental dialogues on humanities education, and collaborative events with civic organisations.',
+  },
+  {
+    type: 'Facilitation',
+    year: '2020–2025',
+    title: '10+ Design Thinking & Strategic Foresight Programmes',
+    venue: 'Universities, NGOs, and Government Agencies across Taiwan',
+    detail: 'Designed and facilitated programmes integrating systems mapping, scenario development, and participatory research methods for public institutions — bridging design strategy with policy innovation.',
+  },
+]
+
+const researchInterests = [
+  {
+    theme: 'Technological Mediation & the Texture of Interaction',
+    desc: 'How do digital systems shape the way people perceive, interpret, and act? Drawing on postphenomenology and Verbeek\'s mediation theory, I want to investigate the often-invisible ways interfaces frame understanding — the moments users reach, pause, and recalibrate. Six years of industry research have given me a library of these observations; philosophical frameworks offer a language to finally articulate them.',
+  },
+  {
+    theme: 'Participatory Design as Epistemic Practice',
+    desc: 'My experience facilitating stakeholder research across eight industries has shown me that participation is not only a democratic ideal — it is an epistemic method. When communities co-construct the logic of a system, they surface knowledge that no expert process alone can reach. I am interested in how phenomenological thinking can deepen participatory design beyond preference elicitation toward genuine shared sense-making.',
+  },
+  {
+    theme: 'Ethics, Infrastructure & Legibility',
+    desc: 'From national health data gateways to enterprise learning platforms, a recurring question runs through my work: how do people make opaque systems legible enough to act upon — and what gets lost in that translation? I am drawn to the intersection of infrastructure studies and design ethics, asking not just how to make systems usable, but how the very act of making them legible reshapes what users can know and care about.',
   },
 ]
 
@@ -300,6 +338,62 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── RESEARCH INTERESTS ── */}
+        <section className="research" id="research">
+          <div className="wrap">
+            <FadeIn>
+              <span className="eyebrow">Research Interests</span>
+              <h2 className="research__headline">
+                Where practice meets<br /><em>inquiry.</em>
+              </h2>
+              <p className="research__intro">
+                Six years of industry research — across health data, luxury retail, media, arts education, and public policy — have shaped a set of questions I want to pursue with academic rigour. I am currently exploring PhD opportunities in design research, HCI, and Science & Technology Studies.
+              </p>
+            </FadeIn>
+            <div className="research__grid">
+              {researchInterests.map((r, i) => (
+                <FadeIn key={r.theme} delay={i * 0.1}>
+                  <div className="research__card">
+                    <h3 className="research__theme">{r.theme}</h3>
+                    <p className="research__desc">{r.desc}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── RESEARCH & PUBLICATIONS ── */}
+        <section className="recognition">
+          <div className="wrap">
+            <FadeIn>
+              <span className="eyebrow">Research &amp; Academic Contributions</span>
+            </FadeIn>
+            <div className="recognition-list">
+              {recognition.map((r, i) => (
+                <FadeIn key={r.title} delay={i * 0.1}>
+                  <div className="recognition-item">
+                    <div className="recognition-item__meta">
+                      <span className="recognition-item__type">{r.type}</span>
+                      <span className="recognition-item__year">{r.year}</span>
+                    </div>
+                    <div>
+                      {r.link
+                        ? <a href={r.link} target="_blank" rel="noopener noreferrer" className="recognition-item__title recognition-item__title--link">{r.title} ↗</a>
+                        : <p className="recognition-item__title">{r.title}</p>
+                      }
+                      {r.authors && <p className="recognition-item__authors">{r.authors}</p>}
+                      {r.journal && <p className="recognition-item__journal">{r.journal}</p>}
+                      {r.venue && <p className="recognition-item__venue">{r.venue}</p>}
+                      <p className="recognition-item__detail">{r.detail}</p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── EXPERIENCE ── */}
         <section className="experience" id="experience">
           <div className="wrap">
@@ -315,35 +409,6 @@ export default function Home() {
                       <p className="timeline__role">{e.role}</p>
                       <p className="timeline__company">{e.company}</p>
                       <p className="timeline__desc">{e.desc}</p>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── RECOGNITION ── */}
-        <section className="recognition">
-          <div className="wrap">
-            <FadeIn>
-              <span className="eyebrow">Exhibitions &amp; Publications</span>
-            </FadeIn>
-            <div className="recognition-list">
-              {recognition.map((r, i) => (
-                <FadeIn key={r.title} delay={i * 0.1}>
-                  <div className="recognition-item">
-                    <div className="recognition-item__meta">
-                      <span className="recognition-item__type">{r.type}</span>
-                      <span className="recognition-item__year">{r.year}</span>
-                    </div>
-                    <div>
-                      {r.link
-                        ? <a href={r.link} target="_blank" rel="noopener noreferrer" className="recognition-item__title recognition-item__title--link">{r.title} ↗</a>
-                        : <p className="recognition-item__title">{r.title}</p>
-                      }
-                      {r.venue && <p className="recognition-item__venue">{r.venue}</p>}
-                      <p className="recognition-item__detail">{r.detail}</p>
                     </div>
                   </div>
                 </FadeIn>

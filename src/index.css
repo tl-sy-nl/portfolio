@@ -566,6 +566,90 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 .edu-item__degree { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.9); }
 .edu-item__school { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
 
+/* --- Research Interests --- */
+.research {
+  padding: 80px 0 64px;
+  background: var(--canvas);
+  border-top: 1px solid var(--border);
+}
+.research__headline {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin: 16px 0 20px;
+  color: var(--ink);
+}
+.research__headline em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-mid);
+}
+.research__intro {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+.research__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.research__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 28px 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.research__card:hover {
+  border-color: var(--accent-mid);
+  transform: translateY(-2px);
+}
+.research__theme {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+.research__desc {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+/* Recognition enhancements */
+.recognition-item__authors {
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  font-style: italic;
+  margin-bottom: 2px;
+}
+.recognition-item__journal {
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.recognition-item__title--link {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.recognition-item__title--link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 960px) {
+  .research__grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
 /* --- Experience --- */
 .experience { padding: 64px 0 56px; }
 .experience__title {

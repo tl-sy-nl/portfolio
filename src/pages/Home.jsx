@@ -177,16 +177,25 @@ const recognition = [
 
 const researchInterests = [
   {
+    num: '01',
     theme: 'Technological Mediation & the Texture of Interaction',
-    desc: 'How do digital systems shape the way people perceive, interpret, and act? Drawing on postphenomenology and Verbeek\'s mediation theory, I want to investigate the often-invisible ways interfaces frame understanding — the moments users reach, pause, and recalibrate. Six years of industry research have given me a library of these observations; philosophical frameworks offer a language to finally articulate them.',
+    question: 'How do digital systems shape the way people perceive, interpret, and act — and what do we miss when we design without noticing?',
+    desc: 'Drawing on postphenomenology and Verbeek\'s mediation theory, I want to investigate the often-invisible ways interfaces frame understanding: the moments users reach, pause, and recalibrate. Six years of industry research have given me a library of these observations; philosophical frameworks offer a language to finally articulate them.',
+    concepts: ['Postphenomenology', 'Mediation Theory', 'Interaction Qualities'],
   },
   {
+    num: '02',
     theme: 'Participatory Design as Epistemic Practice',
-    desc: 'My experience facilitating stakeholder research across eight industries has shown me that participation is not only a democratic ideal — it is an epistemic method. When communities co-construct the logic of a system, they surface knowledge that no expert process alone can reach. I am interested in how phenomenological thinking can deepen participatory design beyond preference elicitation toward genuine shared sense-making.',
+    question: 'What kinds of knowledge emerge only when the people affected by a system help construct its logic?',
+    desc: 'My experience facilitating stakeholder research across eight industries has shown me that participation is not only a democratic ideal — it is an epistemic method. I am interested in how phenomenological thinking can deepen participatory design beyond preference elicitation toward genuine shared sense-making.',
+    concepts: ['Co-Design', 'Epistemic Justice', 'Phenomenological Methods'],
   },
   {
+    num: '03',
     theme: 'Ethics, Infrastructure & Legibility',
-    desc: 'From national health data gateways to enterprise learning platforms, a recurring question runs through my work: how do people make opaque systems legible enough to act upon — and what gets lost in that translation? I am drawn to the intersection of infrastructure studies and design ethics, asking not just how to make systems usable, but how the very act of making them legible reshapes what users can know and care about.',
+    question: 'How do people make opaque systems legible enough to act upon — and what gets lost in that translation?',
+    desc: 'From national health data gateways to enterprise learning platforms, a recurring question runs through my work. I am drawn to the intersection of infrastructure studies and design ethics, asking not just how to make systems usable, but how the very act of making them legible reshapes what users can know and care about.',
+    concepts: ['Infrastructure Studies', 'Design Ethics', 'Critical Data Studies'],
   },
 ]
 
@@ -347,15 +356,22 @@ export default function Home() {
                 Where practice meets<br /><em>inquiry.</em>
               </h2>
               <p className="research__intro">
-                Six years of industry research — across health data, luxury retail, media, arts education, and public policy — have shaped a set of questions I want to pursue with academic rigour. I am currently exploring PhD opportunities in design research, HCI, and Science & Technology Studies.
+                Six years of industry research — across health data, luxury retail, media, arts education, and public policy — have surfaced a connected set of questions: how technology mediates experience, how participation generates knowledge, and how making systems legible is itself an ethical act. I want to pursue these questions with academic rigour, and am currently exploring PhD opportunities in design research, HCI, and Science &amp; Technology Studies.
               </p>
             </FadeIn>
             <div className="research__grid">
               {researchInterests.map((r, i) => (
                 <FadeIn key={r.theme} delay={i * 0.1}>
                   <div className="research__card">
+                    <span className="research__num">{r.num}</span>
                     <h3 className="research__theme">{r.theme}</h3>
+                    <p className="research__question">{r.question}</p>
                     <p className="research__desc">{r.desc}</p>
+                    <div className="research__concepts">
+                      {r.concepts.map(c => (
+                        <span key={c} className="research__concept">{c}</span>
+                      ))}
+                    </div>
                   </div>
                 </FadeIn>
               ))}

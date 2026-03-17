@@ -669,62 +669,61 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r-md);
-  padding: 28px 24px;
+  padding: 32px 28px;
   transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 .research__card:hover {
   border-color: var(--accent-mid);
   transform: translateY(-2px);
+}
+.research__num {
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
 }
 .research__theme {
   font-family: var(--sans);
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--ink);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   line-height: 1.35;
 }
+.research__question {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
 .research__desc {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--ink-2);
   line-height: 1.7;
 }
-/* Case cross-reference links inside research cards */
-.research__case-links {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.research__case-links-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.research__case-tags {
+.research__concepts {
+  margin-top: auto;
+  padding-top: 18px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
-.research__case-tag {
+.research__concept {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
+  letter-spacing: 0.03em;
   color: var(--accent);
   background: rgba(26, 92, 114, 0.07);
   border: 1px solid rgba(26, 92, 114, 0.18);
   border-radius: 4px;
-  padding: 3px 9px;
-  text-decoration: none;
-  transition: background 0.18s, color 0.18s;
-}
-.research__case-tag:hover {
-  background: rgba(26, 92, 114, 0.15);
-  color: var(--accent-dark, #0f3d4e);
+  padding: 3px 10px;
 }
 
 /* Recognition enhancements */

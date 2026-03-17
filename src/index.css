@@ -164,6 +164,72 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
 .nav:not(.scrolled) .nav__links a { color: rgba(200, 225, 245, 0.55); }
 .nav:not(.scrolled) .nav__links a:hover { color: #fff; }
 
+/* --- Hamburger button (mobile only, hidden on desktop) --- */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+/* White lines over dark hero */
+.nav:not(.scrolled) .nav__hamburger { color: #fff; }
+/* Open state — morph into × */
+.nav__hamburger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__hamburger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav__hamburger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Mobile menu overlay --- */
+.nav__mobile-menu {
+  position: fixed;
+  inset: 0;
+  top: 64px;
+  background: rgba(248, 246, 242, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav__mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+}
+.nav__mobile-links li a {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 10px 24px;
+  transition: color 0.2s;
+}
+.nav__mobile-links li a:hover { color: var(--accent); }
+
 /* --- Hero (fullscreen topographic) --- */
 .hero {
   position: sticky;
@@ -622,6 +688,43 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   font-size: 0.85rem;
   color: var(--ink-2);
   line-height: 1.7;
+}
+/* Case cross-reference links inside research cards */
+.research__case-links {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.research__case-links-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.research__case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.research__case-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(26, 92, 114, 0.07);
+  border: 1px solid rgba(26, 92, 114, 0.18);
+  border-radius: 4px;
+  padding: 3px 9px;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+}
+.research__case-tag:hover {
+  background: rgba(26, 92, 114, 0.15);
+  color: var(--accent-dark, #0f3d4e);
 }
 
 /* Recognition enhancements */
@@ -1188,6 +1291,7 @@ p { font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
   .nav__inner { padding: 0 24px; }
   .hero__content { padding: 0 24px; }
   .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
   .case-meta { grid-template-columns: 1fr 1fr; }
   .case-body { padding: 0 24px; }
 }

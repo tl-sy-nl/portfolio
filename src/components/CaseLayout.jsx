@@ -64,7 +64,7 @@ export default function CaseLayout({ title, subtitle, tags, meta, children, next
       )}
 
       <footer className="footer">
-        <p>© 2025 Tung Lin. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Tung Lin. All rights reserved.</p>
       </footer>
     </PageTransition>
   )

@@ -179,28 +179,14 @@ const researchInterests = [
   {
     theme: 'Technological Mediation & the Texture of Interaction',
     desc: 'How do digital systems shape the way people perceive, interpret, and act? Drawing on postphenomenology and Verbeek\'s mediation theory, I want to investigate the often-invisible ways interfaces frame understanding — the moments users reach, pause, and recalibrate. Six years of industry research have given me a library of these observations; philosophical frameworks offer a language to finally articulate them.',
-    cases: [
-      { label: 'Case 01 — Health Data Gateway', to: '/cases/academic-platform' },
-      { label: 'Case 03 — Enterprise Learning', to: '/cases/digital-learning' },
-      { label: 'Case 04 — Performing Arts School', to: '/cases/arts-education' },
-    ],
   },
   {
     theme: 'Participatory Design as Epistemic Practice',
     desc: 'My experience facilitating stakeholder research across eight industries has shown me that participation is not only a democratic ideal — it is an epistemic method. When communities co-construct the logic of a system, they surface knowledge that no expert process alone can reach. I am interested in how phenomenological thinking can deepen participatory design beyond preference elicitation toward genuine shared sense-making.',
-    cases: [
-      { label: 'Case 01 — Health Data Gateway', to: '/cases/academic-platform' },
-      { label: 'Case 04 — Performing Arts School', to: '/cases/arts-education' },
-    ],
   },
   {
     theme: 'Ethics, Infrastructure & Legibility',
     desc: 'From national health data gateways to enterprise learning platforms, a recurring question runs through my work: how do people make opaque systems legible enough to act upon — and what gets lost in that translation? I am drawn to the intersection of infrastructure studies and design ethics, asking not just how to make systems usable, but how the very act of making them legible reshapes what users can know and care about.',
-    cases: [
-      { label: 'Case 01 — Health Data Gateway', to: '/cases/academic-platform' },
-      { label: 'Case 02 — Luxury Mobile App', to: '/cases/luxury-vip-app' },
-      { label: 'Case 03 — Enterprise Learning', to: '/cases/digital-learning' },
-    ],
   },
 ]
 
@@ -370,18 +356,6 @@ export default function Home() {
                   <div className="research__card">
                     <h3 className="research__theme">{r.theme}</h3>
                     <p className="research__desc">{r.desc}</p>
-                    {r.cases && r.cases.length > 0 && (
-                      <div className="research__case-links">
-                        <span className="research__case-links-label">Seen in practice →</span>
-                        <div className="research__case-tags">
-                          {r.cases.map(c => (
-                            <Link key={c.to} to={c.to} className="research__case-tag">
-                              {c.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </FadeIn>
               ))}

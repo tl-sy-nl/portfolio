@@ -4,48 +4,35 @@ import { FadeIn } from '../../components/FadeIn'
 
 
 // ── Full-width PDF image with optional lightbox ──
-function DiagramImage({ src, alt, caption, clickable, onExpand }) {
+function DiagramImage({ src, alt, caption, clickable, onExpand, width = 4800, height = 2700 }) {
   return (
-    <div style={{ margin: '36px 0' }}>
+    <figure className="diagram-figure">
       <div
-        style={{
-          borderRadius: 'var(--r-md)',
-          overflow: 'hidden',
-          border: '1px solid var(--border)',
-          background: 'var(--surface)',
-          cursor: clickable ? 'zoom-in' : 'default',
-          position: 'relative',
-        }}
+        className="diagram-figure__container"
         onClick={clickable ? onExpand : undefined}
         title={clickable ? 'Click to enlarge' : undefined}
       >
+        {/* TODO: Add srcSet when 2x version of image is available */}
         <img
           src={src}
           alt={alt}
-          style={{ width: '100%', height: 'auto', display: 'block' }}
+          width={width}
+          height={height}
+          className="svg-responsive"
           loading="lazy"
         />
         {clickable && (
-          <div style={{
-            position: 'absolute', bottom: 10, right: 10,
-            background: 'rgba(0,0,0,0.45)', borderRadius: 4,
-            padding: '3px 8px',
-            fontFamily: 'var(--sans)', fontSize: '0.65rem', color: '#fff',
-            letterSpacing: '0.05em', pointerEvents: 'none',
-          }}>
+          <div className="diagram-expand-badge">
             ⊕ Expand
           </div>
         )}
       </div>
       {caption && (
-        <p style={{
-          fontFamily: 'var(--sans)', fontSize: '0.75rem', color: 'var(--ink-3)',
-          letterSpacing: '0.02em', marginTop: 10, paddingLeft: 4, lineHeight: 1.5,
-        }}>
+        <figcaption className="diagram-figure__caption">
           {caption}
-        </p>
+        </figcaption>
       )}
-    </div>
+    </figure>
   )
 }
 
@@ -64,7 +51,7 @@ function StakeholderMapSVG() {
   const cx = 160, cy = 130, r = 36
 
   return (
-    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
+    <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" className="svg-responsive">
       <rect width="320" height="260" fill={bg}/>
 
       {/* Connection lines to centre */}
@@ -117,14 +104,14 @@ function InsightCards() {
     {
       num: '01',
       title: 'Discovery happened through people',
-      body: 'No researcher found a dataset through a platform. They found it through colleagues, citations, and departmental contacts. For anyone outside established networks, entire datasets were effectively invisible.',
-      color: '#1A5C72',
+      body: 'No researcher found a dataset through a platform. They found it through people — and what you knew depended on who you knew. For anyone outside established networks, entire datasets were effectively invisible.',
+      color: '#9B6B8A',
     },
     {
       num: '02',
       title: 'Evaluation was nearly impossible before committing',
       body: '"Buying a book with a blank cover." Coverage periods, variable completeness, and linkage options were absent or buried in technical documentation — researchers applied blind.',
-      color: '#2A6B62',
+      color: '#A8804E',
     },
     {
       num: '03',
@@ -134,38 +121,14 @@ function InsightCards() {
     },
   ]
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, margin: '32px 0' }}>
+    <div className="insight-grid">
       {insights.map((ins) => (
-        <div key={ins.num} style={{
-          background: 'var(--canvas)',
-          border: `1px solid var(--border)`,
-          borderTop: `3px solid ${ins.color}`,
-          borderRadius: 'var(--r-md)',
-          padding: '24px 20px',
-        }}>
-          <span style={{
-            display: 'block',
-            fontFamily: 'var(--serif)',
-            fontSize: '1.8rem',
-            fontStyle: 'italic',
-            color: ins.color,
-            opacity: 0.35,
-            lineHeight: 1,
-            marginBottom: 10,
-          }}>{ins.num}</span>
-          <p style={{
-            fontFamily: 'var(--sans)',
-            fontSize: '0.82rem',
-            fontWeight: 600,
-            color: 'var(--ink)',
-            lineHeight: 1.4,
-            marginBottom: 10,
-          }}>{ins.title}</p>
-          <p style={{
-            fontSize: '0.78rem',
-            color: 'var(--ink-3)',
-            lineHeight: 1.6,
-          }}>{ins.body}</p>
+        <div key={ins.num} className="insight-card" style={{ borderTopColor: ins.color }}>
+          <span className="insight-card__num" style={{ color: ins.color }}>
+            {ins.num}
+          </span>
+          <p className="insight-card__title">{ins.title}</p>
+          <p className="insight-card__body">{ins.body}</p>
         </div>
       ))}
     </div>
@@ -175,45 +138,28 @@ function InsightCards() {
 // ── Storyboard strip ──
 function StoryboardStrip() {
   const panels = [
-    { src: '/ghd/p26.jpg', label: 'Act I' },
-    { src: '/ghd/p27.jpg', label: 'Act II' },
-    { src: '/ghd/p28.jpg', label: 'Act III' },
-    { src: '/ghd/p29.jpg', label: 'Act IV' },
+    { src: '/ghd/p26.jpg', label: 'Act I', alt: 'Act I — Researcher discovers a dataset through the GHD platform search interface' },
+    { src: '/ghd/p27.jpg', label: 'Act II', alt: 'Act II — Researcher reads dataset metadata including coverage period and variable list' },
+    { src: '/ghd/p28.jpg', label: 'Act III', alt: 'Act III — Researcher submits a streamlined access application with clear requirements' },
+    { src: '/ghd/p29.jpg', label: 'Act IV', alt: 'Act IV — Researcher accesses approved dataset from their desk with status visibility' },
   ]
   return (
-    <div style={{ margin: '36px 0' }}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 12,
-      }}>
-        {panels.map((p, i) => (
-          <div key={i} style={{
-            borderRadius: 'var(--r-sm)',
-            overflow: 'hidden',
-            border: '1px solid var(--border)',
-            background: 'var(--surface)',
-          }}>
-            <img
-              src={p.src}
-              alt={p.label}
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-              loading="lazy"
-            />
-            <div style={{
-              padding: '8px 12px',
-              fontFamily: 'var(--sans)',
-              fontSize: '0.7rem',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'var(--ink-3)',
-            }}>
-              {p.label}
-            </div>
+    <div className="storyboard-grid">
+      {panels.map((p, i) => (
+        <div key={i} className="storyboard-item">
+          {/* TODO: Add srcSet when 2x version of image is available */}
+          <img
+            src={p.src}
+            alt={p.alt}
+            width="4800"
+            height="2700"
+            loading="lazy"
+          />
+          <div className="storyboard-item__label">
+            {p.label}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -234,51 +180,49 @@ export default function AcademicPlatform() {
     {/* Lightbox overlay */}
     {lightbox && (
       <div
+        className="lightbox-overlay"
         onClick={() => setLightbox(null)}
-        style={{
-          position: 'fixed', inset: 0, zIndex: 999,
-          background: 'rgba(0,0,0,0.88)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: 'zoom-out',
-          padding: '40px',
-        }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Enlarged diagram view"
       >
         <img
           src={lightbox}
-          alt="Enlarged diagram"
-          style={{
-            maxWidth: '90vw', maxHeight: '90vh',
-            objectFit: 'contain',
-            borderRadius: 8,
-            boxShadow: '0 24px 80px rgba(0,0,0,0.5)',
-          }}
+          alt="Enlarged view of research diagram — click outside or press Escape to close"
+          className="lightbox-image"
         />
         <button
           onClick={() => setLightbox(null)}
-          style={{
-            position: 'fixed', top: 20, right: 24,
-            background: 'rgba(255,255,255,0.12)',
-            border: '1px solid rgba(255,255,255,0.2)',
-            color: '#fff', borderRadius: '50%',
-            width: 36, height: 36,
-            fontSize: '1rem', cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
+          className="lightbox-close"
+          aria-label="Close enlarged image"
         >×</button>
       </div>
     )}
     <CaseLayout
       tags={['Biomedical', 'Public Sector', 'Published Research']}
       title="The Infrastructure Nobody Mapped: Research for Taiwan's National Health Data Gateway"
-      subtitle="A formative user research study commissioned by Taiwan's Ministry of Health and Welfare — uncovering how biomedical researchers find, evaluate, and access data across a fragmented national ecosystem, and translating those findings into platform strategy and information architecture for GHD."
+      subtitle="What does it mean to make a dataset findable, evaluable, and accessible? Taiwan's Ministry of Health and Welfare asked that question in 2022. The answer required understanding how biomedical researchers actually navigated — and got stuck in — a fragmented health data ecosystem."
       meta={[
         { label: 'Industry', value: 'Biomedical & Public Sector' },
+        { label: 'Role',     value: 'Co-Researcher — co-led research design, fieldwork, synthesis & IA recommendations' },
         { label: 'Methods',  value: 'Contextual Inquiry · Card Sorting · Usability Testing' },
         { label: 'Scope',    value: '6 interviews · 5 industries · National platform' },
         { label: 'Year',     value: '2022' },
+        { label: 'Publication', value: 'Peer-reviewed — ComSIS Journal, 2023' },
       ]}
       nextCase={{ to: '/cases/digital-learning', title: "What the Analytics Couldn't Show: Research for a Media Group's Enterprise Learning Platform" }}
     >
+
+      {/* ── IMPACT BAR ── */}
+      <div className="case-impact-bar">
+        <span className="case-impact-bar__label">Research Outcome</span>
+        <p className="case-impact-bar__text">
+          Research with 15 biomedical researchers made visible three systemic failures in Taiwan&apos;s
+          health data ecosystem — failures that had been structurally invisible until qualitative
+          methods surfaced them. The findings informed GHD&apos;s information architecture and
+          contributed to a peer-reviewed publication in <em>ComSIS</em>.
+        </p>
+      </div>
 
       {/* ── CONTEXT ── */}
       <FadeIn>
@@ -298,40 +242,43 @@ export default function AcademicPlatform() {
         <p>GHD didn't sit inside one institution. It sat between them. The Ministry of Health and Welfare provided mandate and oversight. Data management units from hospitals, universities, NGOs, and government agencies would contribute datasets. A web development team would build the infrastructure. And researchers — the platform's primary users — came from five distinct industries, each with different workflows, data needs, technical fluency, and definitions of what "good data" looked like.</p>
         <p>Understanding who the platform was actually serving — and how different their needs were — was the first task.</p>
 
-        <div style={{ margin: '36px 0', border: '1px solid var(--border)', borderRadius: 'var(--r-md)', overflow: 'hidden', background: 'var(--surface)' }}>
-          <StakeholderMapSVG />
-        </div>
+        <figure className="diagram-figure">
+          <div className="diagram-figure__container">
+            <StakeholderMapSVG />
+          </div>
+        </figure>
       </FadeIn>
 
       {/* ── RESEARCH FRAMEWORK ── */}
       <FadeIn>
         <h2>How We Listened</h2>
-        <p>The engagement ran across four phases. The formative work — the phase that shapes everything after it — came first: understanding the system as researchers actually experienced it, not as the institutions that built it understood it to work.</p>
-        <p>Six in-depth interviews, two hours each, across five research industries. Contextual inquiry as participants navigated reference platforms. Card-sorting to surface filter priorities. Secondary research on international biomedical data discovery platforms — UK HDR, NIH GDC, PhysioNet — to understand where Taiwan sat within a global landscape that had been shifting rapidly toward open, federated access.</p>
+        <p>We chose formative research methods because the friction had become invisible to the system&apos;s own users — so habitual it could only be observed, not self-reported. The formative work came first: understanding the system as researchers actually experienced it, not as the institutions that built it understood it to work.</p>
+        <p>Fifteen participants across the full study: six two-hour contextual interviews across five research industries, card-sorting to surface filter priorities, and secondary validation. We benchmarked against UK HDR, NIH GDC, and PhysioNet to understand where Taiwan sat within a global landscape shifting rapidly toward open, federated access.</p>
 
         <DiagramImage
           src="/ghd/p07.jpg"
-          alt="Research framework diamond diagram showing four phases"
-          caption="Four-phase research framework. Each phase narrows the scope: from broad contextual inquiry to validated design recommendations."
+          alt="Research framework diamond diagram — contextual inquiry with biomedical researchers across five industries revealed that friction in data discovery had become so habitual it could only be observed, not self-reported"
+          caption="Four-phase research framework. Contextual inquiry was the deliberate methodological choice: the system's friction had become invisible to its users through habituation — it could only be surfaced through direct observation of actual research workflows."
         />
 
         <p>We recruited across two levels of seniority on purpose. Junior researchers — five to ten years in — were still navigating the system with fresh frustration. Research leads had learned to work around it. Both perspectives mattered: the one that remembered what broken felt like, and the one that had stopped noticing.</p>
+        <p>As a UX researcher trained in industry, I carried assumptions about what &quot;good discovery&quot; meant — I expected interface elegance and feature completeness to be the core problems. The field work unsettled that. My position — as someone trained in product design, not in research governance or public health infrastructure — meant I initially saw this as a design problem. Researchers in the room saw it differently: who decides which datasets are findable? The real friction wasn&apos;t in the interface; it was in the ecosystem&apos;s structure itself. That reframing shaped how the team thought about what a platform could and couldn&apos;t fix.</p>
       </FadeIn>
 
       {/* ── USER JOURNEY ── */}
       <FadeIn>
         <h2>Where Time Was Being Lost</h2>
-        <p>The research surfaced a journey with four stages — Identifying, Searching, Applying, Acquiring. At each stage, a consistent pattern of friction. What the map made visible wasn't the steps themselves; it was the gap between what researchers expected to be simple and what the system had made complicated.</p>
+        <p>The journey had four stages — Identifying, Searching, Applying, Acquiring. At each, the same pattern: researchers expected simplicity; the system delivered complexity. The friction wasn&apos;t random — it was structural.</p>
 
         <DiagramImage
           src="/ghd/p15.jpg"
-          alt="User journey map showing four stages: Identifying, Searching, Applying, Acquiring"
-          caption="User journey map across four stages. Pain points cluster around the transition from searching to applying — the moment when researchers lose visibility into what a dataset actually contains."
+          alt="User journey map synthesised from contextual inquiry sessions — revealing that friction concentrates at the search-to-application transition, where researchers commit to a months-long process without knowing whether the dataset matches their needs"
+          caption="Journey map synthesised from six two-hour contextual inquiry sessions across five research industries. The critical finding: pain concentrates at the search-to-application boundary — the moment researchers must commit to a months-long access process with no preview of whether the data matches their needs."
           clickable
           onExpand={() => setLightbox('/ghd/p15.jpg')}
         />
 
-        <p>The pattern was consistent across industries: the earlier stages, where motivation is high and intent is clear, were the most undermined. Researchers who had already decided they wanted a dataset were then faced with months of waiting, uncertain paperwork, and the possibility that the data wouldn't match what the abstract had suggested.</p>
+        <p>The pattern was consistent across industries: the earlier stages, where motivation is high and intent is clear, were the most undermined. This undermining wasn&apos;t accidental; it reflected institutional priorities about data stewardship, liability, and researcher accountability that had never been made explicit in the user experience. Researchers who had already decided they wanted a dataset were then faced with months of waiting, uncertain paperwork, and the possibility that the data wouldn&apos;t match what the abstract had suggested.</p>
       </FadeIn>
 
       {/* ── KEY INSIGHTS ── */}
@@ -345,83 +292,58 @@ export default function AcademicPlatform() {
       {/* ── DESIGN STRATEGY ── */}
       <FadeIn>
         <h2>What the Research Made Possible</h2>
-        <p>Each finding pointed to a specific place where the platform could intervene. The strategy wasn't about adding features — it was about restoring something that had been quietly taken away: the researcher's ability to act on their own judgment.</p>
+        <p>Each finding pointed to a specific place where the platform could intervene. The strategy wasn&apos;t about adding features — it was about giving back something that layers of institutional gatekeeping had quietly taken away: the researcher&apos;s ability to judge for themselves whether a dataset was worth pursuing. The information architecture couldn&apos;t just be &quot;intuitive&quot; — it had to be honest about what was missing, and why.</p>
 
         <DiagramImage
           src="/ghd/p17.jpg"
-          alt="Three-column diagram mapping insights to design principles to platform improvements"
-          caption="From insights to design principles to platform improvements. The column structure reflects the discipline of the translation: every feature decision traces back to an observed behaviour."
+          alt="Insight-to-design translation framework — three columns tracing each observed researcher behaviour through a design principle to a specific platform improvement, ensuring no feature exists without research grounding"
+          caption="Insight-to-design translation framework. Every platform feature traces directly to an observed behaviour from contextual inquiry — the three-column structure was the team's accountability tool for ensuring no design decision drifted from the research."
         />
 
         <p>Discovery, which previously required knowing the right person, becomes a guided search. Evaluation, which previously required committing to an application to learn anything meaningful, becomes readable before a single form is submitted. Access, which previously meant months of silence, becomes a process with visible steps and timelines. The blank cover, replaced by a jacket with a synopsis.</p>
+        <p>In concrete terms: the platform&apos;s metadata specification now surfaces dataset coverage periods, variable counts, and linkage capacity upfront — before researchers submit an access request. This single change directly addressed the second systemic failure the research had uncovered.</p>
       </FadeIn>
 
       {/* ── STORYBOARD ── */}
       <FadeIn>
         <h2>The Platform in Motion</h2>
-        <p>To translate the research into a shared product vision, we developed a storyboard. Four acts. A researcher who, for the first time, can find a dataset, read its metadata, apply with transparency, and — eventually — access it without leaving their desk.</p>
-        <p>The storyboard was a communication tool as much as a design artefact: a way of making the research findings visceral for stakeholders who had lived inside the current system long enough to stop noticing how much it asked of its users.</p>
+        <p>To translate findings into vision, we built a storyboard: four acts, one researcher. Find. Read metadata. Apply with clarity. Access — without leaving their desk.</p>
+        <p>The storyboard did something we hadn&apos;t expected. By walking stakeholders through one researcher&apos;s journey — find, evaluate, wait, access — it made the system&apos;s failures concrete enough to argue about. We discovered, in building it, where the platform could actually help and where the real barriers were policy decisions no interface could fix.</p>
 
         <StoryboardStrip />
       </FadeIn>
 
+      {/* ── LIMITATIONS ── */}
+      <FadeIn>
+        <h2>Limitations</h2>
+        <p>This study engaged 15 participants across multiple research phases — contextual interviews, card-sorting, and secondary validation — a scope appropriate for formative, qualitative work, but not designed for statistical generalisation. Interview participants were recruited through Taiwan&apos;s existing academic networks — a choice that inadvertently reproduced the very exclusion mechanisms we were trying to map. Researchers outside these networks would likely report even more friction; our findings may underestimate the system&apos;s barriers for junior, international, or non-institutional researchers.</p>
+        <p>The study focused on five research industries in our sample; future work should validate findings across additional biomedical and clinical domains. The stakeholder ecosystem map captured conditions in 2022; institutional relationships and data infrastructure have shifted considerably since. Additionally, the study prioritised the researcher&apos;s perspective; data management units and platform administrators — whose workflows are equally complex — were not included as primary interview subjects, leaving their needs to be addressed in a subsequent research phase.</p>
+        <p>That research taught me something I keep coming back to: when a system makes people wait, makes them guess, makes them depend on who they know — it&apos;s not a usability problem. It&apos;s the system working exactly as it was built. The design question isn&apos;t how to make it smoother. It&apos;s whether the friction is serving anyone, and if not, what it would take to stop.</p>
+      </FadeIn>
+
       {/* ── PUBLICATION + REPORT DOWNLOAD ── */}
       <FadeIn>
-        <div style={{
-          background: 'linear-gradient(135deg, #0F3D4E 0%, #1A5C72 100%)',
-          borderRadius: 'var(--r-md)',
-          padding: '36px 40px',
-          margin: '48px 0 0',
-          display: 'flex',
-          gap: 40,
-          alignItems: 'flex-start',
-        }}>
-          <div style={{ flex: '0 0 auto' }}>
-            <div style={{
-              width: 48, height: 48,
-              background: 'rgba(126,200,190,0.15)',
-              borderRadius: 8,
-              border: '1px solid rgba(126,200,190,0.3)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#7EC8BE" strokeWidth="1.5"/>
-                <path d="M7 8h10M7 12h10M7 16h6" stroke="#7EC8BE" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            </div>
+        <div className="publication-block">
+          <div className="publication-block__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke="#7EC8BE" strokeWidth="1.5"/>
+              <path d="M7 8h10M7 12h10M7 16h6" stroke="#7EC8BE" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
           </div>
-          <div style={{ flex: 1 }}>
-            <p style={{
-              fontFamily: 'var(--sans)', fontSize: '0.65rem', fontWeight: 700,
-              letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: 'rgba(126,200,190,0.7)', marginBottom: 10,
-            }}>Peer-Reviewed Publication · 2023</p>
-            <p style={{
-              fontFamily: 'var(--serif)', fontSize: '1.08rem',
-              color: '#fff', lineHeight: 1.5, marginBottom: 8,
-            }}>
+          <div className="publication-block__content">
+            <p className="publication-block__label">Peer-Reviewed Publication · 2023</p>
+            <p className="publication-block__title">
               Formative Interviews for a User-Centred Design Study on Developing an Effective Gateway for Biomedical Data Discovery
             </p>
-            <p style={{
-              fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)',
-              lineHeight: 1.6, marginBottom: 24,
-            }}>
-              <em>Computer Science and Information Systems (ComSIS)</em>, ComSIS Consortium. This paper documents the mixed-methods formative research process — from stakeholder mapping and contextual inquiry through to insight synthesis — and presents the information architecture recommendations derived from the study.
+            <p className="publication-block__desc">
+              <em>Computer Science and Information Systems (ComSIS)</em>, ComSIS Consortium. This paper documents the complete mixed-methods formative research process — from stakeholder mapping and contextual inquiry through to insight synthesis — revealing how systemic barriers in data discovery are both designed and habitual. It presents the information architecture recommendations and metadata schema derived from the study, demonstrating how research circulates within scholarly discourse and informs practice beyond the commissioning institution.
             </p>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+            <div className="publication-block__links">
               <a
                 href="https://orcid.org/0009-0008-9499-7505"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  fontFamily: 'var(--sans)', fontSize: '0.82rem', fontWeight: 600,
-                  color: '#7EC8BE',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(126,200,190,0.4)',
-                  paddingBottom: 2,
-                  transition: 'color 0.2s, border-color 0.2s',
-                }}
+                className="publication-block__link"
               >
                 View on ORCID ↗
               </a>
@@ -429,15 +351,7 @@ export default function AcademicPlatform() {
                 href="/ghd/GHD_report.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  fontFamily: 'var(--sans)', fontSize: '0.82rem', fontWeight: 600,
-                  color: 'rgba(126,200,190,0.8)',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(126,200,190,0.25)',
-                  paddingBottom: 2,
-                  transition: 'color 0.2s, border-color 0.2s',
-                }}
+                className="publication-block__link publication-block__link--download"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M12 4v12m0 0l-4-4m4 4l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>

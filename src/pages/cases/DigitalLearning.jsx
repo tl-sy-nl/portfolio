@@ -25,7 +25,7 @@ function MethodologyDiagram() {
     { num: '04', label: ['Concept', 'Validation'],                 sub: ['Design direction', 'feedback rounds'],       color: CORAL  },
   ]
   return (
-    <svg viewBox="0 0 760 190" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 760 190" className="svg-responsive">
       <rect width="760" height="190" fill={BG_CARD} rx="10" />
       {stages.map((s, i) => {
         const x = 36 + i * 178
@@ -68,7 +68,7 @@ function DualSegmentDiagram() {
   const hrItems   = ['Assigns & organises course batches', 'Monitors completion & compliance', 'Generates reports for management', 'Evaluates platform ROI at renewal', 'Manages licences across departments']
   const lrnItems  = ['Receives assigned courses from HR', 'Browses content voluntarily', 'Learns in micro-sessions (6–12 min)', 'Tracks personal progress', 'Seeks practical application']
   return (
-    <svg viewBox="0 0 760 270" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 760 270" className="svg-responsive">
       <rect width="760" height="270" fill={BG_DARK} rx="10" />
       {/* HR column */}
       <motion.rect x="24" y="18" width="330" height="232" rx="8" fill={OCEAN} fillOpacity="0.15" stroke={OCEAN} strokeWidth="1"
@@ -119,7 +119,7 @@ function HRLifecycleDiagram() {
     { phase: 'Renewal Decision',   pain: 'Cannot demonstrate ROI to executive sponsors' },
   ]
   return (
-    <svg viewBox="0 0 760 290" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 760 290" className="svg-responsive">
       <rect width="760" height="290" fill={BG_DARK} rx="10" />
       {/* Lifecycle wheel */}
       <circle cx={cx} cy={cy} r={r} fill="none" stroke="rgba(126,200,190,0.18)" strokeWidth="1.5" strokeDasharray="6 4" />
@@ -171,7 +171,7 @@ function LearnerContextDiagram() {
     { label: ['Evening', 'Wind-down'], pct: 31, color: '#BFA98A' },
   ]
   return (
-    <svg viewBox="0 0 760 220" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 760 220" className="svg-responsive">
       <rect width="760" height="220" fill={BG_DARK} rx="10" />
       <text x="30" y="36" fill="rgba(255,255,255,0.45)" fontSize="11" fontWeight="700" fontFamily="sans-serif" letterSpacing="1.5">USAGE CONTEXTS (LEARNER INTERVIEWS)</text>
       {contexts.map((c, i) => {
@@ -239,7 +239,7 @@ function ThreeGapDiagram() {
     },
   ]
   return (
-    <svg viewBox="0 0 760 290" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 760 290" className="svg-responsive">
       <rect width="760" height="290" fill={BG_DARK} rx="10" />
       {/* Column headers */}
       <rect x="232" y="12" width="136" height="26" rx="4" fill="rgba(26,92,114,0.35)" />
@@ -303,7 +303,7 @@ function DesignWorkflowDiagram() {
   const crossArrow = { x1: 566 + nodeW / 2, y1: 116, x2: 566 + nodeW / 2, y2: 192 }
 
   return (
-    <svg viewBox="0 0 760 296" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 760 296" className="svg-responsive">
       <rect width="760" height="296" fill={BG_CARD} rx="10" />
 
       {/* HR track label */}
@@ -389,25 +389,31 @@ export default function DigitalLearning() {
     <CaseLayout
       tags={['Media', 'Enterprise Learning', 'Mixed-Methods Research']}
       title="What the Analytics Couldn't Show: Research for a Media Group's Enterprise Learning Platform"
-      subtitle="A mixed-methods study into how working learners actually engage with enterprise content — and what that meant for how a growing platform needed to be redesigned."
+      subtitle="What makes a working person want to learn on a platform built for compliance? We went in asking how to help them navigate. We left asking a different question: what makes them want to dive in at all?"
       meta={[
         { label: 'Industry', value: 'Media & EdTech' },
+        { label: 'Role',     value: 'Senior UX Researcher — research strategy, fieldwork, synthesis & stakeholder presentations' },
         { label: 'Methods',  value: 'Depth Interviews · Affinity Mapping · Journey Mapping · Concept Testing' },
         { label: 'Scope',    value: 'Enterprise Platform · Dual-User System' },
-        { label: 'Year',     value: '2021' },
+        { label: 'Year',     value: '2023' },
       ]}
       nextCase={{ to: '/cases/arts-education', title: "Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation's Online School" }}
     >
 
+      {/* ── IMPACT BAR ── */}
+      <div className="case-impact-bar">
+        <span className="case-impact-bar__label">Research Outcome</span>
+        <p className="case-impact-bar__text">
+          Mixed-methods research revealed the core insight: the platform was built around
+          individual progression, but the learners themselves organised around social connection.
+          The mismatch was invisible to analytics, and only surfaced by listening to how people
+          actually worked and what made them return to the platform.
+        </p>
+      </div>
+
       {/* Hero diagram */}
       <FadeIn>
-        <div style={{
-          background: `linear-gradient(135deg, ${BG_CARD} 0%, ${OCEAN} 60%, ${BRIGHT} 100%)`,
-          borderRadius: 'var(--r-md)',
-          padding: '28px 28px 20px',
-          marginBottom: 40,
-          overflow: 'hidden',
-        }}>
+        <div className="diagram-hero">
           <MethodologyDiagram />
         </div>
       </FadeIn>
@@ -416,25 +422,27 @@ export default function DigitalLearning() {
       <FadeIn>
         <h2>A Library Deep as the Ocean</h2>
         <p>A major media organisation with decades of editorial authority had built enterprise learning as the second pillar of its business. Articles, video series, editorial programmes, podcasts, international content, ESG materials, financial compliance courses — the library kept growing, quarter by quarter, in depth and in breadth. The clients kept signing.</p>
-        <p>But a deep library isn't the same as a useful one. The content was there. What wasn't there was any reason for a person to go looking — or any path that felt like it led somewhere worth going. Engagement was lower than expected. HR administrators weren't renewing. The analytics confirmed something was wrong. They couldn't say what.</p>
+        <p>But a deep library isn&apos;t the same as a useful one. The content was there. What wasn&apos;t there was any reason for a person to go looking — or any path that felt like it led somewhere worth going. Engagement was lower than expected. HR administrators weren&apos;t renewing. The analytics confirmed something was wrong. They couldn&apos;t say what.</p>
         <p>The organisation commissioned a research engagement to find out. We entered asking how to help users navigate a growing catalogue. We left asking a different question entirely: what makes a person want to dive in at all?</p>
       </FadeIn>
 
       {/* RESEARCH DESIGN */}
       <FadeIn>
         <h2>Two People Who Never See Each Other</h2>
-        <p>The platform had two entirely separate user experiences. HR administrators purchased, configured, and managed the platform from a back-end interface. Learners encountered it as a content-facing front end. These two groups had different definitions of success, different sources of frustration, and — crucially — no visibility into each other's experience. HR made renewal decisions based on metrics learners never saw. Learners developed habits and avoidances based on friction HR couldn't observe. Treating them as a single user would have produced meaningless findings.</p>
+        <p>The platform was two entirely different experiences. HR administrators lived in the back end: purchasing, configuring, managing. Learners lived in the front end: encountering content. They had different definitions of success, different sources of frustration, and — crucially — no visibility into each other&apos;s world. HR made renewal decisions based on metrics learners never saw. Learners developed avoidances based on friction HR couldn&apos;t observe.</p>
+        <p>A thing worth naming: we studied the HR administrators and learners the platform already had — not the organisations that had abandoned it, and not the employees who had stopped logging in entirely. The research shows what makes committed users want to return. It can&apos;t claim to show what would bring back the ones who aren&apos;t already trying.</p>
       </FadeIn>
 
       <FadeIn>
         <div className="callout">
-          <h4>Research Methods</h4>
+          <h4>Two Research Streams</h4>
+          <p>First: 6 stakeholder interviews to surface what the organisation believed about how people should learn. Then: 14 interviews with HR administrators, 18 with learners — segmented by role autonomy and motivation type, because these shape how people actually engage. We mapped patterns through affinity clustering, then cross-referenced both datasets to find where stakeholder assumptions diverged most sharply from behaviour. Validation came through concept testing with both segments.</p>
           <ul>
-            <li>Internal stakeholder interviews — product, editorial, business — to surface the organisation's assumptions about its own users</li>
-            <li>In-depth interviews with HR administrators across client companies, segmented by organisation size and management style</li>
-            <li>In-depth interviews with learners across industries, segmented by motivation type and degree of autonomy</li>
+            <li>Internal stakeholder interviews — product, editorial, business — to surface the organisation&apos;s assumptions about its own users</li>
+            <li>In-depth interviews with HR administrators segmented by organisation size and management approach</li>
+            <li>In-depth interviews with learners segmented by role (compliance-driven vs. exploratory) and industry sector</li>
             <li>Affinity mapping and experience mapping to find where both sides were silently failing</li>
-            <li>Concept testing to validate design directions before committing to development</li>
+            <li>Concept testing with both segments to validate design directions before committing to development</li>
           </ul>
         </div>
       </FadeIn>
@@ -449,10 +457,11 @@ export default function DigitalLearning() {
       {/* LEARNER */}
       <FadeIn>
         <h2>What We Got Wrong About Why People Learn</h2>
-        <p>We had entered the research expecting learners to be driven by career advancement. In financial services, we found something closer to its shadow. The compliance course load is relentless — training tied to performance review that cannot be opted out of, knowledge that must be absorbed just to meet the baseline requirements of a role. Completion rates were high. That was the visible number. What was invisible was the exhaustion behind it: a kind of quiet depletion that leaves no room for curiosity, no appetite for anything beyond what is required. When your field demands that you keep pace just to stay in place, there is nothing left over for exploration.</p>
-        <p>The contrast came from sales staff and middle managers. These roles run on breadth — on having something to say to different people, in different rooms, across different conversations. Learning, for them, is a form of social preparation. They showed the highest rates of voluntary, exploratory engagement across the study. During COVID, when the face-to-face exchange those roles depend on disappeared overnight, their learning activity surged — not because they suddenly wanted knowledge for its own sake, but because learning had become the only available substitute for the human contact they had lost.</p>
-        <p>The clearest confirmation came from a pattern HR had stumbled into without fully understanding it. The most engaged client teams were those where HR had deliberately turned courses into shared events — organising sessions where learners exchanged what they'd studied, compared what they'd taken away, built on each other's thinking. Once you remove the social dimension, even motivated learners stop coming back.</p>
-        <p>The research had gone looking for individual motivation. What it found, in every direction it looked, was that learning is a social act.</p>
+        <p>We expected learners to chase career advancement. That&apos;s what the brief said they should want — an individual, disembodied progression, the kind that gets rewarded on a performance review. Field work said otherwise. In financial services, the compliance course load is relentless — training tied to performance review that cannot be opted out of, and completion rates are tracked in ways that make opting out structurally impossible. But here was the disconnect: completion looked like success. It was invisible which learners were absorbing the material and which were simply enduring it.</p>
+        <p>The real finding came deeper. When a person works in an industry where the knowledge landscape keeps shifting — where just keeping pace with new regulations and standards is a full-time job — there&apos;s a structural exhaustion that has nothing to do with motivation. It&apos;s not about being tired. It&apos;s about bandwidth. When the required knowledge keeps growing, the capacity for voluntary exploration contracts. The industry culture overrides individual drive, and there&apos;s no way to measure that in completion metrics.</p>
+        <p>The contrast came from sales staff and middle managers. These roles run on a different logic — they need to accumulate a repertoire of things to talk about, across different conversations, with different people. Learning, for them, is an investment in social capacity, a form of relational preparation. They showed the highest rates of voluntary, exploratory engagement across the study. During COVID, when the face-to-face interaction that sustains those roles disappeared overnight, their learning activity surged — not because they suddenly wanted knowledge for its own sake, but because learning had become the only available entry point to create and maintain the kinds of conversations those roles require. It was a way to stay connected.</p>
+        <p>The clearest confirmation was unexpected. The most engaged teams were those where HR had turned courses into shared events — spaces where learners exchanged what they&apos;d studied, compared notes, built on each other&apos;s thinking. Remove the social dimension, and even motivated learners stop returning.</p>
+        <p>The research had gone looking for individual motivation. What it found, in every direction it looked, was that learning is a social act. That reframing changed what we could even design for. If learning is social, then visibility of learning — seeing who&apos;s learning what, alongside you — matters more than personalised recommendations. Cohort-based features, shared progress, peer traces: these weren&apos;t nice-to-haves. They were the architecture.</p>
       </FadeIn>
 
       <FadeIn>
@@ -465,7 +474,7 @@ export default function DigitalLearning() {
       {/* HR LIFECYCLE */}
       <FadeIn>
         <h2>The Cost of Operating the Platform</h2>
-        <p>For HR administrators, the frustration was more immediate. Friction concentrated at two moments: building the initial course assignment, and generating the mid-term reports that justified the platform's cost to management. Neither was a minor inconvenience.</p>
+        <p>For HR administrators, the friction was immediate and concrete. Two moments: building the initial course assignment, and generating the mid-term reports that justified the platform&apos;s cost to management. Neither was minor. HR administrators were doing relational work — connecting people, customising for context, anticipating learner needs — and the platform treated it as overhead to be minimised.</p>
       </FadeIn>
 
       <FadeIn>
@@ -475,7 +484,7 @@ export default function DigitalLearning() {
       </FadeIn>
 
       <FadeIn>
-        <p>The more an administrator invested in operating the platform, the more evidence they accumulated that the return didn't justify the effort. It was a slow erosion of belief — and it happened at exactly the moments when HR needed to be most convinced. Research identified three distinct management styles among HR administrators, each engaging with the platform differently. None of them escaped this dynamic entirely.</p>
+        <p>The more an administrator invested, the more evidence they accumulated that the return didn&apos;t match the effort. Slow erosion — happening at exactly the moments when HR needed to be most convinced. We found three management styles: <em>Delegators</em> handed it off. <em>Standardisers</em> built frameworks. <em>Customisers</em> treated every assignment as unique. Different approaches, same core problem: the effort required to make the platform work was invisible to the metrics that justified keeping it.</p>
       </FadeIn>
 
       <FadeIn>
@@ -487,13 +496,20 @@ export default function DigitalLearning() {
 
       {/* THREE GAPS */}
       <FadeIn>
-        <h2>What the Platform Had Got Wrong</h2>
-        <p>Bringing both sides of the research together produced a finding that reframed the project entirely. The platform's problems weren't interface problems. They were three gaps between what the organisation believed about its product and what users actually experienced — invisible to analytics, operating at the level of assumption.</p>
+        <h2>What the Data Revealed</h2>
+        <p>Bringing both sides of the research together shifted what the problems actually were. The issues weren&apos;t interface-level. They were misalignments between the organisation&apos;s model of how people learn and what the learners actually needed, and between what the platform counted as success and what made it sustainable to operate. Conducting research on both sides of the platform — across HR and learners — was what made these visible. Someone working only from the business metrics, or only from one user group&apos;s perspective, would have missed the core pattern entirely.</p>
+      </FadeIn>
+
+      <FadeIn>
+        <p>Three structural patterns emerged. First: the platform was built to measure individual learner progression, but the highest engagement happened when learning was visibly social — when learners could see each other, share what they were learning, exchange ideas.</p>
+        <p>Second: the metrics read completion rates as evidence of platform success, but they couldn&apos;t distinguish between a person finishing a course because they engaged with it and a person finishing because they had to. The system had no way to feel the difference between learning and endurance.</p>
+        <p>Third: HR administrators were doing relational work — connecting people, curating content for context, orchestrating shared learning — and this work was what made the platform actually function. But that work was invisible to the renewal metrics. The person bearing the operational cost was the last to believe the platform was worth keeping.</p>
+        <p>We mapped these as the Brand Perception Gap, the Content Depth Gap, and the Commitment Paradox — three structural misalignments that only became visible when we held both sides of the platform together.</p>
       </FadeIn>
 
       <FadeIn>
         <div className="diagram-block">
-          <p className="diagram-caption">Three gaps between company assumption and user reality</p>
+          <p className="diagram-caption">Structural misalignments between company assumption and user reality</p>
           <ThreeGapDiagram />
         </div>
       </FadeIn>
@@ -501,7 +517,7 @@ export default function DigitalLearning() {
       {/* DESIGN DIRECTIONS */}
       <FadeIn>
         <h2>From Delivery to Belonging</h2>
-        <p>For learners, the journey begins with a question the platform had never asked: <em>who do I want to become?</em> From that starting point, content finds the learner — and as they move through it, their progress becomes visible to the people around them. Learning leaves a trace. Others can see it. That trace is what makes people come back.</p>
+        <p>For learners, the design direction emerged from a reframed question: <em>what kind of person am I becoming, and who becomes alongside me?</em> Content should find the learner, but more importantly, learners should be able to see what others are learning, to know they&apos;re learning together. We explored how to make a learner&apos;s knowledge work visible — not as a completion metric, but as something others could see and build on. Learning leaves a trace. That trace is what signals belonging and what makes people return.</p>
         <p>For HR, one poorly designed workflow meant that every month, every quarter, hours disappeared into a task that should have taken minutes. Assigning courses to a team is a meaningful act. The process had turned it into something closer to a punishment. The redesign gave that time back, and in doing so, gave HR back something it had quietly lost: the sense that the work was worth doing.</p>
       </FadeIn>
 
@@ -513,11 +529,18 @@ export default function DigitalLearning() {
       </FadeIn>
 
       <FadeIn>
-        <p>The most durable outcome wasn't a feature list. It was a reframing of what the platform was actually for. Not a library people visit when they need something. A place people return to — because it reflects who they are becoming, and because others are becoming alongside them.</p>
+        <p>The most durable outcome wasn&apos;t a feature list. It was a reframing of what the platform was actually for. Not a library people visit when they need something. A place people return to — because it reflects who they are becoming, and because others are becoming alongside them.</p>
+        <p>That discovery — that learning is social before it is individual — stayed with me. It changed what I think platforms like this are actually for. Not delivering content to individuals. Making it possible for people to learn alongside each other, and to feel that they are.</p>
+        <p>What strikes me now is how often the limiting factor isn&apos;t individual motivation but the structure that shapes it. Bandwidth. Permission. The social contexts that make exploration feel possible. Those are conditions I want to understand more deeply.</p>
       </FadeIn>
 
       <FadeIn>
-        <p className="nda-note">Client identity, specific platform metrics, and proprietary research materials have been anonymised per NDA. The findings and design directions described reflect the actual research output. Available to discuss in full detail — please reach out at tunglin.sy@gmail.com.</p>
+        <h2>Limitations</h2>
+        <p>The learner sample had particular depth in financial services and sales or management roles — two segments whose learning behaviours sat at opposite ends of the engagement spectrum. Other industries were represented but not studied with the same depth. Our finding that &quot;learning is social&quot; may be strongest precisely for the populations we studied most — those for whom social pressure and peer connection are already salient. The study was conducted in a post-pandemic context, when enterprise learning platforms were under renewed pressure to justify their value as in-person work had largely resumed — that temporal positionality affects what our findings can claim. Per NDA, the client organisation and specific engagement metrics have not been disclosed; the methodological approach and resulting design directions remain intact.</p>
+      </FadeIn>
+
+      <FadeIn>
+        <p className="nda-note">Client identity, specific platform metrics, and proprietary research materials have been anonymised per NDA. Research artifacts — including interview transcripts, affinity clustering outputs, and journey maps — cannot be reproduced here; the diagrams above are faithful reconstructions of the analytical frameworks used during the study. The findings and design directions described reflect the actual research output. Available to discuss methodology and artifacts in full detail — please reach out at tunglin.sy@gmail.com.</p>
       </FadeIn>
 
     </CaseLayout>

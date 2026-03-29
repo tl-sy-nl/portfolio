@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigationType } from 'react-router-dom'
 
 const NAV_LINKS = [
   { href: '#work', label: 'Work' },
+  { href: '#research-intent', label: 'Research' },
   { href: '#about', label: 'About' },
-  { href: '#research', label: 'Research' },
-  { href: '#experience', label: 'Experience' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -13,6 +12,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navType = useNavigationType()
   const isHome = location.pathname === '/'
 
   useEffect(() => {
@@ -21,10 +21,12 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Reset scroll on route change
+  // Reset scroll on forward navigation only; preserve position on back/forward
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+    if (navType !== 'POP') {
+      window.scrollTo(0, 0)
+    }
+  }, [location.pathname, navType])
 
   // Close menu on route change
   useEffect(() => {
@@ -40,6 +42,8 @@ export default function Nav() {
   if (!isHome) return null
 
   return (
+    <>
+    <a href="#main" className="skip-link">Skip to main content</a>
     <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
       <div className="nav__inner">
         <Link to="/" className="nav__logo">Tung Lin</Link>
@@ -78,5 +82,6 @@ export default function Nav() {
         </div>
       )}
     </nav>
+    </>
   )
 }

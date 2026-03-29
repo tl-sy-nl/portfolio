@@ -6,6 +6,8 @@ import LuxuryVipApp from './pages/cases/LuxuryVipApp'
 import AcademicPlatform from './pages/cases/AcademicPlatform'
 import DigitalLearning from './pages/cases/DigitalLearning'
 import ArtsEducation from './pages/cases/ArtsEducation'
+import Beyond100 from './pages/cases/Beyond100'
+import OutEdge from './pages/cases/OutEdge'
 
 // Agentation: visual annotation tool for AI-assisted batch editing
 // Only active in development (npm run dev). Not included in production build.
@@ -32,6 +34,8 @@ export default function App() {
           <Route path="/cases/academic-platform" element={<AcademicPlatform />} />
           <Route path="/cases/digital-learning" element={<DigitalLearning />} />
           <Route path="/cases/arts-education" element={<ArtsEducation />} />
+          <Route path="/cases/beyond-100" element={<Beyond100 />} />
+          <Route path="/cases/out-edge" element={<OutEdge />} />
         </Routes>
       </AnimatePresence>
       {Agentation && <Agentation />}

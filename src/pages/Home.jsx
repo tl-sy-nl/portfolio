@@ -1,201 +1,91 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FadeIn, PageTransition } from '../components/FadeIn'
-import TopographicHero from '../components/TopographicHero'
+import Footer from '../components/Footer'
+/* TopographicHero removed — hero is now quiet, image-based */
 
-/* ── Full-Bleed Work Carousel ── */
-function WorkCarousel({ items }) {
-  const [idx, setIdx] = useState(0)
-  const total = items.length
-
-  const prev = () => setIdx(i => (i - 1 + total) % total)
-  const next = () => setIdx(i => (i + 1) % total)
-
-  return (
-    <div className="fc">
-      {/* Slides */}
-      <div className="fc__viewport">
-        {items.map((c, i) => (
-          <Link
-            key={c.to}
-            to={c.to}
-            className={`fc__slide${i === idx ? ' fc__slide--active' : ''}`}
-            aria-hidden={i !== idx}
-          >
-            {/* Background image */}
-            <img
-              className="fc__bg"
-              src={c.image}
-              alt={c.imageAlt}
-              onError={(e) => { e.currentTarget.style.display = 'none' }}
-            />
-            {/* Tint + gradient overlays */}
-            {c.tint && <div className="fc__tint" style={{ background: c.tint }} />}
-            <div className="fc__gradient" />
-
-            {/* Text content */}
-            <div className="fc__content">
-              <span className="fc__num">{c.num}</span>
-              <div className="fc__tags">
-                {c.tags.map(t => <span key={t} className="fc__tag">{t}</span>)}
-              </div>
-              <h3 className="fc__title">{c.title}</h3>
-              <p className="fc__desc">{c.desc}</p>
-              <div className="fc__cta">
-                <span className="fc__role">{c.role}</span>
-                <span className="fc__arrow">View Case →</span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {/* Navigation */}
-      <div className="fc__nav">
-        <button className="fc__nav-btn" onClick={prev} aria-label="Previous">←</button>
-        <div className="fc__counter">
-          <span className="fc__counter-current">{String(idx + 1).padStart(2, '0')}</span>
-          <span className="fc__counter-sep">/</span>
-          <span className="fc__counter-total">{String(total).padStart(2, '0')}</span>
-        </div>
-        <div className="fc__dots">
-          {items.map((_, i) => (
-            <button
-              key={i}
-              className={`fc__dot${i === idx ? ' fc__dot--active' : ''}`}
-              onClick={() => setIdx(i)}
-              aria-label={`Case ${i + 1}`}
-            />
-          ))}
-        </div>
-        <button className="fc__nav-btn" onClick={next} aria-label="Next">→</button>
-      </div>
-    </div>
-  )
-}
-
-const cases = [
+/* ── All work — unified, sorted by year (newest first) ── */
+const work = [
   {
     to: '/cases/academic-platform',
-    num: '01',
-    // Earth at night — glowing networks, data infrastructure
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=85',
-    imageAlt: 'Earth at night from space, glowing networks of light',
-    tint: 'rgba(10,46,62,0.52)',
-    tags: ['Biomedical', 'Public Sector', 'Published Research'],
-    title: 'The Infrastructure Nobody Mapped: Research for Taiwan\'s National Health Data Gateway',
-    desc: 'Formative research commissioned by Taiwan\'s Ministry of Health and Welfare — uncovering how biomedical researchers navigate 50+ fragmented databases, then translating findings into product strategy for a unified national gateway. Research published in ComSIS, 2023.',
-    role: 'UX Researcher & Design Strategist · Island Design Lab',
-  },
-  {
-    to: '/cases/luxury-vip-app',
-    num: '02',
-    // Luxury fashion — editorial clothing close-up
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=85',
-    imageAlt: 'Editorial fashion detail, luxury fabric and form',
-    tint: 'rgba(18,8,4,0.42)',
-    tags: ['Luxury Retail', '0-to-1 Product', 'Mobile App'],
-    title: 'The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor\'s First Mobile App',
-    desc: 'Research for a luxury fashion distributor\'s first mobile app — uncovering how high-net-worth clients actually manage their wardrobes and make purchase decisions, and translating an unexpected field behaviour into a product north star.',
-    role: 'Research Lead · AJA Creative',
+    title: 'National Health Data Gateway',
+    desc: 'How biomedical researchers navigate 50+ fragmented databases — and what their workarounds reveal about how infrastructure could work differently.',
+    tags: ['Public Sector', 'Published in ComSIS'],
+    year: '2023',
+    role: 'UX Researcher · Island Design Lab',
+    pattern: 'health',
   },
   {
     to: '/cases/digital-learning',
-    num: '03',
-    // Looking up through deep water — depth, layers of meaning
-    image: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1400&q=85',
-    imageAlt: 'Looking upward through layers of deep blue water',
-    tint: 'rgba(4,14,36,0.48)',
-    tags: ['Media', 'Enterprise Learning', 'Mixed-Methods Research'],
-    title: 'What the Analytics Couldn\'t Show: Research for a Media Group\'s Enterprise Learning Platform',
-    desc: 'Mixed-methods study uncovering three structural misalignments between how a major media group understood its enterprise learning platform and how users actually experienced it.',
+    title: 'What the Analytics Couldn\'t Show',
+    desc: 'Three structural misalignments between how a media group understood its learning platform and how users experienced it.',
+    tags: ['Media', 'Mixed-Methods'],
+    year: '2023',
+    role: 'Research Lead · AJA Creative',
+    pattern: 'media',
+  },
+  {
+    to: '/cases/luxury-vip-app',
+    title: 'The Camera Roll as Wardrobe',
+    desc: 'How high-net-worth clients actually manage their wardrobes — and why a phone gallery became the unexpected centre of the experience.',
+    tags: ['Luxury Retail', '0-to-1 Product'],
+    year: '2022',
     role: 'Senior UX Researcher · AJA Creative',
+    pattern: 'luxury',
   },
   {
     to: '/cases/arts-education',
-    num: '04',
-    // Dance silhouette — body, movement, light
-    image: 'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1400&q=85',
-    imageAlt: 'Dancer silhouette in motion, dramatic stage lighting',
-    tint: 'rgba(22,8,16,0.45)',
-    tags: ['Arts & Culture', 'Discovery Research', 'Interaction Design'],
-    title: 'Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation\'s Online School',
-    desc: 'Pre-product discovery study conducted in 2021 — exploring whether a deeply embodied performing arts pedagogy could extend online, and what platform architecture could preserve its educational values.',
-    role: 'Senior UX Researcher & Interaction Designer · AJA Creative',
+    title: 'Lockdown as Catalyst',
+    desc: 'Whether a deeply embodied performing arts pedagogy could extend online — and what platform architecture could preserve its values.',
+    tags: ['Arts & Culture', 'Discovery Research'],
+    year: '2021',
+    role: 'Senior UX Researcher · AJA Creative',
+    pattern: 'arts',
+  },
+  {
+    to: '/cases/out-edge',
+    title: 'Out/Edge',
+    desc: 'Redesigning online political discourse through silence, co-vulnerability, and open-source conversation tools.',
+    tags: ['MFA Thesis', 'Parsons School of Design'],
+    year: '2019',
+    role: 'MFA Candidate · Parsons',
+    pattern: 'outedge',
+  },
+  {
+    to: '/cases/beyond-100',
+    title: 'Beyond 100%',
+    desc: 'Speculative biodesign imagining how a chip could reshape humanity\'s relationship with food in a 2070 population crisis.',
+    tags: ['BioDesign Challenge', 'Exhibited at MoMA'],
+    year: '2018',
+    role: 'Designer · Parsons',
+    pattern: 'beyond',
   },
 ]
 
+/* ── Experience = things I did (career + teaching + leadership) ── */
 const experience = [
-  { period: 'Jan 2020 – Present', role: 'Design Strategist', company: 'Island Design Lab', desc: 'Facilitated 10+ design thinking and foresight programs for universities, NGOs, and public institutions across Taiwan, focusing on social innovation and sustainable development.' },
-  { period: 'Jan 2021 – Jul 2023', role: 'Senior UX Researcher', company: 'AJA Creative Design', desc: 'Led exploratory and evaluative research across luxury retail, media, arts, and mobility sectors. Translated complex human behaviours into design and data insights for cross-functional delivery.' },
-  { period: 'Sep 2020 – Jan 2022', role: 'Chapter Co-founder', company: 'The Design Futures Initiative', desc: 'Co-founded the Taiwan chapter of an international design futures community — organising speculative design workshops and foresight programmes for designers, academics, and civic innovators.' },
-  { period: 'Nov 2020 – Apr 2021', role: 'User Researcher', company: 'Alphateam', desc: 'Led user research for an academia–government collaboration supporting small business innovation and entrepreneurship development.' },
-  { period: 'Oct 2019 – May 2020', role: 'Product Manager', company: 'Airiti Inc.', desc: 'Owned the product roadmap for a B2B academic knowledge platform. Conducted competitive research and defined a 12-month feature strategy.' },
-  { period: 'Jan 2022 – Jan 2023', role: 'Advisory Committee Member', company: 'The National Palace Museum', desc: 'Member of the Advisory Committee on Promotion of Children and Youth Affairs — contributing to cultural education strategy and digital engagement for the museum\'s collection.' },
+  { period: 'Jan 2020 – Present', role: 'Design Strategist', company: 'Island Design Lab' },
+  { period: 'Jan 2021 – Jul 2023', role: 'Senior UX Researcher', company: 'AJA Creative Design' },
+  { period: 'Jan 2022 – Jan 2023', role: 'Advisory Committee Member', company: 'The National Palace Museum' },
+  { period: 'Sep 2020 – Jan 2022', role: 'Chapter Co-founder', company: 'The Design Futures Initiative' },
+  { period: 'Nov 2020 – Apr 2021', role: 'User Researcher', company: 'Alphateam' },
+  { period: 'Oct 2019 – May 2020', role: 'Product Manager', company: 'Airiti Inc.' },
+  { period: '2013 – 2014', role: 'President, Philosophy Student Association', company: 'National Taiwan University' },
+  { period: '2012 – 2014', role: 'Ethics Teaching Assistant', company: 'National Taiwan University' },
 ]
 
+/* ── Recognition = things I was recognized for (publication + exhibition only) ── */
 const recognition = [
   {
     type: 'Publication',
-    year: '2023',
     title: 'Formative Interviews for a User-Centred Design Study on Developing an Effective Gateway for Biomedical Data Discovery',
-    authors: 'Lee, H.-A., Lin, T., Chen, H.-I., Liu, W.-C., et al.',
-    journal: 'Computer Science and Information Systems (ComSIS), Vol. 20, No. 4',
-    detail: 'Mixed-methods formative study with 15 biomedical researchers investigating how domain experts navigate Taiwan\'s fragmented health data infrastructure. Contributed research design, interview protocol development, and thematic analysis — translating qualitative findings into information architecture recommendations for a unified national data gateway.',
-    link: 'https://orcid.org/0009-0008-9499-7505',
+    venue: 'ComSIS, Vol. 20, No. 4, 2023',
+    link: 'https://doi.org/10.2298/CSIS241204069L',
   },
   {
     type: 'Exhibition',
-    year: '2019',
     title: 'Biodesign Challenge Summit',
-    venue: 'MoMA, New York · San Francisco · Rhode Island',
-    detail: 'Selected work presented across three cities as part of the annual international Biodesign Challenge — a competition for student projects at the intersection of biology, technology, and design. Developed at Parsons School of Design.',
-  },
-  {
-    type: 'Teaching',
-    year: '2012–2014',
-    title: 'Ethics Teaching Assistant — Eastern & Western Ethics and Aesthetics',
-    venue: 'National Taiwan University, Department of Philosophy',
-    detail: 'Supported undergraduate instruction in comparative ethics and aesthetics. Designed discussion prompts, facilitated seminar sessions, and mentored students in philosophical argumentation — experience that shaped a lasting commitment to pedagogy as a form of research practice.',
-  },
-  {
-    type: 'Community',
-    year: '2013–2014',
-    title: 'President, Philosophy Student Association',
-    venue: 'National Taiwan University',
-    detail: 'Led the student association during a period of institutional reform advocacy. Organised public lecture series, inter-departmental dialogues on humanities education, and collaborative events with civic organisations.',
-  },
-  {
-    type: 'Facilitation',
-    year: '2020–2025',
-    title: '10+ Design Thinking & Strategic Foresight Programmes',
-    venue: 'Universities, NGOs, and Government Agencies across Taiwan',
-    detail: 'Designed and facilitated programmes integrating systems mapping, scenario development, and participatory research methods for public institutions — bridging design strategy with policy innovation.',
-  },
-]
-
-const researchInterests = [
-  {
-    num: '01',
-    theme: 'Technological Mediation & the Texture of Interaction',
-    question: 'How do digital systems shape the way people perceive, interpret, and act — and what do we miss when we design without noticing?',
-    desc: 'Drawing on postphenomenology and Verbeek\'s mediation theory, I want to investigate the often-invisible ways interfaces frame understanding: the moments users reach, pause, and recalibrate. Six years of industry research have given me a library of these observations; philosophical frameworks offer a language to finally articulate them.',
-    concepts: ['Postphenomenology', 'Mediation Theory', 'Interaction Qualities'],
-  },
-  {
-    num: '02',
-    theme: 'Participatory Design as Epistemic Practice',
-    question: 'What kinds of knowledge emerge only when the people affected by a system help construct its logic?',
-    desc: 'My experience facilitating stakeholder research across eight industries has shown me that participation is not only a democratic ideal — it is an epistemic method. I am interested in how phenomenological thinking can deepen participatory design beyond preference elicitation toward genuine shared sense-making.',
-    concepts: ['Co-Design', 'Epistemic Justice', 'Phenomenological Methods'],
-  },
-  {
-    num: '03',
-    theme: 'Ethics, Infrastructure & Legibility',
-    question: 'How do people make opaque systems legible enough to act upon — and what gets lost in that translation?',
-    desc: 'From national health data gateways to enterprise learning platforms, a recurring question runs through my work. I am drawn to the intersection of infrastructure studies and design ethics, asking not just how to make systems usable, but how the very act of making them legible reshapes what users can know and care about.',
-    concepts: ['Infrastructure Studies', 'Design Ethics', 'Critical Data Studies'],
+    venue: 'MoMA, New York · San Francisco · Rhode Island, 2019',
   },
 ]
 
@@ -212,21 +102,30 @@ export default function Home() {
   return (
     <PageTransition>
 
-      {/* ── HERO — fullscreen topographic canvas ── */}
+      {/* ── HERO — fullscreen camellia photo ── */}
       <section className="hero">
-        <TopographicHero />
+        <div className="hero__bg">
+          <img
+            src="/images/hero-camellia.webp"
+            alt="Fallen camellia petals resting on green moss"
+            width="2500"
+            height="1674"
+            fetchpriority="high"
+          />
+        </div>
         <motion.div
           className="hero__content"
           variants={heroVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.span className="hero__role" variants={heroItem}>
-            Design Strategist &amp; UX Researcher
-          </motion.span>
           <motion.h1 className="hero__name" variants={heroItem}>
-            Tung<br /><em>Lin</em>
+            Tung<br />Lin
           </motion.h1>
+          <motion.p className="hero__tagline" variants={heroItem}>
+            Philosophy-trained design researcher,<br />
+            exploring how urban spaces exclude children — through soma design, feminist STS, and research through design.
+          </motion.p>
           <motion.p className="hero__desc" variants={heroItem}>
             I observe people — and the things they live with.<br />
             How they reach, pause, arrange.<br />
@@ -247,188 +146,132 @@ export default function Home() {
       </section>
 
       {/* ── MAIN CONTENT — slides over sticky hero ── */}
-      <div className="main-content">
+      <div id="main" className="main-content">
 
-        {/* ── WORK ── */}
-        <section className="work" id="work">
+        {/* ── WORK — 2-column grid with CSS geometric art ── */}
+        <section id="work" className="work">
           <div className="wrap">
             <FadeIn>
-              <div className="section-header">
-                <span className="eyebrow">Selected Work</span>
-                <span style={{ fontSize: '0.78rem', color: 'var(--ink-3)' }}>All clients anonymised per NDA</span>
+              <span className="eyebrow">Work</span>
+            </FadeIn>
+
+            <div className="work-stack">
+              {work.map((p, i) => (
+                <FadeIn key={p.to} delay={i * 0.08}>
+                  <Link to={p.to} className="work-item">
+                    <span className="work-item__num">{String(i + 1).padStart(2, '0')}</span>
+                    <div className="work-item__body">
+                      <p className="work-item__meta">{p.year} · {p.tags.join(' · ')}</p>
+                      <h3 className="work-item__title">{p.title}</h3>
+                      <p className="work-item__desc">{p.desc}</p>
+                      <p className="work-item__role">{p.role}</p>
+                    </div>
+                  </Link>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PATTERNS OF ATTENTION — cross-case reflection ── */}
+        <section className="reflection" id="reflection">
+          <div className="wrap">
+            <FadeIn>
+              <span className="eyebrow">Patterns of Attention</span>
+              <div className="reflection__body">
+                <p>Across six projects spanning health data, luxury retail, performing arts, political discourse, enterprise learning, and speculative biodesign, a recurring pattern surfaced: the fabric of designed environments doesn't merely contain human action — it teaches bodies what is possible and what is not worth asking for. In every case, the most consequential design decisions were the ones nobody had made deliberately. They had accumulated — in metadata schemas, platform architectures, spatial arrangements, institutional workflows — until they felt inevitable.</p>
+                <p>In health data, researchers had stopped expecting discovery to be possible without personal connections. In luxury retail, clients had learned to trust their camera rolls more than the systems built to serve them. In performing arts, a pedagogy built on co-presence and rhythm confronted a digital medium that could transmit image and sound but not shared breath. In enterprise learning, completion rates climbed while motivation collapsed — the analytics told a success story the body contradicted. In political discourse, silence — the thing platforms are designed to eliminate — turned out to be the condition under which vulnerability, and therefore genuine exchange, became possible.</p>
+                <p>These are not six separate findings. They are variations on a single observation: that the fabric of everyday environments shapes which bodies are welcome, which needs become visible, and which forms of participation are imaginable. Design research — particularly when grounded in contextual inquiry and sustained observation rather than self-report — can make that fabric legible. Not to fix it from above, but to open it to contestation.</p>
               </div>
             </FadeIn>
           </div>
-          <FadeIn delay={0.1}>
-            <WorkCarousel items={cases} />
-          </FadeIn>
         </section>
 
-        {/* ── ABOUT ── */}
-        <section className="about" id="about">
-          <img
-            className="about__bg"
-            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2400&q=80"
-            alt=""
-            aria-hidden="true"
-          />
+        {/* ── WHAT THE WORK HAS MADE VISIBLE — PhD research intent ── */}
+        <section className="research-intent" id="research-intent">
           <div className="wrap">
+            <FadeIn>
+              <span className="eyebrow">What the Work Has Made Visible</span>
+              <div className="research-intent__body">
+                <p>Making that fabric legible is only the beginning. Once you see how designed environments teach bodies what is possible, the question shifts: it is no longer "how might we design better systems?" but "what might happen if we designed <em>with</em> the bodies that are currently being designed <em>around</em>?"</p>
+                <p>This is a feminist STS question. It asks how design — and designed spaces, systems, platforms — shapes which bodies matter, which temporalities count as productive, which needs rise to the level of visibility. I am specifically interested in the spaces where this happens most invisibly: urban environments that children move through every day but had no part in shaping. Drawing on soma design, I want to investigate what children's bodies already know about these spaces — knowledge that is carried in gesture, hesitation, and play, but that has no seat at the table where design decisions are made.</p>
+                <p>If we could reveal how childhood is systematically designed out of public space, then design research gains a new ethics: not just responding to users' stated needs, but questioning whose needs are never asked. This is what six years of practice have surfaced but cannot yet fully articulate — and why I am seeking doctoral research to develop the methodologies, theoretical grounding, and sustained inquiry that practice alone cannot generate.</p>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
 
+        {/* ── ABOUT — dual-column: narrative left, lists right ── */}
+        <section className="about" id="about">
+          <div className="about__bg" aria-hidden="true" />
+          <div className="wrap">
             <div className="about__grid">
-              <FadeIn>
-                <div className="about__left">
+
+              {/* ── Left column: narrative ── */}
+              <div className="about__narrative">
+                <FadeIn>
                   <span className="eyebrow">About</span>
                   <h2 className="about__headline">
                     I make the invisible<br />
                     <em>legible.</em>
                   </h2>
+                  <p className="about__phd-intent">Currently exploring doctoral programmes in feminist STS, soma design, and research through design — asking how the fabric of urban environments excludes children as legitimate spatial participants, and what somatic knowledge six years of design research practice have surfaced but cannot yet fully articulate.</p>
                   <div className="about__body">
-                    <p>The most useful question in a project is rarely the one the brief contains. I've spent my working life — first as a philosopher and educator in Taiwan, then as a researcher across industries — learning to ask the one underneath: the question users and stakeholders haven't yet found language for.</p>
-                    <p>Before research, there was teaching. For seven years in Taiwan, I worked with high schoolers and medical students — not to give them answers, but to help them sit with hard questions. Philosophy, I came to believe, is not abstract: it is a discipline of staying with a question until it properly opens. That habit never left.</p>
-                    <p>Writing is how I hold the ambiguity. I write throughout my research — not to report findings after the fact, but to stay near the complexity while it's still alive. That's where the non-rational connections live: the ones data alone cannot hold. This same logic carries into how I work with groups. In workshops and facilitated sessions, I try to make space for thinking, feeling, and doing to happen together — because the most honest answers often emerge in motion.</p>
-                    <p>I studied at the School of Design Strategies at Parsons, New York — where design is a research practice, grounded in sociology and anthropology.</p>
-                    <p>I am a mother and a researcher; both have taught me to be fully present with what someone cannot yet say. Now back in Taipei — across eight industries, one preoccupation: making the invisible legible for those who need to act on it.</p>
+                    <p>Philosophy first, then teaching. Seven years with students in Taiwan taught me that staying with a hard question is itself a discipline. That habit followed me into design.</p>
+                    <p>At Parsons I learned to use design as a method for asking questions that conventional research cannot hold — a speculative biodesign at MoMA, a thesis on political silence. Writing runs through all of it: not to report, but to stay near the complexity while it's alive.</p>
+                    <p>Back in Taipei, I brought research through design into industry — sharpening my methods across health data, luxury retail, media, and arts education, while facilitating workshops that helped teams surface the shared vision and first viable steps that meetings alone could not reach.</p>
+                    <p>I am also a mother; that changed everything. Now, one preoccupation: making the invisible legible, so that what bodies already know can enter the conversation.</p>
                   </div>
-                </div>
-              </FadeIn>
-              <div className="about__right">
-
-                  {/* Stats strip */}
-                  <div className="about__stats">
-                    <div>
-                      <span className="about__stat-num">8+</span>
-                      <span className="about__stat-label">Industries</span>
-                    </div>
-                    <div>
-                      <span className="about__stat-num">20+</span>
-                      <span className="about__stat-label">Research engagements</span>
-                    </div>
-                    <div>
-                      <span className="about__stat-num">6</span>
-                      <span className="about__stat-label">Years in practice</span>
-                    </div>
-                  </div>
-
-                  {/* Lens groups as pill tags */}
-                  <div className="about__lenses">
-                    <div className="lens-group">
-                      <p className="lens-group__label">Domains</p>
-                      <div className="lens-group__pills">
-                        {['Digital Health', 'Public Policy', 'Luxury Retail', 'Arts & Culture', 'Education'].map(d => (
-                          <span key={d} className="about__pill">{d}</span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="lens-group">
-                      <p className="lens-group__label">Practices</p>
-                      <div className="lens-group__pills">
-                        {['Strategic Foresight', 'Speculative Design', 'Participatory Research', 'Insight Synthesis'].map(p => (
-                          <span key={p} className="about__pill">{p}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Education */}
                   <div className="about__edu">
                     <p className="about__edu-title">Education</p>
-                    <div className="edu-item">
-                      <p className="edu-item__degree">MFA, Transdisciplinary Design</p>
-                      <p className="edu-item__school">Parsons School of Design — The New School, 2019</p>
-                    </div>
-                    <div className="edu-item">
-                      <p className="edu-item__degree">BA, Philosophy · Presidential Award</p>
-                      <p className="edu-item__school">National Taiwan University, 2014</p>
+                    <div className="about__edu-items">
+                      <div className="edu-item">
+                        <p className="edu-item__degree">MFA, Transdisciplinary Design</p>
+                        <p className="edu-item__school">Parsons School of Design — The New School, 2019</p>
+                      </div>
+                      <div className="edu-item">
+                        <p className="edu-item__degree">BA, Philosophy · Presidential Award</p>
+                        <p className="edu-item__school">National Taiwan University, 2014</p>
+                      </div>
                     </div>
                   </div>
-
+                </FadeIn>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* ── RESEARCH INTERESTS ── */}
-        <section className="research" id="research">
-          <div className="wrap">
-            <FadeIn>
-              <span className="eyebrow">Research Interests</span>
-              <h2 className="research__headline">
-                Where practice meets<br /><em>inquiry.</em>
-              </h2>
-              <p className="research__intro">
-                Six years of industry research — across health data, luxury retail, media, arts education, and public policy — have surfaced a connected set of questions: how technology mediates experience, how participation generates knowledge, and how making systems legible is itself an ethical act. I want to pursue these questions with academic rigour, and am currently exploring PhD opportunities in design research, HCI, and Science &amp; Technology Studies.
-              </p>
-            </FadeIn>
-            <div className="research__grid">
-              {researchInterests.map((r, i) => (
-                <FadeIn key={r.theme} delay={i * 0.1}>
-                  <div className="research__card">
-                    <span className="research__num">{r.num}</span>
-                    <h3 className="research__theme">{r.theme}</h3>
-                    <p className="research__question">{r.question}</p>
-                    <p className="research__desc">{r.desc}</p>
-                    <div className="research__concepts">
-                      {r.concepts.map(c => (
-                        <span key={c} className="research__concept">{c}</span>
+              {/* ── Right column: experience + recognition ── */}
+              <div className="about__sidebar">
+                <FadeIn delay={0.15}>
+                  <div className="about__list-section">
+                    <h3 className="about__list-heading">Experience</h3>
+                    <ul className="about__timeline">
+                      {experience.map(e => (
+                        <li key={e.role} className="about__timeline-item">
+                          <span className="about__timeline-period">{e.period}</span>
+                          <span className="about__timeline-role">{e.role}</span>
+                          <span className="about__timeline-company">{e.company}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* ── RESEARCH & PUBLICATIONS ── */}
-        <section className="recognition">
-          <div className="wrap">
-            <FadeIn>
-              <span className="eyebrow">Research &amp; Academic Contributions</span>
-            </FadeIn>
-            <div className="recognition-list">
-              {recognition.map((r, i) => (
-                <FadeIn key={r.title} delay={i * 0.1}>
-                  <div className="recognition-item">
-                    <div className="recognition-item__meta">
-                      <span className="recognition-item__type">{r.type}</span>
-                      <span className="recognition-item__year">{r.year}</span>
-                    </div>
-                    <div>
-                      {r.link
-                        ? <a href={r.link} target="_blank" rel="noopener noreferrer" className="recognition-item__title recognition-item__title--link">{r.title} ↗</a>
-                        : <p className="recognition-item__title">{r.title}</p>
-                      }
-                      {r.authors && <p className="recognition-item__authors">{r.authors}</p>}
-                      {r.journal && <p className="recognition-item__journal">{r.journal}</p>}
-                      {r.venue && <p className="recognition-item__venue">{r.venue}</p>}
-                      <p className="recognition-item__detail">{r.detail}</p>
-                    </div>
+                  <div className="about__list-section">
+                    <h3 className="about__list-heading">Recognition</h3>
+                    <ul className="about__recognition">
+                      {recognition.map(r => (
+                        <li key={r.title} className="about__recognition-item">
+                          <span className="about__recognition-type">{r.type}</span>
+                          {r.link
+                            ? <a href={r.link} target="_blank" rel="noopener noreferrer" className="about__recognition-title">{r.title} ↗</a>
+                            : <span className="about__recognition-title">{r.title}</span>
+                          }
+                          <span className="about__recognition-venue">{r.venue}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
+              </div>
 
-        {/* ── EXPERIENCE ── */}
-        <section className="experience" id="experience">
-          <div className="wrap">
-            <FadeIn>
-              <h2 className="experience__title">Experience</h2>
-            </FadeIn>
-            <div className="timeline">
-              {experience.map((e, i) => (
-                <FadeIn key={e.role} delay={i * 0.08}>
-                  <div className="timeline-item">
-                    <span className="timeline__period">{e.period}</span>
-                    <div>
-                      <p className="timeline__role">{e.role}</p>
-                      <p className="timeline__company">{e.company}</p>
-                      <p className="timeline__desc">{e.desc}</p>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
             </div>
           </div>
         </section>
@@ -441,9 +284,9 @@ export default function Home() {
                 <div>
                   <span className="eyebrow">Contact</span>
                   <h2 className="contact__headline">
-                    The best work starts<br /><em>before the brief.</em>
+                    Let's start<br /><em>a conversation.</em>
                   </h2>
-                  <p className="contact__sub">I tend to be most helpful when the question is still forming. Based in Taipei — available for research partnerships, strategic advisory, and embedded project roles.</p>
+                  <p className="contact__sub">Based in Taipei — open to research collaborations, academic exchange, and new ways of thinking together.</p>
                 </div>
               </FadeIn>
               <FadeIn delay={0.12}>
@@ -474,9 +317,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="footer">
-          <p>© {new Date().getFullYear()} Tung Lin. All rights reserved.</p>
-        </footer>
+        <Footer />
 
       </div>{/* end .main-content */}
 

@@ -11,7 +11,7 @@ function AppFlowSVG() {
     { x: 448, tabActive: 3, label: 'Membership',   screenLabel: 'MEMBERSHIP' },
   ]
   return (
-    <svg viewBox="0 0 590 196" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
+    <svg viewBox="0 0 590 196" xmlns="http://www.w3.org/2000/svg" className="svg-responsive">
       <rect width="590" height="196" fill={bg}/>
       {/* Flow label */}
       <text x="295" y="13" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="6.5" fontWeight="600" letterSpacing="2" fill={gold} opacity="0.45">APP TASK FLOW</text>
@@ -97,7 +97,7 @@ function AppIASVG() {
   ]
   const secY = 88, itemY = 160, nodeW = 100, nodeH = 26, itemH = 22
   return (
-    <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', display: 'block' }}>
+    <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" className="svg-responsive">
       <rect width="580" height="250" fill={bg}/>
 
       {/* Root node */}
@@ -187,7 +187,7 @@ function WardrobeConceptSVG() {
     <svg
       viewBox="0 0 460 230"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ width: '100%', display: 'block', borderRadius: '4px' }}
+      className="svg-responsive"
     >
       {/* Background */}
       <rect width="460" height="230" fill="#100F0D"/>
@@ -315,28 +315,40 @@ export default function LuxuryVipApp() {
     <CaseLayout
       tags={['Luxury Retail', '0-to-1 Product', 'Mobile App']}
       title="The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor's First Mobile App"
-      subtitle="A luxury fashion distributor with 30+ years in the market needed its first mobile app — and their most valuable clients were the hardest to reach. Research surfaced how high-net-worth clients actually manage their wardrobes and make purchase decisions, and turned those behaviours into a product strategy no brief had anticipated."
+      subtitle="How do you research people who don&apos;t want to be observed — and what happens when they show you they&apos;ve already built the product you were hired to design?"
       meta={[
         { label: 'Industry', value: 'Luxury Fashion & Retail' },
+        { label: 'Role',     value: 'Research Lead — full lifecycle, discovery through concept validation' },
         { label: 'Methods',  value: 'Contextual Inquiry · Usability Testing' },
         { label: 'Scope',    value: '0-to-1 · Full Lifecycle' },
-        { label: 'Year',     value: '—' },
+        { label: 'Year',     value: '2022' },
       ]}
       nextCase={{ to: '/cases/academic-platform', title: 'The Infrastructure Nobody Mapped: Research for Taiwan\'s National Health Data Gateway' }}
     >
+      {/* ── IMPACT BAR ── */}
+      <div className="case-impact-bar">
+        <span className="case-impact-bar__label">Research Outcome</span>
+        <p className="case-impact-bar__text">
+          Contextual inquiry revealed that VIP clients had already built a personal wardrobe
+          archive system inside their camera rolls — photographing, organising, sharing with
+          sales associates over messaging apps. Nobody had designed this. Nobody had asked them
+          to. That finding became the product&apos;s North Star and reframed the entire app strategy.
+        </p>
+      </div>
+
       <FadeIn>
-        <figure className="case-img" style={{ marginTop: 0, background: '#100F0D', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(201,169,110,0.12)' }}>
+        <figure className="case-img case-figure-dark">
           <AppFlowSVG />
-          <figcaption style={{ background: '#100F0D', color: 'rgba(245,239,228,0.38)', paddingTop: '10px' }}>
-            App task flow — from brand discovery through product detail to wardrobe archiving and membership tracking
+          <figcaption>
+            App task flow derived from contextual inquiry findings — the four-screen sequence mirrors the actual decision journey observed in VIP client interviews, from brand browsing to the wardrobe archive behaviour that became the product&apos;s North Star
           </figcaption>
         </figure>
       </FadeIn>
 
       <FadeIn>
         <h2>The Challenge</h2>
-        <p>A leading luxury fashion distributor in Taiwan — representing multiple internationally acclaimed designer brands — decided to digitalise its VIP client services. The business operates with strictly tiered membership thresholds and purchasing cycles governed by biannual marquee events. Their clientele is high-net-worth, highly brand-loyal, and accustomed to white-glove, in-person service.</p>
-        <p>The structural challenge was twofold: how do you design a digital product that preserves the exclusivity and privacy these clients expect — and how do you conduct meaningful research with people who, by nature and preference, don't want to be observed?</p>
+        <p>A leading luxury fashion distributor in Taiwan — representing multiple designer brands — needed to digitise VIP client services. The clientele is high-net-worth, brand-loyal, and accustomed to white-glove, in-person relationships. They know their sales associate by name. They expect to be remembered.</p>
+        <p>The challenge was twofold: how do you create a digital experience that doesn&apos;t break the intimacy these clients expect from their relationship with the distributor — and how do you conduct meaningful research with people who, by instinct and preference, don&apos;t want to be observed?</p>
 
         <div className="pullquote">
           "The most important insight wasn't in the brief. It was in the behaviour nobody had thought to ask about yet."
@@ -345,9 +357,17 @@ export default function LuxuryVipApp() {
 
       <FadeIn>
         <h2>Research Design</h2>
+        <p className="case-body-sm">
+          <strong>Scope:</strong> Contextual inquiry with 6 VIP clients across Silver, Gold,
+          and Diamond membership tiers; internal stakeholder interviews with sales associates
+          and brand managers; end-to-end usability testing with 6 participants
+          (non-member · silver · diamond).
+        </p>
         <h3>Reaching the Unreachable</h3>
         <p>Standard research formats were ruled out from the start. In-person lab sessions, third-party platforms, and anything that felt clinical or transactional were non-starters for this audience. A <strong>remote contextual inquiry framework</strong> was built around a virtual observation room: participants were de-identified and given full privacy assurance, while internal stakeholders — brand managers, sales directors — observed in real time through a one-way mirror arrangement, routing questions through the moderator.</p>
-        <p>This served a dual purpose: generating the qualitative depth the project needed, while converting business sceptics into research advocates. When a brand director watches a VIP client describe her frustrations in her own words, the case for product investment makes itself.</p>
+        <p>Remote contextual inquiry offered a methodological advantage beyond logistics. It allowed observation of participants in their natural context — home, their personal device, their actual wardrobe space — while maintaining the privacy guarantees this demographic required. Understanding behaviour where it actually happens, not in a lab, mattered here. The trade-off was a loss of in-person nonverbal cues and environmental detail, but for this audience, the privacy assurance was the condition we couldn&apos;t compromise on. Everything else was negotiable.</p>
+        <p>This served a dual purpose: generating the qualitative depth the project needed, and creating moments where a brand director could hear a VIP client describe, in her own words, exactly what she needed. When that happens, the case for product investment makes itself.</p>
+        <p>A thing worth naming: this research was only possible because the distributor already had these relationships. Clients participated because they trusted the brand, not because they trusted research. We had access because of institutional standing, not because we earned it in the room. That shaped everything — which questions felt safe to ask, whose voices we heard, and whose we didn&apos;t. We studied the clients the distributor most wanted to keep. We did not study the ones they had already lost, or never reached.</p>
 
         <div className="callout">
           <h4>Research Methods</h4>
@@ -361,13 +381,14 @@ export default function LuxuryVipApp() {
         </div>
 
         <h3>The North Star Insight</h3>
-        <p>These clients had genuine fashion sensibility — they followed collections across seasons, tracked new arrivals with intent, and approached personal styling as a considered, ongoing practice. Shopping, for them, was not impulsive; it was curatorial. They maintained a mental model of their wardrobe, knew what was missing, and regularly consulted their sales associates not just for purchases but for styling advice and pairing suggestions.</p>
-        <p>What the research surfaced was how that behaviour had migrated to their phones. Clients were photographing every piece in their wardrobe — systematically, one item at a time — organising these into albums, and sharing them with their SAs over messaging apps. The camera roll had become a working wardrobe archive: a reference point for what they owned, what they were considering, and how new arrivals might fit in.</p>
-        <p>Nobody had designed this system. It had emerged from necessity — and it was the most honest signal of what the product needed to be. Turning that self-built archive into a structured, brand-integrated digital wardrobe became the product's <strong>North Star concept</strong>.</p>
+        <p>We entered with an assumption: that VIP clients would be drawn to the distributor&apos;s brand portfolio and the exclusivity of member-only access. The research surfaced something different.</p>
+        <p>These clients had genuine fashion sensibility. They followed collections across seasons. They tracked new arrivals with intent. Personal styling, for them, was not impulsive — it was curatorial. They maintained a mental model of their wardrobe, knew what was missing, and regularly consulted their sales associates not just for purchases but for pairing advice.</p>
+        <p>But here&apos;s what we actually found: that behaviour had already migrated to their phones. Clients were photographing every piece in their wardrobe — systematically, one item at a time — organising these into albums, and sharing them with their SAs over messaging apps. The camera roll had become a working wardrobe archive.</p>
+        <p>Nobody had designed this. Nobody had asked them to do it. It had emerged because nothing else existed — and it was the most honest signal of what the product actually needed to be. Not a shopping app with wardrobe features. A system built around what these clients were already doing, unprompted, on their own. That became the product&apos;s <strong>North Star</strong>.</p>
       </FadeIn>
 
       <FadeIn>
-        <figure className="case-img" style={{ background: '#F0F5F5', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border)', padding: '0' }}>
+        <figure className="case-img case-figure-light">
           <AppIASVG />
         </figure>
       </FadeIn>
@@ -375,32 +396,40 @@ export default function LuxuryVipApp() {
       <FadeIn>
         <h2>Experience Strategy</h2>
         <h3>Cross-Brand Curation</h3>
-        <p>The distributor operates multiple brands, yet VIP clients tend to develop strong loyalty to one label. A core business objective was cross-brand exposure without disrupting the client's preferred aesthetic relationship. The information architecture was built around a multi-brand curation module — surfacing complementary brands through contextual relevance rather than generic browsing.</p>
+        <p>The distributor operates multiple brands, yet VIP clients tend to develop strong loyalty to one label. A core business objective was cross-brand exposure without disrupting the client&apos;s preferred aesthetic relationship. The information architecture was built around a multi-brand curation module — surfacing complementary brands through contextual relevance rather than generic browsing.</p>
 
         <h3>Progressive Disclosure for Membership</h3>
         <p>The membership system is complex: tiered spending thresholds, seasonal milestone events, evolving reward structures. A <strong>progressive disclosure strategy</strong> was applied — surfacing only the most relevant membership status and upcoming milestone prominently, with full tier detail accessible on demand. The goal was to make the system feel generous, not bureaucratic.</p>
       </FadeIn>
 
       <FadeIn>
-        <figure className="case-img" style={{ background: '#100F0D', padding: '0', borderRadius: '6px', overflow: 'hidden' }}>
+        <figure className="case-img case-figure-dark">
           <WardrobeConceptSVG />
-          <figcaption style={{ background: '#100F0D', color: 'rgba(245,239,228,0.4)', paddingTop: '12px' }}>
-            The behaviour behind the product — VIP clients had already built personal wardrobe archives via camera roll and messaging, long before a dedicated app existed
+          <figcaption>
+            The emergent behaviour that redirected the entire product strategy — contextual inquiry revealed VIP clients had independently built wardrobe archives in their camera rolls and were sharing them with sales associates via messaging apps, a system no one had designed but everyone relied on
           </figcaption>
         </figure>
       </FadeIn>
 
       <FadeIn>
-        <h2>Validation</h2>
+        <h2>Did the Product Match the Behaviour?</h2>
         <p>Before development, usability testing was conducted with six participants across membership tiers — non-members, silver card, and diamond card holders — covering the full task flow with think-aloud protocol and a live online observation room for the client team.</p>
-        <p>Core flows — registration, brand exploration, and appointment booking — all achieved 100% task completion. Membership-related features landed between 50–83%, surfacing specific interface decisions to address before launch: tab bar icon labelling, the naming convention for the wardrobe feature, and the depth of the membership entry point. These were refined in the iteration cycle that followed.</p>
-        <p>By the end of testing, users were reaching for words like <em>clear</em>, <em>efficient</em>, and <em>easy to navigate</em> when asked to describe the experience. For a product serving an audience that expects simplicity as a baseline, that was the right signal to ship.</p>
+        <p>Core flows — registration, brand exploration, and appointment booking — all achieved 100% task completion. Membership-related features landed between 50–83%, which told us something useful: users moved fluently through tasks that mirrored their existing behaviour (browsing, saving, consulting), but needed more time with concepts that required them to think about the membership system abstractly. The wardrobe felt natural. The tier system felt like something imposed. That distinction shaped the next iteration.</p>
+        <p>By the end of testing, users were reaching for words like <em>clear</em>, <em>efficient</em>, and <em>easy to navigate</em>. For a product serving an audience that expects simplicity as a baseline, that was the right signal.</p>
 
         <h2>Reflection</h2>
-        <p>This project demonstrated what research does at its best: it doesn't just inform design — it reframes the problem. The brief was about building features. The findings revealed that the product's real job was to make visible what these clients already knew about themselves.</p>
-        <p>The most durable outcome wasn't the wireframes. It was the moment a brand director heard a VIP client describe her wardrobe in detail — and understood, for the first time, exactly what she needed the app to do.</p>
+        <p>The brief was about building features. The findings revealed that the product&apos;s real job was to make visible what these clients were already doing — and to do that clearly enough that a brand director could finally see it too.</p>
+        <p>The most durable outcome wasn&apos;t the wireframes. It was the moment a brand director heard a VIP client describe her camera roll wardrobe in detail — and understood, for the first time, exactly what she needed the app to do. That moment changed what the business was willing to build.</p>
+        <p>This project taught me that the most reliable product strategy isn&apos;t the one you invent. It&apos;s the one you discover was already there — in what people do when nobody&apos;s designed anything for them yet. The camera roll wardrobe was not a hack or a workaround. It was a self-built system that worked precisely because no institution had touched it. That pattern — people quietly building what they need when designed systems fail to notice — keeps appearing in every project since. It raises a harder question: what happens to those self-made systems once an institution finally does notice? Does the product honour what people built, or does it absorb and replace it?</p>
+        <p>That instinct has shaped how I approach research since: start by watching what people have already built for themselves, and ask why no one noticed.</p>
 
-        <p className="nda-note">Client identity, brand names, and specific performance metrics have been anonymised per confidentiality agreement. Happy to discuss the full project in depth during a conversation.</p>
+        <h2>Limitations</h2>
+        <p>We sampled from Diamond and Gold tier clients because they were the product&apos;s primary target. That was a business decision, and it was honest. But it means the camera roll insight came from the clients with the most institutional attention, the most SA relationships, the most familiarity with luxury retail.</p>
+        <p>Silver-tier members — lower spend, often newer to the distributor — might have entirely different workarounds, different needs, different frustrations we never heard. The product we designed optimised for clients the distributor already valued most. Whether it serves the ones they haven&apos;t reached is a question the research can&apos;t answer.</p>
+        <p>The privacy constraints of this context — de-identification, virtual observation, limited session flexibility — also shaped what we could see. We observed behaviour through screens. We didn&apos;t sit in anyone&apos;s closet. Some things about how people relate to their wardrobes, physically, spatially, emotionally, are only visible in person. Per confidentiality agreement, specific client details and brand names have not been disclosed.</p>
+        <p>For my PhD, I&apos;m asking a version of the same question in a very different context: what are children already doing in public space that nobody designed for them? The populations couldn&apos;t be more different — VIP fashion clients and urban children share almost nothing in common. But the research instinct is the same: pay attention to what people build for themselves when institutions haven&apos;t, and take that seriously as evidence of what they actually need.</p>
+
+        <p className="nda-note">Client identity, brand names, and specific performance metrics have been anonymised per confidentiality agreement. The research methodology, strategic insights, and design principles remain fully documented and available for discussion in detail. I&apos;m happy to explore the project in depth during a conversation.</p>
       </FadeIn>
     </CaseLayout>
   )

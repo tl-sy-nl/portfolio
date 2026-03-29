@@ -10,60 +10,33 @@ function Lightbox({ title, caption, onClose, children }) {
     <div
       role="dialog"
       aria-modal="true"
-      style={{
-        position: 'fixed', inset: 0, zIndex: 9999,
-        background: 'rgba(10,16,20,0.82)',
-        backdropFilter: 'blur(6px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '24px',
-      }}
+      className="lightbox-overlay"
       onClick={onClose}
     >
       <div
-        style={{
-          background: '#fff', borderRadius: 14,
-          padding: '36px 40px 28px',
-          maxWidth: 920, width: '100%',
-          maxHeight: '92vh', overflowY: 'auto',
-          boxShadow: '0 40px 100px rgba(0,0,0,0.4)',
-        }}
+        className="lightbox-content"
         onClick={e => e.stopPropagation()}
       >
-        <div style={{
-          display: 'flex', justifyContent: 'space-between',
-          alignItems: 'flex-start', marginBottom: 28,
-        }}>
+        <div className="lightbox-header">
           <div>
-            <p style={{
-              margin: '0 0 6px',
-              fontSize: '0.65rem', fontWeight: 700,
-              letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: '#1A5C72',
-            }}>
+            <p className="lightbox-label">
               Research Diagram
             </p>
-            <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 600, color: '#111', lineHeight: 1.35 }}>
+            <h3 className="lightbox-title">
               {title}
             </h3>
           </div>
           <button
             onClick={onClose}
             aria-label="Close diagram"
-            style={{
-              background: 'none', border: 'none', cursor: 'pointer',
-              padding: '2px 8px', color: '#999', fontSize: '1.5rem',
-              lineHeight: 1, marginLeft: 20, flexShrink: 0,
-            }}
+            className="lightbox-close"
           >
             ×
           </button>
         </div>
         {children}
         {caption && (
-          <p style={{
-            margin: '20px 0 0',
-            fontSize: '0.78rem', color: '#666', lineHeight: 1.65, fontStyle: 'italic',
-          }}>
+          <p className="lightbox-caption">
             {caption}
           </p>
         )}
@@ -80,7 +53,7 @@ function DiagramFigure({ title, caption, children }) {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <figure style={{ margin: '0 0 48px' }}>
+    <figure className="diagram-figure">
       <div
         onClick={() => setOpen(true)}
         onMouseEnter={() => setHovered(true)}
@@ -88,35 +61,16 @@ function DiagramFigure({ title, caption, children }) {
         role="button"
         tabIndex={0}
         onKeyDown={e => e.key === 'Enter' && setOpen(true)}
-        style={{
-          cursor: 'zoom-in',
-          borderRadius: 10,
-          border: `1px solid ${hovered ? 'rgba(26,92,114,0.28)' : 'rgba(26,92,114,0.14)'}`,
-          background: '#F7F5F1',
-          padding: '28px 20px 14px',
-          boxShadow: hovered ? '0 6px 28px rgba(26,92,114,0.12)' : 'none',
-          transition: 'box-shadow 0.2s, border-color 0.2s',
-          outline: 'none',
-          overflow: 'hidden',
-        }}
+        className="diagram-figure__container"
+        data-hovered={hovered}
       >
         {children}
-        <p style={{
-          textAlign: 'right', margin: '10px 4px 0',
-          fontSize: '0.67rem', color: '#1A5C72',
-          letterSpacing: '0.06em', fontStyle: 'italic',
-          opacity: hovered ? 1 : 0.5,
-          transition: 'opacity 0.2s',
-        }}>
+        <p className="diagram-figure__hint">
           Click to enlarge ↗
         </p>
       </div>
       {caption && (
-        <figcaption style={{
-          marginTop: 10,
-          fontSize: '0.78rem', color: '#666', lineHeight: 1.65, fontStyle: 'italic',
-          paddingLeft: 2,
-        }}>
+        <figcaption className="diagram-figure__caption">
           {caption}
         </figcaption>
       )}
@@ -169,7 +123,7 @@ function ResearchProcessDiagram() {
   const boxY = (H - boxH) / 2
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
       {phases.map((ph, i) => {
         const x = startX + i * (boxW + arrowZone)
         const cx = x + boxW / 2
@@ -305,7 +259,7 @@ function PersonaMatrixDiagram() {
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
       <MatrixGroup
         ox={leftX}
         personas={parentPersonas}
@@ -372,7 +326,7 @@ function ParentJourneyDiagram() {
   const insightY = 136, insightH = 58
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
       {/* Legend */}
       <rect x={W - 138} y={2} width={9} height={9} rx={2} fill={glow} opacity="0.55" />
       <text x={W - 125} y={10} fontSize="7.5" fontFamily="Inter, sans-serif"
@@ -538,7 +492,7 @@ function ScenarioStoryboardDiagram() {
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
       {[0, 1, 2, 3, 4, 5].map(i => {
         const col = i % 3
         const row = Math.floor(i / 3)
@@ -610,7 +564,7 @@ function InteractionArchDiagram() {
   const arrowX = bX + 30
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: 'block' }}>
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
       {/* Flow label — vertical, right margin */}
       <text
         x={W - 11} y={startY + totalH / 2}
@@ -689,29 +643,40 @@ export default function ArtsEducation() {
     <CaseLayout
       tags={['Arts & Culture', 'Discovery Research', 'Interaction Design']}
       title="Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation's Online School"
-      subtitle="A pre-product discovery study into whether a presence-dependent performing arts pedagogy could survive digital translation — and what it would take to ensure it remained, online, unmistakably itself."
+      subtitle="What gets lost when a presence-dependent practice goes online — and what commitment would it take to ensure the practice remained, unmistakably, itself?"
       meta={[
         { label: 'Industry', value: 'Performing Arts & Education' },
+        { label: 'Role',     value: 'Senior UX Researcher — discovery research lead, 19 interviews + 24 concept sessions' },
         { label: 'Methods',  value: 'Contextual Inquiry · Concept Testing · Interaction Design' },
         { label: 'Scope',    value: '19 interviews · 24 concept sessions · Taiwan & mainland China' },
         { label: 'Year',     value: '2021' },
       ]}
-      nextCase={{ to: '/cases/luxury-vip-app', title: "The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor's First Mobile App" }}
+      nextCase={{ to: '/cases/out-edge', title: "Out/Edge" }}
     >
+
+      {/* ── IMPACT BAR ── */}
+      <div className="case-impact-bar">
+        <span className="case-impact-bar__label">Research Outcome</span>
+        <p className="case-impact-bar__text">
+          Discovery research — 19 interviews and 24 concept sessions conducted in participants&apos; homes across Taiwan and mainland China — revealed that the core barrier for senior practitioners wasn&apos;t technology; it was the loss of presence. For parents, the barrier was different: designing for the child alone would fail, because the parent becomes the pedagogical environment. These findings reshaped what the platform needed to preserve.
+        </p>
+      </div>
 
       {/* ── SECTION 1: Opening ── */}
       <FadeIn>
         <h2>What the Room Was Doing</h2>
-        <p>There are things a teacher does with her body that no screen can carry. The slight adjustment of a student's posture — a hand on the shoulder, a shift of weight demonstrated in real time. The rhythm of breath shared across a room. The particular stillness that falls over a group of children when the practice deepens and they stop needing to be told what comes next. These are the conditions under which a certain kind of learning happens. They are also the first things lost when you move that learning online.</p>
-        <p>A leading Taiwanese performing arts organisation had spent decades building its educational practice on exactly these conditions. When COVID-19 closed its doors in early 2021, the question was not whether to go digital — the pressure was already there — but whether anything worth preserving could survive the translation. The organisation's leadership understood the risk clearly: this was a practice that lived in the body, taught through presence, and sustained by the quiet authority of a shared physical space.</p>
-        <p>There was a second difficulty, less obvious but equally defining. The organisation's audience — parents, adult practitioners, long-time devotees of the art form — came with an expectation of aesthetic seriousness. They had chosen this institution precisely because it did not look or feel like mass-market education. But online learning, especially for children, demands attention management: animation, interactivity, sensory variety. Every tool designed to hold a child's focus on a screen risks undermining the very quality that made the institution worth attending. The challenge was not just to put the practice online. It was to do so without betraying what the practice meant.</p>
+        <p>There are things a teacher does with her body that no screen can carry — a hand on the shoulder, breath shared across a room, the particular stillness when learning deepens. These are the conditions under which a certain kind of learning happens. The question we entered was not &quot;can we preserve these?&quot; but what would it take to refuse the losses that digital translation typically demands. Could we build something online that remained unmistakably itself?</p>
+        <p>As senior UX researcher leading this discovery phase, I occupied an unusual position: I was trained in tech industry contexts — used to thinking about engagement metrics, retention, and scale — but this organisation worked from radically different premises. The practice was not meant to be scaled. Its power lay in its particularity, its slowness, its refusal to compete on the market&apos;s terms. That tension shaped the research from the start.</p>
+        <p>A leading Taiwanese performing arts organisation had spent decades building its educational practice on exactly these conditions. COVID-19 forced the decision in early 2021. But the organisation&apos;s leadership understood what was at stake: this was a practice that lived in the body, taught through presence, sustained by shared physical space. Any translation risked converting embodied wisdom into consumable content.</p>
+        <p>There was a second difficulty, less obvious but equally defining. The organisation&apos;s audience — parents, adult practitioners, long-time devotees of the art form — came with an expectation of aesthetic seriousness. They had chosen this institution precisely because it did not look or feel like mass-market education. But online learning, especially for children, demands attention management: animation, interactivity, sensory variety. Every tool designed to hold a child&apos;s focus on a screen risks undermining the very quality that made the institution worth attending. The challenge was not just to put the practice online. It was to do so without betraying what the practice meant.</p>
       </FadeIn>
 
       {/* ── SECTION 2: Research Design ── */}
       <FadeIn>
         <h2>Two Populations, Two Kinds of Doubt</h2>
-        <p>The research was structured around two user groups whose concerns had almost nothing in common. Families — parents bringing young children into the practice — were asking a practical question: could the discipline and attentiveness that a physical class demanded be sustained at home, with a parent as the stand-in for the teacher? Senior practitioners (長青者), a segment the organisation had cultivated for years, were asking something quieter and more personal: whether this body — slower now, more cautious — could still find its way into the practice through a screen.</p>
-        <p>Nineteen in-depth interviews were conducted in participants' homes and practice spaces — not in neutral settings — across four cities in Taiwan and two in mainland China. That decision to enter people's actual environments turned out to matter. In the apartments of northern Taiwan, living rooms are small and often crowded; movements that involve jumping or running risk disturbing downstairs neighbours. In Taichung and Kaohsiung, families tended to have more space — children could run, houses had play rooms, the floor was theirs to use. The home, it became clear, was not a neutral backdrop for practice. It was a site with its own constraints, and those constraints were not evenly distributed.</p>
+        <p>The research pulled in opposite directions. Families — parents bringing young children into the practice — needed proof of something practical: could discipline and attentiveness survive a parent&apos;s mediation at home? Senior practitioners (長青者), a segment the organisation had cultivated for years, needed something quieter and more personal: could their aging bodies still find home in the practice through a screen, or would it convert participation into spectatorship? These weren&apos;t just different user needs. They were testing what happens to an embodied practice when the body itself becomes variable.</p>
+        <p>Nineteen in-depth interviews were conducted in participants&apos; homes and practice spaces — not in neutral settings — across four cities in Taiwan and two in mainland China. Conducting interviews in naturalistic settings rather than neutral venues allowed us to observe the actual constraints participants work within, a principle rooted in ecological approaches to design research.</p>
+        <p>That decision to enter people&apos;s actual environments turned out to matter. In the apartments of northern Taiwan, living rooms are small and often crowded; movements that involve jumping or running risk disturbing downstairs neighbours. In Taichung and Kaohsiung, families tended to have more space — children could run, houses had play rooms, the floor was theirs to use. The home, it became clear, was not a neutral backdrop for practice. It was a site with its own constraints, and those constraints were not evenly distributed.</p>
       </FadeIn>
 
       <FadeIn>
@@ -726,10 +691,34 @@ export default function ArtsEducation() {
       {/* ── SECTION 3: What We Found ── */}
       <FadeIn>
         <h2>What the Research Found</h2>
-        <p>We had assumed, going in, that technology would be the barrier for senior practitioners. It wasn't. The people we spoke to managed smartphones and video calls without difficulty. What emerged instead, when we asked them to imagine practising alone in front of a screen, was something quieter — something closer to vulnerability. Movement practice at this age involves a real relationship with physical risk — a misstep, an overextension, a fall. In a physical class, the teacher sees. On a screen, no one sees. For a meaningful portion of this segment, self-directed digital participation was not viable until that concern had been addressed directly — not by a help page, but by a person. Human-mediated onboarding was not a workaround. It was a prerequisite.</p>
+        <p>We had assumed, going in, that technology would be the barrier for senior practitioners. It wasn&apos;t. The people we spoke to managed smartphones and video calls without difficulty. What emerged instead, when we asked them to imagine practising alone in front of a screen, was something quieter — something closer to vulnerability. Movement practice at this age involves a real relationship with physical risk — a misstep, an overextension, a fall. In a physical class, the teacher sees. On a screen, no one sees.</p>
+        <p>What senior practitioners needed wasn&apos;t technical training. They needed assurance that someone still held them in regard — care that couldn&apos;t be automated. Human-mediated onboarding became a design requirement, not a workaround. The platform couldn&apos;t begin with self-directed use; it had to begin with a person.</p>
         <p>There was also a deeper motivation at stake. The practice is not a weekly event — it is a physical discipline whose benefits depend on regularity. For senior practitioners, the online platform offered something the physical class alone could not: a way to maintain strength and movement between sessions, at home, on their own terms. The goal was not to replace the studio. It was to extend the practice into the days in between.</p>
-        <p>The parent segment surprised us in a different direction. We had gone in assuming parents were facilitators — adults who would set up the device, press play, and step back. At home, with no teacher present, that assumption dissolved. The parent becomes the pedagogical environment. They are the ones who hold the space, model the attention, and carry the practice across sessions. Designing for the child's experience alone would have failed the segment's actual structure. The platform needed to teach the parents how to be in the room — so that children, at home, could still encounter the practice as something artistically serious, not just something to watch.</p>
-        <p>The third finding was the one that reframed the design problem entirely. The organisation's audience had not chosen it for convenience. They had chosen it for what it stood for — a kind of seriousness about the art form that set it apart from the broader market of children's enrichment activities. Online learning, particularly for young children, tends to compensate for lost physical presence with stimulation: faster edits, brighter colours, interactive prompts designed to recapture attention every few seconds. Each of these tools works against the quality the organisation had spent decades building. The design challenge was not to make the platform engaging. It was to make it engaging in a way that remained, unmistakably, itself.</p>
+        <p>The parent segment surprised us in a different direction. We had gone in assuming parents were facilitators — adults who would set up the device, press play, and step back. At home, with no teacher present, that assumption dissolved. The parent becomes the pedagogical environment. They are the ones who hold the space, model the attention, and carry the practice across sessions.</p>
+        <p>The real work was redistributing knowledge — not simplifying it. The platform had to teach parents how to hold a space for this practice, not how to operate a tool. Designing for the child&apos;s experience alone would have failed the segment&apos;s actual structure.</p>
+        <p>The third finding reframed the design problem entirely. The organisation&apos;s audience had not chosen it for convenience. They had chosen it for what it stood for — a kind of seriousness about the art form that set it apart from the broader market of children&apos;s enrichment activities. Their refusal of stimulation-driven design was a refusal of the logics that dominate ed-tech: the assumption that children need constant novelty, the child as an audience to be held rather than a learner to be trusted.</p>
+        <p>Each engagement tool designed to hold a child&apos;s focus on a screen risked undermining the very quality that made the institution worth attending. The design challenge was not to make the platform engaging. It was to make it engaging in a way that remained, unmistakably, itself.</p>
+        <p>A thing worth naming: all three findings came from the organisation&apos;s existing community — families and practitioners who had already chosen this practice and believed in what it stood for. We did not study parents who considered and walked away, or senior practitioners who had quietly stopped attending. Their reasons for leaving might have told a very different story about what the practice actually demands and who it serves. What we heard was shaped by who was still in the room.</p>
+        <p>There is also a question the research raised but could not settle: whether what gets lost in digital translation is fidelity — a technical problem of resolution and latency — or something more fundamental. Senior practitioners don&apos;t stop attending because they can&apos;t use a screen. They stop because life intervenes — caring for grandchildren, recovering from illness, losing the rhythm of a weekly commitment. What they described needing was not a better interface. It was someone checking in, gently, regularly — a human continuity that says <em>we noticed you weren&apos;t here, and the space is still yours</em>. The parents were not describing a bad interface either. They were describing the weight of holding attention for a child in a room where no one else was modelling it. These are not problems of medium. They are problems of relation — and that distinction matters, because the solutions are completely different.</p>
+      </FadeIn>
+
+      <FadeIn>
+        <figure className="diagram-figure">
+          <div className="diagram-figure__container">
+            {/* TODO: Add srcSet when 2x version of image is available */}
+            <img
+              src="/aja/teaching-contexts.jpg"
+              alt="Teaching context classification developed during the study — mapping the spatial, relational, and temporal conditions under which performing arts pedagogy operates across physical and digital settings"
+              width="1530"
+              height="2160"
+              className="svg-responsive"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="diagram-figure__caption">
+            Teaching context classification — mapping how spatial, relational, and temporal conditions shift between physical studio and home-based digital settings, and what each shift demands of the platform&apos;s design
+          </figcaption>
+        </figure>
       </FadeIn>
 
       <FadeIn>
@@ -744,10 +733,34 @@ export default function ArtsEducation() {
       {/* ── SECTION 4: What the Research Made Possible ── */}
       <FadeIn>
         <h2>What the Research Made Possible</h2>
-        <p>The conventional answer to declining engagement in online learning is stimulation — faster feedback loops, reward mechanics, streaks and badges designed to bring users back. For most platforms, this is reasonable. For this organisation, it would have been a quiet act of self-destruction. Its audience had not chosen it for convenience or gamified motivation. They had chosen it for what the practice demanded of them: patience, repetition, the slow accumulation of something that cannot be rushed. Designing reward mechanisms into the platform would have spoken a language the institution had never used — and its most loyal users would have heard the difference immediately.</p>
-        <p>What the research made possible was a different kind of answer. The onboarding flow for senior practitioners was built around a human conversation before any self-directed use — because the barrier was not technology, but trust. The parent experience was designed as a parallel learning journey, not a management interface — because the barrier was not access, but confidence in the room. The platform's visual and tonal language stayed close to the physical institution: unhurried, serious, aesthetically considered.</p>
+        <p>The conventional answer to declining engagement in online learning is stimulation — faster feedback loops, reward mechanics, streaks and badges designed to bring users back. For most platforms, this is reasonable. For this organisation, it would have been a quiet act of self-destruction. Its audience had not chosen it for convenience or gamified motivation. They had chosen it for what the practice demanded of them: patience, repetition, the slow accumulation of something that cannot be rushed.</p>
+        <p>What we needed instead was a different starting point: design that respects why people chose this practice in the first place — not because it was easy or entertaining, but because it asked something of them. The platform had to honour that choice, not try to manufacture it.</p>
+        <p>What the research made possible was a different kind of answer. The onboarding flow for senior practitioners was built around a human conversation before any self-directed use — because the barrier was not technology, but trust. The parent experience was designed as a parallel learning journey, not a management interface — because the barrier was not access, but confidence in the room. The platform&apos;s visual and tonal language stayed close to the physical institution: unhurried, serious, aesthetically considered.</p>
         <p>The outcome was a platform designed to sit alongside the physical school, not to replace it. During COVID, it became the infrastructure that held the community together — online check-ins, shared replay sessions, the small exchanges that kept people connected to the practice and to each other across the weeks when the studio was closed. When the doors reopened, the platform remained: not as an emergency measure, but as the seamless extension of something that now ran across both worlds.</p>
         <p>The research had not found a way to make the practice easier to deliver online. It had found a way to ensure that whatever was delivered online was still, recognisably, the same practice. That distinction was the design brief.</p>
+        <p>This project taught me something specific: some practices live in the body, and the body needs other bodies nearby. That&apos;s not a metaphor. Senior practitioners needed to feel held. Children needed someone in the room modelling attention. Parents needed to know their own presence mattered. None of that could be digitised. It could only be designed around — carefully, with real limits on what we promised.</p>
+        <p>That became the real finding. Not &quot;how do we make this work online&quot; but &quot;what are we committing to lose if we insist it can work online without change?&quot; The question is not unique to this organisation. Every time an embodied practice moves to a screen — rehabilitation, dance, martial arts, music — the same negotiation happens. What I learned here is that the negotiation is not about technology. It is about what a practice needs from bodies being near each other, and whether the institution is willing to name what it cannot provide remotely rather than pretending the gap doesn&apos;t exist.</p>
+        <p>That question stayed with me, specifically because of the bodies involved. Older bodies practising movement alone. Children&apos;s bodies in small apartments. Parents&apos; bodies trying to hold a space they&apos;d never held before.</p>
+        <p>When I think about my PhD research — how cities shape what children can do in public space — I think about those same physical realities. Not platform design anymore, but sidewalks, playgrounds, intersections. The materials change completely. But the core problem is the same: something that matters to a child&apos;s development depends on conditions that adults design, and those adults rarely ask the child what they need.</p>
+      </FadeIn>
+
+      <FadeIn>
+        <figure className="diagram-figure">
+          <div className="diagram-figure__container">
+            {/* TODO: Add srcSet when 2x version of image is available */}
+            <img
+              src="/aja/media-richness-indicators.jpg"
+              alt="Media richness indicators framework — a research artifact developed to evaluate which dimensions of embodied pedagogy survive digital translation and which require compensatory design strategies"
+              width="1530"
+              height="1480"
+              className="svg-responsive"
+              loading="lazy"
+            />
+          </div>
+          <figcaption className="diagram-figure__caption">
+            Media richness indicators — research framework developed to evaluate which dimensions of embodied pedagogy survive digital translation and which require compensatory design intervention
+          </figcaption>
+        </figure>
       </FadeIn>
 
       <FadeIn>
@@ -757,6 +770,12 @@ export default function ArtsEducation() {
         >
           <InteractionArchDiagram />
         </DiagramFigure>
+      </FadeIn>
+
+      <FadeIn>
+        <h2>Limitations</h2>
+        <p>Interviews were conducted in participants&apos; homes and practice spaces — a choice grounded in ecological research traditions, where naturalistic settings reveal constraints that participants have learned to normalise. The study engaged 19 participants across four cities in Taiwan and two in mainland China — an intentional geographic spread designed to surface variation in home environments and spatial constraints. Recruitment was concentrated in urban settings, which means the findings may not fully represent participants in less densely populated areas where home conditions, community structures, and access to physical practice spaces differ.</p>
+        <p>Both user segments — families and senior practitioners — were existing students or parents of existing students; the platform we designed was built for believers. It assumes the practice has already been chosen. That&apos;s an honest constraint — and it limits what the findings can say about acquisition. Concept testing was conducted during acute crisis, when the organisation&apos;s energy was focused on survival rather than experimentation — a context that likely heightened receptivity to digital alternatives and may not fully reflect behaviour once in-person options returned. Per NDA, the organisation&apos;s identity and specific platform metrics have not been disclosed.</p>
       </FadeIn>
 
       <FadeIn>

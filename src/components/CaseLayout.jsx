@@ -1,14 +1,29 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FadeIn, PageTransition } from './FadeIn'
+import Footer from './Footer'
 
 export default function CaseLayout({ title, subtitle, tags, meta, children, nextCase }) {
+  useEffect(() => {
+    const prev = document.title
+    document.title = `${title} — Tung Lin`
+    const descEl = document.querySelector('meta[name="description"]')
+    const prevDesc = descEl?.getAttribute('content')
+    if (descEl) descEl.setAttribute('content', subtitle)
+    return () => {
+      document.title = prev
+      if (descEl && prevDesc) descEl.setAttribute('content', prevDesc)
+    }
+  }, [title, subtitle])
+
   return (
     <PageTransition>
       <nav className="case-nav">
         <div className="case-nav__inner">
           <Link to="/#work" className="case-nav__back">← All Projects</Link>
           <Link to="/" className="case-nav__logo">Tung Lin</Link>
+          <a href="mailto:tunglin.sy@gmail.com" className="case-nav__contact">Get in touch ↗</a>
         </div>
       </nav>
 
@@ -18,7 +33,7 @@ export default function CaseLayout({ title, subtitle, tags, meta, children, next
             className="case-hero__inner"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="case-hero__tags">
               {tags.map(t => <span key={t} className="tag">{t}</span>)}
@@ -33,7 +48,7 @@ export default function CaseLayout({ title, subtitle, tags, meta, children, next
             className="case-meta"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
             {meta.map(m => (
               <div key={m.label} className="case-meta__item">
@@ -50,7 +65,7 @@ export default function CaseLayout({ title, subtitle, tags, meta, children, next
       </div>
 
       {nextCase && (
-        <div style={{ maxWidth: 'var(--w-content)', margin: '0 auto 80px', padding: '0 40px' }}>
+        <div className="next-case-wrapper">
           <FadeIn>
             <Link to={nextCase.to} className="next-case">
               <div>
@@ -63,9 +78,7 @@ export default function CaseLayout({ title, subtitle, tags, meta, children, next
         </div>
       )}
 
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Tung Lin. All rights reserved.</p>
-      </footer>
+      <Footer />
     </PageTransition>
   )
 }

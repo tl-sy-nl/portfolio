@@ -210,7 +210,7 @@ export default function AcademicPlatform() {
         { label: 'Year',     value: '2022' },
         { label: 'Publication', value: 'Peer-reviewed — ComSIS Journal, 2023' },
       ]}
-      nextCase={{ to: '/cases/digital-learning', title: "What the Analytics Couldn't Show: Research for a Media Group's Enterprise Learning Platform" }}
+      nextCase={{ to: '/cases/luxury-vip-app', title: "The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor's First Mobile App" }}
     >
 
       {/* ── IMPACT BAR ── */}

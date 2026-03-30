@@ -4,7 +4,6 @@ import Nav from './components/Nav'
 import Home from './pages/Home'
 import LuxuryVipApp from './pages/cases/LuxuryVipApp'
 import AcademicPlatform from './pages/cases/AcademicPlatform'
-import DigitalLearning from './pages/cases/DigitalLearning'
 import ArtsEducation from './pages/cases/ArtsEducation'
 import Beyond100 from './pages/cases/Beyond100'
 import OutEdge from './pages/cases/OutEdge'
@@ -32,7 +31,6 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cases/luxury-vip-app" element={<LuxuryVipApp />} />
           <Route path="/cases/academic-platform" element={<AcademicPlatform />} />
-          <Route path="/cases/digital-learning" element={<DigitalLearning />} />
           <Route path="/cases/arts-education" element={<ArtsEducation />} />
           <Route path="/cases/beyond-100" element={<Beyond100 />} />
           <Route path="/cases/out-edge" element={<OutEdge />} />

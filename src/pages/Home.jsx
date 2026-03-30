@@ -16,15 +16,6 @@ const work = [
     pattern: 'health',
   },
   {
-    to: '/cases/digital-learning',
-    title: 'What the Analytics Couldn\'t Show',
-    desc: 'Three structural misalignments between how a media group understood its learning platform and how users experienced it.',
-    tags: ['Media', 'Mixed-Methods'],
-    year: '2023',
-    role: 'Research Lead · AJA Creative',
-    pattern: 'media',
-  },
-  {
     to: '/cases/luxury-vip-app',
     title: 'The Camera Roll as Wardrobe',
     desc: 'How high-net-worth clients actually manage their wardrobes — and why a phone gallery became the unexpected centre of the experience.',

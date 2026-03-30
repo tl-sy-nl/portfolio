@@ -34,11 +34,17 @@ export function CaseImage({ src, alt, width, height, caption }) {
       </figure>
 
       {open && (
-        <div className="lightbox-overlay" onClick={handleClose}>
-          <button className="lightbox-close" onClick={handleClose} aria-label="Close">×</button>
+        <div
+          className="lightbox-overlay"
+          onClick={handleClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Enlarged image view"
+        >
+          <button className="lightbox-close" onClick={handleClose} aria-label="Close enlarged image">×</button>
           <img
             src={src}
-            alt={alt}
+            alt={`Enlarged view: ${alt}`}
             className="lightbox-img"
             onClick={(e) => e.stopPropagation()}
           />

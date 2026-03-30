@@ -18,10 +18,10 @@ export default function OutEdge() {
     >
       <FadeIn>
         <p>
-          Social media promised to connect people across difference. Instead, it narrowed belonging: people retreat into affinity circles or harden into adversarial camps. When politics enters, platforms stop mediating and start amplifying. Out/Edge began with that contradiction — and asked what would happen if we reversed the logic. What if a platform could be structured to make dissent <em>safer</em>, not riskier? And what design materials — including silence itself — might invite people to listen across difference?
+          Out/Edge started in two places at once. My partner was reading Reddit threads &mdash; watching how platform structures shaped what people dared to say. I was in rooms &mdash; Cafe Philo sessions in New York, civic discussions we organised through g0v.tw &mdash; spaces where strangers who disagreed had agreed to show up anyway. I posted probes on Facebook, testing whether people who wouldn&apos;t come to a room might still engage with a question. And we annotated online political discussions together, mapping language patterns with what would become our meta-function chart.
         </p>
         <p>
-          As visual storyteller and workshop facilitator in this project, my role was to make visible the invisible structures — the temporal rhythms, the affective barriers, the unspoken rules — that shaped how people felt safe or unsafe speaking. Coming from a design background rather than political theory, I approached this not through the scholarly literature on deliberative democracy but through what platforms actually do to people in the moment of disagreement: the micro-level of discomfort, trust, and timing.
+          What I kept noticing wasn&apos;t about what people believed. It was about what the space made possible. In person, a pause could shift the entire room. Online, that pause didn&apos;t exist &mdash; the platform had already decided the rhythm. I came from design, not political theory, so I wasn&apos;t asking whether deliberative democracy works. I was asking something more specific: what does a designed environment do to the moment someone decides whether to speak or stay silent?
         </p>
       </FadeIn>
 
@@ -50,19 +50,7 @@ export default function OutEdge() {
           </em>
         </p>
         <p>
-          Out/Edge began with an observation: online spaces that promised open dialogue were
-          actively foreclosing it. The algorithm-driven feeds, the binary reply structures, the
-          gamified metrics of likes and shares — all of these mechanisms shaped not just what
-          people saw, but what they felt safe expressing. We set out to ask: what if we designed
-          the inverse? What if a platform could be structured to make dissent <em>possible</em> rather
-          than punishing? And what design materials — including silence itself — might invite people
-          to listen across difference?
-        </p>
-        <p>
-          What determines whether someone shares or retreats in a debate is not ideology — it&apos;s environment. Whether people defend, attack, drop out, or keep engaging depends on whether they believe others will receive their contribution as legitimate. That belief isn&apos;t fixed; it&apos;s shaped by how the space is designed.
-        </p>
-        <p>
-          Provide an environment where contribution feels safe, and people share more. That&apos;s when cooperation becomes possible. That was the baseline we were designing for.
+          We set out to invert the conditions we&apos;d observed. If existing platforms rewarded broadcasting and punished nuance, what would a platform look like that did the opposite? Out/Edge tested this through an open-source AI moderator trained by participants themselves. All discourse data was visible &mdash; people could see and revise how their conversations were being tagged. The principle underneath: people don&apos;t defend positions; they defend the identities attached to those positions. A space that asks &quot;what would I need to hear to reconsider?&quot; creates different conditions than one that asks &quot;are you wrong?&quot;
         </p>
       </FadeIn>
 
@@ -83,12 +71,9 @@ export default function OutEdge() {
       </FadeIn>
 
       <FadeIn>
-        <h2>What Platforms Actually Do to Disagreement</h2>
+        <h2>How We Began to See Disagreement</h2>
         <p>
-          We discovered that the affordances of existing platforms didn&apos;t just shape <em>what</em> people could say — they shaped what people felt permission to express. Algorithmic feeds encouraged broadcasting over listening. Binary reply structures collapsed nuance. Visible engagement metrics gamified the stakes. These weren&apos;t bugs; they were design choices with affective consequences. Our question became: what if we inverted these affordances? What structures might make dissent legible as <em>contribution</em> rather than <em>threat</em>?
-        </p>
-        <p>
-          Out/Edge tested this through an open-source AI moderator trained by the users themselves. All discourse data was visible; participants could see and revise how their conversations were being tagged. The design principle: people don&apos;t defend positions; they defend the identities attached to those positions. A platform that asks &quot;what would I need to hear to reconsider?&quot; instead of &quot;are you wrong?&quot; creates different conditions for thinking.
+          To understand what platforms do to conversation, we closely read actual discussions &mdash; Cafe Philo transcripts, threaded debates on g0v.tw forums &mdash; and annotated them with the meta-function chart we were building. We weren&apos;t looking for who was right. We were looking for <em>when</em> conversations turned &mdash; and what the space was doing to people at that moment.
         </p>
       </FadeIn>
 
@@ -180,17 +165,17 @@ export default function OutEdge() {
 
       <FadeIn>
         <p className="case-body-sm">
-          To learn more about the RtD process on Out/Edge,{' '}
+          Read the full{' '}
           <a href="/Participative-Discourse.pdf" target="_blank" rel="noopener noreferrer" className="underline">
-            click here
+            Out/Edge RtD process document (PDF)
           </a>.
         </p>
       </FadeIn>
 
       <FadeIn>
         <h2>Limitations</h2>
-        <p>Our participants were self-selected — recruited through activist networks and civic groups like Overseas Taiwanese for Democracy — and already predisposed to dialogue. The workshops took place in 2019, before algorithmic polarisation became a household concern. The conversations we analysed (Cafe Philo, gov.tw forums) reflected educated, civically engaged populations; the findings may not transfer to communities with different relationships to public speech or institutional trust.</p>
-        <p>These constraints clarify the scope: we learned about how enabling conditions function for people already seeking dialogue — not how to create the desire for dialogue where it doesn&apos;t exist. For my PhD work, I&apos;m interested in that harder version of the question: how to design conditions for participation among those not yet predisposed — children, especially, whose relationship to public space is shaped by adults who rarely ask what they need.</p>
+        <p>Our participants came through activist networks &mdash; Overseas Taiwanese for Democracy, Cafe Philo regulars, g0v.tw communities. They were people already predisposed to listen. The workshops happened in 2019, and the conversations we analysed reflected educated, civically engaged populations.</p>
+        <p>What this means is that we learned something specific: how to design enabling conditions for people who already wanted dialogue. We did not learn how to create that desire where it doesn&apos;t exist. That&apos;s the problem I keep returning to. For my PhD, I want to investigate how cities and institutions shape what children feel free to do in public space. Not designing for people already seeking participation, but for those whose relationship to public space is shaped by adults who rarely ask what they need.</p>
       </FadeIn>
 
       <FadeIn>
@@ -199,7 +184,7 @@ export default function OutEdge() {
             Out/Edge asked whether a platform could be designed to make people pause before speaking, and whether that pause could generate different listening. The thesis remained a prototype, a designed argument rather than a deployed system. But the core insight stayed: <em>temporal</em> design — the rhythm of interaction, the pacing of response, the duration of presence — is often invisible in platform design. Yet it shapes everything about what people feel safe expressing.
           </p>
           <p className="case-reflection">
-            That question never fully resolved, and it didn&apos;t need to. In the work that followed — on health data infrastructure, on performing arts education, on enterprise learning — I kept finding a quieter version of the same problem: people behaving differently not because of what they believed, but because of what the platform made easy or hard, safe or risky, visible or invisible. Out/Edge was the first time I understood that the most important design decisions are often the ones nobody notices — the ones about time, about pacing, about what a space makes room for before anyone speaks.
+            That question never fully resolved, and it didn&apos;t need to. In the work that followed — on health data infrastructure, on performing arts education, on enterprise learning — I kept finding a quieter version of the same problem: people behaving differently not because of what they believed, but because of what the platform made easy or hard, safe or risky, visible or invisible. Out/Edge was the first time I noticed that what shaped a conversation most wasn&apos;t the content or the positions &mdash; it was the rhythm. The pacing. What a space made room for before anyone spoke.
           </p>
           <p className="case-reflection">
             For my PhD, I want to investigate that same instinct in a physical context: how do cities and institutions shape what children feel free to do in public space? The materials change — from screens to sidewalks, from algorithms to architecture — but the question is the same one I asked at Parsons: what does a designed environment make possible, and for whom?

@@ -6,7 +6,7 @@ export default function Beyond100() {
     <CaseLayout
       title="Beyond 100%"
       subtitle="What happens when planetary sustainability requires a system that decides what the body is allowed to do?"
-      tags={['Speculative Design', 'Biodesign', 'Exhibited at MoMA']}
+      tags={['Speculative Design', 'Research through Design', 'Biodesign', 'Exhibited at MoMA']}
       meta={[
         { label: 'Presented at', value: '2018 BioDesign Challenge Summit at MoMA' },
         { label: 'Exhibition', value: 'Biodesign: From Inspiration to Integration, The Nature Lab, RISD' },
@@ -29,7 +29,7 @@ export default function Beyond100() {
 
       <FadeIn>
         <p>
-          We designed a speculative biotechnology that uses a chip to genetically modify
+          I designed a speculative biotechnology that uses a chip to genetically modify
           what the human body can eat — hay, algae, fungi, insects — and how its nutrition
           is distributed across a global network. Set in 2070, the fiction proposes a world
           where a food shortage crisis has made bodily modification a condition of citizenship.
@@ -57,11 +57,11 @@ export default function Beyond100() {
 
       <FadeIn>
         <p>
-          Through this speculative design, we tested a premise: that technological control of
+          Through this speculative design, I tested a premise: that technological control of
           the body becomes acceptable when framed as collective survival. The design process
           revealed something different. Every system component — the allocation map, the chip,
           the surveillance required to enforce the nutrition tax — contained a political choice.
-          Our work was to make that choice visible.
+          My work was to make that choice visible.
         </p>
       </FadeIn>
 
@@ -72,29 +72,42 @@ export default function Beyond100() {
       <FadeIn>
         <p>
           The project emerged from research into speculative design as a method for revealing
-          hidden assumptions. Rather than analyzing governance systems theoretically, we decided
+          hidden assumptions. Rather than analyzing governance systems theoretically, I decided
           to <em>design one</em> — to see what would become visible through the act of building.
+          Speculative design, in this sense, is not a way to illustrate existing analysis; it is a form
+          of knowledge production, where the artifacts themselves are the research apparatus.
         </p>
         <p>
-          Working within Parsons&apos; Transdisciplinary Design program, we drew on bioethics literature,
+          Working within Parsons&apos; Transdisciplinary Design program, I drew on bioethics literature,
           historical scarcity responses (rationing systems, population control policies), and the
-          strategies of contemporary design speculation — but the real research happened when we
-          started making. The act of designing forced us to commit to specifics: who gets modified,
-          who decides the threshold, who enforces compliance. Every detail we had to resolve surfaced
-          a political choice we hadn&apos;t anticipated.
+          strategies of contemporary design speculation — but the real research happened when the team
+          started making. The act of designing forced me to commit to specifics: who gets modified,
+          who decides the threshold, who enforces compliance. Every detail I had to resolve surfaced
+          a political choice I hadn&apos;t anticipated.
+        </p>
+        <p>
+          The Allocation Map and Chip were hand-fabricated and 3D printed — physical objects, not
+          renderings. The making process is documented in the film above. Building the Chip as an
+          actual object that could be held, examined, and reacted to changed what the project was
+          asking: it stopped being a speculative scenario and became a material proposition. What
+          would a device that enters your body feel like to hold in your hand — before it enters?
+          That question only became available through making.
+        </p>
+        <p>
+          I should name where my interest came from. I arrived at this project through philosophy training at National Taiwan University, not through personal experience with food scarcity or bodily modification. My background in ethics gave me a framework for asking questions about autonomy, consent, and collective obligation &mdash; but it also meant I was designing a system whose material consequences I had never faced. I was speculating about bodies under constraint from a position of relative security. That distance let me treat the system as an intellectual object &mdash; to ask what it would demand &mdash; but it also meant I could not fully anticipate what it would feel like to live inside it. The design reveals political choices; whether it captures the lived weight of those choices is a question the method alone cannot answer.
         </p>
       </FadeIn>
 
       <FadeIn>
         <p>
-          Our assumption going in was straightforward: in a resource crisis, people would accept necessary
+          My assumption going in was straightforward: in a resource crisis, people would accept necessary
           constraints on bodily autonomy if the system was perceived as fair and technologically inevitable.
-          What the design process revealed was more complicated. The more we detailed the system — the rules
+          What the design process revealed was more complicated. The more I detailed the system — the rules
           of the Allocation Map, the invasiveness of the Chip, the surveillance required to enforce the
           nutrition tax — the more the artifacts themselves began arguing against the system&apos;s logic.
         </p>
         <p>
-          The design didn&apos;t demonstrate technological inevitability. It exposed choice. When we
+          The design didn&apos;t demonstrate technological inevitability. It exposed choice. When I
           tried to visually map the extraction mechanism, for instance, every representation looked
           extractive — there was no way to draw it that didn&apos;t surface the asymmetry between those
           whose bodies are harvested and those who benefit. The artifacts made visible who benefits
@@ -118,7 +131,7 @@ export default function Beyond100() {
         <div className="callout">
           <h4>Allocation Map: What It Revealed</h4>
           <p className="case-body-sm">
-            Through designing the Allocation Map, we discovered that every attempt to make
+            Through designing the Allocation Map, I discovered that every attempt to make
             resource distribution "fair" required erasing existing political structures. The map
             replaced nation-states with ecological zones — a seemingly rational solution that,
             once visualized, raised an uncomfortable question: who has the authority to redraw
@@ -143,8 +156,10 @@ export default function Beyond100() {
           <h4>Chip: What It Revealed</h4>
           <p className="case-body-sm">
             The Chip is the project&apos;s central object of control. Through designing and visualizing
-            it, we discovered that the most intimate intervention — a device that modifies the body itself —
+            it, I discovered that the most intimate intervention — a device that modifies the body itself —
             becomes acceptable only when it is presented as medically neutral and individually beneficial.
+            Each design iteration pushed back against my assumptions &mdash; the artifact itself became a
+            research instrument, revealing what I had not anticipated about the logic of bodily control.
             The chip transforms the body to match ecological resource availability. It makes the body
             legible to the system. And it renders bodily difference — the fact that after the modification,
             a person can no longer eat as they once did — as a technical requirement rather than a loss
@@ -155,7 +170,7 @@ export default function Beyond100() {
             extracts "excess" nutrition directly from the bloodstream and transmits it to others. This
             mechanism revealed the project&apos;s hidden premise — that the state has the right to harvest
             human bodies for collective benefit. By rendering the extraction as a designed, technical process,
-            we made the ethical violation tangible in a way that policy documents cannot.
+            the design made the ethical violation tangible in a way that policy documents cannot.
           </p>
         </div>
       </FadeIn>
@@ -169,7 +184,7 @@ export default function Beyond100() {
           adapted to it.
         </p>
         <p>
-          Shortly after we completed the project, the pandemic arrived — and we
+          Shortly after the team completed the project, the pandemic arrived — and I
           watched governments worldwide respond with vastly different control measures, each
           justified by survival. Lockdowns, movement restrictions, and bodily mandates were
           normalized through repetition. What COVID made visible is what Beyond 100% had asked
@@ -189,7 +204,8 @@ export default function Beyond100() {
         <p>
           Beyond 100% was my first sustained exploration of how design can make political choices
           visible — specifically, choices about whose bodies matter and who has the authority to decide
-          what happens to them. I was asking: what does it mean to design a system that appears neutral,
+          what happens to them. This is fundamentally a feminist concern: which bodies bear
+          the material cost of systems that claim to serve the collective? I was asking: what does it mean to design a system that appears neutral,
           rational, or inevitable, when it is actually embedding particular values about life, death,
           autonomy, and collective care?
         </p>

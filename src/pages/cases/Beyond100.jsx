@@ -8,9 +8,11 @@ export default function Beyond100() {
       subtitle="What happens when planetary sustainability requires a system that decides what the body is allowed to do?"
       tags={['Speculative Design', 'Research through Design', 'Biodesign', 'Exhibited at MoMA']}
       meta={[
-        { label: 'Presented at', value: '2018 BioDesign Challenge Summit at MoMA' },
-        { label: 'Exhibition', value: 'Biodesign: From Inspiration to Integration, The Nature Lab, RISD' },
+        { label: 'Context', value: 'Parsons School of Design, MFA Transdisciplinary Design' },
+        { label: 'Role', value: 'Design Researcher, Speculative Designer, Biodesign Researcher' },
         { label: 'Duration', value: 'Feb – Jun 2018' },
+        { label: 'Presented at', value: '2018 BioDesign Challenge Summit at MoMA' },
+        { label: 'Exhibited at', value: 'Biodesign: From Inspiration to Integration, The Nature Lab, RISD' },
         { label: 'Team', value: 'Tung Lin, Jacky Cheong, Siho Chang' },
       ]}
       nextCase={{ to: '/cases/luxury-vip-app', title: "The Camera Roll as Wardrobe: Research for a Luxury Fashion Distributor's First Mobile App" }}
@@ -95,6 +97,9 @@ export default function Beyond100() {
         </p>
         <p>
           I should name where my interest came from. I arrived at this project through philosophy training at National Taiwan University, not through personal experience with food scarcity or bodily modification. My background in ethics gave me a framework for asking questions about autonomy, consent, and collective obligation &mdash; but it also meant I was designing a system whose material consequences I had never faced. I was speculating about bodies under constraint from a position of relative security. That distance let me treat the system as an intellectual object &mdash; to ask what it would demand &mdash; but it also meant I could not fully anticipate what it would feel like to live inside it. The design reveals political choices; whether it captures the lived weight of those choices is a question the method alone cannot answer.
+        </p>
+        <p>
+          This matters for how the project should be read. Speculative design trades on the power of estrangement — making familiar systems strange enough to see clearly. But estrangement works differently depending on where you stand. For someone who has never faced food scarcity, designing a system of enforced bodily modification is an intellectual provocation. For someone who has, it may land as something closer to documentation. I was aware of this asymmetry during the making process, but I did not resolve it — and I am not sure speculative design, as a method, can. What it can do is make the asymmetry visible: to show that the system&apos;s consequences fall unevenly, and to make that unevenness impossible to ignore. That is what the artifacts tried to do. Whether they succeeded depends on who is looking.
         </p>
       </FadeIn>
 
@@ -207,7 +212,7 @@ export default function Beyond100() {
           what happens to them. This is fundamentally a feminist concern: which bodies bear
           the material cost of systems that claim to serve the collective? I was asking: what does it mean to design a system that appears neutral,
           rational, or inevitable, when it is actually embedding particular values about life, death,
-          autonomy, and collective care?
+          autonomy, and collective care? In sustainability research, this pattern has a name: rebound effect &mdash; when a system designed to solve one problem generates new, often worse, consequences. Beyond 100% asked what that pattern looks like when it reaches the body.
         </p>
         <p>
           This question resurfaces in everything that followed. In

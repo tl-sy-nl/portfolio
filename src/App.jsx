@@ -7,6 +7,7 @@ import AcademicPlatform from './pages/cases/AcademicPlatform'
 import ArtsEducation from './pages/cases/ArtsEducation'
 import Beyond100 from './pages/cases/Beyond100'
 import OutEdge from './pages/cases/OutEdge'
+import AirSpaces from './pages/cases/AirSpaces'
 
 // Agentation: visual annotation tool for AI-assisted batch editing
 // Only active in development (npm run dev). Not included in production build.
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/cases/arts-education" element={<ArtsEducation />} />
           <Route path="/cases/beyond-100" element={<Beyond100 />} />
           <Route path="/cases/out-edge" element={<OutEdge />} />
+          <Route path="/cases/air-spaces" element={<AirSpaces />} />
         </Routes>
       </AnimatePresence>
       {Agentation && <Agentation />}

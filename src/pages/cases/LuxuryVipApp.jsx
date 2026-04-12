@@ -11,7 +11,7 @@ function AppFlowSVG() {
     { x: 448, tabActive: 3, label: 'Membership',   screenLabel: 'MEMBERSHIP' },
   ]
   return (
-    <svg viewBox="0 0 590 196" xmlns="http://www.w3.org/2000/svg" className="svg-responsive">
+    <svg viewBox="0 0 590 196" xmlns="http://www.w3.org/2000/svg" className="svg-responsive" role="img" aria-label="App task flow diagram showing four screens: Discovery, New Arrival, Wardrobe, and Membership">
       <rect width="590" height="196" fill={bg}/>
       {/* Flow label */}
       <text x="295" y="13" textAnchor="middle" fontFamily="Inter,sans-serif" fontSize="6.5" fontWeight="600" letterSpacing="2" fill={gold} opacity="0.45">APP TASK FLOW</text>
@@ -97,7 +97,7 @@ function AppIASVG() {
   ]
   const secY = 88, itemY = 160, nodeW = 100, nodeH = 26, itemH = 22
   return (
-    <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" className="svg-responsive">
+    <svg viewBox="0 0 580 250" xmlns="http://www.w3.org/2000/svg" className="svg-responsive" role="img" aria-label="Information architecture diagram showing app navigation hierarchy">
       <rect width="580" height="250" fill={bg}/>
 
       {/* Root node */}
@@ -188,6 +188,8 @@ function WardrobeConceptSVG() {
       viewBox="0 0 460 230"
       xmlns="http://www.w3.org/2000/svg"
       className="svg-responsive"
+      role="img"
+      aria-label="Wardrobe concept diagram showing seasonal capsule rotation and item lifecycle"
     >
       {/* Background */}
       <rect width="460" height="230" fill="#100F0D"/>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; fill: #211E55; }
+  </style>
+
+  <!-- Left circle -->
+  <circle cx="300" cy="230" r="160" fill="none" stroke="#211E55" stroke-width="2"/>
+
+  <!-- Right circle -->
+  <circle cx="500" cy="230" r="160" fill="none" stroke="#211E55" stroke-width="2"/>
+
+  <!-- View point 1 label + arrow -->
+  <text x="60" y="235" font-size="15" text-anchor="start">View point 1</text>
+  <line x1="155" y1="232" x2="135" y2="232" stroke="#211E55" stroke-width="1.5" marker-end="url(#arrowRight)"/>
+
+  <!-- View point 2 label + arrow -->
+  <text x="740" y="235" font-size="15" text-anchor="end">View point 2</text>
+  <line x1="645" y1="232" x2="665" y2="232" stroke="#211E55" stroke-width="1.5" marker-end="url(#arrowLeft)"/>
+
+  <!-- Agonistic Exchange label + arrow -->
+  <text x="400" y="470" font-size="15" text-anchor="middle">Agonistic Exchange</text>
+  <line x1="400" y1="395" x2="400" y2="450" stroke="#211E55" stroke-width="1.5"/>
+  <line x1="400" y1="395" x2="396" y2="403" stroke="#211E55" stroke-width="1.5"/>
+  <line x1="400" y1="395" x2="404" y2="403" stroke="#211E55" stroke-width="1.5"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowRight" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7" fill="none" stroke="#211E55" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto">
+      <path d="M7,1 L1,4 L7,7" fill="none" stroke="#211E55" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Intersection point marker -->
+  <line x1="400" y1="380" x2="400" y2="395" stroke="#211E55" stroke-width="1"/>
+  <line x1="393" y1="388" x2="407" y2="388" stroke="#211E55" stroke-width="1"/>
+</svg>

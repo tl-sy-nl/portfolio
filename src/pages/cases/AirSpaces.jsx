@@ -1,5 +1,4 @@
 import CaseLayout from '../../components/CaseLayout'
-import { FadeIn } from '../../components/FadeIn'
 import { CaseImage } from '../../components/Lightbox'
 
 export default function AirSpaces() {
@@ -7,249 +6,242 @@ export default function AirSpaces() {
     <CaseLayout
       title="The Air We Share"
       subtitle="What if environmental awareness didn&apos;t come from data, but from what the body already knows?"
-      tags={['Constructive Design Research', 'Physical Prototyping', 'Environmental Design', 'Workshop Facilitation']}
+      dimension="Perception enables"
       meta={[
         { label: 'Context', value: 'Parsons School of Design, MFA Transdisciplinary Design' },
         { label: 'Role', value: 'Design Researcher, Workshop Facilitator, Prototype Maker' },
         { label: 'Duration', value: 'Sept – Dec 2017' },
-        { label: 'Team', value: 'Tung Lin, Anh-Ton Tran, Jonas Voigt' },
+        { label: 'Team', value: 'Sylvia Lin, Anh-Ton Tran, Jonas Voigt' },
         { label: 'Partners', value: 'NASA Langley Research Center, WEACT, Dalton School, NYC Center for Health Equity' },
       ]}
-      nextCase={{ to: '/cases/beyond-100', title: 'Beyond 100%' }}
     >
-      <FadeIn>
-        <p>
-          Air quality is something we interact with constantly, but rarely think about. The project started with a question: how might we create a space for people to talk about their perception of air quality? We partnered with environmental justice organizations in New York, where neighborhoods like East Harlem have childhood asthma rates directly linked to inequitable air quality.
+      <p>
+        The Air We Share investigates how environmental awareness can be designed beyond data representation, focusing on air quality as a condition that is constantly experienced but rarely perceived.
+      </p>
+      <p>
+        The project began with a technical approach — developing an Arduino-based air monitoring system — but shifted toward an embodied design approach when it became clear that data alone does not translate into lived understanding. The work explores how sensory and spatial interventions can make environmental conditions perceptible, and how such perceptibility relates to environmental engagement.
+      </p>
+
+      <CaseImage
+        src="/images/cases/air-spaces/arduino-sensor.webp"
+        alt="Arduino air quality monitoring setup with humidity and temperature sensors"
+        width={1200} height={600}
+        caption="The sensor system revealed data, but data alone couldn&apos;t bridge the gap between abstract knowledge and lived experience."
+      />
+
+      <h2>Research Framing</h2>
+
+      <div className="callout">
+        <h4>Research Question</h4>
+        <p className="case-body-sm">
+          How can design move beyond data-driven representations to create embodied awareness of environmental conditions?
         </p>
-      </FadeIn>
+      </div>
 
-      <FadeIn>
-        <h2>The Data Problem</h2>
-      </FadeIn>
-
-      <FadeIn>
-        <p>
-          We started where most environmental projects start — with data. I built an Arduino-based monitoring device that could track temperature and humidity in real time. But sitting with the readings, I realized the numbers weren&apos;t enough. Data told us the air was bad. It didn&apos;t help anyone feel what that meant. The gap between knowing and sensing became the project&apos;s real research question.
+      <div className="callout">
+        <h4>Method</h4>
+        <p className="case-body-sm">
+          Constructive Design Research through iterative prototyping and participatory workshops. The project develops and deploys physical artifacts (immersive environments, design probes, and educational materials) to investigate how perception can be shaped through design.
         </p>
-      </FadeIn>
+      </div>
 
-      <FadeIn>
+      <div className="callout">
+        <h4>Contribution</h4>
+        <p className="case-body-sm">
+          The project shows that: (1) Environmental awareness is not only a problem of information access, but of perception and attention. (2) Data-driven approaches alone are insufficient to produce meaningful engagement with environmental conditions. (3) Embodied and aesthetic interventions can re-sensitize users to conditions they have adapted to or stopped noticing. (4) The distribution of such interventions is uneven, raising questions about who participates in and benefits from design research.
+        </p>
+      </div>
+
+      <h2>From Data to Embodied Experience</h2>
+
+      <p>
+        The project initially focused on environmental sensing through an Arduino-based monitoring system. While the system provided real-time data (e.g., temperature and humidity), it did not bridge the gap between abstract knowledge and lived experience.
+      </p>
+      <p>
+        This gap became the central research finding: knowing that air quality is poor does not necessarily change how it is perceived or acted upon.
+      </p>
+      <p>
+        In response, the project shifted toward designing for embodied experience rather than measurement.
+      </p>
+
+      <h2>Prototyping as Inquiry</h2>
+
+      <p>
+        Three main prototypes were developed, each emerging from observed limitations of the previous approach.
+      </p>
+
+      <div className="callout">
+        <h4>The Dome</h4>
+        <p className="case-body-sm">
+          A walk-in geodesic dome that simulates different air quality conditions through projections, sound, and scent. We built the structure by hand — calculating strut widths and weights for over sixty wooden members, then assembling them with tension bands to achieve a stable three-dimensional form. The construction demanded iterative recalculation: early cuts failed to account for how width and weight interact at scale, forcing us to rethink the relationship between structural constraint and the enclosed perceptual space.
+        </p>
+      </div>
+
+      <div className="case-img-row case-img-row--3">
         <CaseImage
-          src="/images/cases/air-spaces/arduino-sensor.jpg"
-          alt="Arduino air quality monitoring setup with humidity and temperature sensors"
-          width={1200} height={600}
-          caption="The sensor system revealed data, but data alone couldn&apos;t answer the real question: how do we make the invisible tangible?"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <h2>From Data to Body</h2>
-      </FadeIn>
-
-      <FadeIn>
-        <p>
-          We shifted approach: instead of measuring air, we would let people experience it. We built a geodesic dome — hand-constructed from lumber carried home from Home Depot, assembled following structural geometry diagrams. The dome became an immersive environment where projections, soundscapes, and scents simulated different air quality contexts. Inside, scenes and scents changed every six minutes: from clean mountain air to congested city streets.
-        </p>
-        <p>
-          The construction process itself was part of the research. Building a structure large enough for people to sit inside taught us something we hadn&apos;t anticipated: the scale of the intervention matters. A screen shows you information. A space you can enter changes how you breathe.
-        </p>
-      </FadeIn>
-
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/carrying-lumber.jpg"
+          src="/images/cases/air-spaces/carrying-lumber.webp"
           alt="Team carrying lumber through New York streets at night"
           width={1200} height={600}
-          caption="The dome&apos;s materials came from Home Depot, carried home by hand. Constraint shaped the design."
         />
-      </FadeIn>
-
-      <FadeIn>
         <CaseImage
-          src="/images/cases/air-spaces/dome-frame.jpg"
+          src="/images/cases/air-spaces/dome-frame.webp"
           alt="Geodesic dome wooden frame under construction"
           width={1200} height={600}
-          caption="Geometric precision emerging from hand-built construction"
         />
-      </FadeIn>
-
-      <FadeIn>
         <CaseImage
-          src="/images/cases/air-spaces/dome-covering.jpg"
+          src="/images/cases/air-spaces/dome-covering.webp"
           alt="Attaching translucent covering to the geodesic dome"
           width={1200} height={600}
-          caption="The translucent skin filtered light and became a projection surface"
         />
-      </FadeIn>
+      </div>
 
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/dome-inside-projection.jpg"
-          alt="Person sitting inside the completed dome watching environmental projection"
-          width={1200} height={600}
-          caption="Inside the dome: visibility shifts as air conditions changed in the simulation"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <h2>Workshops — Listening to What Bodies Already Know</h2>
-      </FadeIn>
-
-      <FadeIn>
-        <p>
-          We ran workshops with high school students at Dalton School. Rather than lecturing about air quality, we guided them through breathing exercises and role-playing scenarios. Students filled out journey maps tracking what they noticed about each environment — the place, the air, their breathing, their emotions. One student described the city simulation as &quot;smoky, smells like pee&quot; and their breathing as &quot;deep/shallow alternating.&quot; Another shared stories about relatives near highway interchanges whose children develop asthma.
+      <div className="callout">
+        <h4>Breathing Balloons</h4>
+        <p className="case-body-sm">
+          A design probe where participants breathe into balloons and annotate their perception of the air. This transforms subjective, internal experience into a shareable and material form.
         </p>
-      </FadeIn>
+      </div>
 
-      <FadeIn>
-        <p>
-          A thing I did not fully reckon with at the time, but that has stayed with me since: we ran the workshops at Dalton School — one of Manhattan&apos;s most elite private schools — while the environmental justice question we were asking originated in East Harlem, where childhood asthma rates are among the highest in the city. The students who sat inside the dome and described what they sensed were not the children whose bodies bear the daily weight of inequitable air. They were learning about air quality as an intellectual exercise; for children a few blocks east, it was a material condition of their lives.
+      <div className="callout">
+        <h4>Curriculum</h4>
+        <p className="case-body-sm">
+          An educational toolkit that enables others to facilitate similar workshops, extending the methodology beyond the initial setting.
         </p>
-        <p>
-          I am not saying the Dalton workshops were wrong. The students engaged with real seriousness, and the dome created genuine perceptual shifts. But the gap between who got to experience the intervention and who needed it most is worth naming — because it reveals something about how design research circulates. We had institutional access to Dalton. We had a partnership with WEACT, the environmental justice organisation working in East Harlem. But bringing an experimental dome into a public school in a neighbourhood already overburdened by environmental harm requires a different kind of trust, a different timeline, a different ethics of intervention. We did not have those yet. That is a limitation I would approach differently now — and it connects directly to my current research interest in whose bodies get to participate in design processes, and whose spatial knowledge remains unheard.
-        </p>
-      </FadeIn>
+      </div>
 
-      <FadeIn>
+      <div className="case-img-row case-img-row--2">
         <CaseImage
-          src="/images/cases/air-spaces/dome-group-discussion.jpg"
-          alt="Group of participants sitting in a circle inside the dome for discussion"
-          width={1200} height={600}
-          caption="The dome became a listening chamber where perception could be shared and compared"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/immersive-city-air.jpg"
-          alt="High school students immersed in projected city streetscape inside the dome"
-          width={1200} height={600}
-          caption="Simulating city air inside the dome — projections and scent shifted how students understood their own breathing"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/breathing-awareness.jpg"
-          alt="Facilitating breathing awareness exercise with students"
-          width={1200} height={600}
-          caption="Breath as a design material — the body becomes an instrument for understanding"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <p>
-          We also created &quot;breathing balloons&quot; — participants breathed into a balloon and wrote their perception of the air on it. The balloons became a physical archive of invisible experience. You could hold someone else&apos;s breath in your hands.
-        </p>
-        <p>
-          In the earliest sessions, we used Playmobil figures and storyboarding props to co-create with students. They shared their observations about air quality in their neighborhoods, translating personal experience into shareable narratives.
-        </p>
-      </FadeIn>
-
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/journey-map.jpg"
-          alt="Student journey map tracking sensory responses across different air environments"
-          width={1200} height={600}
-          caption="Journey maps made perception explicit — what the body noticed became data"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/playmobil-storyboard.jpg"
-          alt="Playmobil figures used as co-design props with high school students"
-          width={1200} height={600}
-          caption="Co-design through play: students translated their experiences into shareable stories"
-        />
-      </FadeIn>
-
-      <FadeIn>
-        <CaseImage
-          src="/images/cases/air-spaces/breathing-balloons.jpg"
+          src="/images/cases/air-spaces/breathing-balloons.webp"
           alt="Breathing balloons with handwritten air quality perceptions"
           width={1200} height={600}
-          caption="An archive of breath and perception — the invisible made tangible"
         />
-      </FadeIn>
-
-      <FadeIn>
-        <h2>Prototypes as Research Instruments</h2>
-      </FadeIn>
-
-      <FadeIn>
-        <p>
-          Three prototypes emerged:
-        </p>
-        <p>
-          <strong>The Dome.</strong> A walk-in immersive space with projection and scent. Not a display; a research instrument that made invisible environmental conditions sensorially available.
-        </p>
-        <p>
-          <strong>The Curriculum.</strong> An accordion-fold booklet designed for deployment in schools and science programs. It packaged our workshop methodology so others could facilitate the same embodied inquiry.
-        </p>
-        <p>
-          <strong>The Breathing Balloons.</strong> A design probe that materialized something invisible: the air inside a person&apos;s lungs, marked with their words.
-        </p>
-        <p>
-          Each prototype was an iteration: the curriculum emerged from workshop insights; the dome emerged from the failure of data-only approaches; the balloons emerged from watching students struggle to articulate what they were sensing.
-        </p>
-      </FadeIn>
-
-      <FadeIn>
         <CaseImage
-          src="/images/cases/air-spaces/curriculum-booklet.jpg"
+          src="/images/cases/air-spaces/curriculum-booklet.webp"
           alt="The Air We Share curriculum booklet — accordion-fold educational material"
           width={1200} height={600}
-          caption="The methodology made portable — others could facilitate the same journey"
         />
-      </FadeIn>
+      </div>
 
-      <FadeIn>
-        <h2>What I Learned</h2>
-      </FadeIn>
+      <h2>Workshops and Participation</h2>
 
-      <FadeIn>
-        <p>
-          This project taught me that environmental awareness is not an information problem — it is a perception problem. Data can tell you the air is unhealthy. But it takes a different kind of design — one that works with uncertainty, with sensory experience, with the body&apos;s own capacity for judgment — to make that knowledge feel real.
+      <p>
+        Workshops were conducted with high school students, using breathing exercises, role-playing, and journey mapping to explore how participants perceive different air environments.
+      </p>
+      <p>
+        The workshops demonstrated that participants are capable of articulating nuanced sensory experiences when provided with appropriate frameworks. These experiences include not only physical sensations (e.g., breathing patterns) but also emotional and spatial associations.
+      </p>
+
+      <CaseImage
+        src="/images/cases/air-spaces/dome-group-discussion.webp"
+        alt="Group of participants sitting in a circle inside the dome for discussion"
+        width={1200} height={600}
+        caption="The dome became a listening chamber where perception could be shared and compared"
+      />
+
+      <div className="case-img-row case-img-row--2x2">
+        <CaseImage
+          src="/images/cases/air-spaces/immersive-city-air.webp"
+          alt="High school students immersed in projected city streetscape inside the dome"
+          width={1200} height={600}
+        />
+        <CaseImage
+          src="/images/cases/air-spaces/breathing-awareness.webp"
+          alt="Facilitating breathing awareness exercise with students"
+          width={1200} height={600}
+        />
+        <CaseImage
+          src="/images/cases/air-spaces/journey-map.webp"
+          alt="Student journey map tracking sensory responses across different air environments"
+          width={1200} height={600}
+        />
+        <CaseImage
+          src="/images/cases/air-spaces/playmobil-storyboard.webp"
+          alt="Playmobil figures used as co-design props with high school students"
+          width={1200} height={600}
+        />
+      </div>
+
+      <p>
+        At the same time, the project revealed a limitation in its own deployment: the participants were not those most affected by poor air quality. The intervention was conducted in an institutionally accessible context, while the environmental justice issues motivating the project were situated elsewhere.
+      </p>
+      <p>
+        This highlighted a critical dimension of design research: participation is not neutral, and access to experimental interventions is unevenly distributed.
+      </p>
+
+      <h2>Key Findings</h2>
+
+      <div className="callout">
+        <h4>Perception Gap</h4>
+        <p className="case-body-sm">
+          There is a disconnect between environmental data and embodied experience. Bridging this gap requires interventions that engage the body, not just cognition.
         </p>
-        <p>
-          The shift from Arduino monitoring to immersive dome was not a failure of the technical approach. It was a research finding: that the most important things about living environments are often the things we have stopped noticing, and that making them noticeable again requires aesthetic interventions, not informational ones.
+      </div>
+
+      <div className="callout">
+        <h4>Aesthetic Mediation</h4>
+        <p className="case-body-sm">
+          Sensory and spatial design (e.g., immersion, rhythm, atmosphere) can function as mediators that make environmental conditions perceptible again.
         </p>
-      </FadeIn>
+      </div>
 
-      <FadeIn>
-        <h3>Connection to Current Research</h3>
-      </FadeIn>
-
-      <FadeIn>
-        <p>
-          The Air We Share was my first encounter with what I now recognize as a core tension in environmental design: the gap between systemic knowledge (data, metrics, policy) and lived experience (what the body registers, tolerates, adapts to). The project asked whether design could bridge that gap — not by translating data into more accessible formats, but by creating conditions where bodies could notice what they had stopped noticing.
+      <div className="callout">
+        <h4>Situated Participation</h4>
+        <p className="case-body-sm">
+          Design interventions are shaped by institutional access, which affects who can participate and whose experiences are represented.
         </p>
-        <p>
-          This question has stayed with me. In the years since, I have come to understand it as a question about design aesthetics — specifically, about whether alternative aesthetics (uncertainty, instability, emergence) can do work that efficiency-driven design cannot. That insight connects directly to my current research on rebound effects in home automation: the systems that claim to make life simpler often make us less aware of what we&apos;re consuming, less attentive to the consequences of our choices. The Air We Share taught me that the opposite is also possible — that good design can make the consequences visible again, not through data dashboards, but through encounters that let the body remember what matters.
+      </div>
+
+      <h2>Evaluation</h2>
+
+      <p>
+        If extended as a PhD research project, this work would be evaluated through a mixed-method approach combining controlled comparisons, in-situ deployment, and qualitative inquiry.
+      </p>
+
+      <div className="callout">
+        <h4>Perceptual Impact</h4>
+        <p className="case-body-sm">
+          How embodied interventions reshape awareness compared to data-driven approaches.
         </p>
-      </FadeIn>
+      </div>
 
-      <FadeIn>
-        <div className="case-divider">
-          <p className="case-reflection">
-            The Air We Share started as a data project and became an embodied one. That shift was not a pivot away from rigor — it was a research finding. The most powerful thing design can do is not make things easier to understand intellectually. It is to make the invisible tangible, to create the conditions where a body can notice what it has stopped noticing, and to let that noticing become a form of knowledge.
-          </p>
-          <p className="case-reflection">
-            The breathing balloons stayed with me. A person&apos;s breath, made visible. Their own language written on it. That is not a metaphor for environmental justice — it is environmental justice at the scale of a single breath. The scale matters. It tells you who the intervention is for, and what kind of change it makes possible.
-          </p>
-        </div>
-      </FadeIn>
+      <div className="callout">
+        <h4>Sustained Engagement</h4>
+        <p className="case-body-sm">
+          Whether increased awareness persists in everyday contexts over time.
+        </p>
+      </div>
 
-      <FadeIn>
-        <div className="case-footer-note">
-          <p>
-            <strong>Role:</strong> Design Researcher, Workshop Facilitator, Prototype Maker<br />
-            <strong>Instructor:</strong> Parsons MFA Transdisciplinary Design faculty<br />
-            <strong>Special Thanks:</strong> NASA Langley Research Center, WEACT, Dalton School, NYC Center for Health Equity, all the students who shared their breath and their stories
-          </p>
-        </div>
-      </FadeIn>
+      <div className="callout">
+        <h4>Situated Participation</h4>
+        <p className="case-body-sm">
+          How different groups access and interpret the intervention.
+        </p>
+      </div>
+
+      <h2>Relevance to Ongoing Research</h2>
+
+      <p>
+        The Air We Share establishes a line of inquiry into how design aesthetics can influence awareness and behavior in environmental contexts.
+      </p>
+      <p>
+        This connects directly to research on rebound effects in smart systems, where increased efficiency often reduces users&apos; awareness of consumption. The project suggests that alternative design approaches — particularly those engaging uncertainty, sensory experience, and attention — may counteract this effect by making environmental consequences perceptible again.
+      </p>
+      <p>
+        The Dome, in particular, functioned as a deliberately unstable environment: air quality conditions shifted without explicit signalling, and participants&apos; bodily responses preceded cognitive interpretation. Rather than delivering information, the system displaced it — creating a situation in which meaning emerged through the interaction between body, environment, and attention.
+      </p>
+      <p>
+        This suggests an alternative design approach: instead of reducing uncertainty to improve usability, systems can be designed to sustain perceptual openness, allowing users to remain engaged with changing conditions rather than resolving them. In this sense, the project operationalizes uncertainty not as a limitation to overcome, but as an aesthetic and epistemic resource — where meaning unfolds through embodied interaction rather than being predetermined by the designer.
+      </p>
+      <p>
+        Rather than optimizing for efficiency or convenience, this work explores how design can reintroduce awareness into everyday interactions with environmental systems.
+      </p>
+
+      <CaseImage
+        src="/images/cases/air-spaces/dome-inside-projection.webp"
+        alt="Person sitting inside the completed dome watching environmental projection"
+        width={1200} height={600}
+      />
+
     </CaseLayout>
   )
 }

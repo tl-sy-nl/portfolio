@@ -46,7 +46,7 @@ export default function Nav() {
     <a href="#main" className="skip-link">Skip to main content</a>
     <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
       <div className="nav__inner">
-        <Link to="/" className="nav__logo">Tung Lin</Link>
+        <Link to="/" className="nav__logo">Sylvia Lin</Link>
 
         {/* Desktop nav links */}
         <ul className="nav__links">

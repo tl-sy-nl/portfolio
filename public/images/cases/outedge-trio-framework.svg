@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520">
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .col-title { font-size: 18px; font-weight: 700; fill: #211E55; letter-spacing: 0.04em; text-transform: uppercase; }
+    .col-sub { font-size: 11px; fill: #8A8A8A; font-style: italic; }
+    .desc { font-size: 11px; fill: #3A4A5C; line-height: 1.5; }
+    .label { font-size: 12px; font-weight: 700; fill: #211E55; text-transform: uppercase; letter-spacing: 0.05em; }
+    .item { font-size: 11px; fill: #3A4A5C; }
+  </style>
+
+  <!-- Three columns -->
+  <!-- Column 1: INVESTIGATE -->
+  <text x="100" y="30" text-anchor="middle" class="col-title">INVESTIGATE</text>
+
+  <text x="40" y="70" class="desc">to look into an observable</text>
+  <text x="40" y="84" class="desc">phenomenon to define a social</text>
+  <text x="40" y="98" class="desc">issue</text>
+
+  <text x="210" y="70" class="desc">to break the issue down into</text>
+  <text x="210" y="84" class="desc">more simpler parts (concepts)</text>
+
+  <line x1="0" y1="120" x2="320" y2="120" stroke="#ddd" stroke-width="0.5"/>
+
+  <text x="40" y="148" class="label">ACTIVITY</text>
+  <text x="40" y="168" class="item">· type(s) of the activity</text>
+  <text x="40" y="182" class="item">· analog activities</text>
+  <text x="40" y="196" class="item">· difficulties</text>
+
+  <text x="40" y="226" class="label">DOMAINS</text>
+  <text x="40" y="246" class="item">· what</text>
+  <text x="40" y="260" class="item">· where</text>
+  <text x="40" y="274" class="item">· what socio-political</text>
+  <text x="40" y="288" class="item">  background</text>
+
+  <!-- Column 2: ANALYSIS -->
+  <text x="480" y="30" text-anchor="middle" class="col-title">ANALYSIS</text>
+  <text x="480" y="48" text-anchor="middle" class="col-sub">demonstrating 'the facts'</text>
+
+  <text x="380" y="70" class="desc">to dig deep in each concepts</text>
+  <text x="380" y="84" class="desc">and collect facts from the facts</text>
+
+  <line x1="330" y1="120" x2="640" y2="120" stroke="#ddd" stroke-width="0.5"/>
+
+  <text x="380" y="148" class="label">OBJECTS</text>
+  <text x="380" y="168" class="item">· tools people use in the activity</text>
+  <text x="380" y="182" class="item">· objects show people participation</text>
+
+  <text x="380" y="212" class="label">HUMANS</text>
+  <text x="380" y="232" class="item">· who is in this activity</text>
+  <text x="380" y="246" class="item">· type(s) of roles in this activity</text>
+  <text x="380" y="260" class="item">· behavioral tendency</text>
+  <text x="380" y="274" class="item">· motivation to act</text>
+
+  <text x="380" y="304" class="label">SITES</text>
+  <text x="380" y="324" class="item">· physical space</text>
+  <text x="380" y="338" class="item">· digital space</text>
+
+  <!-- Column 3: SYNTHESIS -->
+  <text x="800" y="30" text-anchor="middle" class="col-title">SYNTHESIS</text>
+  <text x="800" y="48" text-anchor="middle" class="col-sub">demonstrating 'the systematic reasons'</text>
+
+  <text x="700" y="70" class="desc">to arrange elements</text>
+  <text x="700" y="84" class="desc">and to link them up</text>
+  <text x="700" y="98" class="desc">logically</text>
+
+  <text x="840" y="70" class="desc">to explain how the social issue</text>
+  <text x="840" y="84" class="desc">exist in a certain cultural</text>
+  <text x="840" y="98" class="desc">context</text>
+
+  <line x1="650" y1="120" x2="960" y2="120" stroke="#ddd" stroke-width="0.5"/>
+
+  <text x="700" y="148" class="label">LINKS BETWEEN</text>
+  <text x="700" y="168" class="item">· sites: online and offline</text>
+  <text x="700" y="182" class="item">· humans and objects: how people use</text>
+  <text x="700" y="196" class="item">  objects and tool</text>
+  <text x="700" y="210" class="item">· humans and domains: parallel stories in</text>
+  <text x="700" y="224" class="item">  different cultures</text>
+
+  <text x="700" y="258" class="item">· actants:</text>
+  <text x="700" y="276" class="item">  1. inner motivation and observable</text>
+  <text x="700" y="290" class="item">     behavior</text>
+  <text x="700" y="308" class="item">  2. interaction among people</text>
+
+  <!-- Vertical dividers -->
+  <line x1="325" y1="0" x2="325" y2="360" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="645" y1="0" x2="645" y2="360" stroke="#ddd" stroke-width="0.5"/>
+</svg>

@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="1000" height="360">
+  <style>
+    text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .header { font-size: 13px; font-weight: 600; fill: white; }
+    .row-label { font-size: 12px; font-weight: 600; fill: #211E55; }
+    .cell { font-size: 10.5px; fill: #3A4A5C; line-height: 1.4; }
+    .title { font-size: 11px; font-weight: 600; fill: #211E55; letter-spacing: 0.03em; }
+  </style>
+
+  <!-- Row label column -->
+  <rect x="0" y="0" width="120" height="40" fill="#f5f5f5" rx="3"/>
+  <text x="60" y="25" text-anchor="middle" class="title">Meta-Function</text>
+
+  <!-- Column headers -->
+  <rect x="120" y="0" width="176" height="40" fill="#F7E75B" rx="3"/>
+  <text x="208" y="25" text-anchor="middle" class="header" fill="#211E55">Clarify</text>
+
+  <rect x="296" y="0" width="176" height="40" fill="#7EC8BE" rx="3"/>
+  <text x="384" y="25" text-anchor="middle" class="header" fill="#211E55">Exchange</text>
+
+  <rect x="472" y="0" width="176" height="40" fill="#E891C0" rx="3"/>
+  <text x="560" y="25" text-anchor="middle" class="header">Diplomacy</text>
+
+  <rect x="648" y="0" width="176" height="40" fill="#7BBDE0" rx="3"/>
+  <text x="736" y="25" text-anchor="middle" class="header" fill="#211E55">Categorize</text>
+
+  <rect x="824" y="0" width="176" height="40" fill="#F4A87C" rx="3"/>
+  <text x="912" y="25" text-anchor="middle" class="header">Judge</text>
+
+  <!-- Row 1: Form -->
+  <rect x="0" y="44" width="120" height="140" fill="#f9f9f9" rx="3"/>
+  <text x="60" y="120" text-anchor="middle" class="row-label">form</text>
+
+  <rect x="120" y="44" width="176" height="140" fill="#FFFEF0" rx="0"/>
+  <text x="130" y="68" class="cell">
+    <tspan x="130" dy="0">· Inquiry</tspan>
+    <tspan x="130" dy="16">· Proposition</tspan>
+    <tspan x="130" dy="16">· Counterexample</tspan>
+  </text>
+
+  <rect x="296" y="44" width="176" height="140" fill="#F0FAF8" rx="0"/>
+  <text x="306" y="68" class="cell">
+    <tspan x="306" dy="0">· Inquiry</tspan>
+    <tspan x="306" dy="16">· Request</tspan>
+    <tspan x="306" dy="16">· Sharing</tspan>
+    <tspan x="306" dy="16">· Invitation</tspan>
+  </text>
+
+  <rect x="472" y="44" width="176" height="140" fill="#FDF0F7" rx="0"/>
+  <text x="482" y="68" class="cell">
+    <tspan x="482" dy="0">· Greeting</tspan>
+    <tspan x="482" dy="16">· Response</tspan>
+    <tspan x="482" dy="16">· Affirmation</tspan>
+    <tspan x="482" dy="16">· Compliment</tspan>
+    <tspan x="482" dy="16">· Recognition</tspan>
+    <tspan x="482" dy="16">· Paraphrase</tspan>
+    <tspan x="482" dy="16">· Active Listening</tspan>
+  </text>
+
+  <rect x="648" y="44" width="176" height="140" fill="#EFF7FC" rx="0"/>
+  <text x="658" y="68" class="cell">
+    <tspan x="658" dy="0">· Interpretation</tspan>
+    <tspan x="658" dy="16">· Analysis</tspan>
+    <tspan x="658" dy="16">· Synthesis</tspan>
+  </text>
+
+  <rect x="824" y="44" width="176" height="140" fill="#FEF4EE" rx="0"/>
+  <text x="834" y="68" class="cell">
+    <tspan x="834" dy="0">· Declarative sentence</tspan>
+    <tspan x="834" dy="16">· Dismissive / Disdain</tspan>
+    <tspan x="834" dy="16">· Subjective mood</tspan>
+    <tspan x="834" dy="16">· Imperative mood</tspan>
+    <tspan x="834" dy="16">· Rhetorical question</tspan>
+  </text>
+
+  <!-- Row 2: Content -->
+  <rect x="0" y="188" width="120" height="168" fill="#f9f9f9" rx="3"/>
+  <text x="60" y="278" text-anchor="middle" class="row-label">content</text>
+
+  <rect x="120" y="188" width="176" height="168" fill="#FFFEF0" rx="0"/>
+  <text x="130" y="212" class="cell">
+    <tspan x="130" dy="0">· Technical facts</tspan>
+    <tspan x="130" dy="16">· Contextualizing goal,</tspan>
+    <tspan x="130" dy="14">  intention, domain of</tspan>
+    <tspan x="130" dy="14">  conversation</tspan>
+    <tspan x="130" dy="16">· Analyze</tspan>
+  </text>
+
+  <rect x="296" y="188" width="176" height="168" fill="#F0FAF8" rx="0"/>
+  <text x="306" y="212" class="cell">
+    <tspan x="306" dy="0">· Known information</tspan>
+    <tspan x="306" dy="16">· Unknown information</tspan>
+    <tspan x="306" dy="16">· Knowledge</tspan>
+    <tspan x="306" dy="16">· Perception</tspan>
+    <tspan x="306" dy="16">· Feeling</tspan>
+  </text>
+
+  <rect x="472" y="188" width="176" height="168" fill="#FDF0F7" rx="0"/>
+  <text x="482" y="212" class="cell">
+    <tspan x="482" dy="0">· Words</tspan>
+    <tspan x="482" dy="16">· Inscriptions of engagement</tspan>
+    <tspan x="482" dy="16">· Deep listening</tspan>
+    <tspan x="482" dy="16">· Direct act of empathy</tspan>
+  </text>
+
+  <rect x="648" y="188" width="176" height="168" fill="#EFF7FC" rx="0"/>
+  <text x="658" y="212" class="cell">
+    <tspan x="658" dy="0">· Order / Ranking / List /</tspan>
+    <tspan x="658" dy="14">  Mapping of ...</tspan>
+    <tspan x="658" dy="20">· ... source, nature,</tspan>
+    <tspan x="658" dy="14">  events, principles, social</tspan>
+    <tspan x="658" dy="14">  norms, principles, etc.</tspan>
+  </text>
+
+  <rect x="824" y="188" width="176" height="168" fill="#FEF4EE" rx="0"/>
+  <text x="834" y="212" class="cell">
+    <tspan x="834" dy="0">· Value / Benefit Principle</tspan>
+    <tspan x="834" dy="16">· General Purposes</tspan>
+    <tspan x="834" dy="16">· Warning / Sharing</tspan>
+    <tspan x="834" dy="16">· Advice / Suggestions/</tspan>
+    <tspan x="834" dy="14">  Appeal</tspan>
+    <tspan x="834" dy="16">· Misery / Disgrace</tspan>
+  </text>
+
+  <!-- Grid lines -->
+  <line x1="0" y1="40" x2="1000" y2="40" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="0" y1="184" x2="1000" y2="184" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="120" y1="0" x2="120" y2="356" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="296" y1="0" x2="296" y2="356" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="472" y1="0" x2="472" y2="356" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="648" y1="0" x2="648" y2="356" stroke="#ddd" stroke-width="0.5"/>
+  <line x1="824" y1="0" x2="824" y2="356" stroke="#ddd" stroke-width="0.5"/>
+
+  <!-- Outer border -->
+  <rect x="0" y="0" width="1000" height="356" fill="none" stroke="#ddd" stroke-width="1" rx="3"/>
+</svg>

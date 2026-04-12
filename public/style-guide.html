@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tung Lin — 色彩系統優化提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #F5F5F3; color: #211E55; line-height: 1.65; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+  h1 { font-family: 'Josefin Sans'; font-size: 1.6rem; font-weight: 400; letter-spacing: 0.12em; color: #3A4A5C; margin-bottom: 8px; }
+  .subtitle { font-size: 0.88rem; color: #5C5980; margin-bottom: 72px; line-height: 1.7; max-width: 640px; }
+  .section { margin-bottom: 80px; }
+  .section-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #3A4A5C; margin-bottom: 36px; padding-bottom: 12px; border-bottom: 1px solid #DDDCDA; }
+  .label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A6838; margin-bottom: 12px; }
+  .note { font-size: 0.75rem; color: #5C5980; margin-top: 6px; line-height: 1.5; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .swatch { width: 100%; aspect-ratio: 2.5/1; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: flex-end; padding: 10px 12px; }
+  .swatch span { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; }
+  .badge { display: inline-block; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; margin-left: 6px; }
+  .badge--ok { background: rgba(80,160,100,0.1); color: #3A8A50; }
+  .badge--lg { background: rgba(200,150,40,0.1); color: #8A6838; }
+  .badge--dec { background: rgba(160,140,120,0.08); color: #8A6838; }
+  .divider { height: 1px; background: #DDDCDA; margin: 48px 0; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #DDDCDA; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+  .compare > div { padding: 32px; }
+  .compare > div:first-child { background: #EBEBEA; border-right: 1px solid #DDDCDA; }
+  .compare > div:last-child { background: #fff; }
+  .compare-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  .el { padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .el:last-child { border-bottom: none; }
+  .el-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6838; margin-bottom: 6px; }
+  .dark-card { background: #0E1F24; border-radius: 12px; padding: 32px; color: #fff; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  th { text-align: left; padding: 12px 8px; font-weight: 600; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5C5980; }
+  td { padding: 12px 8px; }
+  tr { border-bottom: 1px solid #DDDCDA; }
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: middle; margin-right: 8px; }
+  code { font-size: 0.75rem; background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Color System — Optimization</h1>
+<p class="subtitle">
+  問題診斷：目前有 <strong>11 個色彩變數</strong>，其中 ink 三階全是近黑色（13.9:1 → 14.2:1 → 17.5:1）看不出層級；gold 三階差距太小（4.67:1 → 5.77:1 → 6.91:1）視覺上是同一個顏色。<br><br>
+  提案核心：<strong>砍到 7 個</strong>。讓每個顏色都有不可替代的角色。
+</p>
+
+<!-- ================================ -->
+<!-- 1. DIAGNOSIS                      -->
+<!-- ================================ -->
+<div class="section">
+  <h2 class="section-title">1. 問題：現有系統為什麼不好看</h2>
+
+  <div class="compare">
+    <div>
+      <p class="compare-label" style="color: #C05040;">現狀 — 11 個變數</p>
+      <div class="el">
+        <p class="el-label">Ink 三階</p>
+        <div style="display: flex; gap: 8px;">
+          <div style="flex: 1; height: 36px; background: #211E55; border-radius: 4px;"></div>
+          <div style="flex: 1; height: 36px; background: #0F2540; border-radius: 4px;"></div>
+          <div style="flex: 1; height: 36px; background: #0B1013; border-radius: 4px;"></div>
+        </div>
+        <p class="note">三個都是「黑色」——13.9:1 / 14.2:1 / 17.5:1<br>眼睛分不出來，層級消失</p>
+      </div>
+      <div class="el">
+        <p class="el-label">Gold 三階</p>
+        <div style="display: flex; gap: 8px;">
+          <div style="flex: 1; height: 36px; background: #8A6838; border-radius: 4px;"></div>
+          <div style="flex: 1; height: 36px; background: #7A5A30; border-radius: 4px;"></div>
+          <div style="flex: 1; height: 36px; background: #6E4E28; border-radius: 4px;"></div>
+        </div>
+        <p class="note">三個都是「咖啡金」——4.67:1 / 5.77:1 / 6.91:1<br>功能不同但看起來一樣</p>
+      </div>
+      <div class="el">
+        <p class="el-label">問題</p>
+        <p class="note">
+          · ink 層級倒反（primary 最淺、tertiary 最深）<br>
+          · 沒有呼吸空間——全是深色擠在一起<br>
+          · 蒂芬尼藍被限制在深底上，浪費了最漂亮的顏色<br>
+          · 11 個變數但視覺上只有 3 種感受（黑、金、藍）
+        </p>
+      </div>
+    </div>
+    <div>
+      <p class="compare-label" style="color: #3A8A50;">提案 — 7 個變數</p>
+      <div class="el">
+        <p class="el-label">Ink 兩階（有真正的層級差）</p>
+        <div style="display: flex; gap: 8px;">
+          <div style="flex: 1; height: 36px; background: #211E55; border-radius: 4px;"></div>
+          <div style="flex: 1; height: 36px; background: #5C5980; border-radius: 4px;"></div>
+        </div>
+        <p class="note">#211E55 (15.1:1) → #5C5980 (6.0:1)<br>一看就知道誰是主要、誰是次要</p>
+      </div>
+      <div class="el">
+        <p class="el-label">Gold 兩階（文字 + 裝飾）</p>
+        <div style="display: flex; gap: 8px;">
+          <div style="flex: 1; height: 36px; background: #8A6838; border-radius: 4px;"></div>
+          <div style="flex: 1; height: 36px; background: #C4956A; border-radius: 4px;"></div>
+        </div>
+        <p class="note">#8A6838 做文字 (4.67:1) / #C4956A 只做裝飾底色<br>角色清楚，不會混淆</p>
+      </div>
+      <div class="el">
+        <p class="el-label">優勢</p>
+        <p class="note">
+          · 每個顏色有不可替代的功能<br>
+          · Hover 用 ink（深色取代金色）——更乾淨<br>
+          · 蒂芬尼藍作為全站「寶石色」有更多出場空間<br>
+          · 變數少、維護容易
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================ -->
+<!-- 2. NEW PALETTE                    -->
+<!-- ================================ -->
+<div class="section">
+  <h2 class="section-title">2. 新色票</h2>
+
+  <p class="label">Ink — 深靛藍兩階</p>
+  <div class="grid-2" style="max-width: 480px; margin-bottom: 32px;">
+    <div>
+      <div class="swatch" style="background: #211E55;"><span style="color: #fff;">#211E55</span></div>
+      <p class="el-label">--ink <span class="badge badge--ok">15.1:1</span></p>
+      <p class="note">標題、body copy、主要文字</p>
+    </div>
+    <div>
+      <div class="swatch" style="background: #5C5980;"><span style="color: #fff;">#5C5980</span></div>
+      <p class="el-label">--ink-muted <span class="badge badge--ok">6.0:1</span></p>
+      <p class="note">次要文字、描述、caption、period</p>
+    </div>
+  </div>
+
+  <p class="label">Accent — 金色兩階</p>
+  <div class="grid-2" style="max-width: 480px; margin-bottom: 32px;">
+    <div>
+      <div class="swatch" style="background: #8A6838;"><span style="color: #fff;">#8A6838</span></div>
+      <p class="el-label">--accent <span class="badge badge--ok">4.67:1</span></p>
+      <p class="note">連結、CTA、eyebrow、標註語、職稱</p>
+    </div>
+    <div>
+      <div class="swatch" style="background: #C4956A;"><span style="color: #fff;">#C4956A</span></div>
+      <p class="el-label">--accent-glow <span class="badge badge--dec">裝飾</span></p>
+      <p class="note">tag 底色、pill、callout 上邊線<br>永遠不做文字</p>
+    </div>
+  </div>
+
+  <p class="label">特殊色</p>
+  <div class="grid-3" style="max-width: 720px;">
+    <div>
+      <div class="swatch" style="background: #3A4A5C;"><span style="color: #fff;">#3A4A5C</span></div>
+      <p class="el-label">--slate <span class="badge badge--ok">8.3:1</span></p>
+      <p class="note">Case 頁 h2、h3、大標、callout</p>
+    </div>
+    <div>
+      <div class="swatch" style="background: #7EC8BE;"><span style="color: #fff;">#7EC8BE</span></div>
+      <p class="el-label">--tiffany <span class="badge badge--lg">深底 8.8:1</span></p>
+      <p class="note">About eyebrow / em / pills<br>Hero 毛玻璃裡的詩文字色（新！）<br>Case 頁 impact bar 標籤（新！）</p>
+    </div>
+    <div>
+      <div class="swatch" style="background: #F5F5F3; border: 1px solid #DDDCDA;"><span style="color: #211E55;">#F5F5F3 / #FFF</span></div>
+      <p class="el-label">--surface / --canvas</p>
+      <p class="note">不變</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================ -->
+<!-- 3. LIVE ELEMENTS                  -->
+<!-- ================================ -->
+<div class="section">
+  <h2 class="section-title">3. 元素實際渲染</h2>
+
+  <p class="label" style="margin-bottom: 20px;">淺色底上</p>
+  <div style="background: #F5F5F3; border: 1px solid #DDDCDA; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+
+    <div>
+      <p class="el-label">Section Eyebrow</p>
+      <p style="font-family: 'Josefin Sans'; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6838;">WORK</p>
+    </div>
+
+    <div>
+      <p class="el-label">Sub-label</p>
+      <p style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C5980;">Professional Research <span style="font-weight: 400; letter-spacing: 0.06em; text-transform: none;">· clients anonymised</span></p>
+    </div>
+
+    <div>
+      <p class="el-label">Pro-item Title (serif)</p>
+      <p style="font-family: 'Cormorant Garamond'; font-size: 1.15rem; font-weight: 600; color: #211E55;">National Health Data Gateway</p>
+    </div>
+
+    <div>
+      <p class="el-label">Pro-item Description</p>
+      <p style="font-size: 0.85rem; color: #5C5980; line-height: 1.6;">How biomedical researchers navigate 50+ fragmented databases — and what a unified gateway should look like.</p>
+    </div>
+
+    <div>
+      <p class="el-label">Timeline 職稱 + 公司</p>
+      <p style="font-size: 0.92rem; font-weight: 700; color: #8A6838;">Senior UX Researcher</p>
+      <p style="font-size: 0.82rem; color: #5C5980;">AJA Creative Design</p>
+    </div>
+
+    <div>
+      <p class="el-label">連結（hover 時 → ink 深色）</p>
+      <p style="font-size: 0.9rem;">
+        <a href="#" style="color: #8A6838; text-decoration: underline; text-underline-offset: 3px;">View case study →</a>
+        <span style="color: #5C5980; font-size: 0.78rem; margin-left: 12px;">hover →</span>
+        <a href="#" style="color: #211E55; text-decoration: underline; text-underline-offset: 3px;">View case study →</a>
+      </p>
+    </div>
+
+    <div>
+      <p class="el-label">Tag 標籤</p>
+      <div style="display: flex; gap: 8px;">
+        <span style="font-size: 0.72rem; font-weight: 600; color: #211E55; background: rgba(196,149,106,0.15); border: 1px solid rgba(196,149,106,0.3); border-radius: 100px; padding: 3px 10px;">Public Sector</span>
+        <span style="font-size: 0.72rem; font-weight: 600; color: #211E55; background: rgba(196,149,106,0.15); border: 1px solid rgba(196,149,106,0.3); border-radius: 100px; padding: 3px 10px;">Published in ComSIS</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="el-label">NDA 標註語</p>
+      <p style="font-size: 0.78rem; font-style: italic; color: #8A6838; background: rgba(138,104,56,0.05); border: 1px solid rgba(138,104,56,0.12); border-radius: 4px; padding: 10px 14px; line-height: 1.6;">Client identity and performance metrics have been anonymised per confidentiality agreement.</p>
+    </div>
+
+    <div>
+      <p class="el-label">Callout（金色上邊線 + 白底）</p>
+      <div style="background: #fff; border-top: 3px solid #C4956A; border-radius: 4px; padding: 16px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+        <p style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A6838; margin-bottom: 8px;">Chip</p>
+        <p style="font-size: 0.9rem; color: #5C5980; line-height: 1.6;">A chip inserted into a person's wrist gradually transforms their DNA sequence.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="el-label">Research Outcome（金底 + serif）</p>
+      <div style="background: rgba(196,149,106,0.07); border: 1px solid rgba(196,149,106,0.2); border-radius: 8px; padding: 20px 24px;">
+        <p style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #8A6838; margin-bottom: 8px;">Research Outcome</p>
+        <p style="font-family: 'Cormorant Garamond'; font-size: 1.02rem; font-weight: 400; line-height: 1.65; color: #211E55;">Research with 15 researchers uncovered three systemic failures — findings published in <em style="color: #8A6838;">ComSIS</em>.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="el-label">Case 頁大標（slate）</p>
+      <p style="font-size: 1.8rem; font-weight: 600; color: #3A4A5C; letter-spacing: -0.03em;">National Health Data Gateway</p>
+      <p style="font-size: 1.05rem; color: #5C5980; line-height: 1.75; margin-top: 8px;">A formative user research study commissioned by Taiwan's Ministry of Health and Welfare.</p>
+    </div>
+
+    <div>
+      <p class="el-label">Contact Headline</p>
+      <p style="font-family: 'Cormorant Garamond'; font-size: 1.8rem; font-weight: 300; font-style: italic; color: #5C5980; line-height: 1.25;">Let's start<br><em style="font-family: Inter; font-style: normal; font-weight: 700; letter-spacing: -0.02em; color: #8A6838;">a conversation.</em></p>
+    </div>
+
+    <div>
+      <p class="el-label">Next Project ✦ 重新設計</p>
+      <div style="display: flex; align-items: stretch; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126,200,190,0.25);">
+        <div style="flex: 0 0 6px; background: linear-gradient(to bottom, #7EC8BE, #C4956A);"></div>
+        <div style="flex: 1; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; background: rgba(126,200,190,0.04);">
+          <div>
+            <p style="font-family: 'Josefin Sans'; font-size: 0.68rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: #7EC8BE; margin-bottom: 8px;">Next Project</p>
+            <p style="font-family: 'Cormorant Garamond'; font-size: 1.2rem; font-weight: 600; color: #211E55;">The Camera Roll as Wardrobe</p>
+            <p style="font-size: 0.78rem; color: #5C5980; margin-top: 4px;">How high-net-worth clients actually manage their wardrobes.</p>
+          </div>
+          <span style="font-size: 1.8rem; color: #7EC8BE; margin-left: 24px;">→</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="el-label">Case Meta Label</p>
+      <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #8A6838;">Role</p>
+      <p style="font-size: 0.88rem; font-weight: 500; color: #211E55;">Senior UX Researcher</p>
+    </div>
+
+    <div>
+      <p class="el-label">Figcaption</p>
+      <p style="font-size: 0.78rem; color: #8A6838; font-style: italic; text-align: center;">Stakeholder Ecosystem Map — five key actor groups</p>
+    </div>
+
+    <div style="padding: 24px 0; border-top: 1px solid #DDDCDA; margin-top: 8px;">
+      <p class="el-label">✦ 蒂芬尼藍在淺色底上的新用法</p>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 12px;">
+
+        <div>
+          <p class="note" style="font-weight: 600; margin-bottom: 8px;">Tag 標籤（蒂芬尼底 vs 金底對照）</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-size: 0.72rem; font-weight: 600; color: #211E55; background: rgba(126,200,190,0.12); border: 1px solid rgba(126,200,190,0.25); border-radius: 100px; padding: 3px 10px;">Public Sector</span>
+            <span style="font-size: 0.72rem; font-weight: 600; color: #211E55; background: rgba(126,200,190,0.12); border: 1px solid rgba(126,200,190,0.25); border-radius: 100px; padding: 3px 10px;">Published in ComSIS</span>
+            <span style="font-size: 0.72rem; font-weight: 600; color: #211E55; background: rgba(196,149,106,0.15); border: 1px solid rgba(196,149,106,0.3); border-radius: 100px; padding: 3px 10px;">金底版（現狀）</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="note" style="font-weight: 600; margin-bottom: 8px;">Recognition type pill（蒂芬尼版）</p>
+          <div style="display: flex; gap: 8px;">
+            <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #211E55; background: rgba(126,200,190,0.12); border: 1px solid rgba(126,200,190,0.25); border-radius: 100px; padding: 2px 10px;">Publication</span>
+            <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #211E55; background: rgba(126,200,190,0.12); border: 1px solid rgba(126,200,190,0.25); border-radius: 100px; padding: 2px 10px;">Exhibition</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="note" style="font-weight: 600; margin-bottom: 8px;">Callout 上邊線（蒂芬尼取代金色）</p>
+          <div style="background: #fff; border-top: 3px solid #7EC8BE; border-radius: 4px; padding: 16px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);">
+            <p style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A6838; margin-bottom: 8px;">Chip</p>
+            <p style="font-size: 0.9rem; color: #5C5980; line-height: 1.6;">A chip inserted into a person's wrist gradually transforms their DNA sequence.</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="note" style="font-weight: 600; margin-bottom: 8px;">Case impact bar（蒂芬尼底 + 蒂芬尼標籤）</p>
+          <div style="background: rgba(126,200,190,0.06); border: 1px solid rgba(126,200,190,0.18); border-radius: 8px; padding: 20px 24px;">
+            <p style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5C5980; margin-bottom: 8px;">Research Outcome</p>
+            <p style="font-family: 'Cormorant Garamond'; font-size: 1.02rem; font-weight: 400; line-height: 1.65; color: #211E55;">Research with 15 researchers uncovered three systemic failures — findings published in <em style="color: #8A6838;">ComSIS</em>.</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="note" style="font-weight: 600; margin-bottom: 8px;">Section divider（蒂芬尼漸層線）</p>
+          <div style="height: 2px; background: linear-gradient(to right, transparent, #7EC8BE, transparent); margin: 8px 0;"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div style="height: 36px;"></div>
+  <p class="label" style="margin-bottom: 20px;">深色底上 — 蒂芬尼藍主場</p>
+
+  <div class="dark-card" style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px;">
+    <p style="font-family: 'Josefin Sans'; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: #7EC8BE;">ABOUT</p>
+    <p style="font-family: 'Cormorant Garamond'; font-size: 1.6rem; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.3;">I make the invisible<br><em style="font-family: Inter; font-style: normal; font-weight: 700; letter-spacing: -0.02em; color: #7EC8BE;">legible.</em></p>
+    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.75;">The most useful question in a project is rarely the one the brief contains.</p>
+    <div style="display: flex; gap: 8px; margin-top: 4px;">
+      <span style="font-size: 0.78rem; color: rgba(255,255,255,0.72); background: rgba(126,200,190,0.1); border: 1px solid rgba(126,200,190,0.2); border-radius: 100px; padding: 5px 13px;">Digital Health</span>
+      <span style="font-size: 0.78rem; color: rgba(255,255,255,0.72); background: rgba(126,200,190,0.1); border: 1px solid rgba(126,200,190,0.2); border-radius: 100px; padding: 5px 13px;">Speculative Design</span>
+    </div>
+  </div>
+
+  <div style="background: rgba(2,9,18,0.35); backdrop-filter: blur(4px); border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 14px;">
+    <p class="el-label" style="color: rgba(255,255,255,0.3);">Hero 毛玻璃面板</p>
+    <p style="font-family: 'Josefin Sans'; font-size: 2.5rem; font-weight: 400; letter-spacing: 0.35em; color: #fff; line-height: 1.15;">Tung<br>Lin</p>
+    <p style="font-size: 0.88rem; color: rgba(126,200,190,0.7); line-height: 2.0; margin-top: 8px;">I observe people — and the things they live with.<br>How they reach, pause, arrange.<br>I look for what needs to be placed differently.<br>So the right things can find each other.</p>
+  </div>
+
+</div>
+
+<!-- ================================ -->
+<!-- 4. ROLE TABLE                     -->
+<!-- ================================ -->
+<div class="section">
+  <h2 class="section-title">4. 顏色角色對照表（最終版）</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>角色</th>
+        <th>變數</th>
+        <th>色值</th>
+        <th>對比度</th>
+        <th>使用範圍</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight: 600;">主要文字</td>
+        <td><span class="dot" style="background: #211E55;"></span>--ink</td>
+        <td><code>#211E55</code></td>
+        <td>15.1:1</td>
+        <td style="color: #5C5980;">body copy、h1、pro-item title、case-meta value</td>
+      </tr>
+      <tr>
+        <td style="font-weight: 600;">次要文字</td>
+        <td><span class="dot" style="background: #5C5980;"></span>--ink-muted</td>
+        <td><code>#5C5980</code></td>
+        <td>6.0:1</td>
+        <td style="color: #5C5980;">描述、subtitle、公司名、caption、period、sub-label、arrow</td>
+      </tr>
+      <tr style="background: rgba(196,149,106,0.04);">
+        <td style="font-weight: 600;">強調 / 互動</td>
+        <td><span class="dot" style="background: #8A6838;"></span>--accent</td>
+        <td><code>#8A6838</code></td>
+        <td>4.67:1</td>
+        <td style="color: #5C5980;">連結、eyebrow、職稱、NDA、figcaption、meta label、Contact em</td>
+      </tr>
+      <tr style="background: rgba(196,149,106,0.04);">
+        <td style="font-weight: 600;">裝飾底色</td>
+        <td><span class="dot" style="background: #C4956A;"></span>--accent-glow</td>
+        <td><code>#C4956A</code></td>
+        <td>—</td>
+        <td style="color: #5C5980;">tag/pill rgba 底色、callout 上邊線、dot active（永不做文字）</td>
+      </tr>
+      <tr>
+        <td style="font-weight: 600;">Case 冷色標題</td>
+        <td><span class="dot" style="background: #3A4A5C;"></span>--slate</td>
+        <td><code>#3A4A5C</code></td>
+        <td>8.3:1</td>
+        <td style="color: #5C5980;">case h2、h3、case 大標、callout 邊線（舊）、case-nav logo</td>
+      </tr>
+      <tr style="background: rgba(126,200,190,0.04);">
+        <td style="font-weight: 600;">寶石色（深底）</td>
+        <td><span class="dot" style="background: #7EC8BE;"></span>--tiffany</td>
+        <td><code>#7EC8BE</code></td>
+        <td>8.8:1*</td>
+        <td style="color: #5C5980;">About eyebrow / em / pills、Hero 詩文字、case impact bar label</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top: 8px;">* 蒂芬尼藍對比度基於深色背景 (#0E1F24) 計算。淺色底上 (1.77:1) 不可用。</p>
+</div>
+
+<!-- ================================ -->
+<!-- 5. FONT MAP                       -->
+<!-- ================================ -->
+<div class="section">
+  <h2 class="section-title">5. 字型（不變）</h2>
+  <table>
+    <thead><tr><th>字型</th><th>變數</th><th>使用位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="font-family: 'Josefin Sans'; font-weight: 400;">Josefin Sans</td>
+        <td>--hero-display</td>
+        <td style="color: #5C5980;">Hero name (400, 0.35em)、Section eyebrow (400, 0.1em)</td>
+      </tr>
+      <tr>
+        <td style="font-family: 'Cormorant Garamond'; font-weight: 400;">Cormorant Garamond</td>
+        <td>--serif</td>
+        <td style="color: #5C5980;">Pro-item title (600)、Contact / About headline 前半（300i）、Research Outcome 內文、Pullquote</td>
+      </tr>
+      <tr>
+        <td>Inter</td>
+        <td>--sans / --display</td>
+        <td style="color: #5C5980;">Body、h2、h3、nav、btn、timeline、recognition、所有 UI</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ================================ -->
+<!-- 6. CHANGES NEEDED                 -->
+<!-- ================================ -->
+<div class="section">
+  <h2 class="section-title">6. 需要改動的地方</h2>
+
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div style="background: #EBEBEA; border-radius: 8px; padding: 16px 20px; display: grid; grid-template-columns: 28px 1fr; gap: 10px;">
+      <span style="font-weight: 700; color: #8A6838;">1</span>
+      <div>
+        <p style="font-weight: 600;">合併 --ink-2 和 --ink-3 為 --ink-muted (#5C5980)</p>
+        <p class="note">刪掉兩個近黑色，用一個有真正層級差的靛藍灰取代。</p>
+      </div>
+    </div>
+    <div style="background: #EBEBEA; border-radius: 8px; padding: 16px 20px; display: grid; grid-template-columns: 28px 1fr; gap: 10px;">
+      <span style="font-weight: 700; color: #8A6838;">2</span>
+      <div>
+        <p style="font-weight: 600;">合併 --accent-mid 和 --accent-warm 為 --accent (#8A6838)</p>
+        <p class="note">Hover 用 --ink（深色）而非另一個金色。</p>
+      </div>
+    </div>
+    <div style="background: #EBEBEA; border-radius: 8px; padding: 16px 20px; display: grid; grid-template-columns: 28px 1fr; gap: 10px;">
+      <span style="font-weight: 700; color: #8A6838;">3</span>
+      <div>
+        <p style="font-weight: 600;">Hero 四行詩文字改用蒂芬尼藍 rgba</p>
+        <p class="note">從 rgba(220,235,248,0.85) → rgba(126,200,190,0.7)，讓 hero 和 About 有色彩呼應。</p>
+      </div>
+    </div>
+    <div style="background: #EBEBEA; border-radius: 8px; padding: 16px 20px; display: grid; grid-template-columns: 28px 1fr; gap: 10px;">
+      <span style="font-weight: 700; color: #8A6838;">4</span>
+      <div>
+        <p style="font-weight: 600;">刪除 --accent-light (#D4A87E)</p>
+        <p class="note">深色底上改用 --tiffany，不再需要金色。</p>
+      </div>
+    </div>
+    <div style="background: #EBEBEA; border-radius: 8px; padding: 16px 20px; display: grid; grid-template-columns: 28px 1fr; gap: 10px;">
+      <span style="font-weight: 700; color: #8A6838;">5</span>
+      <div>
+        <p style="font-weight: 600;">Case impact bar 標籤改用蒂芬尼藍</p>
+        <p class="note">Impact bar 背景是 slate 調的暗底，蒂芬尼藍在上面 OK（深底限定規則）。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

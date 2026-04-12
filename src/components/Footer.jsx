@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <p className="footer__copy">© {new Date().getFullYear()} Tung Lin. All rights reserved.</p>
+      <p className="footer__copy">© {new Date().getFullYear()} Sylvia Lin. All rights reserved.</p>
       <div className="footer__contact">
         <a href="mailto:tunglin.sy@gmail.com" className="footer__contact-link">tunglin.sy@gmail.com</a>
         <span className="footer__sep">·</span>

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import CaseLayout from '../../components/CaseLayout'
-import { FadeIn } from '../../components/FadeIn'
 
 /* ══════════════════════════════════════════════════════════════════
    LIGHTBOX
@@ -128,7 +127,7 @@ function ResearchProcessDiagram() {
   const boxY = (H - boxH) / 2
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive" role="img" aria-label="Research process diagram showing four phases: secondary research, contextual inquiry, concept testing, and co-design">
       {phases.map((ph, i) => {
         const x = startX + i * (boxW + arrowZone)
         const cx = x + boxW / 2
@@ -264,7 +263,7 @@ function PersonaMatrixDiagram() {
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive" role="img" aria-label="Persona matrix diagram comparing family profiles by practice engagement and parental involvement">
       <MatrixGroup
         ox={leftX}
         personas={parentPersonas}
@@ -331,7 +330,7 @@ function ParentJourneyDiagram() {
   const insightY = 136, insightH = 58
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive" role="img" aria-label="Parent journey diagram mapping daily practice routines across family contexts">
       {/* Legend */}
       <rect x={W - 138} y={2} width={9} height={9} rx={2} fill={glow} opacity="0.55" />
       <text x={W - 125} y={10} fontSize="7.5" fontFamily="Inter, sans-serif"
@@ -497,7 +496,7 @@ function ScenarioStoryboardDiagram() {
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive" role="img" aria-label="Scenario storyboard showing six frames of a parent-child practice session">
       {[0, 1, 2, 3, 4, 5].map(i => {
         const col = i % 3
         const row = Math.floor(i / 3)
@@ -569,7 +568,7 @@ function InteractionArchDiagram() {
   const arrowX = bX + 30
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive">
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" className="svg-responsive" role="img" aria-label="Interaction architecture diagram showing platform modules and content flow">
       {/* Flow label — vertical, right margin */}
       <text
         x={W - 11} y={startY + totalH / 2}
@@ -646,9 +645,9 @@ function InteractionArchDiagram() {
 export default function ArtsEducation() {
   return (
     <CaseLayout
-      tags={['Arts & Culture', 'Discovery Research', 'Interaction Design']}
+      dimension="Practice sustains"
       title="Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation's Online School"
-      subtitle="What gets lost when a presence-dependent practice goes online — and what commitment would it take to ensure the practice remained, unmistakably, itself?"
+      subtitle="What conditions are required for embodied practices to remain meaningful when translated into digital environments?"
       meta={[
         { label: 'Industry', value: 'Performing Arts & Education' },
         { label: 'Role', value: 'Senior UX Researcher — discovery research lead, co-design workshop facilitator' },
@@ -656,153 +655,214 @@ export default function ArtsEducation() {
         { label: 'Scope', value: '19 interviews · 24 concept sessions · Taiwan & mainland China' },
         { label: 'Year', value: '2021' },
       ]}
-      nextCase={{ to: '/cases/out-edge', title: "Out/Edge" }}
     >
 
-      {/* ── IMPACT BAR ── */}
-      <div className="case-impact-bar">
-        <span className="case-impact-bar__label">Research Outcome</span>
-        <p className="case-impact-bar__text">
-          Discovery research — 19 interviews and 24 concept sessions conducted in participants&apos; homes across Taiwan and mainland China — studied two populations: families with children aged 3–6, and senior practitioners aged 60+. For seniors, the core barrier wasn&apos;t technology; it was the loss of presence. For families, it was different: the child&apos;s bodily practice depended on the parent&apos;s confidence and the home&apos;s spatial constraints. Designing for the child alone would fail, because the parent-and-room together become the pedagogical environment.
+      {/* ── OVERVIEW ── */}
+      <p>
+        This project investigates what happens when a presence-dependent practice is translated into a digital environment.
+      </p>
+      <p>
+        Conducted for a performing arts organisation transitioning to an online school during COVID-19, the research examines how embodied pedagogy is reconfigured when relocated from shared physical space to the home.
+      </p>
+      <p>
+        Rather than focusing on platform features, the study analyzes how spatial, relational, and social conditions shape the possibility of learning.
+      </p>
+
+      {/* ── RESEARCH FRAMING ── */}
+      <h2>Research Framing</h2>
+
+      <div className="callout">
+        <h4>Research Question</h4>
+        <p className="case-body-sm">
+          What conditions are required for embodied practices to remain meaningful when translated into digital environments?
         </p>
       </div>
 
-      {/* ── SECTION 1: Opening ── */}
-      <FadeIn>
-        <h2>What the Room Was Doing</h2>
-        <p>There are things a teacher does with her body that no screen can carry — a hand on the shoulder, breath shared across a room, the particular stillness when learning deepens. These are the conditions under which a certain kind of learning happens. The question I entered with was not &quot;can we preserve these?&quot; but what would it take to refuse the losses that digital translation typically demands. Could the organisation build something online that remained unmistakably itself?</p>
-        <p>As senior UX researcher leading this discovery phase, I occupied an unusual position: I was trained in tech industry contexts — used to thinking about engagement metrics, retention, and scale — but this organisation worked from radically different premises. The practice&apos;s power lay in its particularity, its slowness, its refusal to compete on the market&apos;s terms — and its leadership knew that scaling it online risked diluting exactly what made it worth attending. That tension shaped the research from the start.</p>
-        <p>I should name this distance more precisely. My training had equipped me to think in terms of engagement metrics, conversion funnels, and feature prioritisation — frameworks that assume the goal is to make interaction smoother, faster, more efficient. This organisation operated from a fundamentally different premise: that the value of its practice lay in what it demanded, not what it delivered. Slowness was not a bug. Repetition was not friction. The body&apos;s struggle was the pedagogy. Entering this research with industry frameworks would have produced industry answers — and missed what made the question worth asking.</p>
-        <p>A leading Taiwanese performing arts organisation had spent decades building its educational practice on exactly these conditions. COVID-19 forced the decision in early 2021. But the organisation&apos;s leadership understood what was at stake: this was a practice that lived in the body, taught through presence, sustained by shared physical space. Any translation risked converting embodied wisdom into consumable content.</p>
-        <p>There was a second difficulty, less obvious but equally defining. The organisation&apos;s audience — parents, adult practitioners, long-time devotees of the art form — came with an expectation of aesthetic seriousness. They had chosen this institution precisely because it did not look or feel like mass-market education. But online learning, especially for children, demands attention management: animation, interactivity, sensory variety. Every tool designed to hold a child&apos;s focus on a screen risks undermining the very quality that made the institution worth attending. The challenge was not just to put the practice online. It was to do so without betraying what the practice meant.</p>
-      </FadeIn>
+      <div className="callout">
+        <h4>Method</h4>
+        <p className="case-body-sm">
+          Constructive Design Research combining contextual inquiry (n=19), co-design workshops, and concept testing (n=24) across Taiwan and mainland China.
+        </p>
+      </div>
 
-      {/* ── SECTION 2: Research Design ── */}
-      <FadeIn>
-        <h2>Two Populations, Two Kinds of Doubt</h2>
-        <p>The organisation defined three student segments — parent-child classes (age three), children&apos;s classes (ages four to six), and senior practitioners (age sixty and above). But in the fieldwork, the first two collapsed into one research population: in both cases, a parent was mediating the child&apos;s practice at home. What differed was the child&apos;s age, not the structural problem. So the research pulled in two directions at once. Families with young children needed proof that discipline could survive at home, that a parent&apos;s mediation wouldn&apos;t dilute the practice into play. Senior practitioners (長青者), a segment the organisation had cultivated for years, needed something quieter: whether their aging bodies could still find home in the practice without a teacher watching. These weren&apos;t different user segments. They were different relationships to presence, embodiment, and what a space makes possible.</p>
-        <p>Nineteen in-depth interviews were conducted in participants&apos; homes and practice spaces — not in neutral settings — across four cities in Taiwan and two in mainland China. Conducting interviews in naturalistic settings rather than neutral venues allowed us to observe the actual constraints participants work within, a principle rooted in ecological approaches to design research.</p>
-        <p>That decision to enter people&apos;s actual environments turned out to matter — especially for the families with young children. In northern Taiwan&apos;s apartments, the living room doubles as dining room, homework space, and bedroom. A four-year-old practising movement here cannot jump; the floor beneath is someone else&apos;s ceiling. In Taichung and Kaohsiung, families had play rooms — walls covered in crayon drawings, foam mats on the floor, space where a child&apos;s body could actually move. A child&apos;s movement practice, it became clear, is not a property of the child. It is a property of the room.</p>
-        <p>During home visits, I observed not just how families practised, but what equipment they used and how they had arranged their spaces. Families showed me their setups — computers connected to television screens, a projector mounted on a bookshelf, one family&apos;s carefully preserved VCR which they insisted produced the best image quality for following movement. I asked them to walk me through how they set up for a session: who moved the furniture, who connected the cables, who decided which device to use. These were not peripheral details. They were evidence that online practice was not a screen experience — it was a spatial reconfiguration that the whole household had to negotiate.</p>
-        <p>The home was not a neutral backdrop for practice. It was a site with its own constraints, and those constraints were not evenly distributed. Who controlled the time and space for a child&apos;s practice — whether a parent could carve out a regular hour, whether the apartment had a room where jumping wouldn&apos;t disturb the neighbours — shaped what the practice could even look like before the platform entered the picture. This observation &mdash; that material conditions for embodied learning are distributed along lines of class, housing, and caregiving labour &mdash; connects to concerns feminist scholars of design have long raised about whose bodies infrastructure is built around, and whose are left to adapt.</p>
-        <p>A thing worth naming plainly: in every family we visited, the parent managing the child&apos;s practice was the mother. Fathers appeared in the data — &lsquo;放電爸&rsquo; (the energy-burning dad) was a persona type — but the daily labour of setting up the device, clearing the room, guiding the child&apos;s attention, and negotiating with the child when focus broke was overwhelmingly maternal. This is care labour in its most material form: not emotional support in the abstract, but the physical work of configuring a household so that a child&apos;s body can move. The platform could not redistribute that labour. It could only make visible whose bodies were already doing it.</p>
-      </FadeIn>
+      <div className="callout">
+        <h4>Contribution</h4>
+        <p className="case-body-sm">
+          The project identifies three shifts that occur when embodied practices move online: (1) Unit shift — from individual learner to household configuration. (2) Loss shift — from technical fidelity to relational absence. (3) Value tension — between engagement-driven design and practice authenticity.
+        </p>
+      </div>
 
-      <FadeIn>
-        <DiagramFigure
-          title="Research Process: Six Sequential Phases"
-          caption="The study advanced through six phases — from secondary landscape analysis through direct fieldwork and co-design workshops to concept testing — each phase building on confirmed prior findings rather than assumed user needs."
-        >
-          <ResearchProcessDiagram />
-        </DiagramFigure>
-      </FadeIn>
+      <DiagramFigure
+        title="Research Process: Six Sequential Phases"
+        caption="The study advanced through six phases — from secondary landscape analysis through direct fieldwork and co-design workshops to concept testing — each phase building on confirmed prior findings rather than assumed user needs."
+      >
+        <ResearchProcessDiagram />
+      </DiagramFigure>
 
-      {/* ── SECTION 3: What We Found ── */}
-      <FadeIn>
-        <h2>What the Research Found</h2>
-        <p>I had assumed, going in, that technology would be the barrier for senior practitioners. It wasn&apos;t. The people I spoke with managed smartphones and video calls without difficulty. What emerged instead, when I asked them to imagine practising alone in front of a screen, was something quieter — something closer to vulnerability. Movement practice at this age involves a real relationship with physical risk — a misstep, an overextension, a fall. In a physical class, the teacher sees. On a screen, no one sees.</p>
-        <p>What senior practitioners needed wasn&apos;t technical training. They needed assurance that someone still held them in regard — care that couldn&apos;t be automated. Human-mediated onboarding became a design requirement, not a workaround. The platform couldn&apos;t begin with self-directed use; it had to begin with a person.</p>
-        <p>There was also a deeper motivation at stake. The practice is not a weekly event — it is a physical discipline whose benefits depend on regularity. For senior practitioners, the online platform offered something the physical class alone could not: a way to maintain strength and movement between sessions, at home, on their own terms. The goal was not to replace the studio. It was to extend the practice into the days in between.</p>
-        <p>The parent segment surprised me in a different direction. I had gone in assuming parents were facilitators — adults who would set up the device, press play, and step back. At home, with no teacher present, that assumption dissolved. The parent becomes the pedagogical environment.</p>
-        <p>This was most visible with young children. A four-year-old cannot practise alone while watching a screen; they need a parent in the room, modelling the movement, holding the attention, creating the conditions under which practice happens. The parent&apos;s body is not secondary to the child&apos;s learning. It is primary. In the homes we visited, I watched parents try to figure out how to be present in the room in a way that didn&apos;t perform the practice but held the structure within which the child could attempt it. That is a design problem no interface can solve.</p>
-        <p>The real work was redistributing knowledge — not simplifying it. The platform had to teach parents how to hold a space for this practice, not how to operate a tool. Designing for the child&apos;s experience alone would have failed; the platform needed to design for the parent-and-child as a unit, where the parent&apos;s confidence mattered as much as the child&apos;s movement.</p>
-        <p>The third finding reframed the design problem entirely. The organisation&apos;s audience had not chosen it for convenience. They had chosen it for what it stood for — a kind of seriousness about the art form that set it apart from the broader market of children&apos;s enrichment activities. Their refusal of stimulation-driven design was a refusal of the logics that dominate ed-tech: the assumption that children need constant novelty, the child as an audience to be held rather than a learner to be trusted.</p>
-        <p>Each engagement tool designed to hold a child&apos;s focus on a screen risked undermining the very quality that made the institution worth attending. The design challenge was not to make the platform engaging. It was to make it engaging in a way that remained, unmistakably, itself.</p>
-        <p>A thing worth naming: all three findings came from the organisation&apos;s existing community — families and practitioners who had already chosen this practice and believed in what it stood for. The research did not study parents who considered and walked away, or senior practitioners who had quietly stopped attending. Their reasons for leaving might have told a very different story about what the practice actually demands and who it serves. What I heard was shaped by who was still in the room.</p>
-        <p>There is also a question the research raised but could not settle: whether what gets lost in digital translation is fidelity — a technical problem of resolution and latency — or something more fundamental. Senior practitioners don&apos;t stop attending because they can&apos;t use a screen. They stop because life intervenes — caring for grandchildren, recovering from illness, losing the rhythm of a weekly commitment. What they described needing was not a better interface. It was someone checking in, gently, regularly — a human continuity that says <em>we noticed you weren&apos;t here, and the space is still yours</em>. The parents were not describing a bad interface either. They were describing the weight of holding attention for a child in a room where no one else was modelling it. These are not problems of medium. They are problems of relation — and that distinction matters, because the solutions are completely different.</p>
-      </FadeIn>
+      {/* ── FROM PRACTICE TO SYSTEM ── */}
+      <h2>From Practice to System</h2>
 
-      <FadeIn>
-        <figure className="diagram-figure">
-          <div className="diagram-figure__container">
-            {/* TODO: Add srcSet when 2x version of image is available */}
-            <img
-              src="/aja/teaching-contexts.jpg"
-              alt="Teaching context classification developed during the study — mapping the spatial, relational, and temporal conditions under which performing arts pedagogy operates across physical and digital settings"
-              width="1530"
-              height="2160"
-              className="svg-responsive"
-              loading="lazy"
-            />
-          </div>
-          <figcaption className="diagram-figure__caption">
-            Teaching context classification — mapping how spatial, relational, and temporal conditions shift between physical studio and home-based digital settings, and what each shift demands of the platform&apos;s design
-          </figcaption>
-        </figure>
-      </FadeIn>
+      <p>
+        The research shows that online learning is not a direct translation of physical practice, but a reconfiguration of conditions.
+      </p>
+      <p>
+        For children, learning is not determined solely by the platform, but by the interaction between parent, space, and device. The effective unit of design becomes the household, not the individual user.
+      </p>
+      <p>
+        For senior practitioners, the primary barrier is not technological access but the absence of relational support — particularly the presence of a teacher who observes, guides, and provides care.
+      </p>
+      <p>
+        These findings shift the design problem from interface design to system configuration.
+      </p>
 
-      <FadeIn>
-        <DiagramFigure
-          title="Persona Positioning: Two-Segment Framework"
-          caption="Personas plotted across two independent axes per segment. Labels A–E denote parent segment positions (families with children aged 3–6); F–H denote senior learner (長青者) positions. Parent axes measure institutional value alignment and spatiotemporal flexibility — who controls the time and space for a child's practice. All identifying information has been removed per NDA."
-        >
-          <PersonaMatrixDiagram />
-        </DiagramFigure>
-      </FadeIn>
+      <DiagramFigure
+        title="Persona Positioning: Two-Segment Framework"
+        caption="Personas plotted across two independent axes per segment. Labels A–E denote parent segment positions (families with children aged 3–6); F–H denote senior learner (長青者) positions. All identifying information has been removed per NDA."
+      >
+        <PersonaMatrixDiagram />
+      </DiagramFigure>
 
-      {/* ── SECTION 4: What the Research Made Possible ── */}
-      <FadeIn>
-        <h2>What the Research Made Possible</h2>
-        <p>The conventional answer to declining engagement in online learning is stimulation — faster feedback loops, reward mechanics, streaks and badges. For this organisation, that would have been a quiet act of self-destruction. Its audience had chosen it for what the practice demanded of them: patience, repetition, the slow accumulation of something that cannot be rushed. The platform had to honour that choice, not try to manufacture it.</p>
-        <p>What the research made possible was a different kind of design brief. For senior practitioners, onboarding should begin with a human conversation before any self-directed use — because the barrier was not technology, but trust. For the parent experience, the platform should function as a parallel learning journey, not a management interface — because the barrier was not access, but the parent&apos;s confidence in guiding a child&apos;s practice alone. The platform&apos;s visual and tonal language needed to stay close to the physical institution: unhurried, serious, aesthetically considered.</p>
-        <p>The research did not find a way to make the practice easier to deliver online. It found the terms under which online delivery could remain, recognisably, the same practice — and it named, clearly, what would be lost if the organisation tried to shortcut those terms. Whether the organisation would commit to those terms was a decision that fell outside the research scope.</p>
-        <h2>What This Research Contributes</h2>
-        <p>This study contributes three specific knowledge claims to the field of design research for embodied practices:</p>
-        <p><strong>First, that the unit of analysis for home-based embodied learning is not the learner but the household.</strong> Designing for the child alone would have failed, because the child&apos;s practice depended on the parent&apos;s embodied competence, the room&apos;s spatial constraints, and the device ecology the family had assembled. The parent-and-room together constituted the pedagogical environment. This finding extends practice theory (Shove, Pantzar &amp; Watson, 2012) into an embodied learning context: the &lsquo;practice&rsquo; of online movement education is not performed by an individual but configured across materials, competences, and meanings distributed throughout the household.</p>
-        <p><strong>Second, that presence is not a feature to be replicated but a condition to be designed around.</strong> Senior practitioners did not need better video quality or more interactive tools. They needed assurance that someone still held them in regard — care that could not be automated. The distinction between fidelity loss (a technical problem) and relational loss (a design problem) reframes what &lsquo;going online&rsquo; means for presence-dependent practices.</p>
-        <p><strong>Third, that brand authenticity and platform engagement exist in genuine tension — and that tension is productive.</strong> The organisation&apos;s refusal of stimulation-driven design was not resistance to innovation. It was a commitment to an aesthetic of emergence — poetic language, open-ended props, mood rather than instruction — that online platforms, with their cues, timers, and progress indicators, systematically undermine. Recognising this tension as a design constraint, rather than a problem to be solved, produced a fundamentally different kind of brief.</p>
-        <p>The research advanced through four iterative rounds — secondary analysis, contextual inquiry, concept testing with design probes, and co-design workshop — each round overturning assumptions from the previous one. This iterative structure is characteristic of constructive design research, where the research instrument evolves in response to what the field reveals rather than being fixed in advance.</p>
-        <p>That became the real finding. Not &quot;how do we make this work online&quot; but &quot;what are we committing to lose if we insist it can work online without change?&quot; The question is not unique to this organisation. Every time an embodied practice moves to a screen — rehabilitation, dance, martial arts, music — the same negotiation happens. What I learned here is that the negotiation is not about technology. It is about what a practice needs from bodies being near each other, and whether the institution is willing to name what it cannot provide remotely rather than pretending the gap doesn&apos;t exist.</p>
-        <p>But I could not unsee something else — something the research surfaced but could not resolve within its scope. What a four-year-old could practise at home depended on a chain of material conditions that started well before the platform: the apartment&apos;s square footage, the parent&apos;s work schedule, the parent&apos;s confidence in guiding movement with their own body. In concept testing &mdash; where I brought paper-card scenario probes into participants&apos; homes and worked through interaction flows with parents directly &mdash; I discovered that parents&apos; guidance capacity varied enormously in ways interviews alone hadn&apos;t surfaced: some could only sit and watch the screen alongside the child, while others could interpret the teacher&apos;s verbal cues and use their own bodies to draw the child into movement. The design probe revealed tacit knowledge about embodied mediation that observation couldn&apos;t access. The platform could calibrate for different levels of parental guidance. But it could not widen the room.</p>
-        <p>That is the distinction that stayed with me. In the home, some constraints on a child&apos;s practice were negotiable — a parent could learn new guidance techniques, a schedule could shift, furniture could be rearranged. But the room itself was not. Someone else&apos;s ceiling below, a floor plan drawn years earlier by someone who had never imagined a child&apos;s movement practice in that space. The constraint was invisible as a constraint. It was simply what the apartment &quot;was.&quot;</p>
-        <p>For my PhD, I follow that mechanism into public infrastructure, where almost nothing is negotiable. A sidewalk&apos;s width was set by a planner; a playground fence was shaped by liability law; a park was designed for passive sitting rather than active play. These are decisions about what children&apos;s bodies are expected to do — made by adults, materialised in concrete and steel, and so thoroughly naturalised that they no longer register as decisions at all. My research asks what children might become capable of if we recognised these surfaces as designed — and redesignable.</p>
-      </FadeIn>
+      {/* ── SYSTEM CONDITIONS ── */}
+      <h2>System Conditions</h2>
 
-      <FadeIn>
-        <figure className="diagram-figure">
-          <div className="diagram-figure__container">
-            {/* TODO: Add srcSet when 2x version of image is available */}
-            <img
-              src="/aja/media-richness-indicators.jpg"
-              alt="Media richness indicators framework — a research artifact developed to evaluate which dimensions of embodied pedagogy survive digital translation and which require compensatory design strategies"
-              width="1530"
-              height="1480"
-              className="svg-responsive"
-              loading="lazy"
-            />
-          </div>
-          <figcaption className="diagram-figure__caption">
-            Media richness indicators — research framework developed to evaluate which dimensions of embodied pedagogy survive digital translation and which require compensatory design intervention
-          </figcaption>
-        </figure>
-      </FadeIn>
+      <div className="callout">
+        <h4>Household as Infrastructure</h4>
+        <p className="case-body-sm">
+          Learning depends on spatial constraints, device setups, and caregiver involvement. These conditions are unevenly distributed and shape what forms of practice are possible.
+        </p>
+      </div>
 
-      <FadeIn>
-        <h2>Co-Design Workshop: Testing Strategies with Participants</h2>
-        <p>The research did not end with findings. To test whether the strategic directions held, we designed a co-creation workshop that brought parents and senior practitioners back into the process — not as validators, but as co-designers.</p>
-        <p>The workshop used participatory scenario building: participants were given persona cards drawn from the earlier fieldwork, then asked to construct storyboards using structured prompt cards (人 person, 事 action, 時 time, 地 place, 物 object) that mapped how an online practice session would unfold in their actual home environment. This was not hypothetical. Parents described their specific living rooms, the device they would use, the child&apos;s likely attention span, the moment when the parent&apos;s own body would need to enter the frame.</p>
-        <p>What surfaced was something interviews alone had not reached. Parents&apos; guidance capacity varied enormously — some could only sit beside the child and watch the screen, while others could interpret the teacher&apos;s verbal cues and use their own bodies to draw the child into movement. The storyboarding made this variation visible as a design variable, not a personal failing. It also surfaced device ecology: families used computers, television screens, projectors; one family had kept a VCR, saying it produced the best image for movement practice. Equipment choice, it turned out, was not a technology preference — it was a practice configuration, shaped by what the family had learned worked for sustaining a child&apos;s attention in their particular room.</p>
-        <p>From a practice theory perspective (Shove, Pantzar &amp; Watson, 2012), what the workshop revealed was a reconfiguration of materials, competences, and meanings. The &lsquo;materials&rsquo; were not just the platform — they included the room, the device, the furniture arrangement. The &lsquo;competences&rsquo; were not just digital literacy — they included the parent&apos;s embodied capacity to guide movement. And the &lsquo;meanings&rsquo; were not just &lsquo;education&rsquo; — they included the parent&apos;s identity as someone capable of holding this kind of space. The platform could calibrate for different levels of parental guidance. But it could not supply the competence or reshape the room.</p>
-      </FadeIn>
+      <div className="callout">
+        <h4>Relational Mediation</h4>
+        <p className="case-body-sm">
+          Presence cannot be replicated through technical fidelity alone. Human onboarding and ongoing support become core design requirements.
+        </p>
+      </div>
 
-      <FadeIn>
-        <DiagramFigure
-          title="Interaction Architecture: Four-Layer System Design"
-          caption="The four designed interaction layers, from content origin to retention mechanism — built to extend the physical institution rather than replicate it."
-        >
-          <InteractionArchDiagram />
-        </DiagramFigure>
-      </FadeIn>
+      <div className="callout">
+        <h4>Aesthetic Constraint</h4>
+        <p className="case-body-sm">
+          The organisation&apos;s refusal of stimulation-driven design creates a tension with conventional online engagement strategies. Designing for attention risks undermining the practice itself. Through our contextual inquiry, it became clear that this refusal was not a lack of technical fluency — it was an implicit aesthetic position. The organisation was protecting the instability inherent in embodied practice: the unpredictability of a child&apos;s movement, the emergence of expression that cannot be scripted or gamified.
+        </p>
+        <p className="case-body-sm case-body-sm--spaced">
+          This created a critical friction for the design: what conventional platforms eliminate — uncertainty, delay, bodily negotiation — was precisely what made the practice meaningful. The outcome of a session could not be designed in advance; it arose through the body&apos;s encounter with space, rhythm, and another person&apos;s presence.
+        </p>
+      </div>
 
-      <FadeIn>
-        <h2>Limitations</h2>
-        <p>Interviews were conducted in participants&apos; homes and practice spaces — a choice grounded in ecological research traditions, where naturalistic settings reveal constraints that participants have learned to normalise. The study engaged 19 participants across four cities in Taiwan and two in mainland China — an intentional geographic spread designed to surface variation in home environments and spatial constraints. Recruitment was concentrated in urban settings, which means the findings may not fully represent participants in less densely populated areas where home conditions, community structures, and access to physical practice spaces differ.</p>
-        <p>Both segments — families with young children, and senior practitioners — were existing students or parents of existing students; the platform was designed for believers. I did not study families who considered the practice and walked away, or senior practitioners who had quietly stopped attending. Their reasons might have told a different story about what the practice actually demands and who it serves. What I heard was shaped by who was still in the room. Per NDA, the organisation&apos;s identity and specific platform metrics have not been disclosed.</p>
-      </FadeIn>
+      <DiagramFigure
+        title="Parent Journey: Six-Stage Framework"
+        caption="The parent journey mapped across six stages — from trial and onboarding through long-term retention — showing how care labour and spatial constraints shape each transition."
+      >
+        <ParentJourneyDiagram />
+      </DiagramFigure>
 
-      <FadeIn>
-        <p className="nda-note">Organisation identity, participant details, and platform-specific metrics have been anonymised per NDA. Research methods, findings, and strategic frameworks are presented at a level of abstraction appropriate for portfolio review. Available to discuss in full detail — please reach out at tunglin.sy@gmail.com.</p>
-      </FadeIn>
+      {/* ── DESIGN IMPLICATIONS ── */}
+      <h2>Design Implications</h2>
+
+      <p>The research informed a reframing of the platform:</p>
+
+      <div className="callout">
+        <h4>From Child-Centered Interface to Parent-Child Learning System</h4>
+        <p className="case-body-sm">
+          The unit of design is not the individual child but the household — including the parent&apos;s embodied competence and the room&apos;s spatial constraints.
+        </p>
+      </div>
+
+      <div className="callout">
+        <h4>From Self-Service Onboarding to Human-Mediated Initiation</h4>
+        <p className="case-body-sm">
+          Senior practitioners need a human point of contact before any self-directed use. Onboarding begins with a person, not a platform.
+        </p>
+      </div>
+
+      <div className="callout">
+        <h4>From Engagement Optimization to Preservation of Practice Values</h4>
+        <p className="case-body-sm">
+          Rather than increasing accessibility through simplification, the platform must support the conditions under which the practice remains recognizable.
+        </p>
+      </div>
+
+      <DiagramFigure
+        title="Scenario Storyboard: Six-Act Framework"
+        caption="Six scenarios mapped from the parent journey — showing how household configurations, device ecologies, and caregiver transitions shape the practice session across different family contexts."
+      >
+        <ScenarioStoryboardDiagram />
+      </DiagramFigure>
+
+      {/* ── KEY INSIGHTS ── */}
+      <h2>Key Insights</h2>
+
+      <div className="callout">
+        <h4>Learning is Distributed</h4>
+        <p className="case-body-sm">
+          Embodied learning emerges from interactions between bodies, spaces, and tools, rather than from individual users alone.
+        </p>
+      </div>
+
+      <div className="callout">
+        <h4>Not All Losses Are Technical</h4>
+        <p className="case-body-sm">
+          The primary challenge of digital translation lies in relational and spatial conditions, not interface quality.
+        </p>
+      </div>
+
+      <div className="callout">
+        <h4>Access is Structured by Environment</h4>
+        <p className="case-body-sm">
+          Material conditions such as housing, time, and care labor shape participation in ways the platform cannot resolve.
+        </p>
+      </div>
+
+      <DiagramFigure
+        title="Interaction Architecture: Four-Layer System Design"
+        caption="The four designed interaction layers, from content origin to retention mechanism — built to extend the physical institution rather than replicate it."
+      >
+        <InteractionArchDiagram />
+      </DiagramFigure>
+
+      {/* ── EVALUATION ── */}
+      <h2>Evaluation</h2>
+
+      <p>
+        If extended as a PhD research project, this work would be evaluated through a combination of comparative deployment, longitudinal observation, and qualitative analysis.
+      </p>
+      <p>The evaluation focuses on:</p>
+
+      <div className="callout">
+        <h4>Practice Continuity</h4>
+        <p className="case-body-sm">
+          Whether participants sustain embodied practice over time in home environments.
+        </p>
+      </div>
+
+      <div className="callout">
+        <h4>Relational Support</h4>
+        <p className="case-body-sm">
+          How different onboarding and support models affect engagement and retention.
+        </p>
+      </div>
+
+      <div className="callout">
+        <h4>Contextual Variability</h4>
+        <p className="case-body-sm">
+          How spatial and household conditions influence outcomes across user groups.
+        </p>
+      </div>
+
+      {/* ── RELEVANCE TO ONGOING RESEARCH ── */}
+      <h2>Relevance to Ongoing Research</h2>
+
+      <p>
+        This project contributes to a broader research interest in how systems reconfigure embodied practices when translated into digital or infrastructural contexts.
+      </p>
+      <p>
+        While digital platforms often optimize for efficiency, accessibility, and engagement, this work shows that such optimizations can undermine the conditions that make practices meaningful. This reflects a broader pattern related to rebound effects, where improving system performance may reduce awareness, alter behavior, or shift burdens elsewhere.
+      </p>
+      <p>
+        The project suggests that design should not only improve system efficiency, but also make visible the conditions it cannot reproduce — particularly those related to embodiment, care, and spatial context.
+      </p>
+
+      <p className="nda-note">Organisation identity, participant details, and platform-specific metrics have been anonymised per NDA. Research methods, findings, and strategic frameworks are presented at a level of abstraction appropriate for portfolio review. Available to discuss in full detail — please reach out at tunglin.sy@gmail.com.</p>
 
     </CaseLayout>
   )

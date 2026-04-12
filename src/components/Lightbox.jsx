@@ -22,7 +22,7 @@ export function CaseImage({ src, alt, width, height, caption }) {
     if (!open) return
     const onKey = (e) => {
       if (e.key === 'Escape') setOpen(false)
-      // Focus trap: keep Tab within the lightbox
+      // Focus trap: keep Tab and Shift+Tab within the lightbox
       if (e.key === 'Tab' && closeRef.current) {
         e.preventDefault()
         closeRef.current.focus()

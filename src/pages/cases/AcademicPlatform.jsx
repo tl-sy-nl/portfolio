@@ -169,7 +169,7 @@ export default function AcademicPlatform() {
         <div className="publication-block__content">
           <p className="publication-block__label">Peer-Reviewed Publication · 2025</p>
           <p className="publication-block__title">
-            Formative Interviews for a User-Centred Design Study on Developing an Effective Gateway for Biomedical Data Discovery
+            Formative Interviews for a User-Centered Design Study on Developing an Effective Gateway for Health Research Data Search - Towards a Sustainable Wellbeing Environment
           </p>
           <p className="publication-block__desc">
             <em>Computer Science and Information Systems (ComSIS)</em>, ComSIS Consortium.

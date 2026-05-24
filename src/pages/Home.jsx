@@ -57,8 +57,8 @@ const experience = [
 const recognition = [
   {
     type: 'Publication',
-    title: 'Formative Interviews for a User-Centred Design Study on Developing an Effective Gateway for Biomedical Data Discovery',
-    venue: 'ComSIS, Vol. 20, No. 4, 2025',
+    title: 'Formative Interviews for a User-Centered Design Study on Developing an Effective Gateway for Health Research Data Search - Towards a Sustainable Wellbeing Environment',
+    venue: 'Computer Science and Information Systems (ComSIS)',
     link: 'https://doi.org/10.2298/CSIS241204069L',
   },
   {

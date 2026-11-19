@@ -6,13 +6,15 @@ export default function AirSpaces() {
     <CaseLayout
       title="The Air We Share"
       subtitle="What if environmental awareness didn&apos;t come from data, but from what the body already knows?"
-      dimension="Perception enables"
+      dimension="Who gets heard"
       meta={[
         { label: 'Context', value: 'Parsons School of Design, MFA Transdisciplinary Design' },
         { label: 'Role', value: 'Design Researcher, Workshop Facilitator, Prototype Maker' },
         { label: 'Duration', value: 'Sept – Dec 2017' },
         { label: 'Team', value: 'Sylvia Lin, Anh-Ton Tran, Jonas Voigt' },
-        { label: 'Partners', value: 'NASA Langley Research Center, WEACT, Dalton School, NYC Center for Health Equity' },
+        { label: 'Partners', value: 'WE ACT for Environmental Justice, Dalton School' },
+        { label: 'Tools & Data', value: 'NASA Langley Research Center' },
+        { label: 'Adopted by', value: 'NYC Center for Health Equity' },
       ]}
     >
       <p>
@@ -191,49 +193,13 @@ export default function AirSpaces() {
         </p>
       </div>
 
-      <h2>Evaluation</h2>
+      <h2>Relevance to Proposed Research</h2>
 
       <p>
-        If extended as a PhD research project, this work would be evaluated through a mixed-method approach combining controlled comparisons, in-situ deployment, and qualitative inquiry.
-      </p>
-
-      <div className="callout">
-        <h4>Perceptual Impact</h4>
-        <p className="case-body-sm">
-          How embodied interventions reshape awareness compared to data-driven approaches.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Sustained Engagement</h4>
-        <p className="case-body-sm">
-          Whether increased awareness persists in everyday contexts over time.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Situated Participation</h4>
-        <p className="case-body-sm">
-          How different groups access and interpret the intervention.
-        </p>
-      </div>
-
-      <h2>Relevance to Ongoing Research</h2>
-
-      <p>
-        The Air We Share establishes a line of inquiry into how design aesthetics can influence awareness and behavior in environmental contexts.
+        Two lessons from this project shape how I would run participatory research on AI. The first is that information alone did not change how people experienced the air. A reading on a screen left participants&apos; sense of the air untouched; an environment they could stand in changed it. Public discussion of AI relies heavily on explanations, and I expect material and embodied formats to open different conversations.
       </p>
       <p>
-        This connects directly to research on rebound effects in smart systems, where increased efficiency often reduces users&apos; awareness of consumption. The project suggests that alternative design approaches — particularly those engaging uncertainty, sensory experience, and attention — may counteract this effect by making environmental consequences perceptible again.
-      </p>
-      <p>
-        The Dome, in particular, functioned as a deliberately unstable environment: air quality conditions shifted without explicit signalling, and participants&apos; bodily responses preceded cognitive interpretation. Rather than delivering information, the system displaced it — creating a situation in which meaning emerged through the interaction between body, environment, and attention.
-      </p>
-      <p>
-        This suggests an alternative design approach: instead of reducing uncertainty to improve usability, systems can be designed to sustain perceptual openness, allowing users to remain engaged with changing conditions rather than resolving them. In this sense, the project operationalizes uncertainty not as a limitation to overcome, but as an aesthetic and epistemic resource — where meaning unfolds through embodied interaction rather than being predetermined by the designer.
-      </p>
-      <p>
-        Rather than optimizing for efficiency or convenience, this work explores how design can reintroduce awareness into everyday interactions with environmental systems.
+        The second is the project&apos;s limitation. The workshops reached students at a school we had access to, and the residents most exposed to polluted air were elsewhere. In any participatory study of AI futures, I will plan recruitment around the people usually left out of these conversations from the start.
       </p>
 
       <CaseImage

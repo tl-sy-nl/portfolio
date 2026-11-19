@@ -3,12 +3,12 @@ import CaseLayout from '../../components/CaseLayout'
 export default function AcademicPlatform() {
   return (
     <CaseLayout
-      dimension="Access conditions"
+      dimension="What systems cannot hold"
       title="Invisible Infrastructure: Research for Taiwan's National Health Data Gateway"
       subtitle="How do data infrastructures fail in supporting real-world research workflows — and how can design address these failures?"
       meta={[
         { label: 'Industry', value: 'Biomedical & Public Sector' },
-        { label: 'Role', value: 'Co-Researcher — co-led research design, fieldwork, synthesis & IA recommendations' },
+        { label: 'Role', value: 'User Researcher & Interface Designer — research design, fieldwork, synthesis, IA and interface design' },
         { label: 'Methods', value: 'Contextual Inquiry · Card Sorting · Usability Testing' },
         { label: 'Scope', value: '15 researchers · 5 industries · National platform' },
         { label: 'Year', value: '2022–2025' },
@@ -117,45 +117,14 @@ export default function AcademicPlatform() {
         </p>
       </div>
 
-      {/* ── EVALUATION ── */}
-      <h2>Evaluation</h2>
-
-      <p>
-        If extended as a PhD research project, this work would be evaluated through a combination of usability testing, longitudinal deployment, and system-level analysis.
-      </p>
-
-      <div className="callout">
-        <h4>Task Efficiency</h4>
-        <p className="case-body-sm">
-          Whether redesigned systems reduce time and uncertainty in finding and accessing datasets.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Decision Quality</h4>
-        <p className="case-body-sm">
-          Whether improved metadata supports more accurate dataset evaluation.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Access Equity</h4>
-        <p className="case-body-sm">
-          How different user groups benefit from improved infrastructure.
-        </p>
-      </div>
-
       {/* ── RELEVANCE ── */}
-      <h2>Relevance to Ongoing Research</h2>
+      <h2>Relevance to Proposed Research</h2>
 
       <p>
-        This project establishes a research direction focused on how infrastructures shape perception, access, and behavior.
+        This project gave me a method and a publication. Researchers&apos; complaints about the data systems were general; their workarounds were specific, and the workarounds described the infrastructure more accurately than its documentation did. The project also showed that access shapes knowledge: researchers without the right contacts often could not find data at all.
       </p>
       <p>
-        While data systems are often framed as neutral and technical, this work shows that they actively structure what users can find, evaluate, and act upon. This connects to broader questions in design research on how systems mediate awareness and decision-making.
-      </p>
-      <p>
-        In the context of sustainability and rebound effects, increasing efficiency in data access may not necessarily lead to better outcomes if it reduces critical engagement or shifts burdens elsewhere. This project opens up the question of how alternative design approaches can make system behavior more visible, accountable, and equitable.
+        I carry both lessons into research on AI. I would treat what people do around AI tools, such as checking, rewriting or refusing their output, as evidence of what the tools cannot do. And I would ask who has the access, language and connections to shape these systems, and who does not.
       </p>
 
       {/* ── PUBLICATION ── */}

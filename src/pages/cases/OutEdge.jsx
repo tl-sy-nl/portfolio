@@ -7,7 +7,7 @@ export default function OutEdge() {
     <CaseLayout
       title="Out/Edge"
       subtitle="How do temporal and structural conditions of a platform shape the emergence of dialogue in situations of disagreement?"
-      dimension="Perception enables"
+      dimension="Who gets heard"
       meta={[
         { label: 'Context', value: 'Parsons School of Design, MFA Transdisciplinary Design' },
         { label: 'Role', value: 'Design Researcher, Workshop Facilitator, Visual Storyteller' },
@@ -199,35 +199,6 @@ export default function OutEdge() {
         </div>
       </FadeIn>
 
-      {/* ══════════ EVALUATION ══════════ */}
-      <FadeIn>
-        <h2>Evaluation (Proposed)</h2>
-        <p>
-          If extended as a PhD research project, this work would be evaluated through a combination of controlled comparisons and qualitative analysis. The evaluation focuses on:
-        </p>
-
-        <div className="callout">
-          <h4>Dialogic Shift</h4>
-          <p className="case-body-sm">
-            Whether temporal interventions alter patterns of response and listening.
-          </p>
-        </div>
-
-        <div className="callout">
-          <h4>Perceptual Awareness</h4>
-          <p className="case-body-sm">
-            How participants recognize and reflect on discourse dynamics.
-          </p>
-        </div>
-
-        <div className="callout">
-          <h4>Participation Conditions</h4>
-          <p className="case-body-sm">
-            How different temporal structures affect willingness to engage.
-          </p>
-        </div>
-      </FadeIn>
-
       {/* ══════════ LIMITATION ══════════ */}
       <FadeIn>
         <h2>Limitations</h2>
@@ -238,15 +209,12 @@ export default function OutEdge() {
 
       {/* ══════════ RELEVANCE ══════════ */}
       <FadeIn>
-        <h2>Relevance to Ongoing Research</h2>
+        <h2>Relevance to Proposed Research</h2>
         <p>
-          This project contributes to research on how designed systems shape attention, perception, and participation through temporal and structural conditions.
+          Out/Edge showed me that a platform&apos;s structure decides who feels able to speak. The limitation I named afterwards is the question I want to carry into doctoral work: which voices a system makes easier to hear, and whose discomfort stays hidden.
         </p>
         <p>
-          While most platforms optimize for immediacy and engagement, this work shows that such optimization can reduce the capacity for reflection and reinforce reactive behavior — a pattern that parallels rebound effects, where improving system performance undermines broader goals.
-        </p>
-        <p>
-          Out/Edge suggests an alternative approach: designing for uncertainty, delay, and emergence as aesthetic and functional conditions. Rather than resolving instability, the system sustains it, allowing meaning to unfold through interaction rather than being predetermined by design.
+          Generative AI is now part of how people write, argue and express themselves online. It is fluent, fast and always ready to answer, the opposite of the silence protocol. I want to study, with the people affected, how this changes who speaks and in whose words, and to design interventions that leave room for hesitation and for voices that do not sound like the model.
         </p>
       </FadeIn>
 

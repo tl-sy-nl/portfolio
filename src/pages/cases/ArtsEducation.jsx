@@ -645,7 +645,7 @@ function InteractionArchDiagram() {
 export default function ArtsEducation() {
   return (
     <CaseLayout
-      dimension="Practice sustains"
+      dimension="What systems cannot hold"
       title="Lockdown as Catalyst: Discovery Research for a Performing Arts Organisation's Online School"
       subtitle="What conditions are required for embodied practices to remain meaningful when translated into digital environments?"
       meta={[
@@ -820,43 +820,14 @@ export default function ArtsEducation() {
         <InteractionArchDiagram />
       </DiagramFigure>
 
-      {/* ── EVALUATION ── */}
-      <h2>Evaluation</h2>
+      {/* ── RELEVANCE TO PROPOSED RESEARCH ── */}
+      <h2>Relevance to Proposed Research</h2>
 
       <p>
-        If extended as a PhD research project, this work would be evaluated through a combination of comparative deployment, longitudinal observation, and qualitative analysis.
-      </p>
-      <p>The evaluation focuses on:</p>
-
-      <div className="callout">
-        <h4>Practice Continuity</h4>
-        <p className="case-body-sm">
-          Whether participants sustain embodied practice over time in home environments.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Relational Support</h4>
-        <p className="case-body-sm">
-          How different onboarding and support models affect engagement and retention.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Contextual Variability</h4>
-        <p className="case-body-sm">
-          How spatial and household conditions influence outcomes across user groups.
-        </p>
-      </div>
-
-      {/* ── RELEVANCE TO ONGOING RESEARCH ── */}
-      <h2>Relevance to Ongoing Research</h2>
-
-      <p>
-        This project contributes to a broader research interest in how systems reconfigure embodied practices when translated into digital or infrastructural contexts.
+        This project taught me to take a community&apos;s refusal seriously. The organisation refused stimulation-driven design because its practice depended on what such design removes: delay, uncertainty, and expression that cannot be scripted in advance.
       </p>
       <p>
-        While digital platforms often optimize for efficiency, accessibility, and engagement, this work shows that such optimizations can undermine the conditions that make practices meaningful. This reflects a broader pattern related to rebound effects, where improving system performance may reduce awareness, alter behavior, or shift burdens elsewhere.
+        Generative AI brings the same tension to creative practice at a much larger scale. It can extend what people make, and it can also flatten expression into what is easiest to generate. I want to work with creative communities to understand what they want to protect, and to design with them tools that respect those choices.
       </p>
       <p>
         The project suggests that design should not only improve system efficiency, but also make visible the conditions it cannot reproduce — particularly those related to embodiment, care, and spatial context.

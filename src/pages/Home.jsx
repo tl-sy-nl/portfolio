@@ -6,35 +6,35 @@ import Footer from '../components/Footer'
 /* ── Case data (chronological, with dimension overline) ── */
 const cases = [
   {
-    dimension: 'Perception enables',
-    title: 'The Air We Share',
-    sub: 'Environmental perception beyond quantified data',
-    year: '2017',
-    path: '/cases/air-spaces',
-  },
-  {
-    dimension: 'Systems shape',
+    dimension: 'Imagining futures',
     title: 'Beyond 100%',
     sub: 'Speculative biotech systems for food scarcity and bodily modification',
     year: '2018',
     path: '/cases/beyond-100',
   },
   {
-    dimension: 'Perception enables',
+    dimension: 'Who gets heard',
     title: 'Out/Edge',
     sub: 'Political listening beyond platform structure',
     year: '2019',
     path: '/cases/out-edge',
   },
   {
-    dimension: 'Crisis reveals',
+    dimension: 'Who gets heard',
+    title: 'The Air We Share',
+    sub: 'Environmental perception beyond quantified data',
+    year: '2017',
+    path: '/cases/air-spaces',
+  },
+  {
+    dimension: 'What systems cannot hold',
     title: 'Lockdown as Catalyst',
     sub: 'Educational design research in crisis contexts',
     year: '2021',
     path: '/cases/arts-education',
   },
   {
-    dimension: 'Access conditions',
+    dimension: 'What systems cannot hold',
     title: 'Invisible Infrastructure',
     sub: 'Research access shaped by data infrastructure',
     year: '2022–2025',
@@ -44,12 +44,15 @@ const cases = [
 
 /* ── Sidebar data ── */
 const experience = [
-  { period: 'Jan 2020 – Present', role: 'Design Strategist', company: 'Island Design Lab' },
+  { period: 'Apr 2026 – Present', role: 'Product Discovery & Strategy Consultant (Contract)', company: 'Keftek' },
+  { period: 'Jan 2020 – Jan 2025', role: 'Founder, UX Researcher & Design Strategist', company: 'Island Design Lab' },
   { period: 'Jan 2021 – Jul 2023', role: 'Senior UX Researcher', company: 'AJA Creative Design' },
   { period: 'Jan 2022 – Jan 2023', role: 'Advisory Committee Member', company: 'The National Palace Museum' },
   { period: 'Sep 2020 – Jan 2022', role: 'Chapter Co-founder', company: 'The Design Futures Initiative' },
   { period: 'Nov 2020 – Apr 2021', role: 'User Researcher', company: 'Alphateam' },
   { period: 'Oct 2019 – May 2020', role: 'Product Manager', company: 'Airiti Inc.' },
+  { period: '2018 – 2020', role: 'Volunteer Organizer & Facilitator', company: 'g0v Civic Tech Community, New York & Taipei' },
+  { period: '2017', role: 'AI Trainer', company: 'Yoctol' },
   { period: '2013 – 2014', role: 'President, Philosophy Student Association', company: 'National Taiwan University' },
   { period: '2012 – 2014', role: 'Ethics Teaching Assistant', company: 'National Taiwan University' },
 ]
@@ -58,24 +61,25 @@ const recognition = [
   {
     type: 'Publication',
     title: 'Formative Interviews for a User-Centered Design Study on Developing an Effective Gateway for Health Research Data Search - Towards a Sustainable Wellbeing Environment',
-    venue: 'Computer Science and Information Systems (ComSIS)',
+    venue: 'Lee, H.-A., Lin, T., Chen, H.-I., Liu, W.-C., et al. · Computer Science and Information Systems (ComSIS)',
     link: 'https://doi.org/10.2298/CSIS241204069L',
   },
   {
     type: 'Exhibition',
     title: 'Biodesign Challenge Summit',
-    venue: 'MoMA, New York · San Francisco · Rhode Island, 2019',
+    venue: 'MoMA, New York, 2018 · also shown in San Francisco and at The Nature Lab, RISD',
     link: 'https://www.biodesignchallenge.org/parsons-2018',
   },
 ]
 
 const methods = [
+  'Participatory Workshops',
+  'Speculative Design',
+  'Design Futures',
+  'Research through Design',
+  'Co-Design',
   'Contextual Inquiry',
   'Design Probes',
-  'Concept Testing',
-  'Speculative Design',
-  'Participatory Workshops',
-  'Research through Design',
 ]
 
 export default function Home() {
@@ -176,9 +180,8 @@ export default function Home() {
             </svg>
 
             <p className="hero-tagline">
-              We live inside the systems we design. I use design to make their
-              underlying conditions perceptible — so they can remain open,
-              negotiable, and subject to change.
+              Futures we can argue about: participatory and speculative design
+              research on who gets to imagine technology, and who bears its costs.
             </p>
           </div>
         </div>
@@ -209,9 +212,8 @@ export default function Home() {
               </svg>
 
               <p className="hero-tagline">
-                We live inside the systems we design. I use design to make their
-                underlying conditions perceptible — so they can remain open,
-                negotiable, and subject to change.
+                Futures we can argue about: participatory and speculative design
+                research on who gets to imagine technology, and who bears its costs.
               </p>
             </div>
           </div>
@@ -259,9 +261,9 @@ export default function Home() {
       <section className="about-section" id="about">
         <h2 className="section-title">About</h2>
         <div className="about-text">
-          <p>Across projects, a recurring pattern emerges: some of the most consequential design decisions are not experienced as decisions at all. They accumulate in infrastructures, interfaces, and environments until they appear inevitable. Making these conditions perceptible — and open to questioning — is where my work begins.</p>
-          <p>I approach this not from a distance, but from within. My work is grounded in one fact: I live inside the systems I design and study. Each project begins with a practical question of everyday function. But these underlying dynamics only reveal themselves once a system is materialized and actually inhabited. Design, then, is not merely problem-solving, but a research instrument for surfacing what remains beyond the reach of theory alone.</p>
-          <p>When the systems we rely on for comfort and care become seamlessly automated, their true costs recede from view. I resist this by designing for instability — materializing sensory environments where air quality is felt through the rhythm of breath, or speculative artifacts that expose the raw cost of planetary survival. By sustaining uncertainty as a condition for inquiry, systems can remain perceptible, open, and negotiable — rather than silently maintained.</p>
+          <p>I am a design researcher trained in philosophy and transdisciplinary design. I use participatory and speculative design to bring people into conversations about technology that usually take place without them: high school students feeling the air they breathe, exhibition visitors holding food from a system set in 2070, people who disagree about politics trying to listen to each other.</p>
+          <p>One question runs through this work: who is in the room when a future is imagined, and whose experience is left out. I learned it from the limits of my own projects. The students in our air-quality workshops were not the people most exposed to polluted air. The conversations on Out/Edge took place among people who had already chosen to talk. I now plan for that question from the start.</p>
+          <p>I am preparing doctoral research on generative AI: how participatory and speculative design can help diverse groups imagine and reshape AI, and how AI may extend or constrain people&apos;s creativity and expression. I have labelled data for an AI system, co-founded a chapter of The Design Futures Initiative, and organised participatory workshops in the g0v civic technology community. In my current practice I use AI to build interactive artifacts for research.</p>
         </div>
       </section>
 

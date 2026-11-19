@@ -3,7 +3,7 @@ import CaseLayout from '../../components/CaseLayout'
 export default function Beyond100() {
   return (
     <CaseLayout
-      dimension="Systems shape"
+      dimension="Imagining futures"
       title="Beyond 100%"
       subtitle="What happens when planetary sustainability requires a system that decides what the body is allowed to do?"
       meta={[
@@ -123,44 +123,7 @@ export default function Beyond100() {
         Rather than demonstrating technological inevitability, the project exposes that such systems are contingent choices — and that their consequences are unevenly distributed across different bodies.
       </p>
 
-      <h2>Evaluation</h2>
-
-      <p>
-        If extended as a PhD research project, this work would be evaluated through a combination of scenario-based studies, critical response analysis, and system-level modeling.
-      </p>
-
-      <div className="callout">
-        <h4>Perceived Legitimacy</h4>
-        <p className="case-body-sm">
-          How different system configurations influence acceptance of bodily intervention and redistribution.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Ethical Recognition</h4>
-        <p className="case-body-sm">
-          Whether participants identify asymmetries in how costs and benefits are distributed.
-        </p>
-      </div>
-
-      <div className="callout">
-        <h4>Systemic Implications</h4>
-        <p className="case-body-sm">
-          How alternative allocation rules produce different patterns of inequality or extraction.
-        </p>
-      </div>
-
-      <h2>Relevance to Ongoing Research</h2>
-
-      <p>
-        Beyond 100% establishes a research direction concerned with how systems — technological, infrastructural, or digital — distribute costs unevenly while presenting themselves as neutral or necessary.
-      </p>
-      <p>
-        This inquiry extends to: platform systems that extract attention and data while framing them as user benefits; urban infrastructures that encode assumptions about mobility, access, and belonging; and sustainability systems that shift environmental costs onto specific populations.
-      </p>
-      <p>
-        The project positions design not as a tool for solving these systems, but as a method for making their underlying choices visible.
-      </p>
+      <h2>Relevance to Proposed Research</h2>
 
       <div className="case-divider">
         <p className="case-reflection">
@@ -173,6 +136,13 @@ export default function Beyond100() {
           fieldwork session.
         </p>
       </div>
+
+      <p>
+        Beyond 100% is the clearest example of how I use speculative design: build a future concretely enough that people can respond to it with their bodies. At the exhibition, visitors picked up the vacuum-sealed snacks, read the nutrition labels and hesitated. That hesitation told us more about the system than any explanation we wrote.
+      </p>
+      <p>
+        I want to bring this method to generative AI. AI systems often arrive with a story that they are inevitable and good for everyone, much as the 2070 food system did. Speculative artifacts can let people outside the industry examine that story, ask who benefits, and say what they would refuse. My doctoral research would ask who takes part in imagining these futures, and how the design of a futures activity shapes which ethical questions can be raised.
+      </p>
 
       <div className="case-footer-note">
         <p>

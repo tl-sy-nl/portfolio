@@ -719,7 +719,7 @@ p { font-size: var(--text-lg); color: var(--ink-body); line-height: 1.75; }
 
 .framework-grid__labels {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0;
 }
 
@@ -735,7 +735,7 @@ p { font-size: var(--text-lg); color: var(--ink-body); line-height: 1.75; }
 
 .framework-grid__cases {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   border: 1px solid var(--border);
 }
 
@@ -1186,9 +1186,8 @@ a.cred-item-title:hover {
   /* Old framework grid (case pages) */
   .framework-grid__labels { grid-template-columns: 1fr 1fr; }
   .framework-grid__cases { grid-template-columns: 1fr 1fr; }
-  .framework-grid__cell:nth-child(2) { border-right: none; }
-  .framework-grid__cell:nth-child(1),
-  .framework-grid__cell:nth-child(2) { border-bottom: 1px solid var(--border); }
+  .framework-grid__cell:nth-child(2n) { border-right: none; }
+  .framework-grid__cell:nth-child(-n+4) { border-bottom: 1px solid var(--border); }
 
   /* Exp items */
   .exp-item { grid-template-columns: 1fr; gap: 4px; }

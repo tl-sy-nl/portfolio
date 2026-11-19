@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 
 const framework = [
-  { dimension: 'Systems shape', title: 'Beyond 100%', path: '/cases/beyond-100' },
-  { dimension: 'Perception enables', title: 'The Air We Share', path: '/cases/air-spaces' },
-  { dimension: 'Access conditions', title: 'Invisible Infrastructure', path: '/cases/academic-platform' },
-  { dimension: 'Practice sustains', title: 'Lockdown as Catalyst', path: '/cases/arts-education' },
+  { dimension: 'Imagining futures', title: 'Beyond 100%', path: '/cases/beyond-100' },
+  { dimension: 'Who gets heard', title: 'Out/Edge', path: '/cases/out-edge' },
+  { dimension: 'Who gets heard', title: 'The Air We Share', path: '/cases/air-spaces' },
+  { dimension: 'What systems cannot hold', title: 'Lockdown as Catalyst', path: '/cases/arts-education' },
+  { dimension: 'What systems cannot hold', title: 'Invisible Infrastructure', path: '/cases/academic-platform' },
 ]
 
 export default function FrameworkGrid({ currentPath }) {
@@ -13,7 +14,7 @@ export default function FrameworkGrid({ currentPath }) {
       {/* Row 1: dimension labels (not clickable, just text) */}
       <div className="framework-grid__labels">
         {framework.map(f => (
-          <span key={f.dimension} className="framework-grid__dimension">{f.dimension}</span>
+          <span key={f.title} className="framework-grid__dimension">{f.dimension}</span>
         ))}
       </div>
       {/* Row 2: case title cells (clickable links) */}
